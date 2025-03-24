@@ -13,7 +13,7 @@ const getProjectData = (id: string) => {
       description:
         "A complete website redesign for Opertray Division, focusing on user experience and conversion optimization.",
       imageUrl:
-        "/placeholder.svg?height=500&width=800&text=Opertray+Division+Project&bg=36b9cc",
+        "https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=600",
       challenge:
         "The client needed a modern website that would better showcase their products and improve lead generation.",
       solution:
@@ -27,7 +27,7 @@ const getProjectData = (id: string) => {
       description:
         "Comprehensive SEO strategy for Tremely Designs to improve their search engine rankings and organic traffic.",
       imageUrl:
-        "/placeholder.svg?height=500&width=800&text=Tremely+Designs+Project&bg=2c5282",
+        "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
       challenge:
         "The client was struggling to rank for key industry terms and had low organic traffic.",
       solution:
@@ -41,7 +41,7 @@ const getProjectData = (id: string) => {
       description:
         "Integrated digital marketing campaign for Plainst Tech to increase brand awareness and lead generation.",
       imageUrl:
-        "/placeholder.svg?height=500&width=800&text=Plainst+Tech+Project&bg=b5c731",
+        "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=600",
       challenge:
         "The client needed to increase brand awareness and generate more qualified leads.",
       solution:
@@ -55,7 +55,7 @@ const getProjectData = (id: string) => {
       description:
         "Custom web application development for Maindex Solutions to streamline their internal processes.",
       imageUrl:
-        "/placeholder.svg?height=500&width=800&text=Maindex+Solutions+Project&bg=4299e1",
+        "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=600",
       challenge:
         "The client needed a custom web application to automate their manual processes and improve efficiency.",
       solution:
@@ -69,7 +69,7 @@ const getProjectData = (id: string) => {
       description:
         "Advanced analytics implementation for Existernal Ltd. to better understand their customer behavior.",
       imageUrl:
-        "/placeholder.svg?height=500&width=800&text=Existernal+Ltd+Project&bg=9dc431",
+        "https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&w=600",
       challenge:
         "The client lacked visibility into customer behavior and couldn't make data-driven decisions.",
       solution:
@@ -83,7 +83,7 @@ const getProjectData = (id: string) => {
       description:
         "Mobile app development for Coderama to extend their digital presence to mobile platforms.",
       imageUrl:
-        "/placeholder.svg?height=500&width=800&text=Coderama+Project&bg=ed8936",
+        "https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=600",
       challenge:
         "The client needed a mobile app to complement their web platform and reach users on mobile devices.",
       solution:
@@ -107,8 +107,7 @@ export default function ProjectPage({ params }: { params: { id: string } }) {
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">Project Not Found</h1>
             <p className="mb-6">
-              The project you&apos;re looking for doesn&apos;t exist or has been
-              removed.
+              The project you're looking for doesn't exist or has been removed.
             </p>
             <Link href="/">
               <Button>Back to Home</Button>

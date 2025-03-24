@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface ProjectCardProps {
@@ -27,11 +28,13 @@ export default function ProjectCard({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative overflow-hidden">
-          <img
+        <div className="relative overflow-hidden h-48">
+          <Image
             src={imageUrl || "/placeholder.svg"}
             alt={title}
-            className="w-full h-48 object-cover transition-transform duration-500"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500"
             style={{
               transform: isHovered ? "scale(1.05)" : "scale(1)",
             }}
