@@ -1,48 +1,47 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Heart, Phone, Mail, Share2 } from "lucide-react"
-import Link from "next/link"
-import { Button } from "./ui/button"
-import { MobileMenu } from "./mobile-menu"
-import { SocialMediaDropdown } from "./social-media-dropdown"
-import { ServicesDropdown } from "./services-dropdown"
-import { AboutDropdown } from "./about-dropdown"
-import { ContactDropdown } from "./contact-dropdown"
+import { useState } from "react";
+import { Heart, Phone, Mail, Share2 } from "lucide-react";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { MobileMenu } from "./mobile-menu";
+import { SocialMediaDropdown } from "./social-media-dropdown";
+import { ServicesDropdown } from "./services-dropdown";
+import { AboutDropdown } from "./about-dropdown";
+import { ContactDropdown } from "./contact-dropdown";
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
- 
   blog: [
     { label: "Latest Articles", href: "/blog/latest" },
     { label: "SEO Tips", href: "/blog/seo-tips" },
     { label: "Industry News", href: "/blog/news" },
     { label: "Guides & Tutorials", href: "/blog/guides" },
   ],
-}
+};
 
 export function Header() {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null)
-  const [showSocialMenu, setShowSocialMenu] = useState(false)
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [showSocialMenu, setShowSocialMenu] = useState(false);
 
   // Function to handle mouse enter on menu items
   const handleMouseEnter = (menu: string) => {
-    setActiveMenu(menu)
-  }
+    setActiveMenu(menu);
+  };
 
   // Function to handle mouse leave on menu items
   const handleMouseLeave = () => {
-    setActiveMenu(null)
-  }
+    setActiveMenu(null);
+  };
 
   // Functions to handle social media dropdown
   const handleSocialMouseEnter = () => {
-    setShowSocialMenu(true)
-  }
+    setShowSocialMenu(true);
+  };
 
   const handleSocialMouseLeave = () => {
-    setShowSocialMenu(false)
-  }
+    setShowSocialMenu(false);
+  };
 
   return (
     <header className="relative z-50">
@@ -51,7 +50,9 @@ export function Header() {
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
             <Heart className="h-5 w-5 mr-3" />
-            <span className="text-base">Easy to use theme with exciting features</span>
+            <span className="text-base">
+              Easy to use theme with exciting features
+            </span>
           </div>
           <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-8">
             <div className="flex items-center">
@@ -60,13 +61,19 @@ export function Header() {
             </div>
             <div className="flex items-center">
               <Mail className="h-4 w-4 mr-2" />
-              <Link href="mailto:info@yoursite.com" className="text-base hover:underline">
+              <Link
+                href="mailto:info@yoursite.com"
+                className="text-base hover:underline"
+              >
                 info@yoursite.com
               </Link>
             </div>
             <div className="relative flex items-center">
               <Share2 className="h-4 w-4 mr-2" />
-              <span className="text-base cursor-pointer hover:underline" onMouseEnter={handleSocialMouseEnter}>
+              <span
+                className="text-base cursor-pointer hover:underline"
+                onMouseEnter={handleSocialMouseEnter}
+              >
                 follow us
               </span>
 
@@ -93,9 +100,13 @@ export function Header() {
                 <div className="flex items-center">
                   <span className="text-blue-800 font-bold text-3xl">SEO</span>
                   <span className="text-blue-400 font-bold text-3xl">WP</span>
-                  <span className="text-blue-400 font-bold text-3xl">THEME</span>
+                  <span className="text-blue-400 font-bold text-3xl">
+                    THEME
+                  </span>
                 </div>
-                <span className="text-gray-400 text-sm tracking-wider">DIGITAL MARKETING</span>
+                <span className="text-gray-400 text-sm tracking-wider">
+                  DIGITAL MARKETING
+                </span>
               </div>
             </Link>
           </div>
@@ -105,7 +116,7 @@ export function Header() {
               {/* About dropdown */}
               <div className="relative">
                 <Link
-                  href="#about"
+                  href="/about"
                   className="text-gray-700 hover:text-blue-600 font-medium text-lg"
                   onMouseEnter={() => handleMouseEnter("about")}
                 >
@@ -127,13 +138,12 @@ export function Header() {
               {/* Projects dropdown */}
               <div className="relative">
                 <Link
-                  href="#projects"
+                  href="/project"
                   className="text-gray-700 hover:text-blue-600 font-medium text-lg"
                   onMouseEnter={() => handleMouseEnter("projects")}
                 >
                   Projects
                 </Link>
-                
               </div>
 
               {/* Blog dropdown */}
@@ -238,6 +248,5 @@ export function Header() {
         )}
       </nav>
     </header>
-  )
+  );
 }
-
