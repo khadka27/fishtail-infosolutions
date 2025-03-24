@@ -11,41 +11,42 @@ const projects = [
     title: "Opertray Division",
     category: "Web Design",
     imageUrl:
-      "/placeholder.svg?height=300&width=400&text=Opertray+Division&bg=36b9cc",
+      "https://images.pexels.com/photos/416405/pexels-photo-416405.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "tremely-designs",
     title: "Tremely Designs",
     category: "SEO Optimization",
     imageUrl:
-      "/placeholder.svg?height=300&width=400&text=Tremely+Designs&bg=2c5282",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "plainst-tech",
     title: "Plainst Tech",
     category: "Digital Marketing",
     imageUrl:
-      "/placeholder.svg?height=300&width=400&text=Plainst+Tech&bg=b5c731",
+      "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "maindex-solutions",
     title: "Maindex Solutions",
     category: "Web Development",
     imageUrl:
-      "/placeholder.svg?height=300&width=400&text=Maindex+Solutions&bg=4299e1",
+      "https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "existernal-ltd",
     title: "Existernal Ltd.",
     category: "Analytics",
     imageUrl:
-      "/placeholder.svg?height=300&width=400&text=Existernal+Ltd&bg=9dc431",
+      "https://images.pexels.com/photos/3153201/pexels-photo-3153201.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
   {
     id: "coderama",
     title: "Coderama",
     category: "App Development",
-    imageUrl: "/placeholder.svg?height=300&width=400&text=Coderama&bg=ed8936",
+    imageUrl:
+      "https://images.pexels.com/photos/3183183/pexels-photo-3183183.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
 ];
 
