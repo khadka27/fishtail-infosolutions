@@ -6,38 +6,18 @@ import Link from "next/link"
 import { Button } from "./ui/button"
 import { MobileMenu } from "./mobile-menu"
 import { SocialMediaDropdown } from "./social-media-dropdown"
+import { ServicesDropdown } from "./services-dropdown"
+import { AboutDropdown } from "./about-dropdown"
+import { ContactDropdown } from "./contact-dropdown"
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
-  about: [
-    { label: "Our Story", href: "/about/story" },
-    { label: "Our Team", href: "/about/team" },
-    { label: "Testimonials", href: "/about/testimonials" },
-    { label: "Careers", href: "/about/careers" },
-  ],
-  services: [
-    { label: "SEO Optimization", href: "/services/seo" },
-    { label: "PPC Management", href: "/services/ppc" },
-    { label: "Social Media Marketing", href: "/services/social-media" },
-    { label: "Content Marketing", href: "/services/content" },
-    { label: "Email Marketing", href: "/services/email" },
-  ],
-  projects: [
-    { label: "Case Studies", href: "/projects/case-studies" },
-    { label: "Portfolio", href: "/projects/portfolio" },
-    { label: "Success Stories", href: "/projects/success-stories" },
-  ],
+ 
   blog: [
     { label: "Latest Articles", href: "/blog/latest" },
     { label: "SEO Tips", href: "/blog/seo-tips" },
     { label: "Industry News", href: "/blog/news" },
     { label: "Guides & Tutorials", href: "/blog/guides" },
-  ],
-  contact: [
-    { label: "Get in Touch", href: "/contact/get-in-touch" },
-    { label: "Request a Quote", href: "/contact/quote" },
-    { label: "Support", href: "/contact/support" },
-    { label: "Locations", href: "/contact/locations" },
   ],
 }
 
@@ -67,7 +47,7 @@ export function Header() {
   return (
     <header className="relative z-50">
       {/* Top bar */}
-      <div className="w-full bg-blue-500 text-white py-4 px-6">
+      <div className="w-full bg-blue-800 text-white py-4 px-6">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
             <Heart className="h-5 w-5 mr-3" />
@@ -105,7 +85,7 @@ export function Header() {
       </div>
 
       {/* Main navigation */}
-      <nav className="bg-white py-6 px-6 shadow-sm">
+      <nav className="bg-white py-6 px-40 shadow-sm relative">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
@@ -131,23 +111,6 @@ export function Header() {
                 >
                   About
                 </Link>
-                {activeMenu === "about" && (
-                  <div
-                    className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-10 animate-in fade-in slide-in-from-top-5 duration-200"
-                    onMouseEnter={() => handleMouseEnter("about")}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {menuItems.about.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-3 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
 
               {/* Services dropdown */}
@@ -159,23 +122,6 @@ export function Header() {
                 >
                   Services
                 </Link>
-                {activeMenu === "services" && (
-                  <div
-                    className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-10 animate-in fade-in slide-in-from-top-5 duration-200"
-                    onMouseEnter={() => handleMouseEnter("services")}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {menuItems.services.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-3 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
 
               {/* Projects dropdown */}
@@ -187,23 +133,7 @@ export function Header() {
                 >
                   Projects
                 </Link>
-                {activeMenu === "projects" && (
-                  <div
-                    className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-10 animate-in fade-in slide-in-from-top-5 duration-200"
-                    onMouseEnter={() => handleMouseEnter("projects")}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {menuItems.projects.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-3 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                
               </div>
 
               {/* Blog dropdown */}
@@ -243,23 +173,6 @@ export function Header() {
                 >
                   Contact
                 </Link>
-                {activeMenu === "contact" && (
-                  <div
-                    className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-10 animate-in fade-in slide-in-from-top-5 duration-200"
-                    onMouseEnter={() => handleMouseEnter("contact")}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {menuItems.contact.map((item, index) => (
-                      <Link
-                        key={index}
-                        href={item.href}
-                        className="block px-4 py-3 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
 
@@ -288,6 +201,41 @@ export function Header() {
             </div>
           </div>
         </div>
+
+        {/* Services mega dropdown */}
+        {activeMenu === "services" && (
+          <div
+            className="absolute left-16 right-16 mt-0 bg-white  shadow-lg py-6 z-10 animate-in fade-in slide-in-from-top-5 duration-200"
+            onMouseEnter={() => handleMouseEnter("services")}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div className="container mx-auto">
+              <ServicesDropdown />
+            </div>
+          </div>
+        )}
+
+        {/* About dropdown */}
+        {activeMenu === "about" && (
+          <div
+            className="absolute left-1/2 transform -translate-x-1/2 mt-0 bg-white shadow-[4px_4px_10px_0px_rgba(0,0,0,0.1)] z-10 animate-in fade-in slide-in-from-top-5 duration-200 w-[600px] rounded-md"
+            onMouseEnter={() => handleMouseEnter("about")}
+            onMouseLeave={handleMouseLeave}
+          >
+            <AboutDropdown />
+          </div>
+        )}
+
+        {/* Contact dropdown */}
+        {activeMenu === "contact" && (
+          <div
+            className="absolute right-0.5 transform -translate-x-1/2 mt-0 bg-white shadow-lg z-10 animate-in fade-in slide-in-from-top-5 duration-200 w-[600px] rounded-md"
+            onMouseEnter={() => handleMouseEnter("contact")}
+            onMouseLeave={handleMouseLeave}
+          >
+            <ContactDropdown />
+          </div>
+        )}
       </nav>
     </header>
   )
