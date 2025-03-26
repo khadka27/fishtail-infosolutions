@@ -1,0 +1,209 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import {
+  Phone,
+  Mail,
+  Bell,
+  ArrowUp,
+  Twitter,
+  Facebook,
+  Youtube,
+  Linkedin,
+  Instagram,
+  Github,
+  GalleryThumbnailsIcon as Flickr,
+} from "lucide-react"
+import { Button } from "./ui/button"
+import project1 from "@/Images/case1.png"
+import project2 from "@/Images/case2.png"
+import project3 from "@/Images/case3.png"
+import logo1 from "@/Images/logo1.png"
+import logo2 from "@/Images/logo2.png"
+import logo3 from "@/Images/logo3.png"
+import logo4 from "@/Images/logo4.png"
+import logo5 from "@/Images/logo5.png"
+import logo6 from "@/Images/logo-6.png"
+
+// Project data structure
+const projects = [
+  {
+    id: "opertray-division",
+    title: "Opertray Division",
+    category: "Web Design",
+    image: project1,
+    bgColor: "bg-cyan-500",
+  },
+  {
+    id: "tremely-designs",
+    title: "Tremely Designs",
+    category: "SEO Optimization",
+    image: project2,
+    bgColor: "bg-blue-700",
+  },
+  {
+    id: "plainst-tech",
+    title: "Plainst Tech",
+    category: "Digital Marketing",
+    image: project3,
+    bgColor: "bg-lime-500",
+  },
+  {
+    id: "maindex-solutions",
+    title: "Maindex Solutions",
+    category: "Web Development",
+    image: project1,
+    bgColor: "bg-sky-500",
+  },
+  {
+    id: "existernal-ltd",
+    title: "Existernal Ltd.",
+    category: "Analytics",
+    image: project2,
+    bgColor: "bg-lime-500",
+  },
+  {
+    id: "coderama",
+    title: "Coderama",
+    category: "App Development",
+    image: project3,
+    bgColor: "bg-amber-500",
+  },
+]
+
+// Get unique categories for filter
+const categories = ["All", ...new Set(projects.map((project) => project.category))]
+
+// Client logos
+const clientLogos = [
+  { name: "University", image: logo1 },
+  { name: "Academy", image: logo2},
+  { name: "University Academy", image: logo3 },
+  { name: "Athletics", image: logo4 },
+  { name: "University Shield", image: logo5 },
+  { name: "Cross Sport", image: logo6},
+]
+
+export default function CaseStudiesPage() {
+  const [activeCategory, setActiveCategory] = useState("All")
+
+  // Filter projects based on selected category
+  const filteredProjects =
+    activeCategory === "All" ? projects : projects.filter((project) => project.category === activeCategory)
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  return (
+    
+    <>
+      <section className="bg-cyan-500 text-white py-16">
+        <div className="container ">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-light mb-6">Case Studies</h1>
+              <p className="text-lg">
+                Our digital marketing agency helps over 80 companies to increase consumer loyalty and find new customers
+                online. Here, you'll find a selection of our expert work. Take a look at some of the results we've
+                delivered.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <Image
+                src={project1}
+                alt="Digital Marketing Illustration"
+                width={400}
+                height={300}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+      <section className="py-16 px-20 bg-gray-100">
+        <div className="container mx-auto ">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+            <h2 className="text-3xl font-light text-gray-600 mb-6 md:mb-0">Featured Projects</h2>
+
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-6 py-2 rounded-md transition-colors ${
+                    activeCategory === category ? "bg-blue-500 text-white" : "bg-white text-gray-600 hover:bg-gray-200"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid max-w-6xl grid-cols-1 ml-16 md:grid-cols-2 lg:grid-cols-3 gap-12 ">
+            {filteredProjects.map((project) => (
+              <Link
+                href={`/projects/${project.id}`}
+                key={project.id}
+                className="group block overflow-hidden bg-white rounded-lg shadow-md transition-transform hover:-translate-y-2"
+              >
+                <div className={` relative`}>
+                  <Image
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full object-contain"
+                    width={300}
+                    height={100}
+                  />
+                </div>
+                <div className="p-6 bg-white">
+                  <h3 className="text-xl font-semibold mb-1 group-hover:text-blue-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-500 text-sm">{project.category}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Logos Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+            {clientLogos.map((logo, index) => (
+              <div key={index} className="flex justify-center">
+                <Image
+                  src={logo.image || "/placeholder.svg"}
+                  alt={logo.name}
+                  width={120}
+                  height={80}
+                  className="opacity-60 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-8">
+            <div className="flex space-x-2">
+              <span className="w-2 h-2 rounded-full bg-gray-300"></span>
+              <span className="w-2 h-2 rounded-full bg-gray-500"></span>
+              <span className="w-2 h-2 rounded-full bg-gray-300"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+    </>
+      
+    
+
+  )
+}
+

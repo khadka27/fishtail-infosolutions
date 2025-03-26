@@ -49,54 +49,111 @@
 /* Add background pattern for hero section */
 .bg-blue-500 {
   background-color: #0091ea;
-  background-image: radial-gradient(
-      circle at 25% 25%,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
-    radial-gradient(
-      circle at 75% 75%,
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
-    ),
+  background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 30px 30px, 30px 30px, 15px 15px, 15px 15px;
 }
 
-/* Animation classes for sequential appearance */
-@keyframes fadeIn {
-  from {
+/* Purple background for social media slide */
+.bg-purple-600 {
+  background-color: #9333ea;
+  background-image: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 30px 30px, 30px 30px, 15px 15px, 15px 15px;
+}
+
+/* Faster animation for elements appearing one by one */
+@keyframes slideUpFadeIn {
+  0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(40px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* First element - text content */
 .animate-fade-in {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: slideUpFadeIn 0.7s ease-out forwards;
 }
 
+/* Second element - first device/image */
 .animate-fade-in-2 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.4s forwards;
+  animation: slideUpFadeIn 0.7s ease-out 0.6s forwards;
 }
 
+/* Third element - second device/image */
 .animate-fade-in-3 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 0.8s forwards;
+  animation: slideUpFadeIn 0.7s ease-out 1.2s forwards;
 }
 
+/* Fourth element - third device/image or overlay */
 .animate-fade-in-4 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 1.2s forwards;
+  animation: slideUpFadeIn 0.7s ease-out 1.8s forwards;
 }
 
+/* Fifth element - badges or final elements */
 .animate-fade-in-5 {
   opacity: 0;
-  animation: fadeIn 0.8s ease-out 1.6s forwards;
+  animation: slideUpFadeIn 0.7s ease-out 2.4s forwards;
 }
+
+/* For backward compatibility */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDelay {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-up animation classes for alternative naming */
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUpFadeIn 0.7s ease-out forwards;
+}
+
+.animate-slide-up-2 {
+  opacity: 0;
+  animation: slideUpFadeIn 0.7s ease-out 0.6s forwards;
+}
+
+.animate-slide-up-3 {
+  opacity: 0;
+  animation: slideUpFadeIn 0.7s ease-out 1.2s forwards;
+}
+
+.animate-slide-up-4 {
+  opacity: 0;
+  animation: slideUpFadeIn 0.7s ease-out 1.8s forwards;
+}
+
+.animate-slide-up-5 {
+  opacity: 0;
+  animation: slideUpFadeIn 0.7s ease-out 2.4s forwards;
+}
+
