@@ -2,28 +2,35 @@
 
 import { useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import logo1 from "@/Images/logo1.png"
+import logo2 from "@/Images/logo2.png"
+import logo3 from "@/Images/logo3.png"
+import logo4 from "@/Images/logo4.png"
+import logo5 from "@/Images/logo5.png"
+import logo6 from "@/Images/logo-6.png"
 
 const logos = [
   {
     name: "University",
-    url: "/placeholder.svg?height=80&width=120&text=University",
+    url: logo1,
   },
-  { name: "Academy", url: "/placeholder.svg?height=80&width=120&text=Academy" },
+  { name: "Academy", url: logo2 },
   {
     name: "University Academy",
-    url: "/placeholder.svg?height=80&width=120&text=University+Academy",
+    url: logo3,
   },
   {
     name: "Athletics",
-    url: "/placeholder.svg?height=80&width=120&text=Athletics",
+    url: logo4,
   },
   {
     name: "University Shield",
-    url: "/placeholder.svg?height=80&width=120&text=University+Shield",
+    url: logo5,
   },
   {
     name: "Cross Sport",
-    url: "/placeholder.svg?height=80&width=120&text=Cross+Sport",
+    url: logo6,
   },
 ];
 
@@ -46,10 +53,10 @@ export default function ClientLogos() {
                 className="w-24 h-24 md:w-32 md:h-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
               >
-                <img
+                <Image
                   src={logo.url || "/placeholder.svg"}
                   alt={logo.name}
-                  className="max-w-full max-h-full"
+                  
                 />
               </motion.div>
             ))}

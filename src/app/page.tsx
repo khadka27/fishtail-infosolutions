@@ -1,5 +1,5 @@
 import { CaseStudiesSection } from "../Components/case-studies-section";
-import { ClientLogosSection } from "../Components/client-logos-section";
+import ClientLogos from "../Components/client-logos";
 import { FeaturesSection } from "../Components/features-section";
 import { Footer } from "../Components/footer";
 import { GoogleRankingSection } from "../Components/google-ranking-section";
@@ -17,7 +17,7 @@ export default function Home() {
       <FeaturesSection />
       <GoogleRankingSection />
       <ServicesSection/>
-      <ClientLogosSection />
+      <ClientLogos />
       <TestimonialsSection />
       <CaseStudiesSection />
       <Footer />
