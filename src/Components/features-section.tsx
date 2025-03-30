@@ -22,7 +22,7 @@ export function FeaturesSection() {
             </div>
             <h3 className="text-lg sm:text-xl font-semibold mb-2">Conversion Rate Optimization</h3>
             <p className="text-gray-600 text-sm">
-              Turn your visitors into customers with our team of experts. We'll analyze your website and develop a
+              Turn your visitors into customers with our team of experts. We&apos;ll analyze your website and develop a
               suitable conversion-rate strategy.
             </p>
           </div>
