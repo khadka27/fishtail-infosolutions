@@ -1,7 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { Heart, Phone, Mail, Share2, Menu } from "lucide-react";
+import { useState, useEffect } from "react";
+import {
+  Heart,
+  Phone,
+  Mail,
+  Share2,
+  Menu,
+  X,
+  ChevronRight,
+} from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { SocialMediaDropdown } from "./social-media-dropdown";
@@ -17,12 +25,35 @@ const menuItems = {
     { label: "Industry News", href: "/blog/news" },
     { label: "Guides & Tutorials", href: "/blog/guides" },
   ],
+  about: [
+    { label: "Our Story", href: "/about/story" },
+    { label: "Team", href: "/about/team" },
+    { label: "Careers", href: "/about/careers" },
+  ],
+  services: [
+    { label: "SEO", href: "/services/seo" },
+    { label: "Content Marketing", href: "/services/content" },
+    { label: "Social Media", href: "/services/social" },
+    { label: "PPC", href: "/services/ppc" },
+  ],
+  projects: [
+    { label: "Case Studies", href: "/projects/case-studies" },
+    { label: "Portfolio", href: "/projects/portfolio" },
+  ],
+  contact: [
+    { label: "Get in Touch", href: "/contact" },
+    { label: "Support", href: "/contact/support" },
+  ],
 };
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [showSocialMenu, setShowSocialMenu] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(
+    null
+  );
+  const [scrolled, setScrolled] = useState(false);
 
   // Function to handle mouse enter on menu items
   const handleMouseEnter = (menu: string) => {
@@ -43,13 +74,50 @@ export function Header() {
     setShowSocialMenu(false);
   };
 
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+  // Toggle mobile drawer
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+    if (!drawerOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   };
 
+  // Toggle mobile submenu
+  const toggleMobileSubmenu = (menu: string) => {
+    setExpandedMobileMenu(expandedMobileMenu === menu ? null : menu);
+  };
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close drawer when screen size changes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && drawerOpen) {
+        setDrawerOpen(false);
+        document.body.style.overflow = "";
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [drawerOpen]);
+
   return (
-    <header className="relative z-50">
+    <header className={`relative z-50 ${scrolled ? "shadow-md" : ""}`}>
       {/* Top bar */}
       <div className="w-full bg-blue-800 text-white py-3 px-4 md:py-4 md:px-6">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
@@ -97,7 +165,11 @@ export function Header() {
       </div>
 
       {/* Main navigation */}
-      <nav className="bg-white py-3 md:py-6 px-4 md:px-8 lg:px-40 shadow-sm relative">
+      <nav
+        className={`bg-white py-3 md:py-6 px-4 md:px-8 lg:px-40 shadow-sm relative transition-all duration-300 ${
+          scrolled ? "py-2 md:py-4" : ""
+        }`}
+      >
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
@@ -217,52 +289,204 @@ export function Header() {
               </Link>
 
               <button
-                onClick={toggleMobileMenu}
-                className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none"
-                aria-label="Open menu"
+                onClick={toggleDrawer}
+                className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none transition-colors duration-200"
+                aria-label={drawerOpen ? "Close menu" : "Open menu"}
               >
-                <Menu className="h-6 w-6" />
+                <Menu
+                  className={`h-6 w-6 ${drawerOpen ? "hidden" : "block"}`}
+                />
+                <X className={`h-6 w-6 ${drawerOpen ? "block" : "hidden"}`} />
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-md z-50 animate-in slide-in-from-top-5 duration-200">
-            <div className="py-2 px-4">
-              <Link
-                href="/about"
-                className="block py-3 text-gray-700 hover:text-blue-600 border-b border-gray-100"
+        {/* Mobile drawer overlay */}
+        {drawerOpen && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity duration-300"
+            onClick={toggleDrawer}
+          />
+        )}
+
+        {/* Mobile drawer */}
+        <div
+          className={`fixed top-0 right-0 bottom-0 w-[280px] sm:w-[320px] bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
+            drawerOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div className="flex flex-col h-full">
+            <div className="flex justify-between items-center p-4 border-b">
+              <div className="flex items-center">
+                <span className="text-blue-800 font-bold text-xl">SEO</span>
+                <span className="text-blue-400 font-bold text-xl">WP</span>
+              </div>
+              <button
+                onClick={toggleDrawer}
+                className="p-2 rounded-full hover:bg-gray-100"
               >
-                About
-              </Link>
-              <Link
-                href="/Services"
-                className="block py-3 text-gray-700 hover:text-blue-600 border-b border-gray-100"
-              >
-                Services
-              </Link>
-              <Link
-                href="/project"
-                className="block py-3 text-gray-700 hover:text-blue-600 border-b border-gray-100"
-              >
-                Projects
-              </Link>
-              <Link
-                href="/blog"
-                className="block py-3 text-gray-700 hover:text-blue-600 border-b border-gray-100"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/contact"
-                className="block py-3 text-gray-700 hover:text-blue-600 border-b border-gray-100"
-              >
-                Contact
-              </Link>
-              <Link href="/quote" className="block py-3 mt-2">
-                <Button className="bg-green-500 hover:bg-green-600 text-white w-full py-2 h-auto text-sm rounded-md flex items-center justify-center">
+                <X className="h-5 w-5 text-gray-500" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto">
+              <div className="py-2">
+                {/* About accordion */}
+                <div className="border-b border-gray-100">
+                  <button
+                    onClick={() => toggleMobileSubmenu("about")}
+                    className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50"
+                  >
+                    <span className="font-medium">About</span>
+                    <ChevronRight
+                      className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
+                        expandedMobileMenu === "about" ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {expandedMobileMenu === "about" && (
+                    <div className="bg-gray-50 pl-8 pr-4 py-2 animate-in slide-in-from-top-5 duration-200">
+                      {menuItems.about.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-blue-600"
+                          onClick={toggleDrawer}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Services accordion */}
+                <div className="border-b border-gray-100">
+                  <button
+                    onClick={() => toggleMobileSubmenu("services")}
+                    className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50"
+                  >
+                    <span className="font-medium">Services</span>
+                    <ChevronRight
+                      className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
+                        expandedMobileMenu === "services" ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {expandedMobileMenu === "services" && (
+                    <div className="bg-gray-50 pl-8 pr-4 py-2 animate-in slide-in-from-top-5 duration-200">
+                      {menuItems.services.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-blue-600"
+                          onClick={toggleDrawer}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Projects accordion */}
+                <div className="border-b border-gray-100">
+                  <button
+                    onClick={() => toggleMobileSubmenu("projects")}
+                    className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50"
+                  >
+                    <span className="font-medium">Projects</span>
+                    <ChevronRight
+                      className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
+                        expandedMobileMenu === "projects" ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {expandedMobileMenu === "projects" && (
+                    <div className="bg-gray-50 pl-8 pr-4 py-2 animate-in slide-in-from-top-5 duration-200">
+                      {menuItems.projects.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-blue-600"
+                          onClick={toggleDrawer}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Blog accordion */}
+                <div className="border-b border-gray-100">
+                  <button
+                    onClick={() => toggleMobileSubmenu("blog")}
+                    className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50"
+                  >
+                    <span className="font-medium">Blog</span>
+                    <ChevronRight
+                      className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
+                        expandedMobileMenu === "blog" ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {expandedMobileMenu === "blog" && (
+                    <div className="bg-gray-50 pl-8 pr-4 py-2 animate-in slide-in-from-top-5 duration-200">
+                      {menuItems.blog.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-blue-600"
+                          onClick={toggleDrawer}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Contact accordion */}
+                <div className="border-b border-gray-100">
+                  <button
+                    onClick={() => toggleMobileSubmenu("contact")}
+                    className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50"
+                  >
+                    <span className="font-medium">Contact</span>
+                    <ChevronRight
+                      className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
+                        expandedMobileMenu === "contact" ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {expandedMobileMenu === "contact" && (
+                    <div className="bg-gray-50 pl-8 pr-4 py-2 animate-in slide-in-from-top-5 duration-200">
+                      {menuItems.contact.map((item, index) => (
+                        <Link
+                          key={index}
+                          href={item.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-blue-600"
+                          onClick={toggleDrawer}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="p-4 border-t">
+              <Link href="/quote">
+                <Button className="bg-green-500 hover:bg-green-600 text-white w-full py-3 h-auto text-sm rounded-md flex items-center justify-center">
                   <svg
                     className="w-4 h-4 mr-2"
                     fill="none"
@@ -280,9 +504,24 @@ export function Header() {
                   FREE QUOTE
                 </Button>
               </Link>
+
+              <div className="mt-4 flex items-center justify-center space-x-4">
+                <a href="#" className="text-gray-500 hover:text-blue-600">
+                  <Phone className="h-5 w-5" />
+                </a>
+                <a
+                  href="mailto:info@yoursite.com"
+                  className="text-gray-500 hover:text-blue-600"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-gray-500 hover:text-blue-600">
+                  <Share2 className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
-        )}
+        </div>
 
         {/* Services mega dropdown */}
         {activeMenu === "services" && (
