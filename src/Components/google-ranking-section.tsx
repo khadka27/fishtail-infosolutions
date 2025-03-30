@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { User, Clock, Trophy, ArrowRight } from "lucide-react"
 import seo_specialist from "@/Images/seo_specialist_workplace-optimized.png"
 
@@ -66,10 +67,10 @@ export function GoogleRankingSection() {
 
             {/* CTA button */}
             <div className="mt-6 sm:mt-8 lg:mt-12 inline-block border border-blue-500 rounded-md px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 text-blue-500 hover:bg-blue-50 transition-colors">
-              <a href="#" className="flex items-center text-sm sm:text-base lg:text-lg">
+              <Link href="/about" className="flex items-center text-sm sm:text-base lg:text-lg">
                 Learn more about us
                 <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 ml-2 lg:ml-3" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

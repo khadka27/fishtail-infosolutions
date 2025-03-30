@@ -27,7 +27,7 @@ const caseStudies = [
     {
       image: casestudy3,
       title: "Planet Tech",
-      description: "Gaining 65% of the market with an effective SEO strategy.",
+      description: "Capturing 65% of the market through a targeted SEO strategy that drives organic growth, improves search visibility.",
       bgColor: "bg-blue-400",
     },
   ],

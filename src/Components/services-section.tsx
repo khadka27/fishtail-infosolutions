@@ -1,11 +1,26 @@
+"use client"
+
 import Image from "next/image"
+import Link from "next/link"
 import { MapPin, Map, Link2, Target, PenTool, Mail } from "lucide-react"
 import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
+import { useState } from "react"
+import { QuotePopup } from "./quote-popup"
 
 export function ServicesSection() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+   const [quotePopupOpen, setQuotePopupOpen] = useState(false);
+   // Open quote popup
+   const openQuotePopup = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setQuotePopupOpen(true);
+    if (drawerOpen) {
+      setDrawerOpen(false);
+    }
+  };
   return (
     <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-gray-50">
       <div className="container mx-auto">
@@ -137,22 +152,28 @@ export function ServicesSection() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 lg:gap-10">
-          <a
-            href="#"
+          <Link
+            href="/contact"
             className="bg-[#4ba4d8] hover:bg-[#3a93c7] text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-md flex items-center justify-center text-sm sm:text-base lg:text-lg"
           >
             <span className="mr-2">💬</span>
             Free SEO Consultation
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            href="/quote"
             className="bg-[#8cc63f] hover:bg-[#7ab929] text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-md flex items-center justify-center text-sm sm:text-base lg:text-lg"
+            onClick={openQuotePopup}
           >
             <span className="mr-2">🔗</span>
             Request a Free Quote
-          </a>
+          </Link>
         </div>
       </div>
+      {/* Quote Popup */}
+            <QuotePopup
+              isOpen={quotePopupOpen}
+              onClose={() => setQuotePopupOpen(false)}
+            />
     </section>
   )
 }
