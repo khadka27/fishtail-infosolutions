@@ -22,13 +22,13 @@ export function HeroSection() {
     }, 100)
   }
 
-  const prevSlide = () => {
-    setAnimationReset(true)
-    setTimeout(() => {
-      setCurrentSlide((prev) => (prev === 0 ? 2 : prev - 1))
-      setAnimationReset(false)
-    }, 100)
-  }
+  // const prevSlide = () => {
+  //   setAnimationReset(true)
+  //   setTimeout(() => {
+  //     setCurrentSlide((prev) => (prev === 0 ? 2 : prev - 1))
+  //     setAnimationReset(false)
+  //   }, 100)
+  // }
 
   // Auto-advance slides
   useEffect(() => {
@@ -219,7 +219,7 @@ export function HeroSection() {
 
                   {/* Hand image - appears last */}
                   <div
-                    className={`absolute left-[220px] top-[140px] z-30 animate-fade-in-5 ${animationReset ? "opacity-0" : ""}`}
+                    className={`absolute left-[220px] top-[180px] z-30 animate-fade-in-5 ${animationReset ? "opacity-0" : ""}`}
                   >
                     <Image src={slideHand || "/placeholder.svg"} alt="Hand" width={60} height={60} className="z-30" />
                   </div>
@@ -270,46 +270,82 @@ export function HeroSection() {
 
         {/* Social media icons - hidden on mobile */}
         <div className="hidden md:block">
-          {/* Pinterest - top left */}
+          {/* Facebook */}
           <div className={`absolute left-[15%] top-[20%] animate-fade-in-2 ${animationReset ? "opacity-0" : ""}`}>
-            <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center">
-              <span className="text-white text-2xl font-bold">P</span>
-            </div>
+            
+              <Image
+                src="https://cdn-icons-png.freepik.com/512/5968/5968764.png"
+                alt="Facebook"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+   
           </div>
 
-          {/* Twitter - middle left */}
+          {/* Twitter/X */}
           <div className={`absolute left-[10%] top-[40%] animate-fade-in-3 ${animationReset ? "opacity-0" : ""}`}>
-            <div className="w-24 h-24 rounded-full bg-cyan-500 flex items-center justify-center">
-              <span className="text-white text-2xl font-bold">T</span>
-            </div>
+          
+              <Image
+                src="https://cdn-icons-png.freepik.com/512/5969/5969020.png"
+                alt="Twitter"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+
           </div>
 
-          {/* LinkedIn - bottom left */}
+          {/* LinkedIn */}
           <div className={`absolute left-[20%] top-[60%] animate-fade-in-4 ${animationReset ? "opacity-0" : ""}`}>
-            <div className="w-20 h-20 rounded-full bg-blue-700 flex items-center justify-center">
-              <span className="text-white text-2xl font-bold">in</span>
-            </div>
+          
+              <Image
+                src="https://cdn-icons-png.freepik.com/512/3536/3536505.png"
+                alt="LinkedIn"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+           
           </div>
 
-          {/* YouTube - top right */}
+          {/* YouTube */}
           <div className={`absolute right-[15%] top-[20%] animate-fade-in-2 ${animationReset ? "opacity-0" : ""}`}>
-            <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center">
-              <span className="text-white text-xl font-bold">YT</span>
-            </div>
+            
+              <Image
+                src="https://cdn-icons-png.freepik.com/512/1384/1384060.png"
+                alt="YouTube"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+         
           </div>
 
-          {/* Facebook - middle right */}
+          {/* Instagram */}
           <div className={`absolute right-[10%] top-[40%] animate-fade-in-3 ${animationReset ? "opacity-0" : ""}`}>
-            <div className="w-24 h-24 rounded-full bg-blue-800 flex items-center justify-center">
-              <span className="text-white text-2xl font-bold">f</span>
+            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center shadow-lg overflow-hidden">
+              <Image
+                src="https://cdn-icons-png.freepik.com/512/174/174855.png"
+                alt="Instagram"
+                width={60}
+                height={60}
+                className="object-contain"
+              />
             </div>
           </div>
 
-          {/* Google+ - bottom right */}
+          {/* Pinterest */}
           <div className={`absolute right-[20%] top-[60%] animate-fade-in-4 ${animationReset ? "opacity-0" : ""}`}>
-            <div className="w-20 h-20 rounded-full bg-red-500 flex items-center justify-center">
-              <span className="text-white text-2xl font-bold">G+</span>
-            </div>
+           
+              <Image
+                src="https://cdn-icons-png.freepik.com/512/145/145808.png"
+                alt="Pinterest"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+            
           </div>
         </div>
 
