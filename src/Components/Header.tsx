@@ -418,20 +418,7 @@ export function Header() {
                       />
                     </button>
 
-                    {expandedMobileMenu === "blog" && (
-                      <div className="bg-gray-50 pl-8 pr-4 py-2 animate-in slide-in-from-top-5 duration-200">
-                        {menuItems.blog.map((item, index) => (
-                          <Link
-                            key={index}
-                            href={item.href}
-                            className="block py-2 text-sm text-gray-600 hover:text-blue-600"
-                            onClick={toggleDrawer}
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                  
                   </div>
 
                   {/* Contact accordion */}
