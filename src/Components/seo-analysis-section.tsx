@@ -64,7 +64,7 @@ export function SeoAnalysisSection() {
       {/* Yellow header section */}
       <div className="bg-amber-300 py-8 px-28">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
             <div>
               <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">FREE website SEO analysis</h2>
               <p className="text-lg text-gray-700">
