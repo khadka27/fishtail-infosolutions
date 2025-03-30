@@ -22,12 +22,7 @@ import logo from "@/Images/Logo-Fishtail-Infosolutions.png"
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
-  blog: [
-    { label: "Latest Articles", href: "/blog/latest" },
-    { label: "SEO Tips", href: "/blog/seo-tips" },
-    { label: "Industry News", href: "/blog/news" },
-    { label: "Guides & Tutorials", href: "/blog/guides" },
-  ],
+ 
   about: [
     { label: "Our Story", href: "/about/story" },
     { label: "Team", href: "/about/team" },
@@ -235,23 +230,7 @@ export function Header() {
                   >
                     Blog
                   </Link>
-                  {activeMenu === "blog" && (
-                    <div
-                      className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-[100] animate-in fade-in slide-in-from-top-5 duration-200"
-                      onMouseEnter={() => handleMouseEnter("blog")}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      {menuItems.blog.map((item, index) => (
-                        <Link
-                          key={index}
-                          href={item.href}
-                          className="block px-4 py-3 text-sm lg:text-base text-gray-700 hover:bg-blue-50 hover:text-blue-600"
-                        >
-                          {item.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                
                 </div>
 
                 {/* Contact dropdown */}
