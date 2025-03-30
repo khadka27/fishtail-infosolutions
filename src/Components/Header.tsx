@@ -11,12 +11,14 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { SocialMediaDropdown } from "./social-media-dropdown";
 import { ServicesDropdown } from "./services-dropdown";
 import { AboutDropdown } from "./about-dropdown";
 import { ContactDropdown } from "./contact-dropdown";
 import { QuotePopup } from "./quote-popup";
+import logo from "@/Images/Logo-Fishtail-Infosolutions.png"
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
@@ -150,7 +152,7 @@ export function Header() {
                   href="mailto:info@yoursite.com"
                   className="text-sm md:text-base hover:underline"
                 >
-                  info@yoursite.com
+                  fishtailinfosolutions.com
                 </Link>
               </div>
               <div className="relative flex items-center">
@@ -185,22 +187,7 @@ export function Header() {
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
-                <div className="flex flex-col">
-                  <div className="flex items-center">
-                    <span className="text-blue-800 font-bold text-xl md:text-2xl lg:text-3xl">
-                      SEO
-                    </span>
-                    <span className="text-blue-400 font-bold text-xl md:text-2xl lg:text-3xl">
-                      WP
-                    </span>
-                    <span className="text-blue-400 font-bold text-xl md:text-2xl lg:text-3xl">
-                      THEME
-                    </span>
-                  </div>
-                  <span className="text-gray-400 text-xs md:text-sm tracking-wider">
-                    DIGITAL MARKETING
-                  </span>
-                </div>
+                <Image src={logo} width={250} height={150} className="object-contain" alt={""}/>
               </Link>
             </div>
 
