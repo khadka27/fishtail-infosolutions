@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"
 
 import { useState, type ChangeEvent, type FormEvent } from "react"
@@ -82,7 +83,7 @@ const ContentMarketingStrategy = () => {
               Content Marketing is an effective way to encourage conversions and its main objective is to build a
               content strategy to meet the needs of your target audience. It helps you stand out from the competition,
               provides a great resource to your customers and is highly shareable. Content Marketing is meant to improve
-              your brand's profile and strengthen your online presence.
+              your brand&apos;s profile and strengthen your online presence.
             </p>
           </div>
         </div>
@@ -91,7 +92,7 @@ const ContentMarketingStrategy = () => {
       {/* SEO Integration Section */}
       <div className="py-8 px-4 max-w-6xl mx-auto text-center">
         <p className="text-gray-700 leading-relaxed max-w-4xl mx-auto">
-          Our full-service SEO team integrates content into a complex strategy to increase your site's visibility and
+          Our full-service SEO team integrates content into a complex strategy to increase your site&apos;s visibility and
           conversions.
         </p>
       </div>
@@ -121,7 +122,7 @@ const ContentMarketingStrategy = () => {
             <div>
               <h3 className="text-xl font-medium mb-2">Case Studies</h3>
               <p className="text-gray-600 text-sm">
-                In-depth analysis of your target audience and market segments to promote projects that you've delivered
+                In-depth analysis of your target audience and market segments to promote projects that you&apos;ve delivered
                 successfully, making potential customers aware of your products and services.
               </p>
             </div>
@@ -444,7 +445,7 @@ const ContentMarketingStrategy = () => {
             <div className="bg-white p-6 rounded-md shadow-sm">
               <blockquote className="text-gray-700 italic mb-4">
                 "We've looked at a lot of SEO solutions but these guys were so far ahead of the competition it was an
-                easy choice. They have the right strategy and they've been awesome to work with."
+                easy choice. They have the right strategy and they&apos;ve been awesome to work with."
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
