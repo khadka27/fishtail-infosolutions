@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import sliderImac from "@/Images/falt-illustration-imac.png"
 import sliderMacbook from "@/Images/flat-illustration-macbook.png"
 import sliderGraph from "@/Images/slider-element-graph.png"
@@ -43,26 +42,33 @@ export function HeroSection() {
     <section className="relative overflow-hidden">
       {/* First Slide - Blue */}
       <div
-        className={`${currentSlide === 0 ? "block" : "hidden"} bg-blue-500 py-16 relative overflow-hidden h-[400px]`}
+        className={`${currentSlide === 0 ? "block" : "hidden"} bg-blue-500 py-8 sm:py-12 md:py-16 relative overflow-hidden h-[300px] sm:h-[350px] md:h-[400px]`}
       >
-        <div className="container mx-auto px-40 h-46">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20 xl:px-40 h-46">
           <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-10 md:mb-0">
+            <div className="w-full md:w-1/2 mb-10 md:mb-0">
               {/* Text content - appears first */}
               <div className={`animate-fade-in ${animationReset ? "opacity-0" : ""}`}>
-                <h1 className="text-4xl md:text-5xl font-light text-white leading-tight mb-6">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6">
                   Guaranteed increase
                   <br />
                   of your website sales
                 </h1>
-                <p className="text-white text-lg opacity-90 mb-8 max-w-lg">
+                <p className="text-white text-base sm:text-lg opacity-90 mb-8 max-w-lg">
                   Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
                   fermentum massa justo.
                 </p>
+
+                {/* SEO, SMM, CRO badges - visible on mobile */}
+                <div className="flex space-x-2 md:hidden mb-4">
+                  <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white">SEO</span>
+                  <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white">SMM</span>
+                  <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white">CRO</span>
+                </div>
               </div>
             </div>
 
-            <div className="md:w-1/2 relative">
+            <div className="hidden md:block md:w-1/2 relative">
               <div className="relative">
                 {/* SEO, SMM, CRO badges - appears last */}
                 <div
@@ -102,24 +108,6 @@ export function HeroSection() {
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
           <button
             onClick={() => setCurrentSlide(0)}
-            className="h-2 w-2 rounded-full bg-white/40"
-            aria-label="Go to slide 1"
-          />
-          <button
-            onClick={() => setCurrentSlide(1)}
-            className="h-2 w-2 rounded-full bg-white/40"
-            aria-label="Go to slide 2"
-          />
-          <button
-            onClick={() => setCurrentSlide(2)}
-            className="h-2 w-2 rounded-full bg-white"
-            aria-label="Go to slide 3"
-          />
-        </div>
-        {/* Navigation dots */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
-          <button
-            onClick={() => setCurrentSlide(0)}
             className="h-2 w-2 rounded-full bg-white"
             aria-label="Go to slide 1"
           />
@@ -138,19 +126,41 @@ export function HeroSection() {
 
       {/* Second Slide - Green */}
       <div
-        className={`${currentSlide === 1 ? "block" : "hidden"} bg-green-500 py-16 relative overflow-hidden h-[400px]`}
+        className={`${currentSlide === 1 ? "block" : "hidden"} bg-green-500 py-8 sm:py-12 md:py-16 relative overflow-hidden h-[300px] sm:h-[350px] md:h-[400px]`}
       >
         {/* Background network pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.2)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
 
-        <div className="container ml-0 px-6 md:px-8 lg:px-12 h-full">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 h-full">
           <div className="flex flex-col items-start">
             <div className="flex flex-col md:flex-row items-center justify-between w-full">
-              {/* Mobile devices on left */}
-              <div className="md:w-1/2 relative mb-10 md:mb-0 flex justify-center">
-                <div className="relative h-[300px] w-[600px]">
-                  {/* Content appears first */}
+              {/* Content on mobile (full width) and desktop (right side) */}
+              <div className="w-full md:w-1/2 md:order-2 md:pl-8">
+                <div className={`animate-fade-in ${animationReset ? "opacity-0" : ""}`}>
+                  <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6">
+                    Mobile-Oriented
+                    <br />
+                    PPC Campaigns
+                  </h1>
+                  <p className="text-white text-base sm:text-lg opacity-90 mb-8 max-w-lg">
+                    Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                    fermentum massa justo.
+                  </p>
 
+                  {/* PPC, Responsive Ads, SMM badges - visible on mobile */}
+                  <div className="flex flex-wrap gap-2 md:hidden mb-4">
+                    <span className="bg-transparent text-white text-xs px-2 rounded border border-white/40">PPC</span>
+                    <span className="bg-transparent text-white text-xs px-2 rounded border border-white/40">
+                      Responsive Ads
+                    </span>
+                    <span className="bg-transparent text-white text-xs px-2 rounded border border-white/40">SMM</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile devices on left - hidden on mobile */}
+              <div className="hidden md:block md:w-1/2 md:order-1 relative mb-10 md:mb-0 flex justify-center">
+                <div className="relative h-[300px] w-[600px]">
                   {/* Tablet - right - appears second */}
                   <div
                     className={`absolute ml-4 right-[80px] bottom-2 z-20 animate-fade-in-4 ${animationReset ? "opacity-0" : ""}`}
@@ -194,7 +204,7 @@ export function HeroSection() {
                       <div
                         className={`flex space-x-3 absolute -top-20 left-[14px] -translate-x-1/2 z-20 animate-fade-in-5 ${animationReset ? "opacity-0" : ""}`}
                       >
-                        <span className="bg-transparent text-white text-xs  px-2 rounded border border-white/40">
+                        <span className="bg-transparent text-white text-xs px-2 rounded border border-white/40">
                           PPC
                         </span>
                         <span className="bg-transparent text-white text-xs px-2 rounded border border-white/40">
@@ -213,21 +223,6 @@ export function HeroSection() {
                   >
                     <Image src={slideHand || "/placeholder.svg"} alt="Hand" width={60} height={60} className="z-30" />
                   </div>
-                </div>
-              </div>
-
-              {/* Content on right */}
-              <div className="md:w-1/2 md:pl-8">
-                <div className={`animate-fade-in ${animationReset ? "opacity-0" : ""}`}>
-                  <h1 className="text-4xl md:text-5xl font-light text-white leading-tight mb-6">
-                    Mobile-Oriented
-                    <br />
-                    PPC Campaigns
-                  </h1>
-                  <p className="text-white text-lg opacity-90 mb-8 max-w-lg">
-                    Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                    fermentum massa justo.
-                  </p>
                 </div>
               </div>
             </div>
@@ -255,83 +250,84 @@ export function HeroSection() {
 
       {/* Third Slide - Purple (Social Media) */}
       <div
-        className={`${currentSlide === 2 ? "block" : "hidden"} bg-purple-600 py-16 relative overflow-hidden h-[400px]`}
+        className={`${currentSlide === 2 ? "block" : "hidden"} bg-purple-600 py-8 sm:py-12 md:py-16 relative overflow-hidden h-[300px] sm:h-[350px] md:h-[400px]`}
       >
         {/* Background network pattern */}
         <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:15px_15px]"></div>
 
-        {/* SEO, SMM, CRO badges at top center */}
-        <div className="absolute top-16 left-1/2 transform -translate-x-1/2 flex space-x-4 z-30">
+        {/* SEO, SMM, CRO badges at top center - visible on all devices */}
+        <div className="absolute top-8 sm:top-12 md:top-16 left-1/2 transform -translate-x-1/2 flex space-x-4 z-30">
           <div className={`animate-fade-in-5 ${animationReset ? "opacity-0" : ""}`}>
-            <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white/40">
-              SEO
-            </span>
+            <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white/40">SEO</span>
           </div>
           <div className={`animate-fade-in-5 ${animationReset ? "opacity-0" : ""}`}>
-            <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white/40">
-              SMM
-            </span>
+            <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white/40">SMM</span>
           </div>
           <div className={`animate-fade-in-5 ${animationReset ? "opacity-0" : ""}`}>
-            <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white/40">
-              CRO
-            </span>
+            <span className="bg-transparent text-white text-xs px-3 py-1 rounded border border-white/40">CRO</span>
           </div>
         </div>
-        
-        {/* Pinterest - top left */}
-        <div className={`absolute left-[15%] top-[20%] animate-fade-in-2 ${animationReset ? "opacity-0" : ""}`}>
-          <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">P</span>
+
+        {/* Social media icons - hidden on mobile */}
+        <div className="hidden md:block">
+          {/* Pinterest - top left */}
+          <div className={`absolute left-[15%] top-[20%] animate-fade-in-2 ${animationReset ? "opacity-0" : ""}`}>
+            <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">P</span>
+            </div>
+          </div>
+
+          {/* Twitter - middle left */}
+          <div className={`absolute left-[10%] top-[40%] animate-fade-in-3 ${animationReset ? "opacity-0" : ""}`}>
+            <div className="w-24 h-24 rounded-full bg-cyan-500 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">T</span>
+            </div>
+          </div>
+
+          {/* LinkedIn - bottom left */}
+          <div className={`absolute left-[20%] top-[60%] animate-fade-in-4 ${animationReset ? "opacity-0" : ""}`}>
+            <div className="w-20 h-20 rounded-full bg-blue-700 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">in</span>
+            </div>
+          </div>
+
+          {/* YouTube - top right */}
+          <div className={`absolute right-[15%] top-[20%] animate-fade-in-2 ${animationReset ? "opacity-0" : ""}`}>
+            <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center">
+              <span className="text-white text-xl font-bold">YT</span>
+            </div>
+          </div>
+
+          {/* Facebook - middle right */}
+          <div className={`absolute right-[10%] top-[40%] animate-fade-in-3 ${animationReset ? "opacity-0" : ""}`}>
+            <div className="w-24 h-24 rounded-full bg-blue-800 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">f</span>
+            </div>
+          </div>
+
+          {/* Google+ - bottom right */}
+          <div className={`absolute right-[20%] top-[60%] animate-fade-in-4 ${animationReset ? "opacity-0" : ""}`}>
+            <div className="w-20 h-20 rounded-full bg-red-500 flex items-center justify-center">
+              <span className="text-white text-2xl font-bold">G+</span>
+            </div>
           </div>
         </div>
-        
-        {/* Twitter - middle left */}
-        <div className={`absolute left-[10%] top-[40%] animate-fade-in-3 ${animationReset ? "opacity-0" : ""}`}>
-          <div className="w-24 h-24 rounded-full bg-cyan-500 flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">T</span>
-          </div>
-        </div>
-        
-        {/* LinkedIn - bottom left */}
-        <div className={`absolute left-[20%] top-[60%] animate-fade-in-4 ${animationReset ? "opacity-0" : ""}`}>
-          <div className="w-20 h-20 rounded-full bg-blue-700 flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">in</span>
-          </div>
-        </div>
-        
-        {/* YouTube - top right */}
-        <div className={`absolute right-[15%] top-[20%] animate-fade-in-2 ${animationReset ? "opacity-0" : ""}`}>
-          <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center">
-            <span className="text-white text-xl font-bold">YT</span>
-          </div>
-        </div>
-        
-        {/* Facebook - middle right */}
-        <div className={`absolute right-[10%] top-[40%] animate-fade-in-3 ${animationReset ? "opacity-0" : ""}`}>
-          <div className="w-24 h-24 rounded-full bg-blue-800 flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">f</span>
-          </div>
-        </div>
-        
-        {/* Google+ - bottom right */}
-        <div className={`absolute right-[20%] top-[60%] animate-fade-in-4 ${animationReset ? "opacity-0" : ""}`}>
-          <div className="w-20 h-20 rounded-full bg-red-500 flex items-center justify-center">
-            <span className="text-white text-2xl font-bold">G+</span>
-          </div>
-        </div>
-        
+
         {/* Center content */}
         <div className="flex flex-col items-center justify-center h-full">
           <div className="text-center max-w-2xl px-4">
-            <h1 className={`text-4xl md:text-5xl font-light text-white leading-tight mb-6 animate-fade-in ${animationReset ? "opacity-0" : ""}`}>
+            <h1
+              className={`text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6 animate-fade-in ${animationReset ? "opacity-0" : ""}`}
+            >
               Social Media
               <br />
               Optimization
             </h1>
-            <p className={`text-white text-lg opacity-90 mb-8 max-w-lg mx-auto animate-fade-in ${animationReset ? "opacity-0" : ""}`}>
-              Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-              fermentum massa justo.
+            <p
+              className={`text-white text-base sm:text-lg opacity-90 mb-8 max-w-lg mx-auto animate-fade-in ${animationReset ? "opacity-0" : ""}`}
+            >
+              Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
+              massa justo.
             </p>
           </div>
         </div>
@@ -355,8 +351,7 @@ export function HeroSection() {
           />
         </div>
       </div>
-
-      
     </section>
   )
 }
+
