@@ -90,7 +90,7 @@ export default function CaseStudiesPage() {
               <p className="text-base md:text-lg">
                 Our digital marketing agency helps over 80 companies to increase consumer loyalty and find new customers
                 online. Here, you&apos;ll find a selection of our expert work. Take a look at some of the results
-                we&apos;ve delivered.
+                we&apos;ve delivered..
               </p>
             </div>
             <div className="flex justify-center mt-4 md:mt-0">
