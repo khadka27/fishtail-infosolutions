@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"
 
 import React, { useState, ChangeEvent, FormEvent } from "react"
