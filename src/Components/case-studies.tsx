@@ -3,19 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  Phone,
-  Mail,
-  Bell,
-  ArrowUp,
-  Twitter,
-  Facebook,
-  Youtube,
-  Linkedin,
-  Instagram,
-  Github,
-  GalleryThumbnailsIcon as Flickr,
-} from "lucide-react"
+
 import { Button } from "./ui/button"
 import project1 from "@/Images/case1.png"
 import project2 from "@/Images/case2.png"

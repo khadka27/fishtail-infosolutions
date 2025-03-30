@@ -9,9 +9,9 @@ export default function Home() {
   return (
     
     <>
-    <Header/>
+  
     <CaseStudiesPage />
-    <Footer/>
+
     </>
   );
 }

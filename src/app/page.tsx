@@ -12,7 +12,7 @@ import TestimonialsSection from "../Components/testimonial-section";
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Header/>
+   
       <HeroSection />
       <FeaturesSection />
       <GoogleRankingSection />
@@ -20,7 +20,7 @@ export default function Home() {
       <ClientLogos />
       <TestimonialsSection />
       <CaseStudiesSection />
-      <Footer />
+      
     </main>
   )
 }

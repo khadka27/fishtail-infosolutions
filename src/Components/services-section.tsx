@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { MapPin, Map, Link2, Target, PenTool, Mail } from "lucide-react"
 import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image1 from "@/Images/services-socialmediamarketing-alt-colors-optimized.png"
+import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
 

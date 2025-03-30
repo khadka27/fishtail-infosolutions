@@ -27,7 +27,7 @@ export function ServicesDropdown() {
 
         <div className="space-y-3">
           <Link
-            href="/services/content-marketing"
+            href="/Services/content-marketing"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -36,7 +36,7 @@ export function ServicesDropdown() {
             <span>Content Marketing Strategy</span>
           </Link>
 
-          <Link href="/services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <Laptop className="h-4 w-4 inline-block" />
             </span>
@@ -44,7 +44,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/services/web-development"
+            href="/Services/web-design"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -54,7 +54,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/services/mobile-marketing"
+            href="/Services/web-design"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -64,7 +64,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/services/digital-consultancy"
+            href="/Services/web-design"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -74,7 +74,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/services/reputation-management"
+            href="/Services/web-design"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -91,21 +91,21 @@ export function ServicesDropdown() {
         <p className="text-gray-500 text-xs mb-4">How we can help you to get more sales</p>
 
         <div className="space-y-3">
-          <Link href="/services/seo" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <Search className="h-4 w-4 inline-block" />
             </span>
             <span>Search Engine Optimization</span>
           </Link>
 
-          <Link href="/services/local-seo" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <MapPin className="h-4 w-4 inline-block" />
             </span>
             <span>Local SEO</span>
           </Link>
 
-          <Link href="/services/social-media" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <Share2 className="h-4 w-4 inline-block" />
             </span>
@@ -113,7 +113,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/services/email-marketing"
+            href="/Services/web-design"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -122,7 +122,7 @@ export function ServicesDropdown() {
             <span>Email Marketing</span>
           </Link>
 
-          <Link href="/services/ppc" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <DollarSign className="h-4 w-4 inline-block" />
             </span>

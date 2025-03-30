@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Heart, Phone, Mail, Share2 } from "lucide-react";
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { MobileMenu } from "./mobile-menu";
-import { SocialMediaDropdown } from "./social-media-dropdown";
-import { ServicesDropdown } from "./services-dropdown";
-import { AboutDropdown } from "./about-dropdown";
-import { ContactDropdown } from "./contact-dropdown";
+import { useState } from "react"
+import { Heart, Phone, Mail, Share2 } from "lucide-react"
+import Link from "next/link"
+import { Button } from "./ui/button"
+import { MobileMenu } from "./mobile-menu"
+import { SocialMediaDropdown } from "./social-media-dropdown"
+import { ServicesDropdown } from "./services-dropdown"
+import { AboutDropdown } from "./about-dropdown"
+import { ContactDropdown } from "./contact-dropdown"
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
@@ -18,30 +18,30 @@ const menuItems = {
     { label: "Industry News", href: "/blog/news" },
     { label: "Guides & Tutorials", href: "/blog/guides" },
   ],
-};
+}
 
 export function Header() {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const [showSocialMenu, setShowSocialMenu] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null)
+  const [showSocialMenu, setShowSocialMenu] = useState(false)
 
   // Function to handle mouse enter on menu items
   const handleMouseEnter = (menu: string) => {
-    setActiveMenu(menu);
-  };
+    setActiveMenu(menu)
+  }
 
   // Function to handle mouse leave on menu items
   const handleMouseLeave = () => {
-    setActiveMenu(null);
-  };
+    setActiveMenu(null)
+  }
 
   // Functions to handle social media dropdown
   const handleSocialMouseEnter = () => {
-    setShowSocialMenu(true);
-  };
+    setShowSocialMenu(true)
+  }
 
   const handleSocialMouseLeave = () => {
-    setShowSocialMenu(false);
-  };
+    setShowSocialMenu(false)
+  }
 
   return (
     <header className="relative z-50">
@@ -50,9 +50,7 @@ export function Header() {
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center">
             <Heart className="h-5 w-5 mr-3" />
-            <span className="text-base">
-              Easy to use theme with exciting features
-            </span>
+            <span className="text-base">Easy to use theme with exciting features</span>
           </div>
           <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-8">
             <div className="flex items-center">
@@ -61,25 +59,19 @@ export function Header() {
             </div>
             <div className="flex items-center">
               <Mail className="h-4 w-4 mr-2" />
-              <Link
-                href="mailto:info@yoursite.com"
-                className="text-base hover:underline"
-              >
+              <Link href="mailto:info@yoursite.com" className="text-base hover:underline">
                 info@yoursite.com
               </Link>
             </div>
             <div className="relative flex items-center">
               <Share2 className="h-4 w-4 mr-2" />
-              <span
-                className="text-base cursor-pointer hover:underline"
-                onMouseEnter={handleSocialMouseEnter}
-              >
+              <span className="text-base cursor-pointer hover:underline" onMouseEnter={handleSocialMouseEnter}>
                 follow us
               </span>
 
               {showSocialMenu && (
                 <div
-                  className="absolute right-0 top-full mt-2 bg-white rounded-md shadow-lg py-2 z-10 w-48 animate-in fade-in slide-in-from-top-5 duration-200"
+                  className="absolute right-0 top-full mt-2 bg-white rounded-md shadow-lg py-2 z-[100] w-48 animate-in fade-in slide-in-from-top-5 duration-200"
                   onMouseEnter={handleSocialMouseEnter}
                   onMouseLeave={handleSocialMouseLeave}
                 >
@@ -100,13 +92,9 @@ export function Header() {
                 <div className="flex items-center">
                   <span className="text-blue-800 font-bold text-3xl">SEO</span>
                   <span className="text-blue-400 font-bold text-3xl">WP</span>
-                  <span className="text-blue-400 font-bold text-3xl">
-                    THEME
-                  </span>
+                  <span className="text-blue-400 font-bold text-3xl">THEME</span>
                 </div>
-                <span className="text-gray-400 text-sm tracking-wider">
-                  DIGITAL MARKETING
-                </span>
+                <span className="text-gray-400 text-sm tracking-wider">DIGITAL MARKETING</span>
               </div>
             </Link>
           </div>
@@ -127,7 +115,7 @@ export function Header() {
               {/* Services dropdown */}
               <div className="relative">
                 <Link
-                  href="#services"
+                  href="/Services"
                   className="text-gray-700 hover:text-blue-600 font-medium text-lg"
                   onMouseEnter={() => handleMouseEnter("services")}
                 >
@@ -149,7 +137,7 @@ export function Header() {
               {/* Blog dropdown */}
               <div className="relative">
                 <Link
-                  href="#blog"
+                  href="/blog"
                   className="text-gray-700 hover:text-blue-600 font-medium text-lg"
                   onMouseEnter={() => handleMouseEnter("blog")}
                 >
@@ -157,7 +145,7 @@ export function Header() {
                 </Link>
                 {activeMenu === "blog" && (
                   <div
-                    className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-10 animate-in fade-in slide-in-from-top-5 duration-200"
+                    className="absolute left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-[100] animate-in fade-in slide-in-from-top-5 duration-200"
                     onMouseEnter={() => handleMouseEnter("blog")}
                     onMouseLeave={handleMouseLeave}
                   >
@@ -177,7 +165,7 @@ export function Header() {
               {/* Contact dropdown */}
               <div className="relative">
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="text-gray-700 hover:text-blue-600 font-medium text-lg"
                   onMouseEnter={() => handleMouseEnter("contact")}
                 >
@@ -187,23 +175,25 @@ export function Header() {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 h-auto text-base rounded-md flex items-center">
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
-                FREE QUOTE
-              </Button>
+              <Link href="/quote">
+                <Button className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 h-auto text-base rounded-md flex items-center">
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
+                  </svg>
+                  FREE QUOTE
+                </Button>
+              </Link>
 
               <div className="md:hidden">
                 <MobileMenu />
@@ -215,7 +205,7 @@ export function Header() {
         {/* Services mega dropdown */}
         {activeMenu === "services" && (
           <div
-            className="absolute left-16 right-16 mt-0 bg-white  shadow-lg py-6 z-10 animate-in fade-in slide-in-from-top-5 duration-200"
+            className="absolute left-16 right-16 mt-0 bg-white shadow-lg py-6 z-[100] animate-in fade-in slide-in-from-top-5 duration-200"
             onMouseEnter={() => handleMouseEnter("services")}
             onMouseLeave={handleMouseLeave}
           >
@@ -228,7 +218,7 @@ export function Header() {
         {/* About dropdown */}
         {activeMenu === "about" && (
           <div
-            className="absolute left-1/2 transform -translate-x-1/2 mt-0 bg-white shadow-[4px_4px_10px_0px_rgba(0,0,0,0.1)] z-10 animate-in fade-in slide-in-from-top-5 duration-200 w-[600px] rounded-md"
+            className="absolute left-1/2 transform -translate-x-1/2 mt-0 bg-white shadow-[4px_4px_10px_0px_rgba(0,0,0,0.1)] z-[100] animate-in fade-in slide-in-from-top-5 duration-200 w-[600px] rounded-md"
             onMouseEnter={() => handleMouseEnter("about")}
             onMouseLeave={handleMouseLeave}
           >
@@ -239,7 +229,7 @@ export function Header() {
         {/* Contact dropdown */}
         {activeMenu === "contact" && (
           <div
-            className="absolute right-0.5 transform -translate-x-1/2 mt-0 bg-white shadow-lg z-10 animate-in fade-in slide-in-from-top-5 duration-200 w-[600px] rounded-md"
+            className="absolute right-[15%] mt-0 bg-white shadow-[4px_4px_10px_0px_rgba(0,0,0,0.1)] z-[100] animate-in fade-in slide-in-from-top-5 duration-200 w-[700px] rounded-md"
             onMouseEnter={() => handleMouseEnter("contact")}
             onMouseLeave={handleMouseLeave}
           >
@@ -248,5 +238,6 @@ export function Header() {
         )}
       </nav>
     </header>
-  );
+  )
 }
+
