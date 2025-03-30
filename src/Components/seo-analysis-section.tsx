@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client"
 
 import type React from "react"
@@ -68,7 +69,7 @@ export function SeoAnalysisSection() {
             <div>
               <h2 className="text-4xl md:text-5xl font-light text-gray-800 mb-6">FREE website SEO analysis</h2>
               <p className="text-lg text-gray-700">
-                Our team is ready to review your website's SEO aspects and provide some tips to help you increase
+                Our team is ready to review your website&apos;s SEO aspects and provide some tips to help you increase
                 traffic, drive leads and maximize revenue.
               </p>
             </div>

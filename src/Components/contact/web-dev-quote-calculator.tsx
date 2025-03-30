@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import type React from "react";
@@ -639,7 +640,7 @@ export default function WebDevQuoteCalculator() {
           </h1>
           <p className="text-gray-600">
             Get an instant quote for your website project. Select the options
-            you need, and we'll provide a custom estimate.
+            you need, and we&apos;ll provide a custom estimate.
           </p>
         </div>
 
@@ -935,7 +936,7 @@ export default function WebDevQuoteCalculator() {
                       Your Website Quote
                     </h2>
                     <p className="text-center text-gray-600 mb-4">
-                      Based on your selections, here's your estimated quote:
+                      Based on your selections, here&apos;s your estimated quote:
                     </p>
 
                     <div className="mb-8 border-b pb-6">

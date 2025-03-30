@@ -97,7 +97,7 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                       FREE website SEO analysis
                     </h2>
                     <p className="text-sm sm:text-base text-gray-700">
-                      Our team is ready to review your website's SEO aspects and
+                      Our team is ready to review your website&apos;s SEO aspects and
                       provide tips to help you increase traffic and maximize
                       revenue.
                     </p>

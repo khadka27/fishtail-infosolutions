@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import type React from "react";
@@ -517,7 +518,7 @@ export default function SEOQuoteCalculator() {
           </h1>
           <p className="text-gray-600">
             Get an instant quote on your next site optimization. Just select the
-            features you need, and we'll provide an instant estimate.
+            features you need, and we&apos;ll provide an instant estimate.
           </p>
         </div>
 
