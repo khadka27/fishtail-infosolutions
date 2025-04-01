@@ -66,11 +66,11 @@ export function CaseStudiesSection() {
   }
 
   return (
-    <section className="py-16 px-16 bg-gray-800 text-white">
-      <div className="container mx-auto px-6">
+    <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-gray-800">
+      <div className="container ">
         <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold">Our case studies</h2>
-          <a href="#" className="text-sm text-gray-300 hover:text-white transition-colors">
+          <h2 className="text-2xl font-bold text-white">Our case studies</h2>
+          <a href="/project" className="text-sm text-gray-300 hover:text-white transition-colors">
             See all projects
           </a>
         </div>
@@ -83,7 +83,7 @@ export function CaseStudiesSection() {
             {caseStudies.map((slideGroup, slideIndex) => (
               <div key={slideIndex} className="w-full flex-shrink-0 grid grid-cols-1 md:grid-cols-3 gap-6">
                 {slideGroup.map((study, studyIndex) => (
-                  <div key={studyIndex} className={`${study.bgColor} rounded-lg overflow-hidden`}>
+                  <div key={studyIndex} className={`bg-white rounded-lg overflow-hidden`}>
                     <Image
                       src={study.image || "/placeholder.svg"}
                       alt={`Case Study ${studyIndex + 1}`}

@@ -3,7 +3,7 @@ import { Shield, BarChart3, LineChart } from "lucide-react"
 export function FeaturesSection() {
   return (
     <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-white border-b">
-      <div className="container mx-auto">
+      <div className="container ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
           <div className="text-center px-4">
             <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple-100 mb-4">

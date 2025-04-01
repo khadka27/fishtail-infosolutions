@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
 
-import React from "react"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import {
@@ -27,12 +27,17 @@ import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
 import { CaseStudiesSection } from "./case-studies-section"
+import { QuotePopup } from "./quote-popup"
 
+const ServicesShowcase = () => {
+  const [showQuotePopup, setShowQuotePopup] = useState(false)
 
-class ServicesShowcase extends React.Component {
-  render() {
-    return (
-        <>
+  const toggleQuotePopup = () => {
+    setShowQuotePopup((prev) => !prev)
+  }
+
+  return (
+    <>
       <div className="flex flex-col items-center">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto px-4 py-12">
@@ -51,7 +56,7 @@ class ServicesShowcase extends React.Component {
               <div className="h-40 flex items-center justify-center">
                 <div className="relative w-32 h-32">
                   <Image
-                    src={image1}
+                    src={image1 || "/placeholder.svg"}
                     alt="Social Media Marketing"
                     width={128}
                     height={128}
@@ -78,7 +83,7 @@ class ServicesShowcase extends React.Component {
               <div className="h-40 flex items-center justify-center">
                 <div className="relative w-32 h-32">
                   <Image
-                    src={image2}
+                    src={image2 || "/placeholder.svg"}
                     alt="Search Engine Optimization"
                     width={128}
                     height={128}
@@ -105,7 +110,7 @@ class ServicesShowcase extends React.Component {
               <div className="h-40 flex items-center justify-center">
                 <div className="relative w-32 h-32">
                   <Image
-                    src={image3}
+                    src={image3 || "/placeholder.svg"}
                     alt="Advanced Web Analytics"
                     width={128}
                     height={128}
@@ -132,7 +137,7 @@ class ServicesShowcase extends React.Component {
               <div className="h-40 flex items-center justify-center">
                 <div className="relative w-32 h-32">
                   <Image
-                    src={image4}
+                    src={image4 || "/placeholder.svg"}
                     alt="Email Marketing"
                     width={128}
                     height={128}
@@ -158,7 +163,7 @@ class ServicesShowcase extends React.Component {
               <div className="h-40 flex items-center justify-center">
                 <div className="relative w-32 h-32">
                   <Image
-                    src={image1}
+                    src={image1 || "/placeholder.svg"}
                     alt="Pay Per Click"
                     width={128}
                     height={128}
@@ -184,7 +189,7 @@ class ServicesShowcase extends React.Component {
               <div className="h-40 flex items-center justify-center">
                 <div className="relative w-32 h-32">
                   <Image
-                    src={image2}
+                    src={image2 || "/placeholder.svg"}
                     alt="Content Strategy"
                     width={128}
                     height={128}
@@ -344,13 +349,13 @@ class ServicesShowcase extends React.Component {
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Free SEO Consultation
               </Link>
-              <Link
-                href="/quote"
+              <button
+                onClick={toggleQuotePopup}
                 className="bg-[#f39c12] hover:bg-[#e67e22] text-white py-3 px-6 rounded flex items-center justify-center"
               >
                 <DollarSign className="mr-2 h-5 w-5" />
                 Request a Free Quote
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -448,10 +453,12 @@ class ServicesShowcase extends React.Component {
           </div>
         </div>
       </div>
-      <CaseStudiesSection/>
-      </>
-    )
-  }
+      <CaseStudiesSection />
+
+      {/* Quote Popup */}
+      <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
+    </>
+  )
 }
 
 export default ServicesShowcase

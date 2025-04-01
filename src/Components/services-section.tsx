@@ -22,8 +22,8 @@ export function ServicesSection() {
     }
   };
   return (
-    <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-gray-50">
-      <div className="container mx-auto">
+    <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-white">
+      <div className="container ">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-2 lg:mb-4">
           Full Service Digital Marketing Agency
         </h2>

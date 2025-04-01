@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, MessageSquare } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import MapWrapper from "@/Components/map-wrapper";
 import ContactForm from "@/Components/contact-form";
@@ -11,22 +11,28 @@ export default function MultiAddressContactPage() {
   // Create a local copy of the locations to ensure they're properly defined
   const locations = [
     {
-      name: "Cambridge Office",
+      name: "East Ham Office",
       country: "United Kingdom",
-      coordinates: [52.2429, 0.4026] as [number, number],
-      address: "51 Somestreet Cambridge, Cambridgeshire CB4 3AA",
+      coordinates: [51.538, 0.042] as [number, number],
+      address: "182-184 High Street North, East Ham, London, E6 2JA",
     },
     {
-      name: "Toronto Office",
-      country: "Canada",
-      coordinates: [43.6532, -79.3832] as [number, number],
-      address: "10 High Lane, Toronto, Ontario, L6M8M1",
+      name: "Bear Office",
+      country: "United States",
+      coordinates: [39.5761, -75.611] as [number, number],
+      address: "604 Carson Dr CAK-953 Bear, DE 19701-1450",
     },
     {
       name: "Pokhara Office",
       country: "Nepal",
       coordinates: [28.2096, 83.9856] as [number, number],
       address: "Prithivi Chowk, Street 31, Pokhara",
+    },
+    {
+      name: "Delhi Office",
+      country: "India",
+      coordinates: [28.6010, 77.0787] as [number, number],
+      address: "Mahavir Enclave, South West Delhi, New Delhi, 110045",
     },
   ];
 
@@ -93,10 +99,10 @@ export default function MultiAddressContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <MessageSquare className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <p className="text-gray-800">exampleskypename</p>
-                </div>
+                </div> */}
 
                 <div className="flex items-start">
                   <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
@@ -104,16 +110,16 @@ export default function MultiAddressContactPage() {
                     href="mailto:info@example.com"
                     className="text-blue-500 hover:underline"
                   >
-                    info@example.com
+                    info@fishtailinfosolutions.com
                   </a>
                 </div>
 
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <div>
-                    <p className="text-gray-800">51 Somestreet Cambridge,</p>
-                    <p className="text-gray-800">Cambridgeshire CB4 3AA,</p>
-                    <p className="text-gray-800 mb-2">United Kingdom</p>
+                    <p className="text-gray-800">192-184 High Street North East Ham,</p>
+                    <p className="text-gray-800">London,E6 2JA</p>
+                   
                     <p className="text-sm text-gray-500">Our office is open:</p>
                     <p className="text-sm text-gray-500">
                       Mon to Fri from 8am to 6pm
@@ -123,10 +129,10 @@ export default function MultiAddressContactPage() {
               </div>
             </div>
 
-            {/* Canada Office */}
+            {/* United Office */}
             <div>
               <h2 className="text-2xl font-light text-[#b5bd00] mb-6">
-                Canada
+                United States
               </h2>
 
               <div className="space-y-4">
@@ -134,7 +140,7 @@ export default function MultiAddressContactPage() {
                   <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <div>
                     <p className="text-gray-800 font-medium">
-                      +1 (234) 567.890.11
+                      +1 (801) 987-0424
                     </p>
                     <p className="text-sm text-gray-500">
                       Monday–Friday 9am-6pm
@@ -142,10 +148,10 @@ export default function MultiAddressContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <MessageSquare className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <p className="text-gray-800">exampleskypename</p>
-                </div>
+                </div> */}
 
                 <div className="flex items-start">
                   <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
@@ -153,15 +159,15 @@ export default function MultiAddressContactPage() {
                     href="mailto:info@example.com"
                     className="text-blue-500 hover:underline"
                   >
-                    info@example.com
+                    info@fishtailinfosolutions.com
                   </a>
                 </div>
 
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <div>
-                    <p className="text-gray-800">10 High Lane,Toronto,</p>
-                    <p className="text-gray-800">Ontario, L6M8M1</p>
+                    <p className="text-gray-800">604 Carson Dr CAK-953 Bear,</p>
+                    <p className="text-gray-800">DE 19701-1450</p>
                     <p className="text-gray-800 mb-2">Canada</p>
                     <p className="text-sm text-gray-500">Our office is open:</p>
                     <p className="text-sm text-gray-500">
@@ -187,10 +193,7 @@ export default function MultiAddressContactPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <MessageSquare className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <p className="text-gray-800">fishtailinfosolutions</p>
-                </div>
+               
 
                 <div className="flex items-start">
                   <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
@@ -208,6 +211,47 @@ export default function MultiAddressContactPage() {
                     <p className="text-gray-800">Prithivi Chowk, Street 31,</p>
                     <p className="text-gray-800">Pokhara</p>
                     <p className="text-gray-800 mb-2">Nepal</p>
+                    <p className="text-sm text-gray-500">Our office is open:</p>
+                    <p className="text-sm text-gray-500">
+                      Mon to Fri from 8am to 6pm
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* India Office */}
+            <div>
+              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">India Office</h2>
+
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
+                  <div>
+                    <p className="text-gray-800 font-medium">+977 61 123456</p>
+                    <p className="text-sm text-gray-500">
+                      Monday–Friday 9am-6pm
+                    </p>
+                  </div>
+                </div>
+
+               
+
+                <div className="flex items-start">
+                  <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
+                  <a
+                    href="mailto:rahul@fistailinfosolutions"
+                    className="text-blue-500 hover:underline"
+                  >
+                    rahul@fistailinfosolutions
+                  </a>
+                </div>
+
+                <div className="flex items-start">
+                  <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
+                  <div>
+                    <p className="text-gray-800">Mahavir Enclave, South West Delhi,</p>
+                    <p className="text-gray-800">New Delhi, 110045</p>
+                    <p className="text-gray-800 mb-2">India</p>
                     <p className="text-sm text-gray-500">Our office is open:</p>
                     <p className="text-sm text-gray-500">
                       Mon to Fri from 8am to 6pm
