@@ -42,29 +42,36 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
 
   // Initialize EmailJS once when component mounts
   useEffect(() => {
+    // Initialize EmailJS only once
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "uQppVqAvJvbh7-6tg"
     emailjs.init(publicKey)
-  }, [])
 
-  // Close on escape key
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose()
-    }
-
+    // Only add event listeners when popup is open
     if (isOpen) {
+      const handleEsc = (e: KeyboardEvent) => {
+        if (e.key === "Escape") onClose()
+      }
+
       document.body.style.overflow = "hidden"
       window.addEventListener("keydown", handleEsc)
-    }
 
-    return () => {
-      document.body.style.overflow = ""
-      window.removeEventListener("keydown", handleEsc)
+      return () => {
+        document.body.style.overflow = ""
+        window.removeEventListener("keydown", handleEsc)
+      }
     }
   }, [isOpen, onClose])
 
+  useEffect(() => {
+    if (!isOpen) {
+      // Reset the submitStatus when popup is closed
+      setSubmitStatus(null)
+    }
+  }, [isOpen])
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
+    // Use functional update to avoid potential stale closures
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
@@ -105,6 +112,7 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
       // Close the popup after a delay
       setTimeout(() => {
         onClose()
+        // We don't need to reset submitStatus here as our useEffect will handle it
       }, 3000)
     } catch (error) {
       console.error("Failed to send email:", error)
@@ -136,13 +144,14 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           >
             <motion.div
               className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
-              initial={{ scale: 0.9, y: 20 }}
+              initial={{ scale: 0.95, y: 10 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ type: "tween", duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Yellow header section */}
@@ -164,20 +173,21 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                       traffic and maximize revenue.
                     </p>
                   </div>
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 hidden sm:block">
                     <Image
                       src={Seoptimize || "/placeholder.svg"}
                       alt="SEO Analysis Illustration"
                       width={120}
                       height={120}
-                      className="object-contain"
+                      className="object-contain sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32"
+                      priority
                     />
                   </div>
                 </div>
               </div>
 
               {/* Form section */}
-              <div className="p-6 pb-28 overflow-y-auto max-h-[calc(90vh-140px)]">
+              <div className="p-6 pd-28  overflow-y-auto max-h-[calc(90vh-200px)]  ">
                 {submitStatus && (
                   <div
                     className={`mb-6 p-4 rounded-md ${

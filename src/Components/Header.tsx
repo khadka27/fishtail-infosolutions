@@ -35,7 +35,6 @@ const menuItems = {
     { label: "Single Address", href: "/contact" },
     { label: "Multi Address", href: "/contact/multiple" },
     { label: "Instant SEO quote", href: "/contact/seo" },
-
   ],
 }
 
@@ -87,6 +86,7 @@ export function Header() {
     setQuotePopupOpen(true)
     if (drawerOpen) {
       setDrawerOpen(false)
+      document.body.style.overflow = ""
     }
   }
 
@@ -266,12 +266,13 @@ export function Header() {
           </div>
 
           {/* Mobile drawer overlay */}
-{drawerOpen && (
-  <div
-    className="fixed inset-0  bg-opacity-50 z-40 lg:hidden transition-opacity duration-300"
-    onClick={toggleDrawer}
-  />
-)}
+          {drawerOpen && (
+            <div
+              className="fixed inset-0 z-40 lg:hidden transition-opacity duration-300"
+              onClick={toggleDrawer}
+              aria-hidden="true"
+            />
+          )}
 
           {/* Mobile drawer */}
           <div
@@ -368,8 +369,6 @@ export function Header() {
                         />
                       </button>
                     </div>
-
-                    
                   </div>
 
                   {/* Blog accordion */}
