@@ -156,12 +156,13 @@ export default function ContactForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-              Company
+              Company<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               id="company"
               name="company"
+              required
               value={formData.company}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -171,12 +172,13 @@ export default function ContactForm() {
 
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-              Phone
+              Phone<span className="text-red-500">*</span>
             </label>
             <input
               type="tel"
               id="phone"
               name="phone"
+              required
               value={formData.phone}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"

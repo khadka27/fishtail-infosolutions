@@ -1,14 +1,28 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
+import { useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import ContactForm from "./project-form"
+import Form from "./form"
+
 import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
+import { QuotePopup } from "./quote-popup"
 
 const WebDesignServices = () => {
+  const formRef = useRef<HTMLDivElement>(null)
+  const [showQuotePopup, setShowQuotePopup] = useState(false)
+
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const toggleQuotePopup = () => {
+    setShowQuotePopup((prev) => !prev)
+  }
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -17,7 +31,7 @@ const WebDesignServices = () => {
           <div className="flex justify-center mb-8">
             <div className="relative w-64 h-64">
               <Image
-                src={image1}
+                src={image1 || "/placeholder.svg"}
                 alt="Web Design Services"
                 width={256}
                 height={256}
@@ -129,10 +143,16 @@ const WebDesignServices = () => {
 
       {/* CTA Buttons */}
       <div className="py-8 px-4 max-w-6xl mx-auto flex flex-col sm:flex-row justify-center gap-4">
-        <button className="bg-[#3498db] hover:bg-[#2980b9] text-white py-3 px-6 rounded flex items-center justify-center">
+        <button
+          className="bg-[#3498db] hover:bg-[#2980b9] text-white py-3 px-6 rounded flex items-center justify-center"
+          onClick={scrollToForm}
+        >
           <span>Tell us about your project</span>
         </button>
-        <button className="bg-[#f39c12] hover:bg-[#e67e22] text-white py-3 px-6 rounded flex items-center justify-center">
+        <button
+          className="bg-[#f39c12] hover:bg-[#e67e22] text-white py-3 px-6 rounded flex items-center justify-center"
+          onClick={toggleQuotePopup}
+        >
           <span>Request a free quote now</span>
         </button>
       </div>
@@ -160,7 +180,7 @@ const WebDesignServices = () => {
             <div className="bg-white rounded-md overflow-hidden shadow-sm">
               <div className="h-48 bg-[#1ab5b3] flex items-center justify-center">
                 <Image
-                  src={image2}
+                  src={image2 || "/placeholder.svg"}
                   alt="Opentray Division"
                   width={200}
                   height={150}
@@ -179,7 +199,7 @@ const WebDesignServices = () => {
             <div className="bg-white rounded-md overflow-hidden shadow-sm">
               <div className="h-48 bg-[#2c3e50] flex items-center justify-center">
                 <Image
-                  src={image3}
+                  src={image3 || "/placeholder.svg"}
                   alt="Tremely Designs"
                   width={200}
                   height={150}
@@ -198,7 +218,7 @@ const WebDesignServices = () => {
             <div className="bg-white rounded-md overflow-hidden shadow-sm">
               <div className="h-48 bg-[#8bc34a] flex items-center justify-center">
                 <Image
-                  src={image4}
+                  src={image4 || "/placeholder.svg"}
                   alt="Plainst Tech"
                   width={200}
                   height={150}
@@ -223,18 +243,13 @@ const WebDesignServices = () => {
         </div>
       </div>
 
-      {/* Contact Form Section */}
-      <ContactForm
-        title="Tell us about your project"
-        subtitle="Let us help you get your business online and grow it with passion"
-        testimonial={{
-          quote:
-            "We've looked at a lot of SEO solutions but these guys were always the clear favorite. They have the right strategy and they've been awesome to work with.",
-          author: "Jane Warner",
-          position: "CEO, Company Name",
-          image: "/images/avatar.png",
-        }}
-      />
+      {/* Form Section with Ref */}
+      <div ref={formRef}>
+        <Form />
+      </div>
+
+      {/* Quote Popup */}
+      <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
     </div>
   )
 }

@@ -219,6 +219,47 @@ export default function MultiAddressContactPage() {
                 </div>
               </div>
             </div>
+            {/* India Office */}
+            <div>
+              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">India Office</h2>
+
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
+                  <div>
+                    <p className="text-gray-800 font-medium">+977 61 123456</p>
+                    <p className="text-sm text-gray-500">
+                      Monday–Friday 9am-6pm
+                    </p>
+                  </div>
+                </div>
+
+               
+
+                <div className="flex items-start">
+                  <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
+                  <a
+                    href="mailto:rahul@fistailinfosolutions"
+                    className="text-blue-500 hover:underline"
+                  >
+                    rahul@fistailinfosolutions
+                  </a>
+                </div>
+
+                <div className="flex items-start">
+                  <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
+                  <div>
+                    <p className="text-gray-800">Mahavir Enclave, South West Delhi,</p>
+                    <p className="text-gray-800">New Delhi, 110045</p>
+                    <p className="text-gray-800 mb-2">India</p>
+                    <p className="text-sm text-gray-500">Our office is open:</p>
+                    <p className="text-sm text-gray-500">
+                      Mon to Fri from 8am to 6pm
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Column - Map and Form */}

@@ -1,57 +1,121 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { X } from "lucide-react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import Seoptimize from "@/Images/seo_specialist_workplace-optimized.png";
+import type React from "react"
+
+import { useState, useRef, useEffect } from "react"
+import { X, Loader2 } from "lucide-react"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import emailjs from "@emailjs/browser"
+import Seoptimize from "@/Images/seo_specialist_workplace-optimized.png"
 
 interface QuotePopupProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen: boolean
+  onClose: () => void
+}
+
+interface FormData {
+  websiteUrl: string
+  name: string
+  email: string
+  phone: string
+  company: string
+  details: string
 }
 
 export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     websiteUrl: "",
     name: "",
     email: "",
     phone: "",
     company: "",
     details: "",
-  });
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean
+    message: string
+  } | null>(null)
+
+  const formRef = useRef<HTMLFormElement>(null)
+
+  // Initialize EmailJS once when component mounts
+  useEffect(() => {
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "uQppVqAvJvbh7-6tg"
+    emailjs.init(publicKey)
+  }, [])
 
   // Close on escape key
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
+      if (e.key === "Escape") onClose()
+    }
 
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleEsc);
+      document.body.style.overflow = "hidden"
+      window.addEventListener("keydown", handleEsc)
     }
 
     return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleEsc);
-    };
-  }, [isOpen, onClose]);
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", handleEsc)
+    }
+  }, [isOpen, onClose])
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
-    // You would typically send this data to your backend or API
-    onClose();
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log("Form submitted")
+
+    if (!formRef.current) return
+
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      // Get EmailJS credentials from environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_h967f6o"
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_lv0qx1i"
+
+      // Send the email using EmailJS
+      const response = await emailjs.sendForm(serviceId, templateId, formRef.current)
+
+      console.log("Email sent successfully:", response)
+
+      setSubmitStatus({
+        success: true,
+        message: "Thank you! Your request has been submitted. We'll get back to you soon with your free SEO analysis.",
+      })
+
+      // Reset form after successful submission
+      setFormData({
+        websiteUrl: "",
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        details: "",
+      })
+
+      // Close the popup after a delay
+      setTimeout(() => {
+        onClose()
+      }, 3000)
+    } catch (error) {
+      console.error("Failed to send email:", error)
+      setSubmitStatus({
+        success: false,
+        message: "Sorry, there was a problem submitting your request. Please try again later.",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <AnimatePresence>
@@ -87,19 +151,17 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                   onClick={onClose}
                   className="absolute right-4 top-4 p-1 rounded-full bg-white/20 hover:bg-white/40 transition-colors"
                   aria-label="Close popup"
+                  disabled={isSubmitting}
                 >
                   <X className="h-5 w-5" />
                 </button>
 
                 <div className="flex flex-col sm:flex-row items-center gap-6">
                   <div className="flex-1">
-                    <h2 className="text-2xl sm:text-3xl font-light text-gray-800 mb-2">
-                      FREE website SEO analysis
-                    </h2>
+                    <h2 className="text-2xl sm:text-3xl font-light text-gray-800 mb-2">FREE website SEO analysis</h2>
                     <p className="text-sm sm:text-base text-gray-700">
-                      Our team is ready to review your website&apos;s SEO aspects and
-                      provide tips to help you increase traffic and maximize
-                      revenue.
+                      Our team is ready to review your website&apos;s SEO aspects and provide tips to help you increase
+                      traffic and maximize revenue.
                     </p>
                   </div>
                   <div className="flex-shrink-0">
@@ -115,136 +177,145 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
               </div>
 
               {/* Form section */}
-              <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
+              <div className="p-6 pb-28 overflow-y-auto max-h-[calc(90vh-140px)]">
+                {submitStatus && (
+                  <div
+                    className={`mb-6 p-4 rounded-md ${
+                      submitStatus.success
+                        ? "bg-green-50 border border-green-200 text-green-700"
+                        : "bg-red-50 border border-red-200 text-red-700"
+                    }`}
+                  >
+                    {submitStatus.message}
+                  </div>
+                )}
+
                 <p className="text-sm text-gray-500 mb-4">
-                  Fields marked with an <span className="text-red-500">*</span>{" "}
-                  are required
+                  Fields marked with an <span className="text-red-500">*</span> are required
                 </p>
 
-                <form onSubmit={handleSubmit}>
+                <form ref={formRef} onSubmit={handleSubmit} className="quote-form-email">
                   <div className="mb-4">
-                    <label
-                      htmlFor="popup-websiteUrl"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
+                    <label htmlFor="websiteUrl" className="block text-sm font-medium text-gray-700 mb-1">
                       Website URL <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="url"
-                      id="popup-websiteUrl"
+                      id="websiteUrl"
                       name="websiteUrl"
                       placeholder="www.yourwebsite.com"
                       required
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ab5b3]"
                       value={formData.websiteUrl}
                       onChange={handleInputChange}
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label
-                        htmlFor="popup-name"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                         Name <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
-                        id="popup-name"
+                        id="name"
                         name="name"
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ab5b3]"
                         value={formData.name}
                         onChange={handleInputChange}
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="popup-email"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                         Email <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="email"
-                        id="popup-email"
+                        id="email"
                         name="email"
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ab5b3]"
                         value={formData.email}
                         onChange={handleInputChange}
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label
-                        htmlFor="popup-phone"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                         Phone
                       </label>
                       <input
                         type="tel"
-                        id="popup-phone"
+                        id="phone"
                         name="phone"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ab5b3]"
                         value={formData.phone}
                         onChange={handleInputChange}
+                        disabled={isSubmitting}
                       />
                       <p className="text-xs text-gray-500 mt-1">(optional)</p>
                     </div>
                     <div>
-                      <label
-                        htmlFor="popup-company"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
+                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
                         Company
                       </label>
                       <input
                         type="text"
-                        id="popup-company"
+                        id="company"
                         name="company"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ab5b3]"
                         value={formData.company}
                         onChange={handleInputChange}
+                        disabled={isSubmitting}
                       />
                       <p className="text-xs text-gray-500 mt-1">(optional)</p>
                     </div>
                   </div>
 
-                  <div className="mb-4">
-                    <label
-                      htmlFor="popup-details"
-                      className="block text-sm font-medium text-gray-700 mb-1"
-                    >
+                  <div className="mb-8">
+                    <label htmlFor="details" className="block text-sm font-medium text-gray-700 mb-1">
                       Details
                     </label>
                     <textarea
-                      id="popup-details"
+                      id="details"
                       name="details"
                       rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#1ab5b3]"
                       value={formData.details}
                       onChange={handleInputChange}
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
 
-                  <div className="flex justify-end gap-4 mt-6">
+                  {/* Buttons directly below the details field */}
+                  <div className="flex justify-between items-center mt-8">
                     <button
                       type="button"
                       onClick={onClose}
-                      className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+                      className="px-6 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+                      disabled={isSubmitting}
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+                      className="bg-[#1ab5b3] hover:bg-[#159e9c] text-white py-3 px-8 rounded-md flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                      disabled={isSubmitting}
                     >
-                      Submit Request
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <span>Submit Request</span>
+                      )}
                     </button>
                   </div>
                 </form>
@@ -254,5 +325,6 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
         </>
       )}
     </AnimatePresence>
-  );
+  )
 }
+

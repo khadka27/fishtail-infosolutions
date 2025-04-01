@@ -32,8 +32,10 @@ const menuItems = {
     { label: "Portfolio", href: "/projects/portfolio" },
   ],
   contact: [
-    { label: "Get in Touch", href: "/contact" },
-    { label: "Support", href: "/contact/support" },
+    { label: "Single Address", href: "/contact" },
+    { label: "Multi Address", href: "/contact/multiple" },
+    { label: "Instant SEO quote", href: "/contact/seo" },
+
   ],
 }
 
@@ -264,12 +266,12 @@ export function Header() {
           </div>
 
           {/* Mobile drawer overlay */}
-          {drawerOpen && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity duration-300"
-              onClick={toggleDrawer}
-            />
-          )}
+{drawerOpen && (
+  <div
+    className="fixed inset-0  bg-opacity-50 z-40 lg:hidden transition-opacity duration-300"
+    onClick={toggleDrawer}
+  />
+)}
 
           {/* Mobile drawer */}
           <div
@@ -367,20 +369,7 @@ export function Header() {
                       </button>
                     </div>
 
-                    {expandedMobileMenu === "projects" && (
-                      <div className="bg-gray-50 pl-8 pr-4 py-2 animate-in slide-in-from-top-5 duration-200">
-                        {menuItems.projects.map((item, index) => (
-                          <Link
-                            key={index}
-                            href={item.href}
-                            className="block py-2 text-sm text-gray-600 hover:text-blue-600"
-                            onClick={toggleDrawer}
-                          >
-                            {item.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
+                    
                   </div>
 
                   {/* Blog accordion */}

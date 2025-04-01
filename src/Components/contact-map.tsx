@@ -59,13 +59,6 @@ export default function ContactMap({
 
     console.log("Creating map with active location:", activeLocation)
 
-    // Clean up any existing map instance
-    if (mapInstanceRef.current) {
-      console.log("Removing existing map instance")
-      mapInstanceRef.current.remove()
-      mapInstanceRef.current = null
-    }
-
     // Dynamic import to ensure Leaflet is only loaded on client
     const loadMap = async () => {
       try {
@@ -73,9 +66,16 @@ export default function ContactMap({
         // Import Leaflet dynamically
         const L = (await import("leaflet")).default
 
+        // Clean up any existing map instance before creating a new one
+        if (mapInstanceRef.current) {
+          console.log("Removing existing map instance")
+          mapInstanceRef.current.remove()
+          mapInstanceRef.current = null
+        }
+
         // Create custom marker icon
         const customIcon = L.icon({
-          iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png", // Make sure this file exists in your public folder
+          iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
           iconSize: [25, 41],
           iconAnchor: [12, 41],
           popupAnchor: [1, -32],
@@ -93,7 +93,7 @@ export default function ContactMap({
 
         // Add error handling for custom icon
         const img = new Image()
-        img.src = "/marker-icon.png"
+        img.src = "./Images/marker-icon.png"
         img.onerror = () => {
           console.warn("Custom marker icon failed to load, using default")
           // Update all future markers to use default icon
@@ -115,13 +115,13 @@ export default function ContactMap({
           const style = document.createElement("style")
           style.setAttribute("data-leaflet-fix", "true")
           style.textContent = `
-            .leaflet-map-container .leaflet-pane,
-            .leaflet-map-container .leaflet-control,
-            .leaflet-map-container .leaflet-top,
-            .leaflet-map-container .leaflet-bottom {
-              z-index: 40 !important;
-            }
-          `
+          .leaflet-map-container .leaflet-pane,
+          .leaflet-map-container .leaflet-control,
+          .leaflet-map-container .leaflet-top,
+          .leaflet-map-container .leaflet-bottom {
+            z-index: 40 !important;
+          }
+        `
           document.head.appendChild(style)
         }
 
@@ -173,7 +173,7 @@ export default function ContactMap({
         mapInstanceRef.current = null
       }
     }
-  }, [activeLocation, locations, initialZoom])
+  }, [activeLocation, initialZoom]) // Remove locations from the dependency array
 
   if (locations.length === 0) {
     console.warn("No locations available for map")

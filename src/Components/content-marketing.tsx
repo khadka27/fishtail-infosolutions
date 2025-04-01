@@ -1,48 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
 
-import { useState, type ChangeEvent, type FormEvent } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { BookOpen, FileText, Lightbulb, Mic, FileSpreadsheet, FileCheck } from "lucide-react"
+import Form from "@/Components/form"
 import bigImage from "@/Images/services-seo-alt-colors-optimized.png"
 import project1 from "@/Images/services-seo-optimized.png"
 import project2 from "@/Images/services-payperclick-alt-colors-optimized.png"
 
-
-interface FormData {
-  name: string
-  email: string
-  phone: string
-  company: string
-  website: string
-  details: string
-}
-
 const ContentMarketingStrategy = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    website: "",
-    details: "",
-  })
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Here you would typically send the data to your backend
-  }
-
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -51,7 +18,7 @@ const ContentMarketingStrategy = () => {
           <div className="flex justify-center mb-8">
             <div className="relative w-64 h-64">
               <Image
-                src={bigImage}
+                src={bigImage || "/placeholder.svg"}
                 alt="Content Marketing Strategy"
                 width={256}
                 height={256}
@@ -92,8 +59,8 @@ const ContentMarketingStrategy = () => {
       {/* SEO Integration Section */}
       <div className="py-8 px-4 max-w-6xl mx-auto text-center">
         <p className="text-gray-700 leading-relaxed max-w-4xl mx-auto">
-          Our full-service SEO team integrates content into a complex strategy to increase your site&apos;s visibility and
-          conversions.
+          Our full-service SEO team integrates content into a complex strategy to increase your site&apos;s visibility
+          and conversions.
         </p>
       </div>
 
@@ -122,8 +89,8 @@ const ContentMarketingStrategy = () => {
             <div>
               <h3 className="text-xl font-medium mb-2">Case Studies</h3>
               <p className="text-gray-600 text-sm">
-                In-depth analysis of your target audience and market segments to promote projects that you&apos;ve delivered
-                successfully, making potential customers aware of your products and services.
+                In-depth analysis of your target audience and market segments to promote projects that you&apos;ve
+                delivered successfully, making potential customers aware of your products and services.
               </p>
             </div>
           </div>
@@ -214,7 +181,7 @@ const ContentMarketingStrategy = () => {
             <div className="bg-white rounded-md overflow-hidden shadow-sm">
               <div className="h-48 bg-[#1ab5b3] flex items-center justify-center">
                 <Image
-                  src={project1}
+                  src={project1 || "/placeholder.svg"}
                   alt="Creative Design"
                   width={200}
                   height={150}
@@ -233,7 +200,7 @@ const ContentMarketingStrategy = () => {
             <div className="bg-white rounded-md overflow-hidden shadow-sm">
               <div className="h-48 bg-[#2c3e50] flex items-center justify-center">
                 <Image
-                  src={project2}
+                  src={project2 || "/placeholder.svg"}
                   alt="Strategic Designs"
                   width={200}
                   height={150}
@@ -252,7 +219,7 @@ const ContentMarketingStrategy = () => {
             <div className="bg-white rounded-md overflow-hidden shadow-sm">
               <div className="h-48 bg-[#8bc34a] flex items-center justify-center">
                 <Image
-                  src={project2}
+                  src={project2 || "/placeholder.svg"}
                   alt="Elegant Tech"
                   width={200}
                   height={150}
@@ -312,7 +279,7 @@ const ContentMarketingStrategy = () => {
           <div className="flex">
             <div className="mr-6">
               <Image
-                src={bigImage}
+                src={bigImage || "/placeholder.svg"}
                 alt="Content Marketing"
                 width={150}
                 height={150}
@@ -330,136 +297,8 @@ const ContentMarketingStrategy = () => {
         </div>
       </div>
 
-      {/* Contact Form Section */}
-      <div className="bg-gray-100 py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Tell us about your project</h2>
-            <p className="text-gray-600">Let us help you get your business online and grow it with passion</p>
-          </div>
-
-          <div className="bg-white p-8 rounded-md shadow-sm">
-            <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1ab5b3] focus:border-[#1ab5b3]"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1ab5b3] focus:border-[#1ab5b3]"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1ab5b3] focus:border-[#1ab5b3]"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1ab5b3] focus:border-[#1ab5b3]"
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
-                  Website URL
-                </label>
-                <input
-                  type="url"
-                  id="website"
-                  name="website"
-                  value={formData.website}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1ab5b3] focus:border-[#1ab5b3]"
-                />
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="details" className="block text-sm font-medium text-gray-700 mb-1">
-                  Details
-                </label>
-                <textarea
-                  id="details"
-                  name="details"
-                  value={formData.details}
-                  onChange={handleInputChange}
-                  rows={5}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#1ab5b3] focus:border-[#1ab5b3]"
-                ></textarea>
-              </div>
-
-              <div className="text-center">
-                <button type="submit" className="bg-[#1ab5b3] hover:bg-[#159e9c] text-white py-3 px-8 rounded-md">
-                  Talk to an expert
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {/* Testimonials */}
-          <div className="mt-12">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-light text-gray-700">Testimonials</h3>
-              <Link href="/testimonials" className="text-[#1ab5b3] text-sm hover:underline">
-                See all testimonials
-              </Link>
-            </div>
-
-            <div className="bg-white p-6 rounded-md shadow-sm">
-              <blockquote className="text-gray-700 italic mb-4">
-                "We've looked at a lot of SEO solutions but these guys were so far ahead of the competition it was an
-                easy choice. They have the right strategy and they&apos;ve been awesome to work with."
-              </blockquote>
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-                  <Image src="/images/avatar.png" alt="Jane Warner" width={48} height={48} className="object-cover" />
-                </div>
-                <div>
-                  <div className="font-medium">Jane Warner</div>
-                  <div className="text-sm text-gray-600">CEO, Company Name</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Contact Form Section - Now using the separate component */}
+      <Form />
     </div>
   )
 }
