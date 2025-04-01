@@ -6,7 +6,7 @@ import seo_specialist from "@/Images/seo_specialist_workplace-optimized.png"
 export function GoogleRankingSection() {
   return (
     <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-white">
-      <div className="container mx-auto">
+      <div className="container ">
         <div className="flex flex-col md:flex-row items-center">
           {/* Image container - full width on mobile, half width on desktop */}
           <div className="w-full md:w-1/2 mb-8 md:mb-0 md:pr-4 lg:pr-8 xl:pr-12 flex justify-center md:justify-end">

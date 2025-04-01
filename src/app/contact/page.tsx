@@ -5,7 +5,7 @@ import { officeLocations } from "@/data/locations"
 
 export default function ContactPage() {
   // Ensure nepalOffice is valid before passing it to MapWrapper
-  const nepalOffice = officeLocations.find((loc) => loc.country === "Nepal")
+  const indiaOffice = officeLocations.find((loc) => loc.country === "India")
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -20,7 +20,7 @@ export default function ContactPage() {
       {/* Map Section */}
       <div className="w-full">
         <MapWrapper
-          locations={nepalOffice ? [nepalOffice] : []}
+          locations={indiaOffice ? [indiaOffice] : []}
           initialZoom={15}
           height="320px"
           showLocationTabs={false}

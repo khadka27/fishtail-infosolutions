@@ -13,6 +13,8 @@ import {
   Github,
   GalleryThumbnailsIcon as Flickr,
 } from "lucide-react";
+import Image from "next/image";
+import logo1 from "@/Images/Logo-Fishtail-Infosolutions.png"
 
 export function Footer() {
   const scrollToTop = () => {
@@ -23,24 +25,7 @@ export function Footer() {
     <footer className="bg-gray-900 text-white py-8 md:py-12 px-4 sm:px-8 md:px-16">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 mb-8 md:mb-16">
-          {/* Logo and company info */}
-          <div className="flex flex-col">
-            <div className="mb-4 md:mb-6">
-              <div className="flex items-start">
-                <div className="text-xl sm:text-2xl font-bold">
-                  <span className="text-white">SEO</span>
-                  <span className="text-white">WP</span>
-                </div>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider mt-1">
-                DIGITAL
-                <br />
-                MARKETING
-                <br />
-                AGENCY
-              </div>
-            </div>
-          </div>
+          <Image src={logo1} alt="Logo" width={150} height={50} className="mb-4" />
 
           {/* Description */}
           <div>

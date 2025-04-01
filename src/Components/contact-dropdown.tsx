@@ -1,4 +1,4 @@
-import { MapPin, Users, Search, CreditCard } from "lucide-react";
+import { MapPin, Users, } from "lucide-react";
 import Link from "next/link";
 
 export function ContactDropdown() {
@@ -33,30 +33,6 @@ export function ContactDropdown() {
                 <Users className="h-4 w-4 inline-block" />
               </span>
               <span>Multiply Addresses</span>
-            </Link>
-
-            <h4 className="text-gray-600 font-semibold text-sm mt-5 mb-2">
-              Simple Forms:
-            </h4>
-
-            <Link
-              href="/contact/free-seo-analysis"
-              className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
-            >
-              <span className="text-gray-400 mr-3 w-5 text-center">
-                <Search className="h-4 w-4 inline-block" />
-              </span>
-              <span>Free SEO analysis</span>
-            </Link>
-
-            <Link
-              href="/contact/paypal-service"
-              className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
-            >
-              <span className="text-gray-400 mr-3 w-5 text-center">
-                <CreditCard className="h-4 w-4 inline-block" />
-              </span>
-              <span>PayPal Service Order</span>
             </Link>
           </div>
         </div>
