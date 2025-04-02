@@ -1,43 +1,31 @@
-// src/app/blog/[slug]/page.tsx
+// src/app/project/[id]/page.tsx
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BlogPageComponent from "@/Components/blog-page";
 
-const blogPosts = [
+// Sample projects data
+const projects = [
   {
-    id: "search-engine-submission",
-    title: "Is Search Engine Submission Necessary?",
-    description:
-      "Learn why search engine submission isn't necessary in modern SEO and how search engines discover and index your content naturally.",
+    id: "project-1",
+    title: "Project One",
+    description: "This is project one description.",
   },
   {
-    id: "inbound-linking",
-    title: "Can Any Inbound Linking Hurt My Ranking?",
-    description:
-      "Discover the truth about inbound linking and how it affects your search ranking. Learn why quality matters more than quantity.",
+    id: "project-2",
+    title: "Project Two",
+    description: "This is project two description.",
   },
-  {
-    id: "anchor-text",
-    title: "The Importance of Anchor Text in Back-links",
-    description:
-      "Understand how anchor text in backlinks impacts your SEO strategy and why it's crucial for improving your search engine rankings.",
-  },
-  {
-    id: "absolute-vs-relative-links",
-    title: "Absolute Links vs. Relative Links – SEO Value",
-    description:
-      "Compare absolute and relative links and learn which provides better SEO value for your website's internal linking strategy.",
-  },
+  // ... add more projects if needed
 ];
 
-async function getPost(slug: string) {
-  return blogPosts.find((post) => post.id === slug);
+async function getProject(id: string) {
+  return projects.find((project) => project.id === id);
 }
 
 // Generate static params for pre-rendering
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.id,
+  return projects.map((project) => ({
+    id: project.id,
   }));
 }
 
@@ -45,52 +33,52 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const { slug } = await params;
-  const post = await getPost(slug);
-  if (!post) {
+  const { id } = await params;
+  const project = await getProject(id);
+  if (!project) {
     return {
-      title: "Post Not Found",
-      description: "The requested blog post could not be found.",
+      title: "Project Not Found",
+      description: "The requested project could not be found.",
     };
   }
   return {
-    title: `${post.title} | SEO Blog`,
-    description: post.description,
+    title: `${project.title} | My Projects`,
+    description: project.description,
   };
 }
 
 // Loading component
 function Loading() {
-  return <div className="p-4">Loading blog post...</div>;
+  return <div className="p-4">Loading project...</div>;
 }
 
-// Blog post content component
-function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
+// Project page content component
+function ProjectPage({ project }: { project: (typeof projects)[0] }) {
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-600 mb-8">{post.description}</p>
+      <h1 className="text-2xl font-bold mb-4">{project.title}</h1>
+      <p className="text-gray-600 mb-8">{project.description}</p>
       <BlogPageComponent />
     </div>
   );
 }
 
-// Page component
-export default async function BlogPostPage({
+// Main page component
+export default async function ProjectPageWrapper({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const { slug } = await params;
-  const post = await getPost(slug);
-  if (!post) {
+  const { id } = await params;
+  const project = await getProject(id);
+  if (!project) {
     notFound();
   }
   return (
     <Suspense fallback={<Loading />}>
-      <BlogPost post={post} />
+      <ProjectPage project={project} />
     </Suspense>
   );
 }
