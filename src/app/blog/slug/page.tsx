@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import BlogPageComponent from "@/Components/blog-page";
+import { Suspense } from "react";
 
 // Sample blog posts data (simplified for metadata only)
 const blogPosts = [
@@ -30,6 +30,12 @@ const blogPosts = [
   },
 ];
 
+// Get blog post by slug
+async function getPost(slug: string) {
+  // In a real app, this would be a database or API call
+  return blogPosts.find((post) => post.id === slug);
+}
+
 // Generate static params to pre-render pages
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -42,8 +48,8 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}): Promise<Metadata> {
-  const post = blogPosts.find((post) => post.id === params.slug);
+}) {
+  const post = await getPost(params.slug);
 
   if (!post) {
     return {
@@ -58,13 +64,37 @@ export async function generateMetadata({
   };
 }
 
-// Page component without custom type declarations
-export default function BlogPostPage({ params }: { readonly params: { readonly slug: string } }) {
-  const post = blogPosts.find((post) => post.id === params.slug);
+// Loading component for Suspense
+function Loading() {
+  return <div className="p-4">Loading blog post...</div>;
+}
+
+// Blog post content component
+function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
+      <p className="text-gray-600 mb-8">{post.description}</p>
+      <BlogPageComponent />
+    </div>
+  );
+}
+
+// Page component
+export default async function BlogPostPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await getPost(params.slug);
 
   if (!post) {
     notFound();
   }
 
-  return <BlogPageComponent />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <BlogPost post={post} />
+    </Suspense>
+  );
 }
