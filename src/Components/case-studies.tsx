@@ -3,74 +3,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import project1 from "@/Images/case1.png"
-import project2 from "@/Images/case2.png"
-import project3 from "@/Images/case3.png"
-import logo1 from "@/Images/logo1.png"
-import logo2 from "@/Images/logo2.png"
-import logo3 from "@/Images/logo3.png"
-import logo4 from "@/Images/logo4.png"
-import logo5 from "@/Images/logo5.png"
-import logo6 from "@/Images/logo-6.png"
-
-// Project data structure
-const projects = [
-  {
-    id: "opertray-division",
-    title: "Opertray Division",
-    category: "Web Design",
-    image: project1,
-    bgColor: "bg-cyan-500",
-  },
-  {
-    id: "tremely-designs",
-    title: "Tremely Designs",
-    category: "SEO Optimization",
-    image: project2,
-    bgColor: "bg-blue-700",
-  },
-  {
-    id: "plainst-tech",
-    title: "Plainst Tech",
-    category: "Digital Marketing",
-    image: project3,
-    bgColor: "bg-lime-500",
-  },
-  {
-    id: "maindex-solutions",
-    title: "Maindex Solutions",
-    category: "Web Development",
-    image: project1,
-    bgColor: "bg-sky-500",
-  },
-  {
-    id: "existernal-ltd",
-    title: "Existernal Ltd.",
-    category: "Analytics",
-    image: project2,
-    bgColor: "bg-lime-500",
-  },
-  {
-    id: "coderama",
-    title: "Coderama",
-    category: "App Development",
-    image: project3,
-    bgColor: "bg-amber-500",
-  },
-]
-
-// Get unique categories for filter
-const categories = ["All", ...new Set(projects.map((project) => project.category))]
-
-// Client logos
-const clientLogos = [
-  { name: "University", image: logo1 },
-  { name: "Academy", image: logo2 },
-  { name: "University Academy", image: logo3 },
-  { name: "Athletics", image: logo4 },
-  { name: "University Shield", image: logo5 },
-  { name: "Cross Sport", image: logo6 },
-]
+import { projects, categories, clientLogos } from "@/lib/project-data"
 
 export default function CaseStudiesPage() {
   const [activeCategory, setActiveCategory] = useState("All")
@@ -95,7 +28,7 @@ export default function CaseStudiesPage() {
             </div>
             <div className="flex justify-center mt-4 md:mt-0">
               <Image
-                src={project1 || "/placeholder.svg"}
+                src={projects[0].image || "/placeholder.svg"}
                 alt="Digital Marketing Illustration"
                 width={400}
                 height={300}

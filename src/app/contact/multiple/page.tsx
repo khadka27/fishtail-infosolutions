@@ -1,12 +1,20 @@
-import { MapPin, Phone, Mail } from "lucide-react";
-import Link from "next/link";
-import MapWrapper from "@/Components/map-wrapper";
-import ContactForm from "@/Components/contact-form";
-import { officeLocations } from "@/data/locations";
+import type { Metadata } from "next"
+import { MapPin, Phone, Mail } from "lucide-react"
+import Link from "next/link"
+import MapWrapper from "@/Components/map-wrapper"
+import ContactForm from "@/Components/contact-form"
+import { officeLocations } from "@/data/locations"
+
+// Add metadata for the multi-address contact page
+export const metadata: Metadata = {
+  title: "Contact Our Global Offices | Fishtail Info Solutions",
+  description:
+    "Reach out to Fishtail Info Solutions at our offices in the UK, US, Nepal, and India. Find our contact details, office locations, and send us a message through our contact form.",
+}
 
 export default function MultiAddressContactPage() {
   // Log the officeLocations to verify they're imported correctly
-  console.log("MultiAddressPage officeLocations:", officeLocations);
+  console.log("MultiAddressPage officeLocations:", officeLocations)
 
   // Create a local copy of the locations to ensure they're properly defined
   const locations = [
@@ -31,19 +39,17 @@ export default function MultiAddressContactPage() {
     {
       name: "Delhi Office",
       country: "India",
-      coordinates: [28.6010, 77.0787] as [number, number],
+      coordinates: [28.601, 77.0787] as [number, number],
       address: "Mahavir Enclave, South West Delhi, New Delhi, 110045",
     },
-  ];
+  ]
 
   return (
     <div className="max-w-7xl mx-auto">
       {/* Header Section */}
       <div className="bg-gray-100 py-16 px-4">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
-          <h1 className="text-5xl font-light text-gray-700 mb-4 md:mb-0">
-            Get in touch
-          </h1>
+          <h1 className="text-5xl font-light text-gray-700 mb-4 md:mb-0">Get in touch</h1>
           <p className="text-gray-500">Any questions?</p>
         </div>
       </div>
@@ -52,13 +58,9 @@ export default function MultiAddressContactPage() {
       <div className="py-8 px-4 border-b">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
           <p className="text-gray-700 mb-4 md:mb-0">
-            Please contact us using the form and we&apos;ll get back to you as
-            soon as possible.
+            Please contact us using the form and we&apos;ll get back to you as soon as possible.
           </p>
-          <Link
-            href="/quote"
-            className="flex items-center text-blue-500 hover:text-blue-600"
-          >
+          <Link href="/quote" className="flex items-center text-blue-500 hover:text-blue-600">
             <svg
               className="w-5 h-5 mr-2"
               viewBox="0 0 24 24"
@@ -82,20 +84,14 @@ export default function MultiAddressContactPage() {
           <div className="space-y-16">
             {/* United Kingdom Office */}
             <div>
-              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">
-                United Kingdom
-              </h2>
+              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">United Kingdom</h2>
 
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <div>
-                    <p className="text-gray-800 font-medium">
-                      +1 (234) 567.892.11
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      Monday–Friday 9am-6pm
-                    </p>
+                    <p className="text-gray-800 font-medium">+1 (234) 567.892.11</p>
+                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
                   </div>
                 </div>
 
@@ -106,10 +102,7 @@ export default function MultiAddressContactPage() {
 
                 <div className="flex items-start">
                   <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a
-                    href="mailto:info@example.com"
-                    className="text-blue-500 hover:underline"
-                  >
+                  <a href="mailto:info@example.com" className="text-blue-500 hover:underline">
                     info@fishtailinfosolutions.com
                   </a>
                 </div>
@@ -119,11 +112,9 @@ export default function MultiAddressContactPage() {
                   <div>
                     <p className="text-gray-800">192-184 High Street North East Ham,</p>
                     <p className="text-gray-800">London,E6 2JA</p>
-                   
+
                     <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">
-                      Mon to Fri from 8am to 6pm
-                    </p>
+                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
                   </div>
                 </div>
               </div>
@@ -131,20 +122,14 @@ export default function MultiAddressContactPage() {
 
             {/* United Office */}
             <div>
-              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">
-                United States
-              </h2>
+              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">United States</h2>
 
               <div className="space-y-4">
                 <div className="flex items-start">
                   <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <div>
-                    <p className="text-gray-800 font-medium">
-                      +1 (801) 987-0424
-                    </p>
-                    <p className="text-sm text-gray-500">
-                      Monday–Friday 9am-6pm
-                    </p>
+                    <p className="text-gray-800 font-medium">+1 (801) 987-0424</p>
+                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
                   </div>
                 </div>
 
@@ -155,10 +140,7 @@ export default function MultiAddressContactPage() {
 
                 <div className="flex items-start">
                   <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a
-                    href="mailto:info@example.com"
-                    className="text-blue-500 hover:underline"
-                  >
+                  <a href="mailto:info@example.com" className="text-blue-500 hover:underline">
                     info@fishtailinfosolutions.com
                   </a>
                 </div>
@@ -170,9 +152,7 @@ export default function MultiAddressContactPage() {
                     <p className="text-gray-800">DE 19701-1450</p>
                     <p className="text-gray-800 mb-2">Canada</p>
                     <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">
-                      Mon to Fri from 8am to 6pm
-                    </p>
+                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
                   </div>
                 </div>
               </div>
@@ -187,20 +167,13 @@ export default function MultiAddressContactPage() {
                   <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <div>
                     <p className="text-gray-800 font-medium">+977 61 123456</p>
-                    <p className="text-sm text-gray-500">
-                      Monday–Friday 9am-6pm
-                    </p>
+                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
                   </div>
                 </div>
 
-               
-
                 <div className="flex items-start">
                   <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a
-                    href="mailto:rahul@fistailinfosolutions"
-                    className="text-blue-500 hover:underline"
-                  >
+                  <a href="mailto:rahul@fistailinfosolutions" className="text-blue-500 hover:underline">
                     rahul@fistailinfosolutions
                   </a>
                 </div>
@@ -212,9 +185,7 @@ export default function MultiAddressContactPage() {
                     <p className="text-gray-800">Pokhara</p>
                     <p className="text-gray-800 mb-2">Nepal</p>
                     <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">
-                      Mon to Fri from 8am to 6pm
-                    </p>
+                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
                   </div>
                 </div>
               </div>
@@ -228,20 +199,13 @@ export default function MultiAddressContactPage() {
                   <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
                   <div>
                     <p className="text-gray-800 font-medium">+977 61 123456</p>
-                    <p className="text-sm text-gray-500">
-                      Monday–Friday 9am-6pm
-                    </p>
+                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
                   </div>
                 </div>
 
-               
-
                 <div className="flex items-start">
                   <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a
-                    href="mailto:rahul@fistailinfosolutions"
-                    className="text-blue-500 hover:underline"
-                  >
+                  <a href="mailto:rahul@fistailinfosolutions" className="text-blue-500 hover:underline">
                     rahul@fistailinfosolutions
                   </a>
                 </div>
@@ -253,9 +217,7 @@ export default function MultiAddressContactPage() {
                     <p className="text-gray-800">New Delhi, 110045</p>
                     <p className="text-gray-800 mb-2">India</p>
                     <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">
-                      Mon to Fri from 8am to 6pm
-                    </p>
+                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
                   </div>
                 </div>
               </div>
@@ -275,5 +237,6 @@ export default function MultiAddressContactPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
+
