@@ -30,17 +30,17 @@ const blogPosts = [
   },
 ];
 
-// Updated Props interface to match Next.js 13+ requirements
-interface BlogParams {
-  slug: string;
-}
+// For Next.js App Router, use specific params type
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
 // Generate metadata for the page
 export async function generateMetadata({
   params,
-}: {
-  params: BlogParams;
-}): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const post = blogPosts.find((post) => post.id === params.slug);
 
   if (!post) {
@@ -56,8 +56,8 @@ export async function generateMetadata({
   };
 }
 
-// Page component with correct props type
-export default function BlogPostPage({ params }: { params: BlogParams }) {
+// Page component using the same PageProps type
+export default function BlogPostPage({ params }: PageProps) {
   const post = blogPosts.find((post) => post.id === params.slug);
 
   if (!post) {
