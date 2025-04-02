@@ -69,7 +69,7 @@ function Loading() {
 }
 
 // Blog post content component
-function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
+function BlogPost({ post }: Readonly<{ post: (typeof blogPosts)[0] }>) {
   return (
     <div>
       <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
@@ -80,9 +80,9 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
 }
 
 // Page component
-export default async function BlogPostPage(props: {
+export default async function BlogPostPage(props: Readonly<{
   params: Promise<{ slug: string }>;
-}) {
+}>) {
   const params = await props.params;
   const post = await getPost(params.slug);
 
