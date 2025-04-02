@@ -1,6 +1,6 @@
-import type { Metadata } from "next"
-import { notFound } from "next/navigation"
-import BlogPageComponent from "@/Components/blog-page"
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import BlogPageComponent from "@/Components/blog-page";
 
 // Sample blog posts data (simplified for metadata only)
 const blogPosts = [
@@ -28,35 +28,41 @@ const blogPosts = [
     description:
       "Compare absolute and relative links and learn which provides better SEO value for your website's internal linking strategy.",
   },
-]
+];
 
-type Props = {
-  params: { slug: string }
+// Updated Props interface to match Next.js 13+ requirements
+interface BlogParams {
+  slug: string;
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const post = blogPosts.find((post) => post.id === params.slug)
+// Generate metadata for the page
+export async function generateMetadata({
+  params,
+}: {
+  params: BlogParams;
+}): Promise<Metadata> {
+  const post = blogPosts.find((post) => post.id === params.slug);
 
   if (!post) {
     return {
       title: "Post Not Found",
       description: "The requested blog post could not be found.",
-    }
+    };
   }
 
   return {
     title: `${post.title} | SEO Blog`,
     description: post.description,
-  }
+  };
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = blogPosts.find((post) => post.id === params.slug)
+// Page component with correct props type
+export default function BlogPostPage({ params }: { params: BlogParams }) {
+  const post = blogPosts.find((post) => post.id === params.slug);
 
   if (!post) {
-    notFound()
+    notFound();
   }
 
-  return <BlogPageComponent />
+  return <BlogPageComponent />;
 }
-
