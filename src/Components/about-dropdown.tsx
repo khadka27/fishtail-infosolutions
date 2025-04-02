@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Briefcase, FileText, Package2, Users, MessageSquare, BookOpen, FileBarChart } from "lucide-react"
+import { Briefcase, FileText, Package2, Users, MessageSquare, FileBarChart } from "lucide-react"
 
 export function AboutDropdown() {
   return (
@@ -17,14 +17,14 @@ export function AboutDropdown() {
             <span>Our Agency</span>
           </Link>
 
-          <Link href="/about" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <FileText className="h-4 w-4 inline-block" />
             </span>
             <span>Our Services</span>
           </Link>
 
-          <Link href="/about" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/pricing" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <Package2 className="h-4 w-4 inline-block" />
             </span>
@@ -53,14 +53,9 @@ export function AboutDropdown() {
             <span>Testimonials</span>
           </Link>
 
-          <Link href="/about" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <BookOpen className="h-4 w-4 inline-block" />
-            </span>
-            <span>Free Resources</span>
-          </Link>
+         
 
-          <Link href="/about" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/project" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <FileBarChart className="h-4 w-4 inline-block" />
             </span>

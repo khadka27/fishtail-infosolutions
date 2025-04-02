@@ -1,7 +1,15 @@
-import { MapPin, Phone, Mail, MessageSquare } from 'lucide-react'
+import type { Metadata } from "next"
+import { MapPin, Phone, Mail, MessageSquare } from "lucide-react"
 import MapWrapper from "@/Components/map-wrapper"
 import ContactForm from "@/Components/contact-form"
 import { officeLocations } from "@/data/locations"
+
+// Add metadata for the contact page
+export const metadata: Metadata = {
+  title: "Contact Fishtail Info Solutions | Get in Touch with Our Team",
+  description:
+    "Reach out to Fishtail Info Solutions in Pokhara, Nepal. Contact us by phone, email, or visit our office to discuss your digital marketing and technology needs.",
+}
 
 export default function ContactPage() {
   // Ensure nepalOffice is valid before passing it to MapWrapper
@@ -68,10 +76,7 @@ export default function ContactPage() {
         </div>
 
         {/* Contact Form with EmailJS and export functionality */}
-        <ContactForm 
-          
-          
-        />
+        <ContactForm />
       </div>
     </div>
   )
