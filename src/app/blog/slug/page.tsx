@@ -44,11 +44,10 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for the page
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
 }) {
+  const params = await props.params;
   const post = await getPost(params.slug);
 
   if (!post) {
@@ -81,11 +80,10 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
 }
 
 // Page component
-export default async function BlogPostPage({
-  params,
-}: {
-  params: { slug: string };
+export default async function BlogPostPage(props: {
+  params: Promise<{ slug: string }>;
 }) {
+  const params = await props.params;
   const post = await getPost(params.slug);
 
   if (!post) {
