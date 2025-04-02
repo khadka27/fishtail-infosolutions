@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+
 // Add this metadata export before the Home component
 export const metadata: Metadata = {
   title: "Digital Marketing & SEO Agency | Boost Your Online Presence",
@@ -16,6 +17,7 @@ import { HeroSection } from "../Components/hero-section"
 import { ServicesSection } from "../Components/services-section"
 import TestimonialsSection from "../Components/testimonial-section"
 
+
 export default function Home() {
   return (
     <main className="min-h-screen">
@@ -27,6 +29,5 @@ export default function Home() {
       <TestimonialsSection />
       <CaseStudiesSection />
     </main>
-  )
+  );
 }
-
