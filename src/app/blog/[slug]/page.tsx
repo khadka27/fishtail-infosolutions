@@ -45,9 +45,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await getPost(slug);
   if (!post) {
     return {
       title: "Post Not Found",
@@ -80,9 +81,10 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = await getPost(params.slug);
+  const { slug } = await params;
+  const post = await getPost(slug);
   if (!post) {
     notFound();
   }
