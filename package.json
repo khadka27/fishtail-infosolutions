@@ -23,6 +23,7 @@
     "next": "15.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-feather": "^2.0.10",
     "react-hot-toast": "^2.5.2",
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.4"

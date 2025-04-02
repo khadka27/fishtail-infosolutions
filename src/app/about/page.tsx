@@ -1,5 +1,6 @@
-import AgencyPage from "@/Components/agency-section"
 import type { Metadata } from "next"
+import AgencyPage from "@/Components/agency-section"
+import { teamMembers } from "@/data/team-members"
 
 export const metadata: Metadata = {
   title: "Our Agency | Full-Service Digital Marketing Experts",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function About() {
-  return <AgencyPage />
+  // Pass the teamMembers to the AgencyPage component
+  return <AgencyPage teamMembers={teamMembers} />
 }
 
