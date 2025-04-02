@@ -1,5 +1,5 @@
 // src/app/blog/page.tsx
-import type { Metadata } from "next";
+import type { NextPage, Metadata } from "next";
 import BlogPageComponent from "@/Components/blog-page";
 
 export const metadata: Metadata = {
@@ -8,6 +8,8 @@ export const metadata: Metadata = {
     "Explore our latest articles on search engine optimization, digital marketing strategies, and industry best practices to improve your online presence.",
 };
 
-export default function BlogPage() {
+const BlogPage: NextPage = () => {
   return <BlogPageComponent />;
-}
+};
+
+export default BlogPage;

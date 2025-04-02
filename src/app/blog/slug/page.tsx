@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import BlogPageComponent from "@/Components/blog-page";
 
-// Sample blog posts data
 const blogPosts = [
   {
     id: "search-engine-submission",
@@ -31,7 +30,6 @@ const blogPosts = [
   },
 ];
 
-// Get blog post by slug
 async function getPost(slug: string) {
   return blogPosts.find((post) => post.id === slug);
 }
@@ -50,14 +48,12 @@ export async function generateMetadata({
   params: { slug: string };
 }) {
   const post = await getPost(params.slug);
-
   if (!post) {
     return {
       title: "Post Not Found",
       description: "The requested blog post could not be found.",
     };
   }
-
   return {
     title: `${post.title} | SEO Blog`,
     description: post.description,
@@ -87,11 +83,9 @@ export default async function BlogPostPage({
   params: { slug: string };
 }) {
   const post = await getPost(params.slug);
-
   if (!post) {
     notFound();
   }
-
   return (
     <Suspense fallback={<Loading />}>
       <BlogPost post={post} />
