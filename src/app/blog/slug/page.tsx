@@ -1,8 +1,9 @@
+// src/app/blog/[slug]/page.tsx
 import { notFound } from "next/navigation";
-import BlogPageComponent from "@/Components/blog-page";
 import { Suspense } from "react";
+import BlogPageComponent from "@/Components/blog-page";
 
-// Sample blog posts data (simplified for metadata only)
+// Sample blog posts data
 const blogPosts = [
   {
     id: "search-engine-submission",
@@ -32,11 +33,10 @@ const blogPosts = [
 
 // Get blog post by slug
 async function getPost(slug: string) {
-  // In a real app, this would be a database or API call
   return blogPosts.find((post) => post.id === slug);
 }
 
-// Generate static params to pre-render pages
+// Generate static params for pre-rendering
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.id,
@@ -63,15 +63,15 @@ export async function generateMetadata(props: {
   };
 }
 
-// Loading component for Suspense
+// Loading component
 function Loading() {
   return <div className="p-4">Loading blog post...</div>;
 }
 
 // Blog post content component
-function BlogPost({ post }: Readonly<{ post: (typeof blogPosts)[0] }>) {
+function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
   return (
-    <div>
+    <div className="max-w-4xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-4">{post.title}</h1>
       <p className="text-gray-600 mb-8">{post.description}</p>
       <BlogPageComponent />
@@ -80,9 +80,9 @@ function BlogPost({ post }: Readonly<{ post: (typeof blogPosts)[0] }>) {
 }
 
 // Page component
-export default async function BlogPostPage(props: Readonly<{
+export default async function BlogPostPage(props: {
   params: Promise<{ slug: string }>;
-}>) {
+}) {
   const params = await props.params;
   const post = await getPost(params.slug);
 
