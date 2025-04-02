@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next"
 import { CaseStudiesSection } from "../Components/case-studies-section"
 import ClientLogos from "../Components/client-logos"
@@ -6,6 +7,8 @@ import { GoogleRankingSection } from "../Components/google-ranking-section"
 import { HeroSection } from "../Components/hero-section"
 import { ServicesSection } from "../Components/services-section"
 import TestimonialsSection from "../Components/testimonial-section"
+
+
 
 // Add this metadata export before the Home component
 export const metadata: Metadata = {
@@ -88,6 +91,5 @@ export default function Home() {
       <TestimonialsSection />
       <CaseStudiesSection />
     </main>
-  )
+  );
 }
-
