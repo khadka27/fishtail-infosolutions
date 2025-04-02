@@ -59,7 +59,7 @@ export async function generateMetadata({
 }
 
 // Page component without custom type declarations
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
+export default function BlogPostPage({ params }: { readonly params: { readonly slug: string } }) {
   const post = blogPosts.find((post) => post.id === params.slug);
 
   if (!post) {
