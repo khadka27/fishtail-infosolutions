@@ -30,17 +30,19 @@ const blogPosts = [
   },
 ];
 
-// For Next.js App Router, use specific params type
-type PageProps = {
-  params: {
-    slug: string;
-  };
-};
+// Generate static params to pre-render pages
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.id,
+  }));
+}
 
 // Generate metadata for the page
 export async function generateMetadata({
   params,
-}: PageProps): Promise<Metadata> {
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const post = blogPosts.find((post) => post.id === params.slug);
 
   if (!post) {
@@ -56,8 +58,8 @@ export async function generateMetadata({
   };
 }
 
-// Page component using the same PageProps type
-export default function BlogPostPage({ params }: PageProps) {
+// Page component without custom type declarations
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = blogPosts.find((post) => post.id === params.slug);
 
   if (!post) {
