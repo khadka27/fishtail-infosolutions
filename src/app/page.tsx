@@ -1,4 +1,5 @@
 
+
 import type { Metadata } from "next"
 import { CaseStudiesSection } from "../Components/case-studies-section"
 import ClientLogos from "../Components/client-logos"
@@ -79,6 +80,7 @@ export const metadata: Metadata = {
     },
   },
 }
+
 
 export default function Home() {
   return (
