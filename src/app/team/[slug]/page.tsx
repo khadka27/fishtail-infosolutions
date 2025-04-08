@@ -50,7 +50,7 @@ export default function TeamMemberPage({ params }: { params: { slug: string } })
           {/* Profile Image - Left Column */}
           <div className="w-full md:w-1/3">
             <Image
-              src={avatar || "/placeholder.svg"}
+              src={teamMember.avatar || "/placeholder.svg"}
               alt={teamMember.name}
               width={400}
               height={400}
