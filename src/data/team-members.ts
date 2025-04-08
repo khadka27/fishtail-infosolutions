@@ -1,9 +1,5 @@
 import avatar from "@/Images/avatar-4.png";
-import rahulDai from "@/Images/rahul-rauniyar.jpeg";
-import bishal from "@/Images/bishal-gupta.jpeg";
-import abishek from "@/Images/abishek.jpeg";
-import ashish from "@/Images/ashish.jpeg";
-import pratikshya from "@/Images/partikshya.jpeg";
+
 import type { StaticImageData } from "next/image";
 
 export type TeamMember = {
