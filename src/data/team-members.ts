@@ -26,7 +26,7 @@ export const teamMembers: TeamMember[] = [
     bio: "Maria has over 10 years of experience in digital marketing and leads our marketing team with innovative strategies that drive results for our clients.",
   },
   {
-    name: "Rajan Rauniyar",
+    name: "Bishal Gupta",
     position: "SEO Specialist",
     avatar: bishal,
     bgColor: "bg-blue-300",
@@ -67,7 +67,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Diwas Gurung",
-    position: "SEO and SEM Specialist",
+    position: "Frontend Developer",
     avatar: avatar,
     bgColor: "bg-blue-200",
     slug: "maisie-wade",
