@@ -19,7 +19,6 @@ import {
   Coffee,
 } from "lucide-react"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import avatar from "@/Images/avatar-4.png"
 import type { TeamMember } from "@/data/team-members"
 
 // Stats data
@@ -180,13 +179,14 @@ export default function AgencyPage({ teamMembers }: { teamMembers: TeamMember[] 
                 key={index}
                 className="flex flex-col hover:transform hover:scale-105 transition-transform duration-200"
               >
-                <div className={`${member.bgColor} p-4 rounded-t-lg`}>
+                <div className={`${member.bgColor} rounded-t-lg relative h-64 overflow-hidden`}>
                   <Image
-                    src={avatar || "/placeholder.svg"}
+                    src={member.avatar || "/placeholder.svg"}
                     alt={member.name}
-                    width={300}
-                    height={300}
-                    className="w-full h-auto"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                    className="object-cover"
+                    priority={index < 4}
                   />
                 </div>
                 <div className="bg-gray-700 p-4 rounded-b-lg">

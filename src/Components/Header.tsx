@@ -127,25 +127,32 @@ export function Header() {
               <Heart className="h-4 w-4 md:h-5 md:w-5 mr-2 md:mr-3" />
               <span className="text-sm md:text-base">Easy to use theme with exciting features</span>
             </div>
-            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 md:space-x-8">
+            <div className="flex items-center space-x-4 md:space-x-8">
               <div className="flex items-center">
-                <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
-                <span className="text-sm md:text-base">0 (877) 123-4567</span>
+                <Phone className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
+                <span className="hidden md:inline text-sm md:text-base">0 (877) 123-4567</span>
               </div>
               <div className="flex items-center">
-                <Mail className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
-                <Link href="mailto:info@yoursite.com" className="text-sm md:text-base hover:underline">
+                <Mail className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
+                <Link href="mailto:info@yoursite.com" className="hidden md:inline text-sm md:text-base hover:underline">
                   fishtailinfosolutions.com
                 </Link>
               </div>
               <div className="relative flex items-center">
-                <Share2 className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
+                <Share2 className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
                 <span
-                  className="text-sm md:text-base cursor-pointer hover:underline"
+                  className="hidden md:inline text-sm md:text-base cursor-pointer hover:underline"
                   onMouseEnter={handleSocialMouseEnter}
                 >
                   follow us
                 </span>
+                <button
+                  className="md:hidden"
+                  onClick={() => setShowSocialMenu(!showSocialMenu)}
+                  aria-label="Follow us on social media"
+                >
+                  <span className="sr-only">Follow us</span>
+                </button>
 
                 {showSocialMenu && (
                   <div
