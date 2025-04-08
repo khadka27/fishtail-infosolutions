@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import abi from "@/Images/abishek.png";
+import abi from "@/Images/Abishek khadka.png";
 
 export type TeamMember = {
   name: string;
