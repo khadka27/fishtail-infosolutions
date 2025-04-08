@@ -1,10 +1,10 @@
-import  abi  from "@/Images/abishek.png";
-import { StaticImageData } from "next/image";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import abi from "@/Images/abishek.png";
 
 export type TeamMember = {
   name: string;
   position: string;
-  avatar:StaticImageData ;
+  avatar: any;
   bgColor: string;
   slug: string;
   bio: string;
