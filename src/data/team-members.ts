@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import abi from "@/Images/Abishek khadka.png";
+import { StaticImageData } from "next/image";
 
 export type TeamMember = {
   name: string;
   position: string;
-  avatar: any;
+  avatar: StaticImageData;
   bgColor: string;
   slug: string;
   bio: string;
