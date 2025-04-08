@@ -3,12 +3,12 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import logo1 from "Images/logo1.png";
-import logo2 from "Images/logo2.png";
-import logo3 from "Images/logo3.png";
-import logo4 from "Images/logo4.png";
-import logo5 from "Images/logo5.png";
-import logo6 from "Images/logo6.png";
+import logo1 from "@/Images/logo1.png";
+import logo2 from "@/Images/logo2.png";
+import logo3 from "@/Images/logo3.png";
+import logo4 from "@/Images/logo4.png";
+import logo5 from "@/Images/logo5.png";
+import logo6 from "@/Images/logo-6.png";
 
 const logos = [
   {
