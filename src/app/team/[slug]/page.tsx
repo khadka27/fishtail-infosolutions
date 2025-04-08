@@ -63,7 +63,7 @@ export default async function TeamMemberPage({
           {/* Profile Image - Left Column */}
           <div className="w-full md:w-1/3">
             <Image
-              src={avatar || "/placeholder.svg"}
+              src={teamMember.avatar || "/placeholder.svg"}
               alt={teamMember.name}
               width={400}
               height={400}

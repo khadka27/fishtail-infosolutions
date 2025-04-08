@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import Image from "next/image"
 import { teamMembers } from "@/data/team-members"
-import avatar from "@/Images/avatar-4.png"
+
 
 export const metadata: Metadata = {
   title: "Our Team | Meet the Experts",
@@ -30,7 +30,7 @@ export default function TeamPage() {
           >
             <div className={`${member.bgColor} p-4 rounded-t-lg`}>
               <Image
-                src={avatar || "/placeholder.svg"}
+                src={member.avatar || "/placeholder.svg"}
                 alt={member.name}
                 width={300}
                 height={300}
