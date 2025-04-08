@@ -111,7 +111,7 @@ export default function AgencyPage({
             </div>
             <div className="flex justify-center md:justify-end">
               <Image
-                src={image1 }
+                src={image1}
                 alt="Digital Marketing Illustration"
                 width={300}
                 height={200}
@@ -195,7 +195,7 @@ export default function AgencyPage({
               >
                 <div className={`${member.bgColor}  rounded-t-lg`}>
                   <Image
-                    src={abi}
+                    src={image1}
                     alt={member.name}
                     width={300}
                     height={300}
