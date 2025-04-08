@@ -19,6 +19,7 @@ import {
   Coffee,
 } from "lucide-react";
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
+import abi from "@/Images/Abishek khadka.png";
 
 import type { TeamMember } from "@/data/team-members";
 
@@ -194,7 +195,7 @@ export default function AgencyPage({
               >
                 <div className={`${member.bgColor}  rounded-t-lg`}>
                   <Image
-                    src={member.avatar || ""}
+                    src={abi || ""}
                     alt={member.name}
                     width={300}
                     height={300}
