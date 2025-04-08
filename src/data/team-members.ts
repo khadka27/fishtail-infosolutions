@@ -1,14 +1,14 @@
-import avatar from "@/Images/avatar-4.png"
-import type { StaticImageData } from "next/image"
+import avatar from "@/Images/avatar-4.png";
+import type { StaticImageData } from "next/image";
 
 export type TeamMember = {
-  name: string
-  position: string
-  avatar: StaticImageData | string
-  bgColor: string
-  slug: string
-  bio: string
-}
+  name: string;
+  position: string;
+  avatar: StaticImageData | string;
+  bgColor: string;
+  slug: string;
+  bio: string;
+};
 
 export const teamMembers: TeamMember[] = [
   {
@@ -68,12 +68,11 @@ export const teamMembers: TeamMember[] = [
     bio: "Maisie is an expert in both search engine optimization and search engine marketing, helping clients improve their online visibility.",
   },
   {
-    name: "Peter Spencer",
-    position: "Web Designer",
-    avatar: avatar,
-    bgColor: "bg-blue-600",
-    slug: "peter-spencer",
-    bio: "Peter creates beautiful, functional websites that provide excellent user experiences while meeting business objectives.",
+    name: "Abishek Khadka",
+    position: "Full Stack Developer",
+    avatar: "../Images/team/Abishek khadka.png", // Replace with your actual image URL
+    bgColor: "bg-green-600",
+    slug: "abishek-khadka",
+    bio: "Abishek is a passionate full-stack developer who builds scalable and efficient web applications, ensuring great user experiences.",
   },
-]
-
+];
