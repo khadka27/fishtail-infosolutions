@@ -19,7 +19,7 @@ import {
   Coffee,
 } from "lucide-react";
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
-import abi from "@/Images/abishek.png";
+// import abi from "@/Images/abishek.png";
 
 import type { TeamMember } from "@/data/team-members";
 
