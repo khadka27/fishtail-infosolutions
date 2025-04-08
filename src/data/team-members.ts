@@ -15,7 +15,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Rahul Rauniyar",
     position: "CEO of fistail info solutions",
-    avatar: "/public/Image/rahul-rauniyar.jpeg",
+    avatar: "/Image/rahul-rauniyar.jpeg",
     bgColor: "bg-red-100",
     slug: "rahul-runiyar",
     bio: "Maria has over 10 years of experience in digital marketing and leads our marketing team with innovative strategies that drive results for our clients.",
