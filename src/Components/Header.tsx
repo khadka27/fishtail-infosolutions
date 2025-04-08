@@ -1,18 +1,27 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { Heart, Phone, Mail, Share2, Menu, X, ChevronRight } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
-import { Button } from "./ui/button"
-import { SocialMediaDropdown } from "./social-media-dropdown"
-import { ServicesDropdown } from "./services-dropdown"
-import { AboutDropdown } from "./about-dropdown"
-import { ContactDropdown } from "./contact-dropdown"
-import { QuotePopup } from "./quote-popup"
-import logo from "@/Images/Logo-Fishtail-Infosolutions.png"
+import { useState, useEffect } from "react";
+import {
+  Heart,
+  Phone,
+  Mail,
+  Share2,
+  Menu,
+  X,
+  ChevronRight,
+} from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "./ui/button";
+import { SocialMediaDropdown } from "./social-media-dropdown";
+import { ServicesDropdown } from "./services-dropdown";
+import { AboutDropdown } from "./about-dropdown";
+import { ContactDropdown } from "./contact-dropdown";
+import { QuotePopup } from "./quote-popup";
+// import logo from "@/Images/Logo-Fishtail-Infosolutions.png"
+import logo from "@/Images/abishek-khadka.png";
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
@@ -36,86 +45,88 @@ const menuItems = {
     { label: "Multi Address", href: "/contact/multiple" },
     { label: "Instant SEO quote", href: "/contact/seo" },
   ],
-}
+};
 
 export function Header() {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null)
-  const [showSocialMenu, setShowSocialMenu] = useState(false)
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null)
-  const [scrolled, setScrolled] = useState(false)
-  const [quotePopupOpen, setQuotePopupOpen] = useState(false)
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [showSocialMenu, setShowSocialMenu] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(
+    null
+  );
+  const [scrolled, setScrolled] = useState(false);
+  const [quotePopupOpen, setQuotePopupOpen] = useState(false);
 
   // Function to handle mouse enter on menu items
   const handleMouseEnter = (menu: string) => {
-    setActiveMenu(menu)
-  }
+    setActiveMenu(menu);
+  };
 
   // Function to handle mouse leave on menu items
   const handleMouseLeave = () => {
-    setActiveMenu(null)
-  }
+    setActiveMenu(null);
+  };
 
   // Functions to handle social media dropdown
   const handleSocialMouseEnter = () => {
-    setShowSocialMenu(true)
-  }
+    setShowSocialMenu(true);
+  };
 
   const handleSocialMouseLeave = () => {
-    setShowSocialMenu(false)
-  }
+    setShowSocialMenu(false);
+  };
 
   // Toggle mobile drawer
   const toggleDrawer = () => {
-    setDrawerOpen(!drawerOpen)
+    setDrawerOpen(!drawerOpen);
     if (!drawerOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ""
+      document.body.style.overflow = "";
     }
-  }
+  };
 
   // Toggle mobile submenu
   const toggleMobileSubmenu = (menu: string) => {
-    setExpandedMobileMenu(expandedMobileMenu === menu ? null : menu)
-  }
+    setExpandedMobileMenu(expandedMobileMenu === menu ? null : menu);
+  };
 
   // Open quote popup
   const openQuotePopup = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setQuotePopupOpen(true)
+    e.preventDefault();
+    setQuotePopupOpen(true);
     if (drawerOpen) {
-      setDrawerOpen(false)
-      document.body.style.overflow = ""
+      setDrawerOpen(false);
+      document.body.style.overflow = "";
     }
-  }
+  };
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close drawer when screen size changes to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024 && drawerOpen) {
-        setDrawerOpen(false)
-        document.body.style.overflow = ""
+        setDrawerOpen(false);
+        document.body.style.overflow = "";
       }
-    }
+    };
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [drawerOpen])
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [drawerOpen]);
 
   return (
     <>
@@ -125,16 +136,23 @@ export function Header() {
           <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <div className="flex items-center text-center md:text-left">
               <Heart className="h-4 w-4 md:h-5 md:w-5 mr-2 md:mr-3" />
-              <span className="text-sm md:text-base">Easy to use theme with exciting features</span>
+              <span className="text-sm md:text-base">
+                Easy to use theme with exciting features
+              </span>
             </div>
             <div className="flex items-center space-x-4 md:space-x-8">
               <div className="flex items-center">
                 <Phone className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
-                <span className="hidden md:inline text-sm md:text-base">0 (877) 123-4567</span>
+                <span className="hidden md:inline text-sm md:text-base">
+                  0 (877) 123-4567
+                </span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
-                <Link href="mailto:info@yoursite.com" className="hidden md:inline text-sm md:text-base hover:underline">
+                <Link
+                  href="mailto:info@yoursite.com"
+                  className="hidden md:inline text-sm md:text-base hover:underline"
+                >
                   fishtailinfosolutions.com
                 </Link>
               </div>
@@ -177,7 +195,13 @@ export function Header() {
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
-                <Image src={logo || "/placeholder.svg"} width={250} height={150} className="object-contain" alt={""} />
+                <Image
+                  src={logo || "/placeholder.svg"}
+                  width={250}
+                  height={150}
+                  className="object-contain"
+                  alt={""}
+                />
               </Link>
             </div>
 
@@ -240,7 +264,11 @@ export function Header() {
               </div>
 
               <div className="flex items-center space-x-2 md:space-x-4">
-                <Link href="/quote" className="hidden sm:block" onClick={openQuotePopup}>
+                <Link
+                  href="/quote"
+                  className="hidden sm:block"
+                  onClick={openQuotePopup}
+                >
                   <Button className="bg-green-500 hover:bg-green-600 text-white px-4 md:px-8 py-2 md:py-3 h-auto text-xs md:text-sm lg:text-base rounded-md flex items-center">
                     <svg
                       className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2"
@@ -265,7 +293,9 @@ export function Header() {
                   className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none transition-colors duration-200"
                   aria-label={drawerOpen ? "Close menu" : "Open menu"}
                 >
-                  <Menu className={`h-6 w-6 ${drawerOpen ? "hidden" : "block"}`} />
+                  <Menu
+                    className={`h-6 w-6 ${drawerOpen ? "hidden" : "block"}`}
+                  />
                   <X className={`h-6 w-6 ${drawerOpen ? "block" : "hidden"}`} />
                 </button>
               </div>
@@ -293,7 +323,10 @@ export function Header() {
                   <span className="text-blue-800 font-bold text-xl">SEO</span>
                   <span className="text-blue-400 font-bold text-xl">WP</span>
                 </div>
-                <button onClick={toggleDrawer} className="p-2 rounded-full hover:bg-gray-100">
+                <button
+                  onClick={toggleDrawer}
+                  className="p-2 rounded-full hover:bg-gray-100"
+                >
                   <X className="h-5 w-5 text-gray-500" />
                 </button>
               </div>
@@ -303,10 +336,17 @@ export function Header() {
                   {/* About accordion */}
                   <div className="border-b border-gray-100">
                     <div className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50">
-                      <Link href="/about" className="font-medium" onClick={toggleDrawer}>
+                      <Link
+                        href="/about"
+                        className="font-medium"
+                        onClick={toggleDrawer}
+                      >
                         About
                       </Link>
-                      <button onClick={() => toggleMobileSubmenu("about")} className="p-1">
+                      <button
+                        onClick={() => toggleMobileSubmenu("about")}
+                        className="p-1"
+                      >
                         <ChevronRight
                           className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
                             expandedMobileMenu === "about" ? "rotate-90" : ""
@@ -334,10 +374,17 @@ export function Header() {
                   {/* Services accordion */}
                   <div className="border-b border-gray-100">
                     <div className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50">
-                      <Link href="/Services" className="font-medium" onClick={toggleDrawer}>
+                      <Link
+                        href="/Services"
+                        className="font-medium"
+                        onClick={toggleDrawer}
+                      >
                         Services
                       </Link>
-                      <button onClick={() => toggleMobileSubmenu("services")} className="p-1">
+                      <button
+                        onClick={() => toggleMobileSubmenu("services")}
+                        className="p-1"
+                      >
                         <ChevronRight
                           className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
                             expandedMobileMenu === "services" ? "rotate-90" : ""
@@ -365,10 +412,17 @@ export function Header() {
                   {/* Projects accordion */}
                   <div className="border-b border-gray-100">
                     <div className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50">
-                      <Link href="/project" className="font-medium" onClick={toggleDrawer}>
+                      <Link
+                        href="/project"
+                        className="font-medium"
+                        onClick={toggleDrawer}
+                      >
                         Projects
                       </Link>
-                      <button onClick={() => toggleMobileSubmenu("projects")} className="p-1">
+                      <button
+                        onClick={() => toggleMobileSubmenu("projects")}
+                        className="p-1"
+                      >
                         <ChevronRight
                           className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
                             expandedMobileMenu === "projects" ? "rotate-90" : ""
@@ -381,10 +435,17 @@ export function Header() {
                   {/* Blog accordion */}
                   <div className="border-b border-gray-100">
                     <div className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50">
-                      <Link href="/blog" className="font-medium" onClick={toggleDrawer}>
+                      <Link
+                        href="/blog"
+                        className="font-medium"
+                        onClick={toggleDrawer}
+                      >
                         Blog
                       </Link>
-                      <button onClick={() => toggleMobileSubmenu("blog")} className="p-1">
+                      <button
+                        onClick={() => toggleMobileSubmenu("blog")}
+                        className="p-1"
+                      >
                         <ChevronRight
                           className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
                             expandedMobileMenu === "blog" ? "rotate-90" : ""
@@ -397,10 +458,17 @@ export function Header() {
                   {/* Contact accordion */}
                   <div className="border-b border-gray-100">
                     <div className="flex items-center justify-between w-full p-4 text-left text-gray-700 hover:bg-gray-50">
-                      <Link href="/contact" className="font-medium" onClick={toggleDrawer}>
+                      <Link
+                        href="/contact"
+                        className="font-medium"
+                        onClick={toggleDrawer}
+                      >
                         Contact
                       </Link>
-                      <button onClick={() => toggleMobileSubmenu("contact")} className="p-1">
+                      <button
+                        onClick={() => toggleMobileSubmenu("contact")}
+                        className="p-1"
+                      >
                         <ChevronRight
                           className={`h-4 w-4 text-gray-400 transition-transform duration-200 ${
                             expandedMobileMenu === "contact" ? "rotate-90" : ""
@@ -430,8 +498,8 @@ export function Header() {
               <div className="p-4 border-t">
                 <button
                   onClick={(e) => {
-                    toggleDrawer()
-                    openQuotePopup(e)
+                    toggleDrawer();
+                    openQuotePopup(e);
                   }}
                   className="bg-green-500 hover:bg-green-600 text-white w-full py-3 h-auto text-sm rounded-md flex items-center justify-center"
                 >
@@ -456,7 +524,10 @@ export function Header() {
                   <a href="#" className="text-gray-500 hover:text-blue-600">
                     <Phone className="h-5 w-5" />
                   </a>
-                  <a href="mailto:info@yoursite.com" className="text-gray-500 hover:text-blue-600">
+                  <a
+                    href="mailto:info@yoursite.com"
+                    className="text-gray-500 hover:text-blue-600"
+                  >
                     <Mail className="h-5 w-5" />
                   </a>
                   <a href="#" className="text-gray-500 hover:text-blue-600">
@@ -505,8 +576,10 @@ export function Header() {
       </header>
 
       {/* Quote Popup */}
-      <QuotePopup isOpen={quotePopupOpen} onClose={() => setQuotePopupOpen(false)} />
+      <QuotePopup
+        isOpen={quotePopupOpen}
+        onClose={() => setQuotePopupOpen(false)}
+      />
     </>
-  )
+  );
 }
-
