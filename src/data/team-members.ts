@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import abi from "@/Images/abishek-khadka.png";
+import abi from "@/Images/abhisek.jpg";
 import type { StaticImageData } from "next/image";
 
 export type TeamMember = {
