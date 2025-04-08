@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 import {
   Twitter,
   Facebook,
@@ -17,11 +17,9 @@ import {
   Calendar,
   Mic,
   Coffee,
-} from "lucide-react";
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
-import type { TeamMember } from "@/data/team-members";
-
-
+} from "lucide-react"
+import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
+import type { TeamMember } from "@/data/team-members"
 
 // Stats data
 const stats = [
@@ -61,7 +59,7 @@ const stats = [
     icon: <Search className="h-8 w-8 text-white" />,
     bgColor: "bg-blue-400",
   },
-];
+]
 
 // Bottom stats
 const bottomStats = [
@@ -85,14 +83,10 @@ const bottomStats = [
     label: "Coffee Cups",
     icon: <Coffee className="h-6 w-6 text-white" />,
   },
-];
+]
 
 // Update the component to accept teamMembers as a prop
-export default function AgencyPage({
-  teamMembers,
-}: {
-  teamMembers: TeamMember[];
-}) {
+export default function AgencyPage({ teamMembers }: { teamMembers: TeamMember[] }) {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
@@ -104,9 +98,8 @@ export default function AgencyPage({
                 A full service digital marketing agency
               </h1>
               <p className="text-lg md:text-xl">
-                Our team develops effective content strategies for forward
-                thinking companies. We have a proven track record in increasing
-                search engine rankings.
+                Our team develops effective content strategies for forward thinking companies. We have a proven track
+                record in increasing search engine rankings.
               </p>
             </div>
             <div className="flex justify-center md:justify-end">
@@ -126,9 +119,8 @@ export default function AgencyPage({
       <section className="bg-gray-50 py-8 md:py-12 px-4 md:px-12">
         <div className="container mx-auto">
           <p className="text-lg md:text-xl text-center text-gray-700 max-w-4xl mx-auto">
-            We pursue relationships based on transparency, persistence, mutual
-            trust, and integrity with our employees, customers and other
-            business partners.
+            We pursue relationships based on transparency, persistence, mutual trust, and integrity with our employees,
+            customers and other business partners.
           </p>
         </div>
       </section>
@@ -139,17 +131,15 @@ export default function AgencyPage({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
             <div>
               <p className="text-gray-700 mb-6">
-                Our team of specialists consistently delivers outstanding
-                results combining creative ideas with our vast experience. We
-                can help you build a sustainable, meaningful relationship with
-                your clients by engaging them with your brand using social
-                media.
+                Our team of specialists consistently delivers outstanding results combining creative ideas with our vast
+                experience. We can help you build a sustainable, meaningful relationship with your clients by engaging
+                them with your brand using social media.
               </p>
             </div>
             <div>
               <p className="text-gray-700 mb-6">
-                We work in areas as diverse as search engine optimization,
-                social media marketing, email marketing and digital marketing.
+                We work in areas as diverse as search engine optimization, social media marketing, email marketing and
+                digital marketing.
               </p>
             </div>
           </div>
@@ -166,12 +156,8 @@ export default function AgencyPage({
                 className={`${stat.bgColor} p-4 md:p-8 flex flex-col items-center justify-center text-white`}
               >
                 <div className="mb-2 md:mb-4">{stat.icon}</div>
-                <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-xs md:text-sm text-center">
-                  {stat.label}
-                </div>
+                <div className="text-2xl md:text-4xl font-bold mb-1 md:mb-2">{stat.value}</div>
+                <div className="text-xs md:text-sm text-center">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -193,15 +179,9 @@ export default function AgencyPage({
                 key={index}
                 className="flex flex-col hover:transform hover:scale-105 transition-transform duration-200"
               >
-                <div
-                  className={`${member.bgColor} rounded-t-lg relative h-64 overflow-hidden`}
-                >
+                <div className={`${member.bgColor} rounded-t-lg relative h-64 overflow-hidden`}>
                   <Image
-                    src={
-                      typeof member.avatar === "string"
-                        ? member.avatar
-                        : member.avatar.src
-                    }
+                    src={member.avatar || "/placeholder.svg"}
                     alt={member.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
@@ -225,12 +205,8 @@ export default function AgencyPage({
                     </button>
                   </div>
                   <Link href={`/team/${member.slug}`} className="block">
-                    <h3 className="text-center font-medium hover:text-blue-300">
-                      {member.name}
-                    </h3>
-                    <p className="text-center text-sm text-gray-400">
-                      {member.position}
-                    </p>
+                    <h3 className="text-center font-medium hover:text-blue-300">{member.name}</h3>
+                    <p className="text-center text-sm text-gray-400">{member.position}</p>
                   </Link>
                 </div>
               </div>
@@ -244,18 +220,11 @@ export default function AgencyPage({
         <div className="container mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {bottomStats.map((stat, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center space-x-3 p-2"
-              >
+              <div key={index} className="flex items-center justify-center space-x-3 p-2">
                 <div className="flex-shrink-0">{stat.icon}</div>
                 <div>
-                  <div className="text-lg md:text-xl font-bold">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs md:text-sm text-gray-300">
-                    {stat.label}
-                  </div>
+                  <div className="text-lg md:text-xl font-bold">{stat.value}</div>
+                  <div className="text-xs md:text-sm text-gray-300">{stat.label}</div>
                 </div>
               </div>
             ))}
@@ -266,17 +235,15 @@ export default function AgencyPage({
       {/* Vision Section */}
       <section className="py-8 md:py-12 px-4 bg-blue-500 text-white">
         <div className="container mx-auto text-center">
-          <h2 className="text-lg md:text-xl uppercase tracking-wider mb-4 md:mb-6">
-            Our Vision
-          </h2>
+          <h2 className="text-lg md:text-xl uppercase tracking-wider mb-4 md:mb-6">Our Vision</h2>
           <p className="text-xl md:text-2xl font-light max-w-3xl mx-auto px-2">
-            The most respected Internet marketing agency. We want to change the
-            way businesses <span className="font-medium">speak</span>,{" "}
-            <span className="font-medium">listen</span> and{" "}
+            The most respected Internet marketing agency. We want to change the way businesses{" "}
+            <span className="font-medium">speak</span>, <span className="font-medium">listen</span> and{" "}
             <span className="font-medium">share</span> online.
           </p>
         </div>
       </section>
     </div>
-  );
+  )
 }
+

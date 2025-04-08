@@ -1,11 +1,7 @@
-import avatar from "@/Images/avatar-4.png";
-
-import type { StaticImageData } from "next/image";
-
 export type TeamMember = {
   name: string;
   position: string;
-  avatar: StaticImageData | string;
+  avatar: string;
   bgColor: string;
   slug: string;
   bio: string;
@@ -31,7 +27,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Rahul Gupta",
     position: "SEO Manager",
-    avatar: avatar,
+    avatar: "",
     bgColor: "bg-blue-500",
     slug: "rahul-gupta",
     bio: "Millie develops content strategies that engage audiences and drive conversions. Her background in journalism helps her create compelling narratives.",
@@ -63,7 +59,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Diwas Gurung",
     position: "Frontend Developer",
-    avatar: avatar,
+    avatar: "",
     bgColor: "bg-blue-200",
     slug: "maisie-wade",
     bio: "Maisie is an expert in both search engine optimization and search engine marketing, helping clients improve their online visibility.",
@@ -71,7 +67,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Peter Spencer",
     position: "Web Designer",
-    avatar: avatar,
+    avatar: "",
     bgColor: "bg-blue-600",
     slug: "peter-spencer",
     bio: "Peter creates beautiful, functional websites that provide excellent user experiences while meeting business objectives.",
