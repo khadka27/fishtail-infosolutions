@@ -194,7 +194,7 @@ export default function AgencyPage({
               >
                 <div className={`${member.bgColor}  rounded-t-lg`}>
                   <Image
-                    src={image1 || ""}
+                    src={member.avatar || ""}
                     alt={member.name}
                     width={300}
                     height={300}
