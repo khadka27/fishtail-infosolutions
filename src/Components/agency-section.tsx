@@ -192,15 +192,14 @@ export default function AgencyPage({
                 key={index}
                 className="flex flex-col hover:transform hover:scale-105 transition-transform duration-200"
               >
-                <div className={`${member.bgColor}  rounded-t-lg`}>
-                  <Image
-                    src={member.avatar || ""}
-                    alt={member.name}
-                    width={300}
-                    height={300}
-                    className="w-full h-auto"
-                  />
-                </div>
+                <Image
+                  src={member.avatar || ""}
+                  alt={member.name}
+                  width={300}
+                  height={300}
+                  className="w-full h-auto"
+                />
+
                 <div className="bg-gray-700 p-4 rounded-b-lg">
                   <div className="flex justify-center space-x-3 mb-3">
                     <button className="text-gray-400 hover:text-white">
