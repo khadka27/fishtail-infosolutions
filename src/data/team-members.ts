@@ -39,7 +39,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Abishek Khadka",
     position: "Full Stack Developer",
-    avatar: "/Image/abishek.jpeg",
+    avatar: "/Image/abishek.png",
     bgColor: "bg-green-400",
     slug: "callum-bailey",
     bio: "Callum manages social media campaigns that build brand awareness and community engagement across multiple platforms.",
