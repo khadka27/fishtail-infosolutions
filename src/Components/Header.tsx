@@ -1,27 +1,20 @@
-"use client";
 
-import type React from "react";
+"use client"
 
-import { useState, useEffect } from "react";
-import {
-  Heart,
-  Phone,
-  Mail,
-  Share2,
-  Menu,
-  X,
-  ChevronRight,
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "./ui/button";
-import { SocialMediaDropdown } from "./social-media-dropdown";
-import { ServicesDropdown } from "./services-dropdown";
-import { AboutDropdown } from "./about-dropdown";
-import { ContactDropdown } from "./contact-dropdown";
-import { QuotePopup } from "./quote-popup";
-// import logo from "@/Images/Logo-Fishtail-Infosolutions.png"
-import logo from "@/Images/abishek-khadka.png";
+import type React from "react"
+
+import { useState, useEffect } from "react"
+import { Heart, Phone, Mail, Share2, Menu, X, ChevronRight } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { Button } from "./ui/button"
+import { SocialMediaDropdown } from "./social-media-dropdown"
+import { ServicesDropdown } from "./services-dropdown"
+import { AboutDropdown } from "./about-dropdown"
+import { ContactDropdown } from "./contact-dropdown"
+import { QuotePopup } from "./quote-popup"
+import logo from "@/Images/fishtail-blue.png"
+
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
@@ -99,7 +92,16 @@ export function Header() {
       setDrawerOpen(false);
       document.body.style.overflow = "";
     }
-  };
+
+  }
+  const phoneNumber = "08771234567" // Formatted for WhatsApp
+  const whatsappUrl = `https://wa.me/${phoneNumber}`
+
+  const handleClick = () => {
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, "_blank")
+  }
+
 
   // Handle scroll effect
   useEffect(() => {
@@ -141,18 +143,15 @@ export function Header() {
               </span>
             </div>
             <div className="flex items-center space-x-4 md:space-x-8">
-              <div className="flex items-center">
-                <Phone className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
-                <span className="hidden md:inline text-sm md:text-base">
-                  0 (877) 123-4567
-                </span>
-              </div>
+
+            <div className="flex items-center cursor-pointer hover:text-primary transition-colors" onClick={handleClick}>
+      <Phone className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
+      <span className="hidden md:inline text-sm md:text-base">0 (877) 123-4567</span>
+    </div>
               <div className="flex items-center">
                 <Mail className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
-                <Link
-                  href="mailto:info@yoursite.com"
-                  className="hidden md:inline text-sm md:text-base hover:underline"
-                >
+                <Link href="mailto:info@fishtailinfosolutions.com" className="hidden md:inline text-sm md:text-base hover:underline">
+
                   fishtailinfosolutions.com
                 </Link>
               </div>
@@ -195,13 +194,9 @@ export function Header() {
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
-                <Image
-                  src={logo || "/placeholder.svg"}
-                  width={250}
-                  height={150}
-                  className="object-contain"
-                  alt={""}
-                />
+
+                <Image src={logo || "/placeholder.svg"} width={200} height={100} className="object-contain" alt={""} />
+
               </Link>
             </div>
 
