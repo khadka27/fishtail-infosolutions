@@ -21,7 +21,6 @@ import { ServicesDropdown } from "./services-dropdown";
 import { AboutDropdown } from "./about-dropdown";
 import { ContactDropdown } from "./contact-dropdown";
 import { QuotePopup } from "./quote-popup";
-import logo from "@/Images/fishtail-blue.png";
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
@@ -214,7 +213,7 @@ export function Header() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
                 <Image
-                  src={logo}
+                  src="/Image/logo/fishtail-blue.png"
                   priority={true}
                   width={200}
                   height={100}
