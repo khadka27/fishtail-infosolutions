@@ -1,12 +1,7 @@
-
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import avatar from "@/Images/abhisek.webp"
-import type { StaticImageData } from "next/image"
-
-
-
-
+// import avatar from "@/Images/abhisek.webp"
+import type { StaticImageData } from "next/image";
+import abi from "@/Images/abhisek.webp";
 
 export type TeamMember = {
   name: string;
