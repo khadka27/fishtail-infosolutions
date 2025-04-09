@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import { motion } from "framer-motion"
-import Image from "next/image"
-import logo1 from "@/Images/logo1.png"
-import logo2 from "@/Images/logo2.png"
-import logo3 from "@/Images/logo3.png"
-import logo4 from "@/Images/logo4.png"
-import logo5 from "@/Images/logo5.png"
-import logo6 from "@/Images/logo-6.png"
+import { useRef } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import logo1 from "@/Images/logo1.png";
+import logo2 from "@/Images/logo2.png";
+import logo3 from "@/Images/logo3.png";
+import logo4 from "@/Images/logo4.png";
+import logo5 from "@/Images/logo5.png";
+import logo6 from "@/Images/logo-6.png";
 
 const logos = [
   {
@@ -32,10 +32,10 @@ const logos = [
     name: "Cross Sport",
     url: logo6,
   },
-]
+];
 
 export default function ClientLogos() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
     <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-white">
@@ -66,6 +66,5 @@ export default function ClientLogos() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
