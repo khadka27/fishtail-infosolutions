@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import avatar from "@/Images/abhisek.webp"
 
 export type TeamMember = {
   name: string;
@@ -15,7 +14,7 @@ export const teamMembers: TeamMember[] = [
     name: "Rahul Rauniyar",
     position: "CEO of fistail info solutions",
 
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Images/abishek-khadka.png",
 
     bgColor: "bg-red-100",
     slug: "rahul-runiyar",
@@ -25,7 +24,7 @@ export const teamMembers: TeamMember[] = [
     name: "Bishal Gupta",
     position: "SEO Specialist",
 
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Images/abishek-khadka.png",
 
     bgColor: "bg-blue-300",
     slug: "rajan-rauniyar",
@@ -34,7 +33,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Rahul Gupta",
     position: "SEO Manager",
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Images/abishek-khadka.png",
     bgColor: "bg-blue-500",
     slug: "rahul-gupta",
     bio: "Millie develops content strategies that engage audiences and drive conversions. Her background in journalism helps her create compelling narratives.",
@@ -43,7 +42,7 @@ export const teamMembers: TeamMember[] = [
     name: "Abishek Khadka",
 
     position: "Full Stack Developer",
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Images/abishek-khadka.png",
 
     bgColor: "bg-green-400",
     slug: "callum-bailey",
@@ -53,7 +52,7 @@ export const teamMembers: TeamMember[] = [
     name: "Ashish Rauniyar",
     position: "Human Resources Director",
 
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Images/abishek-khadka.png",
 
     bgColor: "bg-teal-300",
     slug: "daisy-howarth",
@@ -63,7 +62,7 @@ export const teamMembers: TeamMember[] = [
     name: "Pratikshya Sheersh",
     position: "Marketing Specialist",
 
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Images/abishek-khadka.png",
 
     bgColor: "bg-red-300",
     slug: "abby-banks",
@@ -72,7 +71,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Diwas Gurung",
     position: "Frontend Developer",
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Images/abishek-khadka.png",
     bgColor: "bg-blue-200",
     slug: "maisie-wade",
     bio: "Maisie is an expert in both search engine optimization and search engine marketing, helping clients improve their online visibility.",
