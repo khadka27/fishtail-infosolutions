@@ -42,6 +42,7 @@ const menuItems = {
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [showSocialMenu, setShowSocialMenu] = useState(false)
+  const [showMobileSocialMenu, setShowMobileSocialMenu] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
@@ -64,6 +65,19 @@ export function Header() {
 
   const handleSocialMouseLeave = () => {
     setShowSocialMenu(false)
+  }
+
+  // Functions to handle mobile social media dropdown
+  const handleMobileSocialMouseEnter = () => {
+    setShowMobileSocialMenu(true)
+  }
+
+  const handleMobileSocialMouseLeave = () => {
+    setShowMobileSocialMenu(false)
+  }
+
+  const toggleMobileSocialMenu = () => {
+    setShowMobileSocialMenu(!showMobileSocialMenu)
   }
 
   // Toggle mobile drawer
@@ -177,7 +191,11 @@ export function Header() {
                 </button>
 
                 {showSocialMenu && (
-                  <div className="absolute right-0 top-full mt-2 bg-white rounded-md shadow-lg py-2 z-[100] w-48 animate-in fade-in slide-in-from-top-5 duration-200">
+                  <div
+                    className="absolute right-0 top-full mt-2 bg-white rounded-md shadow-lg py-2 z-[100] w-48 animate-in fade-in slide-in-from-top-5 duration-200"
+                    onMouseEnter={handleSocialMouseEnter}
+                    onMouseLeave={handleSocialMouseLeave}
+                  >
                     <SocialMediaDropdown />
                   </div>
                 )}
@@ -188,7 +206,7 @@ export function Header() {
 
         {/* Main navigation */}
         <nav
-          className={`bg-white py-3 md:py-6 px-4 md:px-8 lg:px-40 shadow-sm relative transition-all duration-300 ${
+          className={`bg-white py-8 md:py-6 px-4 md:px-8 lg:px-40 shadow-sm relative transition-all duration-300 ${
             scrolled ? "py-2 md:py-4" : ""
           }`}
         >
@@ -470,17 +488,31 @@ export function Header() {
                   FREE QUOTE
                 </button>
 
-                <div className="mt-4 flex items-center justify-center space-x-4">
-                  <a href="#" className="text-gray-500 hover:text-blue-600">
+                {/* <div className="mt-4 flex items-center justify-center space-x-4">
+                  <div
+                    className="flex items-center cursor-pointer text-gray-500 hover:text-blue-600"
+                    onClick={handleClick}
+                  >
                     <Phone className="h-5 w-5" />
-                  </a>
-                  <a href="mailto:info@yoursite.com" className="text-gray-500 hover:text-blue-600">
+                  </div>
+                  <Link href="mailto:info@fishtailinfosolutions.com" className="text-gray-500 hover:text-blue-600">
                     <Mail className="h-5 w-5" />
-                  </a>
-                  <a href="#" className="text-gray-500 hover:text-blue-600">
+                  </Link>
+                  <div
+                    className="relative text-gray-500 hover:text-blue-600 cursor-pointer"
+                    onMouseEnter={handleMobileSocialMouseEnter}
+                    onMouseLeave={handleMobileSocialMouseLeave}
+                    onClick={toggleMobileSocialMenu}
+                  >
                     <Share2 className="h-5 w-5" />
-                  </a>
-                </div>
+
+                    {showMobileSocialMenu && (
+                      <div className="absolute bottom-full right-0 mb-2 bg-white rounded-md shadow-lg py-2 z-[100] w-48 animate-in fade-in slide-in-from-bottom-5 duration-200">
+                        <SocialMediaDropdown />
+                      </div>
+                    )}
+                  </div>
+                </div> */}
               </div>
             </div>
           </div>
