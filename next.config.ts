@@ -7,6 +7,17 @@ const nextConfig = {
       "www.freepik.com",
       "fishtail-infosolutions.vercel.app",
     ],
+    // Add this to ensure proper static image handling
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // If you need to optimize remotely hosted images from unknown domains
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
 };
 
