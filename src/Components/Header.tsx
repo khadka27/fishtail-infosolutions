@@ -214,9 +214,10 @@ export function Header() {
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
                 <Image
-                  src={logo || "/placeholder.svg"}
-                  width={500}
-                  height={500}
+                  src={logo}
+                  priority={true}
+                  width={200}
+                  height={100}
                   className="object-contain"
                   alt={""}
                 />
