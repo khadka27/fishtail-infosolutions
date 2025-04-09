@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { StaticImageData } from "next/image";
+
+import abi from "@/Images/team/abhisek.jpg";
 
 export type TeamMember = {
   name: string;
   position: string;
-  avatar: string;
+  avatar: string | StaticImageData;
   bgColor: string;
   slug: string;
   bio: string;
@@ -14,7 +17,7 @@ export const teamMembers: TeamMember[] = [
     name: "Rahul Rauniyar",
     position: "CEO of fistail info solutions",
 
-    avatar: "/Images/abishek-khadka.png",
+    avatar: "abi",
 
     bgColor: "bg-red-100",
     slug: "rahul-runiyar",
