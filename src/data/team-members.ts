@@ -17,7 +17,7 @@ export const teamMembers: TeamMember[] = [
     name: "Rahul Rauniyar",
     position: "CEO of fistail info solutions",
 
-    avatar: "abi",
+    avatar: abi,
 
     bgColor: "bg-red-100",
     slug: "rahul-runiyar",
