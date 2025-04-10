@@ -843,12 +843,12 @@ function Loading() {
 }
 
 // Server component
-export default function TeamMemberPage({
+export default async function TeamMemberPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const teamMember = teamMembers.find((member) => member.slug === slug);
 
   if (!teamMember) {
