@@ -148,6 +148,7 @@ export default async function TeamMemberPage({
                   width={80}
                   height={80}
                   className="w-full h-full object-cover"
+                  unoptimized
                 />
               </div>
               <div className="text-center">
