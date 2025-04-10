@@ -360,7 +360,7 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  readonly params: { readonly slug: string };
 }) {
   const slug = params.slug;
   const post = await getPost(slug);
