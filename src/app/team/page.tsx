@@ -198,6 +198,7 @@ export default function TeamPage() {
                         alt={member.name}
                         width={400}
                         height={400}
+                        unoptimized
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
