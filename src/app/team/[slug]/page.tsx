@@ -813,9 +813,9 @@ import type { Metadata } from "next";
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const teamMember = teamMembers.find((member) => member.slug === slug);
 
   if (!teamMember) {
