@@ -170,11 +170,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const { slug } = params;
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const post = await getPost(slug);
-
   if (!post) {
     return {
       title: "Post Not Found",
@@ -392,3 +391,7 @@ export default async function BlogPostPage({
     </Suspense>
   );
 }
+
+
+ {
+      
