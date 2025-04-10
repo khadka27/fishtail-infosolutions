@@ -170,7 +170,7 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const slug = params.slug;
+  const { slug } = params;
   const post = await getPost(slug);
 
   if (!post) {
@@ -360,9 +360,9 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
 export default async function BlogPostPage({
   params,
 }: {
-  readonly params: { readonly slug: string };
+  params: { slug: string };
 }) {
-  const slug = params.slug;
+  const { slug } = params;
   const post = await getPost(slug);
 
   if (!post) {
