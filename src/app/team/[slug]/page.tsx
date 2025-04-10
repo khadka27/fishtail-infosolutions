@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import type { Metadata } from "next";
 // import Image from "next/image";
@@ -330,16 +329,20 @@ const ProjectCard = ({
   );
 };
 
-export default async function TeamMemberPage({
+export default function TeamMemberPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   const teamMember = teamMembers.find((member) => member.slug === slug);
 
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Handle any async logic here if needed
+  }, []);
 
   useEffect(() => {
     setIsVisible(true);
