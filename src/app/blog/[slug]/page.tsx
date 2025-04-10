@@ -104,6 +104,7 @@ import BlogPostClientInteractions from "@/Components/BlogPostClientInteractions"
 import ProgressBar from "@/Components/ProgressBar";
 import TableOfContents from "@/Components/TableOfContents";
 import CommentForm from "@/Components/CommentForm";
+import { Metadata } from "next";
 
 // Sample blog posts data with enhanced metadata
 const blogPosts = [
@@ -169,7 +170,7 @@ export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
-}) {
+}): Promise<Metadata> {
   const { slug } = params;
   const post = await getPost(slug);
 
@@ -177,16 +178,27 @@ export async function generateMetadata({
     return {
       title: "Post Not Found",
       description: "The requested blog post could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
-  return {
+  const metadata: Metadata = {
+    metadataBase: new URL("https://your-domain.com"),
     title: `${post.title} | SEO Blog`,
     description: post.description,
+    authors: [{ name: post.author }],
+    publisher: "Fishtail Info Solutions",
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
+      type: "article",
       title: post.title,
       description: post.description,
-      type: "article",
       publishedTime: post.date,
       authors: [post.author],
       images: [
@@ -203,8 +215,11 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       images: [post.image],
+      creator: "@yourtwitterhandle",
     },
   };
+
+  return metadata;
 }
 
 // Enhanced loading component
@@ -362,7 +377,7 @@ export default async function BlogPostPage({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = params;
+  const { slug } = params; // Remove await since params is not a Promise
   const post = await getPost(slug);
 
   if (!post) {
