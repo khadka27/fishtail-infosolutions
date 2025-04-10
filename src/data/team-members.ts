@@ -34,7 +34,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Rahul Gupta",
     position: "SEO Manager",
-    avatar: "/Images/abishek-khadka.png",
+    avatar: "/Image/abishek-khadka.png",
     bgColor: "bg-blue-500",
     slug: "rahul-gupta",
     bio: "Millie develops content strategies that engage audiences and drive conversions. Her background in journalism helps her create compelling narratives.",
@@ -43,7 +43,7 @@ export const teamMembers: TeamMember[] = [
     name: "Abishek Khadka",
 
     position: "Full Stack Developer",
-    avatar: "/Images/abishek-khadka.png",
+    avatar: "/Image/abishek-khadka.png",
 
     bgColor: "bg-green-400",
     slug: "callum-bailey",
@@ -72,7 +72,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Diwas Gurung",
     position: "Frontend Developer",
-    avatar: "/Images/abishek-khadka.png",
+    avatar: "/Image/abishek-khadka.png",
     bgColor: "bg-blue-200",
     slug: "maisie-wade",
     bio: "Maisie is an expert in both search engine optimization and search engine marketing, helping clients improve their online visibility.",
@@ -80,7 +80,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Peter Spencer",
     position: "Web Designer",
-    avatar: "/src/Images/abishek-khadka.png",
+    avatar: "/Image/abishek-khadka.png",
     bgColor: "bg-blue-600",
     slug: "peter-spencer",
     bio: "Peter creates beautiful, functional websites that provide excellent user experiences while meeting business objectives.",

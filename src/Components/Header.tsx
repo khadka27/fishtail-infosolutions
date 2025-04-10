@@ -219,6 +219,7 @@ export function Header() {
                   height={100}
                   className="object-contain"
                   alt="Fishtail Infosolutions Logo"
+                  unoptimized
                 />
               </Link>
             </div>
