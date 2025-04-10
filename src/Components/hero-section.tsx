@@ -460,8 +460,6 @@ export function HeroSection() {
     }, 100);
   };
 
-
-
   // Handle touch events for swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
@@ -513,7 +511,7 @@ export function HeroSection() {
         <div
           className={`${
             currentSlide === 0 ? "block" : "hidden"
-          } bg-[#0084FF] dark:bg-[#003C8F] py-8 sm:py-12 md:py-16 relative overflow-hidden h-[20px] sm:h-[450px] md:h-[500px] transition-all duration-500`}
+          } bg-[#0084FF] dark:bg-[#003C8F] py-8 sm:py-12 md:py-16 relative overflow-hidden h-[400px] sm:h-[450px] md:h-[500px] transition-all duration-500`}
         >
           <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-20 xl:px-40 h-full">
             <div className="flex flex-col md:flex-row items-center h-full">
