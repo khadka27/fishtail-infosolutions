@@ -197,6 +197,7 @@ export default function AgencyPage({
                   alt={member.name}
                   width={300}
                   height={300}
+                  unoptimized
                   className="w-full h-auto"
                 />
 

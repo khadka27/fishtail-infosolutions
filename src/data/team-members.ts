@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { StaticImageData } from "next/image";
 
-import abi from "@/Images/team/abhisek.jpg";
-
 export type TeamMember = {
   name: string;
   position: string;
@@ -17,7 +15,7 @@ export const teamMembers: TeamMember[] = [
     name: "Rahul Rauniyar",
     position: "CEO of fistail info solutions",
 
-    avatar: abi,
+    avatar: "/Image/rahul-rauniyar.jpeg",
 
     bgColor: "bg-red-100",
     slug: "rahul-runiyar",
@@ -27,7 +25,7 @@ export const teamMembers: TeamMember[] = [
     name: "Bishal Gupta",
     position: "SEO Specialist",
 
-    avatar: "/Images/abishek-khadka.png",
+    avatar: "/Image/bishal-gupta.jpeg",
 
     bgColor: "bg-blue-300",
     slug: "rajan-rauniyar",
@@ -55,7 +53,7 @@ export const teamMembers: TeamMember[] = [
     name: "Ashish Rauniyar",
     position: "Human Resources Director",
 
-    avatar: "/Images/abishek-khadka.png",
+    avatar: "/Image/ashish.jpeg",
 
     bgColor: "bg-teal-300",
     slug: "daisy-howarth",
@@ -65,7 +63,7 @@ export const teamMembers: TeamMember[] = [
     name: "Pratikshya Sheersh",
     position: "Marketing Specialist",
 
-    avatar: "/Images/abishek-khadka.png",
+    avatar: "/Image/partikshya.jpeg",
 
     bgColor: "bg-red-300",
     slug: "abby-banks",
