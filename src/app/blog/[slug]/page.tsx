@@ -94,6 +94,7 @@
 //     </Suspense>
 //   );
 // }
+
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Image from "next/image";
@@ -104,7 +105,7 @@ import BlogPostClientInteractions from "@/Components/BlogPostClientInteractions"
 import ProgressBar from "@/Components/ProgressBar";
 import TableOfContents from "@/Components/TableOfContents";
 import CommentForm from "@/Components/CommentForm";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 // Sample blog posts data with enhanced metadata
 const blogPosts = [
@@ -344,7 +345,8 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
                         <Image
                           src={
                             relatedPost.image ||
-                            "/placeholder.svg?height=200&width=400"
+                            "/placeholder.svg?height=200&width=400" ||
+                            "/placeholder.svg"
                           }
                           alt={relatedPost.title}
                           fill
@@ -377,7 +379,7 @@ export default async function BlogPostPage({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = params; // Remove await since params is not a Promise
+  const { slug } = params;
   const post = await getPost(slug);
 
   if (!post) {
