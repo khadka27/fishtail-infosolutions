@@ -1,15 +1,27 @@
-// src/app/blog/page.tsx
-import type { NextPage, Metadata } from "next";
+import { Suspense } from "react";
 import BlogPageComponent from "@/Components/blog-page";
 
-export const metadata: Metadata = {
-  title: "Blog | SEO and Digital Marketing Insights",
-  description:
-    "Explore our latest articles on search engine optimization, digital marketing strategies, and industry best practices to improve your online presence.",
-};
+// Sample blog posts data
 
-const BlogPage: NextPage = () => {
-  return <BlogPageComponent />;
-};
+// Categories for filter
 
-export default BlogPage;
+// Loading component
+function Loading() {
+  return (
+    <div className="max-w-4xl mx-auto p-6 flex flex-col items-center justify-center min-h-[50vh]">
+      <div className="w-16 h-16 border-4 border-[#0084FF] border-t-transparent rounded-full animate-spin mb-4"></div>
+      <p className="text-gray-600 font-medium">Loading blog posts...</p>
+    </div>
+  );
+}
+
+// Blog list component
+
+// Page component
+export default function BlogPage() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <BlogPageComponent />
+    </Suspense>
+  );
+}

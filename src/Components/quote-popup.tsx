@@ -1,26 +1,26 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useRef, useEffect } from "react"
-import { X, Loader2 } from "lucide-react"
-import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import emailjs from "@emailjs/browser"
-import Seoptimize from "@/Images/seo_specialist_workplace-optimized.png"
+import { useState, useRef, useEffect } from "react";
+import { X, Loader2 } from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import Seoptimize from "@/Images/seo_specialist_workplace-optimized.png";
 
 interface QuotePopupProps {
-  isOpen: boolean
-  onClose: () => void
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 interface FormData {
-  websiteUrl: string
-  name: string
-  email: string
-  phone: string
-  company: string
-  details: string
+  websiteUrl: string;
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  details: string;
 }
 
 export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
@@ -31,73 +31,83 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
     phone: "",
     company: "",
     details: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
-    success: boolean
-    message: string
-  } | null>(null)
+    success: boolean;
+    message: string;
+  } | null>(null);
 
-  const formRef = useRef<HTMLFormElement>(null)
+  const formRef = useRef<HTMLFormElement>(null);
 
   // Initialize EmailJS once when component mounts
   useEffect(() => {
     // Initialize EmailJS only once
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "uQppVqAvJvbh7-6tg"
-    emailjs.init(publicKey)
+    const publicKey =
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "uQppVqAvJvbh7-6tg";
+    emailjs.init(publicKey);
 
     // Only add event listeners when popup is open
     if (isOpen) {
       const handleEsc = (e: KeyboardEvent) => {
-        if (e.key === "Escape") onClose()
-      }
+        if (e.key === "Escape") onClose();
+      };
 
-      document.body.style.overflow = "hidden"
-      window.addEventListener("keydown", handleEsc)
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleEsc);
 
       return () => {
-        document.body.style.overflow = ""
-        window.removeEventListener("keydown", handleEsc)
-      }
+        document.body.style.overflow = "";
+        window.removeEventListener("keydown", handleEsc);
+      };
     }
-  }, [isOpen, onClose])
+  }, [isOpen, onClose]);
 
   useEffect(() => {
     if (!isOpen) {
       // Reset the submitStatus when popup is closed
-      setSubmitStatus(null)
+      setSubmitStatus(null);
     }
-  }, [isOpen])
+  }, [isOpen]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
     // Use functional update to avoid potential stale closures
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted")
+    e.preventDefault();
+    console.log("Form submitted");
 
-    if (!formRef.current) return
+    if (!formRef.current) return;
 
-    setIsSubmitting(true)
-    setSubmitStatus(null)
+    setIsSubmitting(true);
+    setSubmitStatus(null);
 
     try {
       // Get EmailJS credentials from environment variables
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_h967f6o"
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_lv0qx1i"
+      const serviceId =
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_h967f6o";
+      const templateId =
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_lv0qx1i";
 
       // Send the email using EmailJS
-      const response = await emailjs.sendForm(serviceId, templateId, formRef.current)
+      const response = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current
+      );
 
-      console.log("Email sent successfully:", response)
+      console.log("Email sent successfully:", response);
 
       setSubmitStatus({
         success: true,
-        message: "Thank you! Your request has been submitted. We'll get back to you soon with your free SEO analysis.",
-      })
+        message:
+          "Thank you! Your request has been submitted. We'll get back to you soon with your free SEO analysis.",
+      });
 
       // Reset form after successful submission
       setFormData({
@@ -107,23 +117,24 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
         phone: "",
         company: "",
         details: "",
-      })
+      });
 
       // Close the popup after a delay
       setTimeout(() => {
-        onClose()
+        onClose();
         // We don't need to reset submitStatus here as our useEffect will handle it
-      }, 3000)
+      }, 3000);
     } catch (error) {
-      console.error("Failed to send email:", error)
+      console.error("Failed to send email:", error);
       setSubmitStatus({
         success: false,
-        message: "Sorry, there was a problem submitting your request. Please try again later.",
-      })
+        message:
+          "Sorry, there was a problem submitting your request. Please try again later.",
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <AnimatePresence>
@@ -167,10 +178,13 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
 
                 <div className="flex flex-col sm:flex-row items-center gap-6">
                   <div className="flex-1">
-                    <h2 className="text-2xl sm:text-3xl font-light text-gray-800 mb-2">FREE website SEO analysis</h2>
+                    <h2 className="text-2xl sm:text-3xl font-light text-gray-800 mb-2">
+                      FREE website SEO analysis
+                    </h2>
                     <p className="text-sm sm:text-base text-gray-700">
-                      Our team is ready to review your website&apos;s SEO aspects and provide tips to help you increase
-                      traffic and maximize revenue.
+                      Our team is ready to review your website&apos;s SEO
+                      aspects and provide tips to help you increase traffic and
+                      maximize revenue.
                     </p>
                   </div>
                   <div className="flex-shrink-0 hidden sm:block">
@@ -201,12 +215,20 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                 )}
 
                 <p className="text-sm text-gray-500 mb-4">
-                  Fields marked with an <span className="text-red-500">*</span> are required
+                  Fields marked with an <span className="text-red-500">*</span>{" "}
+                  are required
                 </p>
 
-                <form ref={formRef} onSubmit={handleSubmit} className="quote-form-email">
+                <form
+                  ref={formRef}
+                  onSubmit={handleSubmit}
+                  className="quote-form-email"
+                >
                   <div className="mb-4">
-                    <label htmlFor="websiteUrl" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor="websiteUrl"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Website URL <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -224,7 +246,10 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Name <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -239,7 +264,10 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Email <span className="text-red-500">*</span>
                       </label>
                       <input
@@ -257,7 +285,10 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Phone
                       </label>
                       <input
@@ -272,7 +303,10 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                       <p className="text-xs text-gray-500 mt-1">(optional)</p>
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+                      <label
+                        htmlFor="company"
+                        className="block text-sm font-medium text-gray-700 mb-1"
+                      >
                         Company
                       </label>
                       <input
@@ -289,7 +323,10 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                   </div>
 
                   <div className="mb-8">
-                    <label htmlFor="details" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor="details"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Details
                     </label>
                     <textarea
@@ -335,6 +372,5 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
         </>
       )}
     </AnimatePresence>
-  )
+  );
 }
-
