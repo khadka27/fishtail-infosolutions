@@ -376,15 +376,13 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
 export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getPost(slug);
-
   if (!post) {
     notFound();
   }
-
   return (
     <Suspense fallback={<Loading />}>
       <BlogPost post={post} />
