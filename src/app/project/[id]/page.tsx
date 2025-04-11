@@ -15,6 +15,18 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   return {
     title: `${project.title} Case Study | Fishtail InfoSolutions`,
     description: project.description,
+    openGraph: {
+      title: `${project.title} Case Study | Fishtail InfoSolutions`,
+      description: project.description,
+      images: [project.image],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} Case Study`,
+      description: project.description,
+      images: [project.image],
+    },
   }
 }
 

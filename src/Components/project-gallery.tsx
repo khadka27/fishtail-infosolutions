@@ -2,185 +2,134 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, X } from "lucide-react"
+import { X } from "lucide-react"
+
+const galleryImages = [
+  {
+    src: "/placeholder.svg?height=600&width=800",
+    alt: "LinkedIn Ad Campaign",
+    caption: "LinkedIn Ad Campaign targeting professionals",
+  },
+  {
+    src: "/placeholder.svg?height=600&width=800",
+    alt: "Google Search Ad",
+    caption: "Google Search Ad for MBA program",
+  },
+  {
+    src: "/placeholder.svg?height=600&width=800",
+    alt: "Landing Page Design",
+    caption: "Custom landing page with optimized conversion elements",
+  },
+  {
+    src: "/placeholder.svg?height=600&width=800",
+    alt: "Facebook Retargeting Ad",
+    caption: "Facebook retargeting ad for interested prospects",
+  },
+  {
+    src: "/placeholder.svg?height=600&width=800",
+    alt: "Campaign Dashboard",
+    caption: "Campaign performance dashboard showing key metrics",
+  },
+  {
+    src: "/placeholder.svg?height=600&width=800",
+    alt: "Email Nurture Sequence",
+    caption: "Email nurture sequence for lead conversion",
+  },
+]
 
 export default function ProjectGallery() {
-  const [activeIndex, setActiveIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
-
-  // Sample gallery items for EduVersity
-  const galleryItems = [
-    {
-      id: 1,
-      title: "LinkedIn Ad Campaign",
-      description: "Targeted ad creative for professionals seeking career advancement",
-      image: "/placeholder.svg?height=600&width=800",
-      type: "image",
-    },
-    {
-      id: 2,
-      title: "Landing Page Design",
-      description: "High-converting landing page with program details and lead form",
-      image: "/placeholder.svg?height=600&width=800",
-      type: "image",
-    },
-    {
-      id: 3,
-      title: "Facebook Retargeting Ad",
-      description: "Retargeting creative for prospects who visited the website",
-      image: "/placeholder.svg?height=600&width=800",
-      type: "image",
-    },
-    {
-      id: 4,
-      title: "Email Nurture Campaign",
-      description: "Follow-up email sequence for lead nurturing",
-      image: "/placeholder.svg?height=600&width=800",
-      type: "image",
-    },
-    {
-      id: 5,
-      title: "Google Display Ad",
-      description: "Visual ad for the Google Display Network",
-      image: "/placeholder.svg?height=600&width=800",
-      type: "image",
-    },
-    {
-      id: 6,
-      title: "Mobile Landing Page",
-      description: "Mobile-optimized version of the landing page",
-      image: "/placeholder.svg?height=600&width=800",
-      type: "image",
-    },
-  ]
-
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % galleryItems.length)
-  }
-
-  const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length)
-  }
+  const [currentImage, setCurrentImage] = useState(0)
 
   const openLightbox = (index: number) => {
-    setActiveIndex(index)
+    setCurrentImage(index)
     setLightboxOpen(true)
   }
 
+  const closeLightbox = () => {
+    setLightboxOpen(false)
+  }
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1))
+  }
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1))
+  }
+
   return (
-    <>
-      {/* Main Gallery Slider */}
-      <div className="relative mb-8">
-        <div className="overflow-hidden rounded-lg">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="aspect-w-16 aspect-h-9 bg-gray-100"
-            >
-              <Image
-                src={galleryItems[activeIndex].image || "/placeholder.svg"}
-                alt={galleryItems[activeIndex].title}
-                fill
-                className="object-cover"
-                onClick={() => openLightbox(activeIndex)}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <button
-          onClick={prevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center shadow-md hover:bg-white transition-colors"
-        >
-          <ChevronLeft className="w-6 h-6 text-gray-800" />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 flex items-center justify-center shadow-md hover:bg-white transition-colors"
-        >
-          <ChevronRight className="w-6 h-6 text-gray-800" />
-        </button>
-      </div>
-
-      <div className="mb-4">
-        <h3 className="text-lg font-bold text-gray-800">{galleryItems[activeIndex].title}</h3>
-        <p className="text-gray-600">{galleryItems[activeIndex].description}</p>
-      </div>
-
-      {/* Thumbnails */}
-      <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-        {galleryItems.map((item, index) => (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {galleryImages.map((image, index) => (
           <div
-            key={item.id}
-            onClick={() => setActiveIndex(index)}
-            className={`cursor-pointer rounded-md overflow-hidden relative ${
-              index === activeIndex ? "ring-2 ring-blue-500" : ""
-            }`}
+            key={index}
+            className="relative overflow-hidden rounded-lg cursor-pointer group"
+            onClick={() => openLightbox(index)}
           >
-            <Image
-              src={item.image || "/placeholder.svg"}
-              alt={item.title}
-              width={120}
-              height={80}
-              className="object-cover w-full h-16"
-            />
+            <div className="aspect-w-16 aspect-h-9">
+              <Image
+                src={image.src || "/placeholder.svg"}
+                alt={image.alt}
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                width={400}
+                height={225}
+              />
+            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-opacity duration-300 flex items-end">
+              <div className="p-3 w-full bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <p className="text-white text-sm">{image.caption}</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
 
       {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+      {lightboxOpen && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 z-10"
+            aria-label="Close lightbox"
           >
-            <button
-              onClick={() => setLightboxOpen(false)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
-            >
-              <X className="w-8 h-8" />
-            </button>
+            <X className="w-8 h-8" />
+          </button>
 
-            <div className="relative max-w-4xl w-full">
-              <Image
-                src={galleryItems[activeIndex].image || "/placeholder.svg"}
-                alt={galleryItems[activeIndex].title}
-                width={1200}
-                height={800}
-                className="object-contain w-full"
-              />
+          <button
+            onClick={prevImage}
+            className="absolute left-4 text-white hover:text-gray-300 z-10"
+            aria-label="Previous image"
+          >
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-              <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white p-4">
-                <h3 className="text-lg font-bold">{galleryItems[activeIndex].title}</h3>
-                <p className="text-gray-300">{galleryItems[activeIndex].description}</p>
-              </div>
-
-              <button
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 flex items-center justify-center hover:bg-black/70 transition-colors"
-              >
-                <ChevronLeft className="w-8 h-8 text-white" />
-              </button>
-
-              <button
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-black/50 flex items-center justify-center hover:bg-black/70 transition-colors"
-              >
-                <ChevronRight className="w-8 h-8 text-white" />
-              </button>
+          <div className="relative max-w-4xl max-h-[80vh]">
+            <Image
+              src={galleryImages[currentImage].src || "/placeholder.svg"}
+              alt={galleryImages[currentImage].alt}
+              className="max-h-[80vh] w-auto object-contain"
+              width={800}
+              height={600}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-4">
+              <p className="text-white text-center">{galleryImages[currentImage].caption}</p>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          </div>
+
+          <button
+            onClick={nextImage}
+            className="absolute right-4 text-white hover:text-gray-300 z-10"
+            aria-label="Next image"
+          >
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      )}
+    </div>
   )
 }

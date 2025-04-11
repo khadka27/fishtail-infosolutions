@@ -5,10 +5,10 @@ import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowLeft, Calendar, MapPin, Clock, ChevronUp, Share2, Download } from "lucide-react"
 import type { Project } from "@/data/type"
-import ResultsChart from "./results-chart"
-import ProjectGallery from "./project-gallery"
-import RelatedProjects from "./related-projects"
-import ContactCTA from "./contact-cta"
+import ResultsChart from "@/Components/results-chart"
+import ProjectGallery from "@/Components/project-gallery"
+import RelatedProjects from "@/Components/related-projects"
+import ContactCTA from "@/Components/contact-cta"
 
 export default function ProjectDetail({ project }: { project: Project }) {
   const [activeTab, setActiveTab] = useState("overview")
@@ -16,14 +16,15 @@ export default function ProjectDetail({ project }: { project: Project }) {
   const { scrollYProgress } = useScroll()
   const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.1], [1, 0.95])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 100)
-    }
+    // Simulate loading
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => clearTimeout(timer)
   }, [])
 
   // For EduVersity Academy specifically
@@ -90,8 +91,35 @@ export default function ProjectDetail({ project }: { project: Project }) {
       "This project not only met but exceeded the client's expectations, solidifying their position as a top choice for online MBA programs.",
   }
 
+  // Add structured data for SEO
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: projectData.title,
+    description: projectData.subtitle,
+    image: "/placeholder.svg?height=1080&width=1920",
+    datePublished: projectData.startDate,
+    author: {
+      "@type": "Organization",
+      name: "Fishtail InfoSolutions",
+    },
+  }
+
+  const handlePrint = () => {
+    window.print()
+  }
+
   return (
     <>
+      {isLoading ? (
+        <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
+          <div className="flex flex-col items-center">
+            <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+            <p className="mt-4 text-gray-600">Loading case study...</p>
+          </div>
+        </div>
+      ) : null}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       {/* Hero Section */}
       <motion.section
         style={{ opacity, scale }}
@@ -101,7 +129,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
           <div className="max-w-4xl mx-auto">
             <Link
-              href="/projects"
+              href="/case-studies"
               className="inline-flex items-center text-blue-100 hover:text-white mb-6 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -565,9 +593,12 @@ export default function ProjectDetail({ project }: { project: Project }) {
                         <Share2 className="w-4 h-4 mr-1" />
                         Share
                       </button>
-                      <button className="text-gray-500 hover:text-gray-700 flex items-center text-sm">
+                      <button
+                        onClick={handlePrint}
+                        className="text-gray-500 hover:text-gray-700 flex items-center text-sm"
+                      >
                         <Download className="w-4 h-4 mr-1" />
-                        Download PDF
+                        Print/Save PDF
                       </button>
                     </div>
                   </div>

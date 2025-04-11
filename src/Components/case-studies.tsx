@@ -98,12 +98,10 @@ export default function CaseStudiesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-500 to-cyan-400 text-white py-12 md:py-20 px-4 md:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/placeholder.svg')] bg-repeat opacity-20"></div>
-        </div>
+      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12 md:py-20 px-4 md:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=500&width=500')] bg-repeat opacity-10"></div>
 
-        <div className="container mx-auto relative z-10">
+        <div className="container relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -164,8 +162,8 @@ export default function CaseStudiesPage() {
               className="flex justify-center mt-4 md:mt-0"
             >
               <div className="relative">
-                <div className="absolute -inset-4 bg-white/20 rounded-2xl blur-xl"></div>
-                <div className="relative z-10 bg-white p-6 rounded-xl shadow-lg">
+                <div className="absolute -inset-4 bg-white/20 rounded-2xl shadow-lg blur-sm"></div>
+                <div className="relative z-10 bg-white p-6 rounded-xl shadow-md">
                   <div className="grid grid-cols-2 gap-4">
                     {featuredProjects.slice(0, 4).map((project, index) => (
                       <motion.div
@@ -207,7 +205,7 @@ export default function CaseStudiesPage() {
 
       {/* Stats Section */}
       <section className="py-8 bg-white border-b border-gray-100">
-        <div className="container mx-auto px-4">
+        <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {marketingStats.map((stat, index) => (
               <motion.div
@@ -235,7 +233,7 @@ export default function CaseStudiesPage() {
           backgroundColor: scrollY > 100 ? "rgba(255, 255, 255, 0.95)" : "white",
         }}
       >
-        <div className="container mx-auto px-4">
+        <div className="container px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="relative w-full md:w-auto">
               <div className="relative">
@@ -334,7 +332,7 @@ export default function CaseStudiesPage() {
 
       {/* Featured Projects Section */}
       <section ref={featuredRef} className="py-12 md:py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -359,7 +357,7 @@ export default function CaseStudiesPage() {
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col"
               >
-                <div className={`h-48 ${project.bgColor} relative overflow-hidden`}>
+                <div className={`${project.bgColor} relative overflow-hidden h-48`}>
                   <motion.div
                     initial={{ scale: 1.2, opacity: 0 }}
                     animate={isFeaturedInView ? { scale: 1, opacity: 1 } : {}}
@@ -370,9 +368,9 @@ export default function CaseStudiesPage() {
                       <Image
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
-                        width={350}
-                        height={180}
-                        className="h-16 object-contain"
+                        width={200}
+                        height={100}
+                        className="object-contain h-20 w-auto"
                       />
                     </div>
                   </motion.div>
@@ -407,7 +405,7 @@ export default function CaseStudiesPage() {
 
       {/* All Projects Section */}
       <section id="projects" className="py-12 md:py-20 px-4 sm:px-6 md:px-10 lg:px-20 bg-white">
-        <div className="container mx-auto">
+        <div className="container">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -453,21 +451,21 @@ export default function CaseStudiesPage() {
                       activeProject === project.id ? "ring-2 ring-blue-500" : ""
                     }`}
                   >
-                    <div className={`relative overflow-hidden ${project.bgColor}`}>
+                    <div className={`relative overflow-hidden ${project.bgColor} h-40`}>
                       <motion.div
                         animate={{
                           scale: hoveredProject === project.id ? 1.05 : 1,
                         }}
                         transition={{ duration: 0.4 }}
-                        className="p-6 flex items-center justify-center h-40"
+                        className="p-6 flex items-center justify-center h-full"
                       >
                         <div className="bg-white/90 p-4 rounded-lg shadow-sm">
                           <Image
                             src={project.image || "/placeholder.svg"}
                             alt={project.title}
-                            width={400}
-                            height={400}
-                            className=" object-contain"
+                            width={160}
+                            height={80}
+                            className="object-contain h-16 w-auto"
                           />
                         </div>
                       </motion.div>
@@ -495,18 +493,29 @@ export default function CaseStudiesPage() {
                             <div className="pt-4 border-t border-gray-100">
                               <h4 className="font-medium text-gray-800 mb-2">Key Results:</h4>
                               <ul className="text-sm text-gray-600 space-y-1">
-                                <li className="flex items-start">
-                                  <span className="text-green-500 mr-2">✓</span>
-                                  Increased qualified leads by 45%
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-green-500 mr-2">✓</span>
-                                  Reduced cost per acquisition by 32%
-                                </li>
-                                <li className="flex items-start">
-                                  <span className="text-green-500 mr-2">✓</span>
-                                  Improved conversion rate from 2.1% to 3.8%
-                                </li>
+                                {project.results ? (
+                                  project.results.map((result, idx) => (
+                                    <li key={idx} className="flex items-start">
+                                      <span className="text-green-500 mr-2">✓</span>
+                                      {result.title}: {result.description}
+                                    </li>
+                                  ))
+                                ) : (
+                                  <>
+                                    <li className="flex items-start">
+                                      <span className="text-green-500 mr-2">✓</span>
+                                      {project.stats}
+                                    </li>
+                                    <li className="flex items-start">
+                                      <span className="text-green-500 mr-2">✓</span>
+                                      Improved brand visibility and engagement
+                                    </li>
+                                    <li className="flex items-start">
+                                      <span className="text-green-500 mr-2">✓</span>
+                                      Enhanced digital marketing ROI
+                                    </li>
+                                  </>
+                                )}
                               </ul>
                             </div>
                           </motion.div>
@@ -536,7 +545,7 @@ export default function CaseStudiesPage() {
 
       {/* Approach Section */}
       <section className="py-12 md:py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+        <div className="container px-4">
           <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -564,7 +573,9 @@ export default function CaseStudiesPage() {
                   transition={{ delay: index * 0.2, duration: 0.6 }}
                   className="bg-white p-6 rounded-xl shadow-sm"
                 >
-                  <div className={`w-12 h-12 ${step.color} rounded-full flex items-center justify-center text-xl mb-4`}>
+                  <div
+                    className={`flex items-center justify-center w-12 h-12 rounded-full ${step.color} mb-4 text-white`}
+                  >
                     {step.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-800 mb-2">{step.title}</h3>
@@ -578,7 +589,7 @@ export default function CaseStudiesPage() {
 
       {/* Testimonial Section */}
       <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
+        <div className="container px-4">
           <AnimatePresence mode="wait">
             {testimonials.map(
               (testimonial, index) =>
@@ -589,13 +600,13 @@ export default function CaseStudiesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.6 }}
-                    className="max-w-4xl mx-auto bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl overflow-hidden shadow-xl"
+                    className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl overflow-hidden shadow-xl"
                   >
                     <div className="grid grid-cols-1 md:grid-cols-5">
                       <div className="md:col-span-2 bg-blue-600 p-8 flex items-center justify-center">
                         <div className="text-center">
-                          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span className="text-3xl">{testimonial.avatar}</span>
+                          <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
+                            <span>{testimonial.avatar}</span>
                           </div>
                           <div className="text-white">
                             <div className="font-bold text-xl">{testimonial.name}</div>
@@ -636,8 +647,8 @@ export default function CaseStudiesPage() {
                 <button
                   key={index}
                   onClick={() => setActiveTestimonial(index)}
-                  className={`w-2 h-2 rounded-full transition-all ${
-                    activeTestimonial === index ? "bg-blue-500 w-6" : "bg-gray-300 hover:bg-gray-400"
+                  className={`h-2 rounded-full transition-all ${
+                    activeTestimonial === index ? "w-8 bg-blue-500" : "bg-gray-300 hover:bg-gray-400 w-2"
                   }`}
                   aria-label={`View testimonial ${index + 1}`}
                 />
@@ -648,8 +659,8 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 md:py-20 bg-gradient-to-r from-blue-50 to-cyan-50">
-        <div className="container mx-auto px-4 md:px-8 text-center">
+      <section className="py-12 md:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="container px-4 md:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -661,7 +672,7 @@ export default function CaseStudiesPage() {
               Ready to Transform Your Education Marketing?
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
-              Let&apos;s discuss how our proven strategies can help your institution attract more qualified students and
+              Let's discuss how our proven strategies can help your institution attract more qualified students and
               increase enrollment.
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
