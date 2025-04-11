@@ -412,6 +412,7 @@ export default function CaseStudiesPage() {
                         alt={project.title}
                         width={200}
                         height={100}
+                        unoptimized
                         className="object-contain h-20 w-auto"
                       />
                     </div>
