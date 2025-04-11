@@ -223,7 +223,7 @@ export function ServicesSection() {
       image: image1,
       color: "#0084FF",
       description:
-        "Boost your brand presence and engagement across all major social platforms with our tailored social media strategies.",
+        "Amplify your brand presence and community engagement across all major social platforms with customized, data-driven strategies.",
       features: [
         "Content Creation",
         "Community Management",
@@ -237,7 +237,7 @@ export function ServicesSection() {
       image: image2,
       color: "#003C8F",
       description:
-        "Build sustainable search visibility with our comprehensive SEO strategies focused on long-term growth.",
+        "Achieve sustainable search visibility and authority through a proven SEO strategy tailored to your long-term success.",
       features: [
         "Keyword Research",
         "On-Page Optimization",
@@ -251,7 +251,7 @@ export function ServicesSection() {
       image: image3,
       color: "#0084FF",
       description:
-        "Gain actionable insights from your data with our advanced analytics services that drive informed decisions.",
+        "Transform data into actionable insights with our comprehensive analytics solutions designed for smarter decision-making.",
       features: [
         "Custom Dashboards",
         "Conversion Tracking",
@@ -265,7 +265,7 @@ export function ServicesSection() {
       image: image4,
       color: "#003C8F",
       description:
-        "Maximize your ad spend with targeted PPC campaigns designed to deliver immediate results and high ROI.",
+        "Drive immediate results with targeted PPC campaigns crafted to maximize your reach and return on investment.",
       features: [
         "Google Ads",
         "Social Media Ads",
@@ -281,56 +281,56 @@ export function ServicesSection() {
     {
       title: "Local Search Strategy",
       description:
-        "Maximize your presence on search engine results pages on a local scale.",
+        "Dominate local search results and connect with nearby customers through strategic optimization.",
       icon: MapPin,
       color: "#0084FF",
       details:
-        "Our local SEO strategies help businesses dominate their local market by optimizing for location-based searches, Google Business Profile, and local directories.",
+        "Our local SEO experts help your business stand out in your city or region with optimized listings, local backlinks, and tailored content strategies.",
     },
     {
       title: "Maps Search Optimization",
       description:
-        "Google Maps Optimization is an important part of any successful local marketing strategy.",
+        "Ensure your business appears prominently on Google Maps and other location-based search platforms.",
       icon: Map,
       color: "#003C8F",
       details:
-        "We optimize your business listings to appear prominently in Google Maps results, driving foot traffic and local customers to your business.",
+        "We optimize your business listings with precision to improve visibility, attract local traffic, and increase walk-ins and calls.",
     },
     {
       title: "Link Building & Content",
       description:
-        "Link building is and will continue to be a tremendously important component of Search Engine Optimization (SEO).",
+        "Boost your website authority with strategic link building and high-quality content.",
       icon: Link2,
       color: "#0084FF",
       details:
-        "Our strategic link building services focus on quality over quantity, building authoritative backlinks that boost your domain authority and search rankings.",
+        "We create and promote valuable content to earn authoritative backlinks, improving your search rankings and driving long-term traffic.",
     },
     {
       title: "Paid Search Advertising",
       description:
-        "Paid listings on Google AdWords and Microsoft AdCenter can help you reach new customers.",
+        "Get fast results with expertly managed PPC campaigns across Google and Bing.",
       icon: Target,
       color: "#003C8F",
       details:
-        "Our PPC experts create and manage high-performing paid search campaigns that target qualified leads and maximize your advertising budget.",
+        "Our paid advertising team crafts high-converting campaigns that focus on targeting the right audience, optimizing ad spend, and maximizing ROI.",
     },
     {
       title: "Custom Website Design",
       description:
-        "Our team specializes in affordable web design and e-commerce.",
+        "Stunning, responsive websites built to elevate your brand and convert visitors into customers.",
       icon: PenTool,
       color: "#0084FF",
       details:
-        "We create beautiful, responsive websites that not only look great but are also optimized for conversions, user experience, and search engines.",
+        "We design user-centric, SEO-friendly websites tailored to your business goals, ensuring fast load times and intuitive navigation across all devices.",
     },
     {
       title: "Custom Email Design",
       description:
-        "Custom email templates that speak to your customers and resonate with your brand.",
+        "Engage your audience with beautifully branded, conversion-focused email campaigns.",
       icon: Mail,
       color: "#003C8F",
       details:
-        "Our email marketing specialists design custom email templates and campaigns that drive engagement, nurture leads, and increase customer loyalty.",
+        "From design to deployment, our email specialists create compelling templates and sequences that drive engagement and customer retention.",
     },
   ];
 
@@ -340,7 +340,7 @@ export function ServicesSection() {
       title: "For Small Business",
       icon: Users,
       content:
-        "Affordable digital marketing solutions tailored specifically for small businesses looking to establish and grow their online presence.",
+        "Affordable and scalable digital marketing and development services for startups and local businesses ready to grow online.",
       services: [
         "Local SEO",
         "Social Media Management",
@@ -352,7 +352,7 @@ export function ServicesSection() {
       title: "For E-commerce",
       icon: BarChart,
       content:
-        "Specialized strategies for online stores to increase traffic, improve conversion rates, and maximize customer lifetime value.",
+        "E-commerce-focused SEO, ad campaigns, and conversion strategies tailored to increase sales and customer lifetime value.",
       services: [
         "Product SEO",
         "Shopping Ads",
@@ -364,7 +364,7 @@ export function ServicesSection() {
       title: "For Enterprise",
       icon: TrendingUp,
       content:
-        "Comprehensive digital marketing solutions for large organizations with complex needs and multiple business units.",
+        "End-to-end web development and digital marketing solutions for enterprise clients with global reach and complex needs.",
       services: [
         "Enterprise SEO",
         "Cross-Channel Marketing",
@@ -420,8 +420,8 @@ export function ServicesSection() {
             Full Service Digital Marketing Agency
           </h2>
           <p className="text-center text-gray-600 mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
-            Search Engine & Social Media Optimization Experts with proven
-            strategies to grow your business online and drive measurable
+            Search Engine & Social Media Optimization Experts using proven
+            strategies to grow your business online and deliver measurable
             results.
           </p>
         </div>
@@ -644,7 +644,7 @@ export function ServicesSection() {
             className="bg-[#0084FF] hover:bg-[#003C8F] text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 rounded-full flex items-center justify-center text-sm sm:text-base transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
             <span className="mr-2">💬</span>
-            Free SEO Consultation
+            Free SEO Consultation & Website Audit
           </Link>
           <Link
             href="/quote"

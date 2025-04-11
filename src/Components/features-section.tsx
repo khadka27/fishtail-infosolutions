@@ -70,9 +70,9 @@ export function FeaturesSection() {
       icon: Shield,
       title: "Online Reputation Management",
       description:
-        "Analyzing negative materials about your brand and addressing them with sentiment analysis and press release distribution.",
+        "We analyze and address negative content about your brand through sentiment analysis, strategic response, and press release distribution.",
       extendedDescription:
-        "Our comprehensive reputation management service includes 24/7 monitoring, competitor analysis, and strategic response planning to protect and enhance your brand image online.",
+        "Established in 2015, our reputation management services offer 24/7 monitoring, competitor insights, and proactive strategies to safeguard and enhance your brand’s digital presence.",
       benefits: [
         "24/7 Brand Monitoring",
         "Sentiment Analysis",
@@ -84,9 +84,9 @@ export function FeaturesSection() {
       icon: BarChart3,
       title: "Conversion Rate Optimization",
       description:
-        "Turn your visitors into customers with our team of experts. We'll analyze your website and develop a suitable conversion-rate strategy.",
+        "Convert visitors into loyal customers with expert strategies tailored to improve your website's performance and engagement.",
       extendedDescription:
-        "Using advanced analytics and A/B testing, we identify friction points in your user journey and implement data-driven solutions that significantly increase your conversion metrics.",
+        "Our CRO process uses advanced analytics and A/B testing to pinpoint and eliminate conversion roadblocks, resulting in measurable improvements in your lead and sales funnel.",
       benefits: [
         "A/B Testing",
         "User Journey Analysis",
@@ -98,9 +98,9 @@ export function FeaturesSection() {
       icon: LineChart,
       title: "Real-Time Social Media Analytics",
       description:
-        "We produce bespoke reports and technical audits that can help your business with specific areas of digital marketing.",
+        "Track your social campaigns with customized reports and actionable insights across major platforms.",
       extendedDescription:
-        "Our real-time dashboard gives you instant insights into campaign performance, audience engagement, and content effectiveness across all major social platforms.",
+        "Gain a competitive edge with our real-time analytics dashboards—providing instant access to engagement metrics, audience behavior, and content performance trends, all in one place.",
       benefits: [
         "Real-time Dashboards",
         "Engagement Metrics",
@@ -173,8 +173,9 @@ export function FeaturesSection() {
           Our Featured Services
         </h2>
         <p className="text-center text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto">
-          We provide cutting-edge digital marketing solutions to help your
-          business grow and succeed in today's competitive online landscape.
+          Empowering your business with next-gen web development and digital
+          marketing strategies that drive real growth in a competitive digital.
+          world.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12">

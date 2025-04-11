@@ -27,38 +27,38 @@ import type { TeamMember } from "@/data/team-members";
 // Stats data
 const stats = [
   {
-    value: 12,
-    label: "Years in Marketing",
+    value: 10,
+    label: "Years in Digital Solutions",
     icon: <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-white" />,
     bgColor: "bg-red-400",
   },
   {
-    value: 143,
-    label: "Web Analytics",
+    value: 230,
+    label: "Web Projects Delivered",
     icon: <BarChart2 className="h-6 w-6 sm:h-8 sm:w-8 text-white" />,
     bgColor: "bg-orange-400",
   },
   {
-    value: 76,
-    label: "Email Campaigns",
+    value: 85,
+    label: "Successful Email Campaigns",
     icon: <Mail className="h-6 w-6 sm:h-8 sm:w-8 text-white" />,
     bgColor: "bg-yellow-400",
   },
   {
-    value: 41,
-    label: "First Position",
+    value: 54,
+    label: "Top Google Rankings",
     icon: <Trophy className="h-6 w-6 sm:h-8 sm:w-8 text-white" />,
     bgColor: "bg-green-400",
   },
   {
     value: 16,
-    label: "Team Members",
+    label: "Dedicated Team Members",
     icon: <User className="h-6 w-6 sm:h-8 sm:w-8 text-white" />,
     bgColor: "bg-teal-400",
   },
   {
-    value: 96,
-    label: "SEO Campaigns",
+    value: 120,
+    label: "SEO Campaigns Executed",
     icon: <Search className="h-6 w-6 sm:h-8 sm:w-8 text-white" />,
     bgColor: "bg-blue-400",
   },
@@ -68,25 +68,26 @@ const stats = [
 const bottomStats = [
   {
     value: 89,
-    label: "Clients Served",
+    label: "Clients Served Globally",
     icon: <Award className="h-5 w-5 sm:h-6 sm:w-6 text-white" />,
   },
   {
-    value: 25,
-    label: "Events Organized",
+    value: 30,
+    label: "Workshops & Webinars",
     icon: <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-white" />,
   },
   {
-    value: 43,
-    label: "Public Speeches",
+    value: 50,
+    label: "Industry Talks Delivered",
     icon: <Mic className="h-5 w-5 sm:h-6 sm:w-6 text-white" />,
   },
   {
-    value: "+1,200",
-    label: "Coffee Cups",
+    value: "1,500+",
+    label: "Cups of Coffee (and Coding)",
     icon: <Coffee className="h-5 w-5 sm:h-6 sm:w-6 text-white" />,
   },
 ];
+
 
 // Update the component to accept teamMembers as a prop
 export default function AgencyPage({
