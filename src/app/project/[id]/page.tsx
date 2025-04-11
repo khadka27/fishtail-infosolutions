@@ -6,9 +6,9 @@ import { getProjectById } from "@/data/project-data";
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const project = getProjectById(params.id);
+  const project = getProjectById((await params).id);
 
   if (!project) {
     return {
