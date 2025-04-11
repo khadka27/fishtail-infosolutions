@@ -50,6 +50,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { Header } from "@/Components/Header";
 import { Footer } from "@/Components/footer";
+import PageWrapper from "./page-wrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,10 +79,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
-        <Toaster position="top-right" />
+        <PageWrapper>
+          <Header />
+          {children}
+          <Footer />
+          <Toaster position="top-right" />
+        </PageWrapper>
       </body>
     </html>
   );
