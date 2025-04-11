@@ -1,8 +1,12 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
-import { useSpring } from "@react-spring/web";
+import {
+  motion,
+  useAnimation,
+  AnimatePresence,
+  useMotionValue,
+} from "framer-motion";
 import { Particles } from "react-particles";
 import { loadSlim } from "tsparticles-slim";
 import type { Engine } from "tsparticles-engine";
@@ -12,18 +16,20 @@ export default function LoadingPage() {
   const [loading, setLoading] = useState(true);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const characterControls = useAnimation();
+
+  // Use Framer Motion instead of react-spring
+  const x = useMotionValue(0);
+
+  // Update the x motion value when progress changes
+  useEffect(() => {
+    const progressBarWidth = progressBarRef.current?.clientWidth || 0;
+    const newX = (progress / 100) * progressBarWidth;
+    x.set(newX);
+  }, [progress, x]);
+
   const particlesInit = async (engine: Engine) => {
     await loadSlim(engine);
   };
-
-  // React Spring animation for the character
-  const springProps = useSpring({
-    left: `${progress}%`,
-    config: {
-      tension: 120,
-      friction: 14,
-    },
-  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -222,10 +228,15 @@ export default function LoadingPage() {
             transition={{ duration: 0.1 }}
           />
 
-          {/* Running Character - Fixed TypeScript Error */}
-          <div
+          {/* Running Character - Using Framer Motion instead of react-spring */}
+          <motion.div
             className="absolute top-1/2 transform -translate-y-1/2"
-            style={{ left: springProps.left.get() }}
+            style={{ left: `${progress}%` }}
+            transition={{
+              type: "spring",
+              stiffness: 120,
+              damping: 14,
+            }}
           >
             <motion.div
               animate={characterControls}
@@ -264,7 +275,7 @@ export default function LoadingPage() {
                 </motion.div>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Progress Percentage */}
