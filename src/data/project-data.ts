@@ -1,11 +1,16 @@
-import eduversity from "@/Images/eduversity.png"
-import upGrad from "@/Images/upgrad.webp"
-import nmims from "@/Images/nmims.jpg"
-import doorasth from "@/Images/doorasth-850x560.png"
-import shikshanerd from "@/Images/shiksha.jpg"
-import manipal from "@/Images/manipal.jpg"
-// Sample data for the case studies page
-export const categories = ["All", "Education", "Lead Generation", "UG Courses", "PG Lead Generation"]
+import eduversity from "@/Images/eduversity.png";
+import upGrad from "@/Images/upgrad.webp";
+import nmims from "@/Images/nmims.jpg";
+import doorasth from "@/Images/doorasth-850x560.png";
+import shikshanerd from "@/Images/shiksha.jpg";
+import manipal from "@/Images/manipal.jpg";
+export const categories = [
+  "All",
+  "Education",
+  "Lead Generation",
+  "UG Courses",
+  "PG Lead Generation",
+];
 
 export const projects = [
   {
@@ -65,7 +70,8 @@ export const projects = [
       {
         title: "Conversion Rate",
         value: "5-6%",
-        description: "Achieved a 5-6% conversion rate, surpassing the industry average.",
+        description:
+          "Achieved a 5-6% conversion rate, surpassing the industry average.",
       },
       {
         title: "Engagement",
@@ -193,12 +199,14 @@ export const projects = [
       {
         title: "Conversion Rate",
         value: "6%",
-        description: "Achieved a 6% conversion rate, well above industry standards.",
+        description:
+          "Achieved a 6% conversion rate, well above industry standards.",
       },
       {
         title: "Engagement",
         value: "52%",
-        description: "Increased content engagement on YouTube and LinkedIn, enhancing overall brand visibility.",
+        description:
+          "Increased content engagement on YouTube and LinkedIn, enhancing overall brand visibility.",
       },
     ],
     conclusion:
@@ -315,7 +323,8 @@ export const projects = [
       {
         title: "Lead Generation",
         value: "42%",
-        description: "Increased qualified leads by 42% compared to previous campaigns.",
+        description:
+          "Increased qualified leads by 42% compared to previous campaigns.",
       },
       {
         title: "Conversion Rate",
@@ -389,7 +398,8 @@ export const projects = [
       {
         title: "Conversion Rate",
         value: "5-6%",
-        description: "Achieved a 5-6% conversion rate, surpassing the industry average.",
+        description:
+          "Achieved a 5-6% conversion rate, surpassing the industry average.",
       },
       {
         title: "Engagement",
@@ -401,16 +411,16 @@ export const projects = [
     conclusion:
       "This project not only met but exceeded the client's expectations, solidifying their position as a top choice for online MBA programs.",
   },
-]
+];
 
 export const clientLogos = [
-  { name: "EduVersity", image: eduversity},
+  { name: "EduVersity", image: eduversity },
   { name: "UpGrad", image: upGrad },
   { name: "NMIMS", image: nmims },
-  { name: "Doorasth Shiksha", image: doorasth},
-  { name: "ShikshaNerd", image:shikshanerd },
+  { name: "Doorasth Shiksha", image: doorasth },
+  { name: "ShikshaNerd", image: shikshanerd },
   { name: "Manipal University", image: manipal },
-]
+];
 
 export const testimonials = [
   {
@@ -431,49 +441,52 @@ export const testimonials = [
     rating: 5,
     avatar: "👩‍🏫",
   },
-]
+];
 
 export const marketingStats = [
   { label: "Educational Clients", value: "25+", icon: "🎓" },
   { label: "Lead Increase", value: "48%", icon: "📈" },
   { label: "Enrollment Growth", value: "32%", icon: "👨‍🎓" },
   { label: "ROI Improvement", value: "3.5x", icon: "💰" },
-]
+];
 
 export const approachSteps = [
   {
     title: "Research & Strategy",
-    description: "We analyze your target audience, competition, and market trends to develop a tailored strategy.",
+    description:
+      "We analyze your target audience, competition, and market trends to develop a tailored strategy.",
     icon: "🔍",
     color: "bg-blue-100 text-blue-800",
   },
   {
     title: "Implementation",
-    description: "Our team executes multi-channel campaigns designed to reach and engage your ideal students.",
+    description:
+      "Our team executes multi-channel campaigns designed to reach and engage your ideal students.",
     icon: "🚀",
     color: "bg-green-100 text-green-800",
   },
   {
     title: "Optimization & Scaling",
-    description: "We continuously monitor, test, and refine to improve performance and scale successful tactics.",
+    description:
+      "We continuously monitor, test, and refine to improve performance and scale successful tactics.",
     icon: "📈",
     color: "bg-purple-100 text-purple-800",
   },
-]
+];
 
 // Update the getProjectById function to include caching and better error handling
 export function getProjectById(id: string) {
   if (!id) {
-    console.error("Project ID is required")
-    return null
+    console.error("Project ID is required");
+    return null;
   }
 
   try {
     // Using optional chaining for safer access
-    return projects.find((project) => project?.id === id) || null
+    return projects.find((project) => project?.id === id) || null;
   } catch (error) {
-    console.error("Error fetching project:", error)
-    return null
+    console.error("Error fetching project:", error);
+    return null;
   }
 }
 
@@ -482,10 +495,10 @@ export function getRelatedProjects(currentId: string, limit = 3) {
   return projects
     .filter((project) => project.id !== currentId)
     .sort(() => Math.random() - 0.5)
-    .slice(0, limit)
+    .slice(0, limit);
 }
 
 // Add a new function to get featured projects
 export function getFeaturedProjects(limit = 3) {
-  return projects.filter((project) => project.featured).slice(0, limit)
+  return projects.filter((project) => project.featured).slice(0, limit);
 }
