@@ -1,5 +1,9 @@
-
-
+import eduversity from "@/Images/eduversity.png"
+import upGrad from "@/Images/upgrad.webp"
+import nmims from "@/Images/nmims.jpg"
+import doorasth from "@/Images/doorasth-850x560.png"
+import shikshanerd from "@/Images/shiksha.jpg"
+import manipal from "@/Images/manipal.jpg"
 // Sample data for the case studies page
 export const categories = ["All", "Education", "Lead Generation", "UG Courses", "PG Lead Generation"]
 
@@ -11,7 +15,7 @@ export const projects = [
     subcategory: "Education",
     description:
       "Strategic lead generation campaign for EduVersity Academy increasing qualified student inquiries by 45%.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: eduversity,
     logo: "/placeholder.svg?height=100&width=200",
     bgColor: "bg-blue-50",
     stats: "45% Increase in Leads",
@@ -80,7 +84,7 @@ export const projects = [
     subcategory: "Education",
     description:
       "Comprehensive digital marketing strategy for UpGrad Education focusing on lead generation and conversion optimization.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: upGrad,
     logo: "/placeholder.svg?height=100&width=200",
     bgColor: "bg-red-50",
     stats: "38% Higher Conversion Rate",
@@ -144,7 +148,7 @@ export const projects = [
     subcategory: "Education",
     description:
       "Multi-channel lead generation campaign for NMIMS University targeting prospective students across India.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: nmims,
     logo: "/placeholder.svg?height=100&width=200",
     bgColor: "bg-gray-50",
     stats: "52% Growth in Applications",
@@ -207,7 +211,7 @@ export const projects = [
     subcategory: "Education",
     description:
       "Targeted campaign for Doorasth Shiksha's undergraduate courses, focusing on student acquisition and brand awareness.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: doorasth,
     logo: "/placeholder.svg?height=100&width=200",
     bgColor: "bg-indigo-50",
     stats: "65% Increase in Enrollment",
@@ -271,7 +275,7 @@ export const projects = [
     subcategory: "Education",
     description:
       "Specialized lead generation strategy for ShikshaNerd's postgraduate programs targeting working professionals.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: shikshanerd,
     logo: "/placeholder.svg?height=100&width=200",
     bgColor: "bg-amber-50",
     stats: "42% Increase in Qualified Leads",
@@ -335,7 +339,7 @@ export const projects = [
     subcategory: "Education",
     description:
       "Comprehensive lead generation and nurturing campaign for Manipal University's various academic programs.",
-    image: "/placeholder.svg?height=300&width=400",
+    image: manipal,
     logo: "/placeholder.svg?height=100&width=200",
     bgColor: "bg-emerald-50",
     stats: "58% Higher Enrollment Rate",
@@ -400,12 +404,12 @@ export const projects = [
 ]
 
 export const clientLogos = [
-  { name: "EduVersity", image: "/placeholder.svg?height=80&width=120" },
-  { name: "UpGrad", image: "/placeholder.svg?height=80&width=120" },
-  { name: "NMIMS", image: "/placeholder.svg?height=80&width=120" },
-  { name: "Doorasth Shiksha", image: "/placeholder.svg?height=80&width=120" },
-  { name: "ShikshaNerd", image: "/placeholder.svg?height=80&width=120" },
-  { name: "Manipal University", image: "/placeholder.svg?height=80&width=120" },
+  { name: "EduVersity", image: eduversity},
+  { name: "UpGrad", image: upGrad },
+  { name: "NMIMS", image: nmims },
+  { name: "Doorasth Shiksha", image: doorasth},
+  { name: "ShikshaNerd", image:shikshanerd },
+  { name: "Manipal University", image: manipal },
 ]
 
 export const testimonials = [

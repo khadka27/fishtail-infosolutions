@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     openGraph: {
       title: `${project.title} Case Study | Fishtail InfoSolutions`,
       description: project.description,
-      images: [project.image],
+      images: project.image,
       type: "article",
     },
     twitter: {
