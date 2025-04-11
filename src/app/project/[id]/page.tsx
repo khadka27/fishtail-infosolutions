@@ -1,19 +1,24 @@
-import type { Metadata } from "next"
-import { notFound } from "next/navigation"
-import ProjectDetail from "@/Components/project-details"
-import { getProjectById } from "@/data/project-data"
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import ProjectDetail from "@/Components/project-details";
+import { getProjectById } from "@/data/project-data";
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const project = getProjectById(params.id)
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const project = getProjectById(params.id);
 
   if (!project) {
     return {
       title: "Project Not Found",
-    }
+    };
   }
 
   // Convert image to string for metadata
-  const imageUrl = typeof project.image === "string" ? project.image : project.image.src
+  const imageUrl =
+    typeof project.image === "string" ? project.image : project.image.src;
 
   return {
     title: `${project.title} Case Study | Fishtail InfoSolutions`,
@@ -30,15 +35,19 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       description: project.description,
       images: [imageUrl],
     },
-  }
+  };
 }
 
-export default function ProjectPage({ params }: { params: { id: string } }) {
-  const project = getProjectById(params.id)
+export default async function ProjectPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const project = getProjectById((await params).id);
 
   if (!project) {
-    notFound()
+    notFound();
   }
 
-  return <ProjectDetail project={project} />
+  return <ProjectDetail project={project} />;
 }
