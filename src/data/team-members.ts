@@ -123,7 +123,7 @@ export const teamMembers: TeamMember[] = [
     name: "Sadikshya Budhathoki",
     position: "Jr. Content Writer",
     department: "Content",
-    avatar: "/Image/sadikshya-budhathoki.png",
+    avatar: "/Image/sadikshya-budhathoki.jpg",
     bgColor: "bg-pink-200",
     slug: "sadikshya-budhathoki",
     bio: "Sadikshya delivers polished content that blends creativity with optimization to enhance digital visibility. She excels at turning complex topics into easy-to-read articles that engage readers. Her strength lies in crafting content strategies that build brand trust.",
