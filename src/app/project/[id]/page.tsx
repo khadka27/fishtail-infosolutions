@@ -12,20 +12,23 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     }
   }
 
+  // Convert image to string for metadata
+  const imageUrl = typeof project.image === "string" ? project.image : project.image.src
+
   return {
     title: `${project.title} Case Study | Fishtail InfoSolutions`,
     description: project.description,
     openGraph: {
       title: `${project.title} Case Study | Fishtail InfoSolutions`,
       description: project.description,
-      images: project.image,
+      images: [imageUrl],
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: `${project.title} Case Study`,
       description: project.description,
-      images: [project.image],
+      images: [imageUrl],
     },
   }
 }
