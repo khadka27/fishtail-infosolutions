@@ -1,70 +1,84 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/no-unescaped-entities */
-"use client"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, AnimatePresence, useInView } from "framer-motion"
-import { Search, Filter, ArrowRight, ChevronDown, ChevronUp } from "lucide-react"
-import { projects, categories, testimonials, marketingStats, approachSteps } from "@/data/project-data"
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import {
+  Search,
+  Filter,
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+import {
+  projects,
+  categories,
+  testimonials,
+  marketingStats,
+  approachSteps,
+} from "@/data/project-data";
 
 export default function CaseStudiesPage() {
-  const [activeCategory, setActiveCategory] = useState("All")
-  const [searchTerm, setSearchTerm] = useState("")
-  const [isFilterOpen, setIsFilterOpen] = useState(false)
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null)
-  const [activeProject, setActiveProject] = useState<string | null>(null)
-  const [isMobile, setIsMobile] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [activeProject, setActiveProject] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
-  const featuredRef = useRef<HTMLDivElement>(null)
-  const isFeaturedInView = useInView(featuredRef, { once: false, amount: 0.2 })
+  const featuredRef = useRef<HTMLDivElement>(null);
+  const isFeaturedInView = useInView(featuredRef, { once: false, amount: 0.2 });
 
   // Check if mobile on mount and window resize
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
     const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
+      setScrollY(window.scrollY);
+    };
 
-    checkIfMobile()
-    window.addEventListener("resize", checkIfMobile)
-    window.addEventListener("scroll", handleScroll)
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("resize", checkIfMobile)
-      window.removeEventListener("scroll", handleScroll)
-    }
-  }, [])
+      window.removeEventListener("resize", checkIfMobile);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 8000)
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   // Filter projects based on selected category and search term
   const filteredProjects = projects.filter((project) => {
     const matchesCategory =
-      activeCategory === "All" || project.category === activeCategory || project.subcategory === activeCategory
+      activeCategory === "All" ||
+      project.category === activeCategory ||
+      project.subcategory === activeCategory;
     const matchesSearch =
       searchTerm === "" ||
       project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.description.toLowerCase().includes(searchTerm.toLowerCase())
+      project.description.toLowerCase().includes(searchTerm.toLowerCase());
 
-    return matchesCategory && matchesSearch
-  })
+    return matchesCategory && matchesSearch;
+  });
 
-  const featuredProjects = projects.filter((project) => project.featured)
+  const featuredProjects = projects.filter((project) => project.featured);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -74,7 +88,7 @@ export default function CaseStudiesPage() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -87,15 +101,15 @@ export default function CaseStudiesPage() {
         damping: 12,
       },
     },
-  }
+  };
 
   const handleProjectClick = (id: string) => {
     if (activeProject === id) {
-      setActiveProject(null)
+      setActiveProject(null);
     } else {
-      setActiveProject(id)
+      setActiveProject(id);
     }
-  }
+  };
 
   return (
     <>
@@ -133,8 +147,9 @@ export default function CaseStudiesPage() {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="text-base md:text-lg opacity-90 mb-6"
               >
-                Discover how we've helped leading educational institutions increase enrollment, generate qualified
-                leads, and optimize their marketing ROI through data-driven strategies.
+                Discover how we&apos;ve helped leading educational institutions
+                increase enrollment, generate qualified leads, and optimize
+                their marketing ROI through data-driven strategies.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -178,15 +193,21 @@ export default function CaseStudiesPage() {
                         <div
                           className={`w-16 h-16 rounded-lg ${project.bgColor} flex items-center justify-center mb-2`}
                         >
-                          <span className="text-2xl font-bold text-blue-600">{project.title.charAt(0)}</span>
+                          <span className="text-2xl font-bold text-blue-600">
+                            {project.title.charAt(0)}
+                          </span>
                         </div>
-                        <p className="text-blue-800 text-xs font-medium text-center">{project.title}</p>
+                        <p className="text-blue-800 text-xs font-medium text-center">
+                          {project.title}
+                        </p>
                       </motion.div>
                     ))}
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-100">
                     <div className="flex items-center justify-between">
-                      <div className="text-gray-800 text-sm font-medium">Success Rate</div>
+                      <div className="text-gray-800 text-sm font-medium">
+                        Success Rate
+                      </div>
                       <div className="text-green-600 font-bold">48.5%</div>
                     </div>
                     <div className="w-full h-2 bg-gray-100 rounded-full mt-2 overflow-hidden">
@@ -219,7 +240,9 @@ export default function CaseStudiesPage() {
                 className="flex flex-col items-center text-center p-4"
               >
                 <div className="text-2xl mb-2">{stat.icon}</div>
-                <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1">{stat.value}</div>
+                <div className="text-2xl md:text-3xl font-bold text-blue-600 mb-1">
+                  {stat.value}
+                </div>
                 <div className="text-sm text-gray-600">{stat.label}</div>
               </motion.div>
             ))}
@@ -229,10 +252,13 @@ export default function CaseStudiesPage() {
 
       {/* Search and Filter Section */}
       <motion.section
-        className={`py-4 bg-white shadow-sm sticky top-0 z-20 transition-all ${scrollY > 100 ? "shadow-md" : ""}`}
+        className={`py-4 bg-white shadow-sm sticky top-0 z-20 transition-all ${
+          scrollY > 100 ? "shadow-md" : ""
+        }`}
         animate={{
           padding: scrollY > 100 ? "0.5rem 0" : "1rem 0",
-          backgroundColor: scrollY > 100 ? "rgba(255, 255, 255, 0.95)" : "white",
+          backgroundColor:
+            scrollY > 100 ? "rgba(255, 255, 255, 0.95)" : "white",
         }}
       >
         <div className="container px-4">
@@ -259,7 +285,12 @@ export default function CaseStudiesPage() {
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </button>
                 )}
@@ -276,7 +307,11 @@ export default function CaseStudiesPage() {
                     <Filter className="h-4 w-4 mr-2" />
                     Filter: {activeCategory}
                   </span>
-                  {isFilterOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  {isFilterOpen ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
                 </button>
 
                 <AnimatePresence>
@@ -292,8 +327,8 @@ export default function CaseStudiesPage() {
                           <button
                             key={category}
                             onClick={() => {
-                              setActiveCategory(category)
-                              setIsFilterOpen(false)
+                              setActiveCategory(category);
+                              setIsFilterOpen(false);
                             }}
                             className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
                               activeCategory === category
@@ -342,10 +377,13 @@ export default function CaseStudiesPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">Featured Success Stories</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              Featured Success Stories
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover how we've helped these leading educational institutions achieve remarkable results through our
-              tailored digital marketing strategies.
+              Discover how we&apos;ve helped these leading educational
+              institutions achieve remarkable results through our tailored
+              digital marketing strategies.
             </p>
           </motion.div>
 
@@ -359,7 +397,9 @@ export default function CaseStudiesPage() {
                 whileHover={{ y: -5 }}
                 className="bg-white rounded-xl shadow-md overflow-hidden h-full flex flex-col"
               >
-                <div className={`${project.bgColor} relative overflow-hidden h-48`}>
+                <div
+                  className={`${project.bgColor} relative overflow-hidden h-48`}
+                >
                   <motion.div
                     initial={{ scale: 1.2, opacity: 0 }}
                     animate={isFeaturedInView ? { scale: 1, opacity: 1 } : {}}
@@ -383,12 +423,20 @@ export default function CaseStudiesPage() {
                   </div>
                 </div>
                 <div className="p-6 flex-grow flex flex-col">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 flex-grow">{project.description}</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-4 flex-grow">
+                    {project.description}
+                  </p>
                   <div className="mt-auto">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-500">Success Metric</span>
-                      <span className="text-sm font-medium text-green-600">{project.stats}</span>
+                      <span className="text-sm text-gray-500">
+                        Success Metric
+                      </span>
+                      <span className="text-sm font-medium text-green-600">
+                        {project.stats}
+                      </span>
                     </div>
                     <Link
                       href={`/project/${project.id}`}
@@ -406,7 +454,10 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* All Projects Section */}
-      <section id="projects" className="py-12 md:py-20 px-4 sm:px-6 md:px-10 lg:px-20 bg-white">
+      <section
+        id="projects"
+        className="py-12 md:py-20 px-4 sm:px-6 md:px-10 lg:px-20 bg-white"
+      >
         <div className="container">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -426,7 +477,9 @@ export default function CaseStudiesPage() {
             className="text-center text-gray-600 mb-12 max-w-2xl mx-auto"
           >
             {filteredProjects.length > 0
-              ? `Showing ${filteredProjects.length} ${activeCategory !== "All" ? activeCategory : ""} projects`
+              ? `Showing ${filteredProjects.length} ${
+                  activeCategory !== "All" ? activeCategory : ""
+                } projects`
               : "No projects found matching your criteria"}
           </motion.p>
 
@@ -453,7 +506,9 @@ export default function CaseStudiesPage() {
                       activeProject === project.id ? "ring-2 ring-blue-500" : ""
                     }`}
                   >
-                    <div className={`relative overflow-hidden ${project.bgColor} h-40`}>
+                    <div
+                      className={`relative overflow-hidden ${project.bgColor} h-40`}
+                    >
                       <motion.div
                         animate={{
                           scale: hoveredProject === project.id ? 1.05 : 1,
@@ -482,7 +537,9 @@ export default function CaseStudiesPage() {
                       <h3 className="text-lg md:text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 text-sm mb-4 flex-grow">{project.description}</p>
+                      <p className="text-gray-600 text-sm mb-4 flex-grow">
+                        {project.description}
+                      </p>
 
                       <AnimatePresence>
                         {activeProject === project.id && (
@@ -493,27 +550,37 @@ export default function CaseStudiesPage() {
                             className="mb-4 overflow-hidden"
                           >
                             <div className="pt-4 border-t border-gray-100">
-                              <h4 className="font-medium text-gray-800 mb-2">Key Results:</h4>
+                              <h4 className="font-medium text-gray-800 mb-2">
+                                Key Results:
+                              </h4>
                               <ul className="text-sm text-gray-600 space-y-1">
                                 {project.results ? (
                                   project.results.map((result, idx) => (
                                     <li key={idx} className="flex items-start">
-                                      <span className="text-green-500 mr-2">✓</span>
+                                      <span className="text-green-500 mr-2">
+                                        ✓
+                                      </span>
                                       {result.title}: {result.description}
                                     </li>
                                   ))
                                 ) : (
                                   <>
                                     <li className="flex items-start">
-                                      <span className="text-green-500 mr-2">✓</span>
+                                      <span className="text-green-500 mr-2">
+                                        ✓
+                                      </span>
                                       {project.stats}
                                     </li>
                                     <li className="flex items-start">
-                                      <span className="text-green-500 mr-2">✓</span>
+                                      <span className="text-green-500 mr-2">
+                                        ✓
+                                      </span>
                                       Improved brand visibility and engagement
                                     </li>
                                     <li className="flex items-start">
-                                      <span className="text-green-500 mr-2">✓</span>
+                                      <span className="text-green-500 mr-2">
+                                        ✓
+                                      </span>
                                       Enhanced digital marketing ROI
                                     </li>
                                   </>
@@ -525,7 +592,11 @@ export default function CaseStudiesPage() {
                       </AnimatePresence>
 
                       <div className="flex items-center text-blue-500 text-sm font-medium mt-auto">
-                        {activeProject === project.id ? <span>View less</span> : <span>View details</span>}
+                        {activeProject === project.id ? (
+                          <span>View less</span>
+                        ) : (
+                          <span>View details</span>
+                        )}
                         <motion.span
                           animate={{
                             x: hoveredProject === project.id ? 5 : 0,
@@ -560,8 +631,8 @@ export default function CaseStudiesPage() {
                 Our Approach to Education Marketing
               </h2>
               <p className="text-gray-600">
-                We follow a proven methodology to help educational institutions attract, engage, and convert prospective
-                students.
+                We follow a proven methodology to help educational institutions
+                attract, engage, and convert prospective students.
               </p>
             </motion.div>
 
@@ -580,7 +651,9 @@ export default function CaseStudiesPage() {
                   >
                     {step.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{step.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    {step.title}
+                  </h3>
                   <p className="text-gray-600">{step.description}</p>
                 </motion.div>
               ))}
@@ -611,35 +684,53 @@ export default function CaseStudiesPage() {
                             <span>{testimonial.avatar}</span>
                           </div>
                           <div className="text-white">
-                            <div className="font-bold text-xl">{testimonial.name}</div>
-                            <div className="text-blue-100">{testimonial.role}</div>
-                            <div className="text-blue-200 text-sm">{testimonial.institution}</div>
+                            <div className="font-bold text-xl">
+                              {testimonial.name}
+                            </div>
+                            <div className="text-blue-100">
+                              {testimonial.role}
+                            </div>
+                            <div className="text-blue-200 text-sm">
+                              {testimonial.institution}
+                            </div>
                           </div>
                         </div>
                       </div>
                       <div className="md:col-span-3 p-8 text-white">
-                        <svg className="w-10 h-10 text-white/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                        <svg
+                          className="w-10 h-10 text-white/30 mb-4"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                         </svg>
-                        <p className="text-lg mb-6 leading-relaxed">"{testimonial.quote}"</p>
+                        <p className="text-lg mb-6 leading-relaxed">
+                          "{testimonial.quote}"
+                        </p>
                         <div className="flex items-center">
                           <div className="flex">
                             {[1, 2, 3, 4, 5].map((star) => (
                               <svg
                                 key={star}
-                                className={`w-5 h-5 ${star <= testimonial.rating ? "text-yellow-300" : "text-white/30"} fill-current`}
+                                className={`w-5 h-5 ${
+                                  star <= testimonial.rating
+                                    ? "text-yellow-300"
+                                    : "text-white/30"
+                                } fill-current`}
                                 viewBox="0 0 24 24"
                               >
                                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                               </svg>
                             ))}
                           </div>
-                          <span className="ml-2 text-white/80 text-sm">{testimonial.rating}.0 Rating</span>
+                          <span className="ml-2 text-white/80 text-sm">
+                            {testimonial.rating}.0 Rating
+                          </span>
                         </div>
                       </div>
                     </div>
                   </motion.div>
-                ),
+                )
             )}
           </AnimatePresence>
 
@@ -650,7 +741,9 @@ export default function CaseStudiesPage() {
                   key={index}
                   onClick={() => setActiveTestimonial(index)}
                   className={`h-2 rounded-full transition-all ${
-                    activeTestimonial === index ? "w-8 bg-blue-500" : "bg-gray-300 hover:bg-gray-400 w-2"
+                    activeTestimonial === index
+                      ? "w-8 bg-blue-500"
+                      : "bg-gray-300 hover:bg-gray-400 w-2"
                   }`}
                   aria-label={`View testimonial ${index + 1}`}
                 />
@@ -674,10 +767,15 @@ export default function CaseStudiesPage() {
               Ready to Transform Your Education Marketing?
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
-              Let's discuss how our proven strategies can help your institution attract more qualified students and
-              increase enrollment.
+              Let&apos;s discuss how our proven strategies can help your
+              institution attract more qualified students and increase
+              enrollment.
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="inline-block">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block"
+            >
               <Link
                 href="/contact"
                 className="inline-flex items-center px-8 py-4 bg-blue-500 text-white rounded-full font-medium hover:bg-blue-600 transition-colors shadow-md hover:shadow-lg"
@@ -686,10 +784,12 @@ export default function CaseStudiesPage() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </motion.div>
-            <p className="mt-4 text-sm text-gray-500">No obligation. Learn how we can help you grow.</p>
+            <p className="mt-4 text-sm text-gray-500">
+              No obligation. Learn how we can help you grow.
+            </p>
           </motion.div>
         </div>
       </section>
     </>
-  )
+  );
 }
