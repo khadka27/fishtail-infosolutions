@@ -410,8 +410,7 @@ export default function CaseStudiesPage() {
                       <Image
                         src={project.image || "/placeholder.svg"}
                         alt={project.title}
-                        width={200}
-                        height={100}
+                        fill
                         unoptimized
                         className="object-contain h-20 w-auto"
                       />
@@ -523,6 +522,7 @@ export default function CaseStudiesPage() {
                             alt={project.title}
                             width={160}
                             height={80}
+                            unoptimized
                             className="object-contain h-16 w-auto"
                           />
                         </div>
