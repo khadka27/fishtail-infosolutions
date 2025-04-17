@@ -1,36 +1,143 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fishtail Info Solutions
 
-## Getting Started
+A modern web application built with Next.js 15 and React 19, featuring interactive UI components and mapping capabilities.
 
-First, run the development server:
+## 🚀 Features
+
+- Modern UI with Tailwind CSS
+- Interactive animations using Framer Motion
+- Map integration with Leaflet and Google Maps
+- Email functionality with EmailJS
+- Custom UI components using Radix UI
+- Responsive design
+- Toast notifications
+- SVG icons support with Lucide React and React Feather
+
+## 🛠️ Technologies Used
+
+- **Framework:** Next.js 15.2.3 with Turbopack
+- **UI Library:** React 19.0.0
+- **Styling:**
+  - Tailwind CSS
+  - Class Variance Authority
+  - tailwind-merge
+  - tw-animate-css
+- **Maps:**
+  - Leaflet
+  - Google Maps JavaScript API
+- **Components:**
+  - Radix UI (Label, Slot, Tabs)
+  - Framer Motion for animations
+- **Icons:**
+  - Lucide React
+  - React Feather
+- **Notifications:** React Hot Toast
+- **Development:**
+  - TypeScript
+  - ESLint
+  - Node.js
+
+## 📦 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/khadka27/fishtail-info-solutions.git
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env.local` file in the root directory and add necessary environment variables:
+
+```env
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+NEXT_PUBLIC_EMAILJS_KEY=your_emailjs_public_key
+```
+
+## 🚀 Running the Project
+
+### Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+### Linting
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+  ├── app/         # Next.js app router pages
+  ├── Components/  # Reusable React components
+  ├── data/        # Static data and configurations
+  ├── Images/      # Image assets
+  ├── lib/         # Utility functions and helpers
+  └── projects/    # Project-related components
+public/            # Static files
+```
 
-## Deploy on Vercel
+## 🧰 Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `npm run dev` - Starts development server with Turbopack
+- `npm run build` - Creates production build
+- `npm start` - Starts production server
+- `npm run lint` - Runs ESLint for code quality
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Dependencies
+
+### Core
+
+- Next.js 15.2.3
+- React 19.0.0
+- React DOM 19.0.0
+
+### UI & Styling
+
+- Tailwind CSS
+- Class Variance Authority
+- clsx
+- tailwind-merge
+- tw-animate-css
+
+### Components & Animation
+
+- Radix UI components
+- Framer Motion
+- React Hot Toast
+
+### Maps
+
+- Leaflet
+- Google Maps JavaScript API
+
+### Development
+
+- TypeScript
+- ESLint
+- Various type definitions (@types/\*)
+
+## 📝 License
+
+This project is private and proprietary. All rights reserved.
+
+## 🤝 Contributing
+
+This is a private repository. Contact the repository owner for contribution guidelines.
