@@ -88,82 +88,89 @@ import logo4 from "@/Images/logo4.png";
 import logo5 from "@/Images/logo5.png";
 import logo6 from "@/Images/logo-6.png";
 
+// Client testimonials
 const clients = [
   {
-    name: "University",
+    name: "Oxford International College",
     logo: logo1,
-    description: "Leading educational institution with over 20,000 students",
+    description:
+      "Top-tier educational institution known for its academic excellence and innovation.",
     industry: "Education",
     testimonial: {
       quote:
-        "The digital marketing strategies implemented by the team have significantly increased our enrollment numbers and campus engagement.",
-      author: "Dr. Sarah Johnson",
+        "The digital marketing strategies implemented by the Fishtail team significantly improved our online visibility and student applications.",
+      author: "Dr. Olivia Brooks",
       title: "Director of Admissions",
       rating: 5,
     },
   },
   {
-    name: "Academy",
+    name: "Bright Future Academy",
     logo: logo2,
-    description: "Premier training academy for professional development",
-    industry: "Professional Training",
+    description:
+      "Premier training institute offering career-focused professional development programs.",
+    industry: "Training & Development",
     testimonial: {
       quote:
-        "Our online course registrations have doubled since implementing their SEO and PPC campaigns. Exceptional results!",
-      author: "Michael Chen",
+        "Our course sign-ups more than doubled thanks to their outstanding SEO and PPC support. Their team truly understands performance marketing.",
+      author: "Jonathan Kim",
       title: "Marketing Director",
       rating: 5,
     },
   },
   {
-    name: "University Academy",
+    name: "Everest Business School",
     logo: logo3,
-    description: "Specialized academy offering advanced degree programs",
+    description:
+      "Graduate school offering MBA and advanced degree programs in business and leadership.",
     industry: "Higher Education",
     testimonial: {
       quote:
-        "Their team's understanding of the education sector is impressive. They've helped us reach our target audience with precision.",
-      author: "Amanda Rodriguez",
-      title: "Dean of Students",
+        "We saw a significant increase in qualified leads after partnering with them for SEO and content strategy. Excellent service and communication.",
+      author: "Anjali Desai",
+      title: "Dean of Marketing",
       rating: 4,
     },
   },
   {
-    name: "Athletics",
+    name: "Global Athletics Federation",
     logo: logo4,
-    description: "National sports organization with Olympic-level training",
+    description:
+      "National-level sports federation organizing elite training and competitions worldwide.",
     industry: "Sports",
     testimonial: {
       quote:
-        "The social media campaign they created for our annual tournament increased attendance by 75% compared to previous years.",
-      author: "James Wilson",
-      title: "Events Manager",
+        "Their targeted campaigns for our annual championship brought a record number of attendees. Highly effective strategies!",
+      author: "Marcus Holloway",
+      title: "Event Operations Head",
       rating: 5,
     },
   },
   {
-    name: "University Shield",
+    name: "Imperial Research University",
     logo: logo5,
-    description: "Historic university with prestigious research programs",
+    description:
+      "Leading global university known for research breakthroughs and international collaborations.",
     industry: "Research & Education",
     testimonial: {
       quote:
-        "Their content marketing strategy has helped us showcase our research achievements and attract top-tier talent globally.",
-      author: "Prof. Elizabeth Taylor",
-      title: "Head of Research",
+        "Their content strategy helped elevate our research exposure and academic reach significantly. We’re now attracting global partnerships.",
+      author: "Dr. Elaine Foster",
+      title: "Head of Global Research",
       rating: 5,
     },
   },
   {
-    name: "Cross Sport",
+    name: "EliteFit Performance Center",
     logo: logo6,
-    description: "Multi-sport training facility for professional athletes",
+    description:
+      "State-of-the-art sports and fitness facility catering to elite athletes and trainers.",
     industry: "Sports Training",
     testimonial: {
       quote:
-        "The targeted local SEO campaign they implemented has brought us a steady stream of new members month after month.",
-      author: "Robert Martinez",
-      title: "Facility Director",
+        "With their help, we've seen steady new membership growth month after month. Local SEO really worked wonders for us.",
+      author: "Kevin Dawson",
+      title: "Center Director",
       rating: 4,
     },
   },

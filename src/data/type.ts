@@ -1,10 +1,12 @@
+import { StaticImageData } from "next/image"
+
 export interface Project {
     id: string
     title: string
     category: string
     subcategory: string
     description: string
-    image: string
+    image: StaticImageData | string
     logo: string
     bgColor: string
     stats: string

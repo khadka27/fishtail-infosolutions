@@ -24,7 +24,7 @@ const logos = [
 // Duplicate logos for infinite effect
 const duplicatedLogos = [...logos, ...logos, ...logos];
 
-export default function InfiniteLogoCarousel() {
+function InfiniteLogoCarousel() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
@@ -146,3 +146,4 @@ export default function InfiniteLogoCarousel() {
     </section>
   );
 }
+export default  InfiniteLogoCarousel;
