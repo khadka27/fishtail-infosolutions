@@ -44,7 +44,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/Services/web-design"
+            href="/Services/web-development"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -54,7 +54,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/Services/web-design"
+            href="/Services/mobile-marketing"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -64,7 +64,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/Services/web-design"
+            href="/Services/digital-consultancy"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -74,7 +74,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/Services/web-design"
+            href="/Services/reputation-management"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -91,14 +91,14 @@ export function ServicesDropdown() {
         <p className="text-gray-500 text-xs mb-4">How we can help you to get more sales</p>
 
         <div className="space-y-3">
-          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/search-engine" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <Search className="h-4 w-4 inline-block" />
             </span>
             <span>Search Engine Optimization</span>
           </Link>
 
-          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/local-seo" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <MapPin className="h-4 w-4 inline-block" />
             </span>
@@ -113,7 +113,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/Services/web-design"
+            href="/Services/email-marketing"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -122,7 +122,7 @@ export function ServicesDropdown() {
             <span>Email Marketing</span>
           </Link>
 
-          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/ppc-marketing" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <DollarSign className="h-4 w-4 inline-block" />
             </span>
@@ -138,7 +138,7 @@ export function ServicesDropdown() {
 
         <div className="space-y-3">
           <Link
-            href="/services/conversion-rate"
+            href="/Services/conversion-rate"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -148,7 +148,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/services/online-presence"
+            href="/Services/online-presence"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -158,7 +158,7 @@ export function ServicesDropdown() {
           </Link>
 
           <Link
-            href="/services/affiliate-management"
+            href="/Services/affiliate-management"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
             <span className="text-gray-400 mr-3 w-5 text-center">

@@ -7,139 +7,143 @@ import {
   ArrowRight,
   ChevronRight,
   Code,
-  Layout,
-  Smartphone,
-  Monitor,
+  Database,
+  Server,
+  Globe,
   Zap,
   Users,
   Clock,
-  Award,
   ArrowDown,
   MessageSquare,
   DollarSign,
+  Shield,
+  Layers,
+  GitBranch,
+  Settings,
 } from "lucide-react"
 import Form from "./form"
 
-import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
+
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
 import { QuotePopup } from "./quote-popup"
 
-// Define service features
-const designFeatures = [
+// Define development features
+const developmentFeatures = [
   {
-    title: "Branding and logo design",
-    description: "Create a unique visual identity that represents your brand values and resonates with your audience.",
-    icon: Award,
+    title: "Custom Web Applications",
+    description:
+      "Tailored web applications built to solve your specific business challenges and streamline operations.",
+    icon: Code,
     color: "blue",
   },
   {
-    title: "Graphic and UI design",
-    description: "Intuitive user interfaces with beautiful graphics that enhance user experience and engagement.",
-    icon: Layout,
+    title: "E-commerce Development",
+    description: "Powerful online stores with secure payment gateways, inventory management, and customer analytics.",
+    icon: Globe,
     color: "red",
   },
   {
-    title: "Mobile applications design",
-    description: "Responsive designs that work flawlessly across all devices and screen sizes.",
-    icon: Smartphone,
+    title: "API Development & Integration",
+    description: "Connect your systems and third-party services with custom APIs and seamless integrations.",
+    icon: Server,
     color: "green",
   },
   {
-    title: "Custom website development",
-    description: "Tailored solutions built with modern technologies to meet your specific business needs.",
-    icon: Code,
+    title: "Database Design & Management",
+    description: "Efficient database architecture that ensures data integrity, security, and optimal performance.",
+    icon: Database,
     color: "purple",
   },
   {
-    title: "E-commerce solutions",
-    description: "Powerful online stores with secure payment gateways and intuitive product management.",
+    title: "Progressive Web Apps (PWAs)",
+    description: "Fast, reliable, and engaging web applications that work offline and feel like native apps.",
     icon: Zap,
     color: "orange",
   },
   {
-    title: "SEO optimization",
-    description: "Ensure your website ranks well in search engines and attracts organic traffic.",
-    icon: ChevronRight,
+    title: "CMS Development",
+    description: "Custom content management systems that make updating your website simple and intuitive.",
+    icon: Layers,
     color: "teal",
   },
 ]
 
-// Define process steps
-const processSteps = [
+// Define development process steps
+const developmentSteps = [
   {
-    title: "Discovery",
-    description: "We learn about your business, goals, and target audience to create a strategic plan.",
+    title: "Discovery & Planning",
+    description: "We analyze your requirements, define project scope, and create a detailed development roadmap.",
     icon: Users,
   },
   {
-    title: "Design",
-    description: "Our designers create wireframes and visual concepts based on your brand and requirements.",
-    icon: Layout,
+    title: "Architecture & Design",
+    description: "Our architects design the technical foundation and data structures for your application.",
+    icon: Layers,
   },
   {
     title: "Development",
-    description: "Our developers build your website using modern technologies and best practices.",
+    description: "Our developers build your application using modern frameworks and best coding practices.",
     icon: Code,
   },
   {
-    title: "Testing",
-    description: "We thoroughly test your website to ensure it works perfectly across all devices and browsers.",
-    icon: Monitor,
+    title: "Testing & QA",
+    description: "Rigorous testing ensures your application is bug-free, secure, and performs optimally.",
+    icon: Shield,
   },
   {
-    title: "Launch",
-    description: "We deploy your website and provide training on how to manage and update it.",
-    icon: Zap,
+    title: "Deployment",
+    description: "We deploy your application to production servers with minimal downtime and disruption.",
+    icon: GitBranch,
   },
   {
-    title: "Support",
-    description: "We offer ongoing support and maintenance to keep your website running smoothly.",
-    icon: MessageSquare,
+    title: "Maintenance & Support",
+    description: "Ongoing support, updates, and improvements to keep your application running smoothly.",
+    icon: Settings,
   },
 ]
 
 // Define projects
 const projects = [
   {
-    title: "Opentray Division",
-    description: 'This website achieved Google ranking in four months, thanks to all the keyword "Opentray".',
+    title: "Enterprise CRM System",
+    description: "Custom CRM solution with integrated analytics and automated workflow management.",
     image: image2,
     bgColor: "bg-[#1ab5b3]",
-    stats: { value: "4", label: "Months to Top Ranking" },
+    stats: { value: "35%", label: "Efficiency Increase" },
   },
   {
-    title: "Tremely Designs",
-    description: "This site applies a smart SEO strategy to acquire online clients via long tail search.",
-    image: image3,
+    title: "E-commerce Platform",
+    description: "Scalable online store with inventory management and multi-payment gateway integration.",
+    image: image1,
     bgColor: "bg-[#2c3e50]",
-    stats: { value: "68%", label: "Organic Traffic" },
+    stats: { value: "3x", label: "Sales Growth" },
   },
   {
-    title: "Plainst Tech",
-    description: "Currently 60% of the total traffic on the site and inside of the system.",
+    title: "Healthcare Portal",
+    description: "HIPAA-compliant patient management system with secure data handling and reporting.",
     image: image4,
     bgColor: "bg-[#8bc34a]",
-    stats: { value: "60%", label: "System Traffic" },
+    stats: { value: "40%", label: "Admin Time Saved" },
   },
   {
-    title: "Nexus Platform",
-    description: "E-commerce solution with integrated payment systems and inventory management.",
+    title: "Financial Dashboard",
+    description: "Real-time analytics platform with data visualization and predictive modeling capabilities.",
     image: image1,
     bgColor: "bg-[#e74c3c]",
-    stats: { value: "3.5x", label: "Sales Increase" },
+    stats: { value: "99.9%", label: "Uptime" },
   },
   {
-    title: "Vertex Media",
-    description: "Media platform with advanced content management and user engagement features.",
+    title: "Logistics Management System",
+    description: "End-to-end supply chain management solution with GPS tracking and inventory forecasting.",
     image: image2,
     bgColor: "bg-[#9b59b6]",
-    stats: { value: "12min", label: "Avg. Session Time" },
+    stats: { value: "28%", label: "Cost Reduction" },
   },
 ]
 
-const WebDesignServices = () => {
+const WebDevelopmentServices = () => {
   const formRef = useRef<HTMLDivElement>(null)
   const [showQuotePopup, setShowQuotePopup] = useState(false)
   const [activeFeature, setActiveFeature] = useState<number | null>(null)
@@ -210,7 +214,7 @@ const WebDesignServices = () => {
     <div className="flex flex-col" ref={sectionRef}>
       {/* Hero Section */}
       <motion.div
-        className="bg-gradient-to-r from-[#f47b20] to-[#f39c12] text-white py-16 px-4 text-center"
+        className="bg-gradient-to-r from-[#3498db] to-[#2980b9] text-white py-16 px-4 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -224,19 +228,19 @@ const WebDesignServices = () => {
           >
             <div className="relative w-64 h-64">
               <Image
-                src={image1 || "/placeholder.svg"}
-                alt="Web Design Services"
+                src={image2 || "/placeholder.svg"}
+                alt="Web Development Services"
                 width={256}
                 height={256}
                 className="object-contain"
               />
               <motion.div
-                className="absolute -top-4 -right-4 bg-white text-[#f47b20] px-3 py-1 rounded-full text-sm font-bold shadow-lg"
+                className="absolute -top-4 -right-4 bg-white text-[#3498db] px-3 py-1 rounded-full text-sm font-bold shadow-lg"
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.3, delay: 0.8 }}
               >
-                Premium Service
+                Enterprise Solutions
               </motion.div>
             </div>
           </motion.div>
@@ -246,7 +250,7 @@ const WebDesignServices = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Web Design Services
+            Web Development Services
           </motion.h1>
           <motion.p
             className="text-xl max-w-2xl mx-auto"
@@ -254,9 +258,8 @@ const WebDesignServices = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            A website should not just draw attention. The role of a website is{" "}
-            <span className="font-bold">to attract and engage the user</span>, as well as communicate{" "}
-            <span className="font-bold">your brand</span> and raise awareness about a product or service.
+            We build <span className="font-bold">powerful web applications</span> that solve complex business challenges
+            and deliver <span className="font-bold">exceptional user experiences</span> with clean, efficient code.
           </motion.p>
 
           <motion.div
@@ -266,7 +269,7 @@ const WebDesignServices = () => {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <button
-              className="bg-white text-[#f47b20] hover:bg-gray-100 py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+              className="bg-white text-[#3498db] hover:bg-gray-100 py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
               onClick={scrollToForm}
             >
               <span className="font-medium">Start Your Project</span>
@@ -292,7 +295,7 @@ const WebDesignServices = () => {
         </div>
       </motion.div>
 
-      {/* First Impression Section */}
+      {/* Features Section */}
       <motion.div
         className="py-16 px-4 max-w-6xl mx-auto"
         initial={{ opacity: 0 }}
@@ -305,12 +308,10 @@ const WebDesignServices = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">
-            Your customers will not give you a second chance to make a first impression
-          </h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">Custom Web Development Solutions for Your Business</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            In a digital world, first impressions are vital and an outstanding web design is the key to success. Users
-            enjoy visiting sites that are aesthetically appealing and easy to navigate.
+            We build scalable, secure, and high-performance web applications that help businesses streamline operations,
+            increase efficiency, and drive growth.
           </p>
         </motion.div>
 
@@ -320,7 +321,7 @@ const WebDesignServices = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          {designFeatures.map((feature, index) => (
+          {developmentFeatures.map((feature, index) => (
             <motion.div
               key={index}
               className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
@@ -360,7 +361,7 @@ const WebDesignServices = () => {
         </motion.div>
       </motion.div>
 
-      {/* Process Section */}
+      {/* Development Process Section */}
       <motion.div
         className="py-16 px-4 bg-gray-50"
         initial={{ opacity: 0 }}
@@ -374,10 +375,10 @@ const WebDesignServices = () => {
             animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Our Design Process</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">Our Development Process</h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Every project presents its own goals, audience, and opportunities. Our approach to great projects begins
-              with a time-tested process that discovers and addresses the unexpected.
+              We follow a structured, transparent development process to ensure your project is delivered on time,
+              within budget, and to the highest quality standards.
             </p>
           </motion.div>
 
@@ -391,7 +392,7 @@ const WebDesignServices = () => {
               initial="hidden"
               animate={isVisible ? "visible" : "hidden"}
             >
-              {processSteps.map((step, index) => (
+              {developmentSteps.map((step, index) => (
                 <motion.div
                   key={index}
                   className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""} items-center gap-8`}
@@ -400,7 +401,7 @@ const WebDesignServices = () => {
                   <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
                     <motion.div
                       className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                        activeStep === index ? "ring-2 ring-[#f47b20]" : ""
+                        activeStep === index ? "ring-2 ring-[#3498db]" : ""
                       }`}
                       whileHover={{ scale: 1.03 }}
                       onClick={() => setActiveStep(activeStep === index ? null : index)}
@@ -409,11 +410,11 @@ const WebDesignServices = () => {
                         {index % 2 === 0 ? (
                           <>
                             <span>{step.title}</span>
-                            <step.icon className="w-5 h-5 ml-2 text-[#f47b20]" />
+                            <step.icon className="w-5 h-5 ml-2 text-[#3498db]" />
                           </>
                         ) : (
                           <>
-                            <step.icon className="w-5 h-5 mr-2 text-[#f47b20]" />
+                            <step.icon className="w-5 h-5 mr-2 text-[#3498db]" />
                             <span>{step.title}</span>
                           </>
                         )}
@@ -455,7 +456,7 @@ const WebDesignServices = () => {
 
                   <div className="relative md:w-8 md:h-8">
                     <motion.div
-                      className="w-8 h-8 rounded-full bg-[#f47b20] text-white flex items-center justify-center z-10 relative"
+                      className="w-8 h-8 rounded-full bg-[#3498db] text-white flex items-center justify-center z-10 relative"
                       whileHover={{ scale: 1.2 }}
                       onClick={() => setActiveStep(activeStep === index ? null : index)}
                     >
@@ -484,10 +485,10 @@ const WebDesignServices = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Our Experience by the Numbers</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">Our Development Expertise</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We've helped businesses of all sizes achieve their digital goals. Here&apos;s a snapshot of our work over the
-            years.
+            We've delivered hundreds of successful web development projects across various industries. Here's a snapshot
+            of our work.
           </p>
         </motion.div>
 
@@ -502,8 +503,8 @@ const WebDesignServices = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            <div className="text-4xl font-light text-[#3498db] mb-2">25+</div>
-            <div className="text-sm text-gray-600">E-commerce solutions</div>
+            <div className="text-4xl font-light text-[#3498db] mb-2">120+</div>
+            <div className="text-sm text-gray-600">Web Applications</div>
           </motion.div>
 
           <motion.div
@@ -511,8 +512,8 @@ const WebDesignServices = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            <div className="text-4xl font-light text-[#1abc9c] mb-2">12</div>
-            <div className="text-sm text-gray-600">Websites for Top 100 companies</div>
+            <div className="text-4xl font-light text-[#1abc9c] mb-2">45</div>
+            <div className="text-sm text-gray-600">E-commerce Platforms</div>
           </motion.div>
 
           <motion.div
@@ -520,8 +521,8 @@ const WebDesignServices = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            <div className="text-4xl font-light text-[#2ecc71] mb-2">17</div>
-            <div className="text-sm text-gray-600">Complex intranets for corporations</div>
+            <div className="text-4xl font-light text-[#2ecc71] mb-2">200+</div>
+            <div className="text-sm text-gray-600">API Integrations</div>
           </motion.div>
 
           <motion.div
@@ -529,8 +530,8 @@ const WebDesignServices = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            <div className="text-4xl font-light text-[#f1c40f] mb-2">97</div>
-            <div className="text-sm text-gray-600">Popular Facebook applications</div>
+            <div className="text-4xl font-light text-[#f1c40f] mb-2">30+</div>
+            <div className="text-sm text-gray-600">Enterprise Solutions</div>
           </motion.div>
 
           <motion.div
@@ -538,8 +539,8 @@ const WebDesignServices = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            <div className="text-4xl font-light text-[#e67e22] mb-2">74</div>
-            <div className="text-sm text-gray-600">E-mail marketing strategies</div>
+            <div className="text-4xl font-light text-[#e67e22] mb-2">15</div>
+            <div className="text-sm text-gray-600">Industries Served</div>
           </motion.div>
 
           <motion.div
@@ -547,8 +548,8 @@ const WebDesignServices = () => {
             variants={itemVariants}
             whileHover={{ y: -5 }}
           >
-            <div className="text-4xl font-light text-[#e84393] mb-2">36</div>
-            <div className="text-sm text-gray-600">Experienced web development teams</div>
+            <div className="text-4xl font-light text-[#e84393] mb-2">99%</div>
+            <div className="text-sm text-gray-600">Client Satisfaction</div>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -565,18 +566,18 @@ const WebDesignServices = () => {
           onClick={scrollToForm}
         >
           <MessageSquare className="mr-2 h-5 w-5" />
-          <span>Tell us about your project</span>
+          <span>Discuss your project</span>
         </button>
         <button
-          className="bg-[#f39c12] hover:bg-[#e67e22] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+          className="bg-[#2c3e50] hover:bg-[#34495e] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
           onClick={toggleQuotePopup}
         >
           <DollarSign className="mr-2 h-5 w-5" />
-          <span>Request a free quote now</span>
+          <span>Request a development quote</span>
         </button>
       </motion.div>
 
-      {/* Web Design Projects */}
+      {/* Web Development Projects */}
       <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
@@ -590,8 +591,8 @@ const WebDesignServices = () => {
             animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl font-light text-gray-700">Our web design projects</h2>
-            <Link href="/project" className="text-[#3498db] text-sm hover:underline flex items-center">
+            <h2 className="text-2xl font-light text-gray-700">Our development projects</h2>
+            <Link href="/projects" className="text-[#3498db] text-sm hover:underline flex items-center">
               <span>See all projects</span>
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
@@ -635,7 +636,7 @@ const WebDesignServices = () => {
                       <h3 className="text-lg font-medium mb-2">{project.title}</h3>
                       <p className="text-gray-600 text-sm mb-4">{project.description}</p>
                       <Link
-                        href={`/project/${project.title.toLowerCase().replace(/\s+/g, "-")}`}
+                        href={`/projects/${project.title.toLowerCase().replace(/\s+/g, "-")}`}
                         className="inline-flex items-center text-[#3498db] text-sm font-medium"
                       >
                         <span>View case study</span>
@@ -664,7 +665,7 @@ const WebDesignServices = () => {
         </div>
       </motion.div>
 
-      {/* Approach Section */}
+      {/* Technology Stack Section */}
       <motion.div
         className="py-16 px-4 max-w-6xl mx-auto"
         initial={{ opacity: 0 }}
@@ -677,7 +678,10 @@ const WebDesignServices = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Our Approach</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">Our Technology Stack</h2>
+          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            We use modern, reliable technologies to build scalable, high-performance web applications.
+          </p>
         </motion.div>
 
         <motion.div
@@ -687,23 +691,123 @@ const WebDesignServices = () => {
           animate={isVisible ? "visible" : "hidden"}
         >
           <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800">Collaborative Design Process</h3>
-            <p className="text-gray-700 leading-relaxed">
-              Our agency will get your business noticed in the digital world by using design ingenuity for creating
-              brand personality with a long-lasting impact. We provide various customizable design sets and focus on
-              creating a website to fit your brand while engaging your visitors. Our team presents, revises and
-              collaborates with you until we finalize the perfect design for your needs.
-            </p>
+            <h3 className="text-xl font-medium mb-4 text-gray-800">Frontend Technologies</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#3498db] mr-2"></div>
+                <span className="text-gray-700">React.js</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#3498db] mr-2"></div>
+                <span className="text-gray-700">Next.js</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#3498db] mr-2"></div>
+                <span className="text-gray-700">Vue.js</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#3498db] mr-2"></div>
+                <span className="text-gray-700">Angular</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#3498db] mr-2"></div>
+                <span className="text-gray-700">TypeScript</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#3498db] mr-2"></div>
+                <span className="text-gray-700">Tailwind CSS</span>
+              </div>
+            </div>
           </motion.div>
 
           <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800">Results-Driven Strategy</h3>
-            <p className="text-gray-700 leading-relaxed">
-              We believe that a close collaboration is the foundation for an outstanding result. Starting with content
-              audits when we assess your needs and requirements to competitive analysis outlining opportunities, we
-              collaborate at each step of the process to ensure your website not only looks great but delivers
-              measurable results.
-            </p>
+            <h3 className="text-xl font-medium mb-4 text-gray-800">Backend Technologies</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#2ecc71] mr-2"></div>
+                <span className="text-gray-700">Node.js</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#2ecc71] mr-2"></div>
+                <span className="text-gray-700">Express.js</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#2ecc71] mr-2"></div>
+                <span className="text-gray-700">Python/Django</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#2ecc71] mr-2"></div>
+                <span className="text-gray-700">PHP/Laravel</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#2ecc71] mr-2"></div>
+                <span className="text-gray-700">GraphQL</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#2ecc71] mr-2"></div>
+                <span className="text-gray-700">RESTful APIs</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+            <h3 className="text-xl font-medium mb-4 text-gray-800">Database Technologies</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#e74c3c] mr-2"></div>
+                <span className="text-gray-700">MongoDB</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#e74c3c] mr-2"></div>
+                <span className="text-gray-700">PostgreSQL</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#e74c3c] mr-2"></div>
+                <span className="text-gray-700">MySQL</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#e74c3c] mr-2"></div>
+                <span className="text-gray-700">Firebase</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#e74c3c] mr-2"></div>
+                <span className="text-gray-700">Redis</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#e74c3c] mr-2"></div>
+                <span className="text-gray-700">Elasticsearch</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+            <h3 className="text-xl font-medium mb-4 text-gray-800">DevOps & Infrastructure</h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#9b59b6] mr-2"></div>
+                <span className="text-gray-700">AWS</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#9b59b6] mr-2"></div>
+                <span className="text-gray-700">Docker</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#9b59b6] mr-2"></div>
+                <span className="text-gray-700">Kubernetes</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#9b59b6] mr-2"></div>
+                <span className="text-gray-700">CI/CD</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#9b59b6] mr-2"></div>
+                <span className="text-gray-700">Vercel</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-3 h-3 rounded-full bg-[#9b59b6] mr-2"></div>
+                <span className="text-gray-700">Netlify</span>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -717,9 +821,9 @@ const WebDesignServices = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Start Your Project Today</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">Start Your Development Project</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Tell us about your project and we&apos;ll get back to you within 24 hours with a free consultation and quote.
+              Tell us about your project requirements and we'll get back to you with a detailed proposal and timeline.
             </p>
           </div>
           <Form />
@@ -732,4 +836,4 @@ const WebDesignServices = () => {
   )
 }
 
-export default WebDesignServices
+export default WebDevelopmentServices
