@@ -112,6 +112,7 @@ export default function OnlinePresenceAnalysis() {
                   alt="Online Presence Analysis Dashboard"
                   width={600}
                   height={400}
+                  unoptimized
                   className="relative z-10 rounded-xl shadow-2xl w-full h-auto"
                 />
               </div>
@@ -276,6 +277,7 @@ export default function OnlinePresenceAnalysis() {
                           alt={step.title}
                           width={200}
                           height={150}
+                          unoptimized
                           className="rounded-lg shadow-sm w-full h-auto"
                         />
                       </div>
