@@ -19,7 +19,7 @@ export const teamMembers: TeamMember[] = [
     name: "Rahul Rauniyar",
     position: "CEO of Fishtail Info Solutions",
     department: "Management",
-    avatar: "/Image/rahul-rauniyar.jpeg",
+    avatar: "/Image/rahul-rauniyar.jpg",
     bgColor: "bg-red-100",
     slug: "rahul-rauniyar",
     bio: "Rahul leads Fishtail Info Solutions with over 10 years of experience in digital marketing and innovative strategies that drive results for our clients.",
