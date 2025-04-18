@@ -20,9 +20,12 @@ import {
 import { QuotePopup } from "./quote-popup"
 import Form from "./form"
 import Image from "next/image"
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image2 from "@/Images/services-seo-alt-colors-optimized.png"
-import image3 from "@/Images/services-payperclick-alt-colors-optimized.png"
+
+import discovery from "@/Images/data-discovery.jpg"
+import audit from "@/Images/comprehensive-audit.webp"
+import gapAnalysis from "@/Images/gap-analysis.jpg"
+import implementation from "@/Images/implementation-planning.jpg"
+import strategy from "@/Images/seo-strategy.webp"
 
 export default function OnlinePresenceAnalysis() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false)
@@ -104,7 +107,7 @@ export default function OnlinePresenceAnalysis() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-xl transform rotate-3"></div>
                 <Image
-                  src={image1 || "/digital-presence-dashboard.png"}
+                  src={implementation || "/digital-presence-dashboard.png"}
                   alt="Online Presence Analysis Dashboard"
                   width={600}
                   height={400}
@@ -216,31 +219,31 @@ export default function OnlinePresenceAnalysis() {
                 title: "Discovery & Data Collection",
                 description:
                   "We gather information about all your digital properties and collect data from various sources including search engines, social platforms, review sites, and analytics tools.",
-                image: image1,
+                image: discovery,
               },
               {
                 title: "Comprehensive Audit",
                 description:
                   "Our team conducts a thorough analysis of your online presence, examining search visibility, social engagement, brand sentiment, website performance, and competitive positioning.",
-                image: image2,
+                image: audit,
               },
               {
                 title: "Gap Analysis",
                 description:
                   "We identify gaps in your digital presence, missed opportunities, and areas where competitors may have an advantage over your brand.",
-                image: image3,
+                image: gapAnalysis,
               },
               {
                 title: "Strategic Recommendations",
                 description:
                   "Based on our findings, we develop actionable recommendations to improve your online presence, prioritized by potential impact and implementation difficulty.",
-                image: image1,
+                image: strategy,
               },
               {
                 title: "Implementation Planning",
                 description:
                   "We create a detailed roadmap for implementing our recommendations, including timelines, resource requirements, and expected outcomes.",
-                image: image2,
+                image: implementation,
               },
             ].map((step, index) => (
               <motion.div

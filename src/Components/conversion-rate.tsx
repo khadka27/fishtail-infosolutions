@@ -7,9 +7,16 @@ import Link from "next/link"
 import { LineChart, BarChart, Target, MousePointerClick, LayoutGrid, Eye, Lightbulb, Gauge, ArrowUpRight, CheckCircle2, ChevronRight } from 'lucide-react'
 import { QuotePopup} from "./quote-popup"
 import Form from "./form"
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image2 from "@/Images/services-seo-alt-colors-optimized.png"
-import image3 from "@/Images/services-payperclick-alt-colors-optimized.png"
+
+import research from "@/Images/research.jpg"
+import hypothesis from "@/Images/Types-of-hypotheses.jpg"
+import testDesign from "@/Images/test.jpg"
+import implementation from "@/Images/implementation.webp"
+import analysis from "@/Images/analysis.jpg"
+import ecommerce from "@/Images/Ecommerce-Services.webp"
+import saas from "@/Images/saas.jpg"
+import financial from "@/Images/finance.webp"
+import testing from "@/Images/testing.png"
 
 export default function ConversionRateOptimization() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false)
@@ -69,8 +76,11 @@ export default function ConversionRateOptimization() {
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
       </section>
 
+  
+      
+        {/* Introduction Section */}
       {/* Key Metrics Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
@@ -119,7 +129,7 @@ export default function ConversionRateOptimization() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 px-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Our Conversion Optimization Services</h2>
@@ -199,7 +209,7 @@ export default function ConversionRateOptimization() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Our Data-Driven CRO Process</h2>
@@ -216,36 +226,36 @@ export default function ConversionRateOptimization() {
                 title: "Research & Discovery",
                 description:
                   "We analyze your analytics data, conduct user research, and perform heuristic evaluations to identify conversion barriers",
-                image: image1,
+                image: research,
               },
               {
                 title: "Hypothesis Formation",
                 description:
                   "Based on research findings, we develop data-backed hypotheses about what changes will improve conversion rates",
-                image: image2,
+                image: hypothesis,
               },
               {
                 title: "Test Design & Development",
                 description:
                   "We create variations of your pages with strategic changes designed to test our hypotheses",
-                image: image3,
+                image: testDesign,
               },
               {
                 title: "A/B Testing",
                 description:
                   "We implement rigorous split tests to measure the impact of changes on your conversion metrics",
-                image: image2,
+                image: testing,
               },
               {
                 title: "Analysis & Learning",
                 description: "We analyze test results to determine winners and extract insights about user behavior",
-                image: image1,
+                image: analysis,
               },
               {
                 title: "Implementation & Iteration",
                 description:
                   "We implement winning variations and use learnings to inform the next round of optimization",
-                image: image3,
+                image: implementation,
               },
             ].map((step, index) => (
               <motion.div
@@ -300,7 +310,7 @@ export default function ConversionRateOptimization() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-20 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
+      <section className="py-20 px-20 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Real Results for Real Businesses</h2>
@@ -320,7 +330,7 @@ export default function ConversionRateOptimization() {
                   { label: "Conversion Lift", value: "187%" },
                   { label: "Revenue Increase", value: "$1.2M" },
                 ],
-                image: image1,
+                image: ecommerce,
               },
               {
                 industry: "SaaS",
@@ -330,7 +340,7 @@ export default function ConversionRateOptimization() {
                   { label: "Signup Increase", value: "94%" },
                   { label: "CAC Reduction", value: "32%" },
                 ],
-                image: image3,
+                image: saas,
               },
               {
                 industry: "Financial Services",
@@ -341,7 +351,7 @@ export default function ConversionRateOptimization() {
                   { label: "Lead Quality", value: "+63%" },
                   { label: "Conversion Rate", value: "8.7%" },
                 ],
-                image: image2,
+                image: financial,
               },
             ].map((study, index) => (
               <motion.div
@@ -387,7 +397,7 @@ export default function ConversionRateOptimization() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
@@ -451,7 +461,7 @@ export default function ConversionRateOptimization() {
       </section>
 
       {/* Contact Section */}
-      <section ref={contactRef} className="py-20 bg-slate-50">
+      <section ref={contactRef} className="py-20 px-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
