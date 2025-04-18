@@ -487,7 +487,7 @@ const WebDevelopmentServices = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Our Development Expertise</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We've delivered hundreds of successful web development projects across various industries. Here&apos;s a snapshot
+            We&apos;ve delivered hundreds of successful web development projects across various industries. Here&apos;s a snapshot
             of our work.
           </p>
         </motion.div>
