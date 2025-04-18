@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import { useState, useEffect } from "react"
@@ -267,7 +268,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
                                     <li>• Job Titles: Managers, Directors, Team Leads</li>
                                     <li>• Industries: Technology, Finance, Healthcare, Manufacturing</li>
                                     <li>• Experience: 3-15 years</li>
-                                    <li>• Education: Bachelor's degree or higher</li>
+                                    <li>• Education: Bachelor&apos;s degree or higher</li>
                                     <li>• Interests: Professional development, career advancement</li>
                                   </ul>
                                 </div>
@@ -279,7 +280,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
                                   <ul className="space-y-1 text-sm text-gray-700">
                                     <li>• Search: Targeted keywords related to MBA programs, online education</li>
                                     <li>• Display: Remarketing to website visitors, in-market audiences</li>
-                                    <li>• Performance Max: Leveraging Google's AI for cross-channel optimization</li>
+                                    <li>• Performance Max: Leveraging Google&apos;s AI for cross-channel optimization</li>
                                     <li>• Custom landing pages with program-specific messaging</li>
                                   </ul>
                                 </div>

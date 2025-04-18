@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ChevronRight, Search, BarChart2, Globe, LineChart, ArrowUp, Code, ArrowDown, MessageSquare, DollarSign, Award, Zap, Link2, Settings, FileText, Layers, Smartphone } from 'lucide-react'
+import { ArrowRight, ChevronRight, Search, BarChart2, Globe, LineChart, ArrowUp, Code, ArrowDown, DollarSign, Link2, Settings, FileText, Layers } from 'lucide-react'
 import Form from "./form"
 import { QuotePopup } from "./quote-popup"
 import image3 from "@/Images/services-analytics-alt-colors-optimized.png"

@@ -440,7 +440,7 @@ export default function OnlinePresenceAnalysis() {
                   and provide a high-level overview of your strengths and opportunities.
                 </p>
                 <div className="bg-teal-50 rounded-lg p-6 mb-6 border border-teal-100">
-                  <h3 className="text-xl font-bold mb-3 text-teal-800">What You'll Receive:</h3>
+                  <h3 className="text-xl font-bold mb-3 text-teal-800">What You&apos;ll Receive:</h3>
                   <ul className="space-y-3">
                     {[
                       "High-level assessment of your search visibility",

@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ChevronRight, Shield, Search, BarChart, Globe, AlertCircle, Users, Clock, ArrowDown, MessageSquare, DollarSign, Star, Trash2, Eye, Award, Briefcase, FileText } from 'lucide-react'
+import { ArrowRight, ChevronRight, Shield, Search, BarChart, Globe, AlertCircle,  ArrowDown,  DollarSign, Star, Trash2, Eye, Briefcase, FileText } from 'lucide-react'
 import Form from "./form"
 import { QuotePopup } from "./quote-popup"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
@@ -293,7 +293,7 @@ const ReputationManagementServices = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Comprehensive Reputation Management Solutions</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We offer a complete suite of reputation management services to protect, repair, and enhance your brand's
+            We offer a complete suite of reputation management services to protect, repair, and enhance your brand&apos;s
             online presence across all digital channels.
           </p>
         </motion.div>

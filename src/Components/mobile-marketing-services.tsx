@@ -376,7 +376,7 @@ const MobileMarketingServices = () => {
           >
             <h2 className="text-3xl font-light text-gray-700 mb-4">Why Mobile Marketing Matters</h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              In today's digital landscape, mobile is no longer optional. Here's why a mobile-first approach is
+              In today&apos;s digital landscape, mobile is no longer optional. Here&apos;s why a mobile-first approach is
               essential for your business.
             </p>
           </motion.div>
@@ -656,7 +656,7 @@ const MobileMarketingServices = () => {
           <div className="text-center mb-8">
             <h2 className="text-3xl font-light text-gray-700 mb-4">Start Your Mobile Marketing Campaign</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Tell us about your business goals and target audience, and we'll create a mobile marketing strategy
+              Tell us about your business goals and target audience, and we&apos;ll create a mobile marketing strategy
               tailored to your needs.
             </p>
           </div>

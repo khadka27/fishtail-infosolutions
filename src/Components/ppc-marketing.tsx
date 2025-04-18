@@ -566,7 +566,7 @@ const PPCMarketing = () => {
             <h2 className="text-3xl font-light text-gray-700 mb-4">Why PPC Marketing Matters</h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
               Pay-per-click advertising offers unique advantages that make it an essential component of a comprehensive
-              digital marketing strategy. Here's why investing in PPC is crucial for your business growth.
+              digital marketing strategy. Here&apos;s why investing in PPC is crucial for your business growth.
             </p>
           </motion.div>
 
@@ -771,8 +771,8 @@ const PPCMarketing = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Our PPC Marketing Impact</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We've helped hundreds of businesses achieve significant growth through strategic pay-per-click advertising.
-            Here's our track record of success.
+            We&apos;ve helped hundreds of businesses achieve significant growth through strategic pay-per-click advertising.
+            Here&apos;s our track record of success.
           </p>
         </motion.div>
 

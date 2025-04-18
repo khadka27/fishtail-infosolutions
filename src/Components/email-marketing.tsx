@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ChevronRight, Mail, BarChart2, Users, FileText, ArrowDown, DollarSign, PieChart, Clock, Target, Zap, Repeat, CheckCircle, Inbox, Send, Settings, Search } from 'lucide-react'
+import { ArrowRight, ChevronRight, Mail, BarChart2, Users, FileText, ArrowDown, DollarSign, PieChart, Clock, Target, Zap, Repeat, CheckCircle, Inbox, Send, Settings } from 'lucide-react'
 import Form from "./form"
 import { QuotePopup } from "./quote-popup"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
@@ -375,7 +375,7 @@ const EmailMarketing = () => {
           >
             <h2 className="text-3xl font-light text-gray-700 mb-4">Why Email Marketing Matters</h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Email marketing remains one of the most effective digital marketing channels. Here's why investing in
+              Email marketing remains one of the most effective digital marketing channels. Here&apos;s why investing in
               email marketing is crucial for your business growth.
             </p>
           </motion.div>
@@ -403,7 +403,7 @@ const EmailMarketing = () => {
               </div>
               <h3 className="text-lg font-medium mb-2 text-gray-800">4.3 Billion Email Users Worldwide</h3>
               <p className="text-gray-600 text-sm">
-                With over half the world's population using email, it provides unparalleled reach for your marketing
+                With over half the world&apos;s population using email, it provides unparalleled reach for your marketing
                 messages.
               </p>
             </motion.div>
@@ -580,7 +580,7 @@ const EmailMarketing = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Our Email Marketing Impact</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We've helped hundreds of businesses achieve significant growth through strategic email marketing. Here's our
+            We&apos;ve helped hundreds of businesses achieve significant growth through strategic email marketing. Here&apos;s our
             track record of success.
           </p>
         </motion.div>
@@ -776,7 +776,7 @@ const EmailMarketing = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Benefits of Email Marketing</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Investing in email marketing provides numerous advantages for businesses of all sizes. Here's how strategic
+            Investing in email marketing provides numerous advantages for businesses of all sizes. Here&apos;s how strategic
             email marketing can benefit your business.
           </p>
         </motion.div>
@@ -804,7 +804,7 @@ const EmailMarketing = () => {
               <span>Direct Access to Your Audience</span>
             </h3>
             <p className="text-gray-600">
-              Email provides direct access to your audience's inbox, without algorithm changes or platform restrictions
+              Email provides direct access to your audience&apos;s inbox, without algorithm changes or platform restrictions
               that affect social media and other channels.
             </p>
           </motion.div>
@@ -859,7 +859,7 @@ const EmailMarketing = () => {
               <span>Ownership of Your Audience</span>
             </h3>
             <p className="text-gray-600">
-              Unlike social media followers, your email list is an owned asset that can't be affected by platform
+              Unlike social media followers, your email list is an owned asset that can&apos;t be affected by platform
               changes, providing long-term marketing stability.
             </p>
           </motion.div>
