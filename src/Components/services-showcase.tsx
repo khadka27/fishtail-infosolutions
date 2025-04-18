@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import { useState, useEffect } from "react"
@@ -31,8 +32,8 @@ import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
 import { CaseStudiesSection } from "./case-studies-section"
 import { QuotePopup } from "./quote-popup"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/Components/ui/button"
+import { Tabs, TabsList, TabsTrigger } from "@/Components/ui/tabs"
 import { useMobile } from "@/hooks/use-mobile"
 
 // Define service categories
@@ -557,7 +558,7 @@ const ServicesShowcase = () => {
                   transition={{ duration: 0.5 }}
                 >
                   <div className="flex-1">
-                    <blockquote className="text-xl italic">"{testimonial.quote}"</blockquote>
+                    <blockquote className="text-xl italic">&quot;{testimonial.quote}&ldquo;</blockquote>
                   </div>
                   <div className="flex flex-col items-center">
                     <div className="w-20 h-20 rounded-full bg-white overflow-hidden mb-2 border-2 border-white">
