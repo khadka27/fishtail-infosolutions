@@ -376,7 +376,7 @@ const DigitalConsultancyReputationServices = () => {
           >
             <h2 className="text-3xl font-light text-gray-700 mb-4">Why Reputation Management Matters</h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              In today&apos;s digital world, your online reputation can make or break your business. Here's why proactive
+              In today&apos;s digital world, your online reputation can make or break your business. Here&apos;s why proactive
               management is essential.
             </p>
           </motion.div>

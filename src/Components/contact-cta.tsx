@@ -26,7 +26,7 @@ export default function ContactCTA() {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto"
           >
-            Let's discuss how our proven strategies can help your institution attract more qualified students and
+            Let&apos;s discuss how our proven strategies can help your institution attract more qualified students and
             increase enrollment.
           </motion.p>
 
