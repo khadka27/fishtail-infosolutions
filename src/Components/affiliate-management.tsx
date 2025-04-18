@@ -21,9 +21,10 @@ import {
 import { QuotePopup } from "./quote-popup"
 import Form from "./form"
 import Image from "next/image"
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image2 from "@/Images/services-seo-alt-colors-optimized.png"
-import image3 from "@/Images/services-payperclick-alt-colors-optimized.png"
+
+import ecommerce from "@/Images/Ecommerce-Services.webp"
+import saas from "@/Images/saas.jpg"
+import financial from "@/Images/finance.webp"
 
 export default function AffiliateManagement() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false)
@@ -37,7 +38,7 @@ export default function AffiliateManagement() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-orange-600 to-pink-600 text-white">
+      <section className="relative px-20 overflow-hidden bg-gradient-to-r from-orange-600 to-pink-600 text-white">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('/network-pattern.png')] bg-repeat opacity-10"></div>
           {Array.from({ length: 20 }).map((_, i) => (
@@ -103,7 +104,7 @@ export default function AffiliateManagement() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-xl transform rotate-3"></div>
                 <Image
-                  src={image3 || "/affiliate-network-illustration.png"}
+                  src={ecommerce || "/affiliate-network-illustration.png"}
                   alt="Affiliate Network Illustration"
                   width={600}
                   height={400}
@@ -125,7 +126,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* Key Metrics Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <motion.div
@@ -188,7 +189,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 px-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
@@ -265,7 +266,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">How Our Affiliate Management Works</h2>
@@ -322,7 +323,7 @@ export default function AffiliateManagement() {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src={image2 || "/affiliate-program-setup.png"}
+                      src={ecommerce || "/affiliate-program-setup.png"}
                       alt="Affiliate Program Setup"
                       width={400}
                       height={300}
@@ -362,7 +363,7 @@ export default function AffiliateManagement() {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src={image3 || "/affiliate-recruitment.png"}
+                      src={saas || "/affiliate-recruitment.png"}
                       alt="Affiliate Recruitment"
                       width={400}
                       height={300}
@@ -402,7 +403,7 @@ export default function AffiliateManagement() {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src={image2 || "/affiliate-optimization.png"}
+                      src={financial || "/affiliate-optimization.png"}
                       alt="Affiliate Optimization"
                       width={400}
                       height={300}
@@ -417,7 +418,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-20 bg-gradient-to-br from-orange-600 to-pink-600 text-white">
+      <section className="py-20 px-20 bg-gradient-to-br from-orange-600 to-pink-600 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
@@ -437,7 +438,7 @@ export default function AffiliateManagement() {
                   { label: "Revenue Growth", value: "432%" },
                   { label: "Active Affiliates", value: "1,200+" },
                 ],
-                image: image1,
+                image: ecommerce,
               },
               {
                 industry: "SaaS",
@@ -448,7 +449,7 @@ export default function AffiliateManagement() {
                   { label: "Signup Increase", value: "3.2x" },
                   { label: "Conversion Rate", value: "18.7%" },
                 ],
-                image: image2,
+                image: saas,
               },
               {
                 industry: "Health & Wellness",
@@ -459,7 +460,7 @@ export default function AffiliateManagement() {
                   { label: "First Year Revenue", value: "$1.8M" },
                   { label: "Program ROI", value: "412%" },
                 ],
-                image: image3,
+                image: financial,
               },
             ].map((study, index) => (
               <motion.div
@@ -502,7 +503,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
@@ -574,7 +575,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* Contact Section */}
-      <section ref={contactRef} className="py-20 bg-gray-50">
+      <section ref={contactRef} className="py-20 px-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

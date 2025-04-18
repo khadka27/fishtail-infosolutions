@@ -56,7 +56,7 @@ const mainServices = [
     textColor: "text-blue-100",
     image: image1,
     category: "marketing",
-    link: "/services/social-media-marketing",
+    link: "/Services/social-media",
   },
   {
     id: 2,
@@ -68,7 +68,7 @@ const mainServices = [
     textColor: "text-yellow-100",
     image: image2,
     category: "seo",
-    link: "/services/seo",
+    link: "/Services/search-engine",
   },
   {
     id: 3,
@@ -80,7 +80,7 @@ const mainServices = [
     textColor: "text-green-100",
     image: image3,
     category: "marketing",
-    link: "/services/web-analytics",
+    link: "/Services/content-marketing",
   },
   {
     id: 4,
@@ -91,7 +91,7 @@ const mainServices = [
     textColor: "text-blue-100",
     image: image4,
     category: "marketing",
-    link: "/services/email-marketing",
+    link: "/Services/email-marketing",
   },
   {
     id: 5,
@@ -102,7 +102,7 @@ const mainServices = [
     textColor: "text-red-100",
     image: image1,
     category: "marketing",
-    link: "/services/ppc",
+    link: "/Services/ppc-marketing",
   },
   {
     id: 6,
@@ -113,7 +113,7 @@ const mainServices = [
     textColor: "text-teal-100",
     image: image2,
     category: "marketing",
-    link: "/services/content-strategy",
+    link: "/Services/content-marketing",
   },
 ]
 
@@ -125,7 +125,7 @@ const additionalServices = [
     description: "Maximize your presence on search engine results pages on a local scale.",
     icon: <MapPin className="h-6 w-6" />,
     category: "seo",
-    link: "/services/local-search",
+    link: "/Services/local-seo",
   },
   {
     id: 8,
@@ -133,7 +133,7 @@ const additionalServices = [
     description: "Google Maps Optimization is an important part of any successful local marketing strategy.",
     icon: <Map className="h-6 w-6" />,
     category: "seo",
-    link: "/services/maps-optimization",
+    link: "/Services/search-engine",
   },
   {
     id: 9,
@@ -142,7 +142,7 @@ const additionalServices = [
       "Link building is and will continue to be a tremendously important component of Search Engine Optimization.",
     icon: <Link2 className="h-6 w-6" />,
     category: "seo",
-    link: "/services/link-building",
+    link: "/Services/content-marketing",
   },
   {
     id: 10,
@@ -150,7 +150,7 @@ const additionalServices = [
     description: "Paid listings on Google AdWords and Microsoft AdCenter can help you reach new customers.",
     icon: <Target className="h-6 w-6" />,
     category: "marketing",
-    link: "/services/paid-search",
+    link: "/Services/search-engine",
   },
   {
     id: 11,
@@ -158,7 +158,7 @@ const additionalServices = [
     description: "Our team specializes in affordable web design and e-commerce.",
     icon: <Layout className="h-6 w-6" />,
     category: "design",
-    link: "/services/website-design",
+    link: "/Services/web-design",
   },
   {
     id: 12,
@@ -166,7 +166,7 @@ const additionalServices = [
     description: "Custom email templates that speak to your customers and resonate with your brand.",
     icon: <AtSign className="h-6 w-6" />,
     category: "design",
-    link: "/services/email-design",
+    link: "/Services/email-marketing",
   },
 ]
 
@@ -353,17 +353,17 @@ const ServicesShowcase = () => {
           initial="hidden"
           animate={additionalInView ? "visible" : "hidden"}
           variants={fadeIn}
-          className="w-full bg-gradient-to-r from-[#1a2a3a] to-[#2c3e50] text-white py-16"
+          className="w-full bg-gradient-to-r from-[#1a2a3a] to-[#2c3e50] text-white py-16 "
         >
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-light mb-8 text-center">Additional Specialized Services</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-hidden">
               {additionalServices.map((service) => (
                 <motion.div
                   key={service.id}
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 cursor-pointer"
+                  className="bg-white/10 backdrop-blur-sm rounded-lg p-6 cursor-pointer overflow-hidden"
                   onClick={() => toggleServiceExpand(service.id)}
                 >
                   <div className="flex items-start">
