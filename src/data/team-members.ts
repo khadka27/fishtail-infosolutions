@@ -130,4 +130,16 @@ export const teamMembers: TeamMember[] = [
     email: "sadikshya@fishtailinfosolutions.com",
     expertise: ["Copywriting", "Content Strategy", "Editing"],
   },
+  {
+    name: "Prity Thapa",
+position: "Jr. Content Writer",
+department: "Content",
+avatar: "/Image/prity-thapa.jpg",
+bgColor: "bg-pink-200",
+slug: "prity-thapa",
+bio: "Prity brings a fresh voice to the content team with her knack for clear and compelling storytelling. She specializes in creating engaging content that aligns with brand goals and connects with target audiences. Her dedication to learning and adapting makes her a valuable asset in dynamic content projects.",
+email: "prity@fishtailinfosolutions.com",
+expertise: ["Copywriting", "Content Strategy", "Editing"],
+
+  },
 ];
