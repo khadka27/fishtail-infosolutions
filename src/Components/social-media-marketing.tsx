@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ChevronRight, Instagram, Facebook, Twitter, Linkedin, Youtube, TrendingUp, Users, MessageCircle, ArrowDown, DollarSign, BarChart2, PieChart, FileText, ImageIcon, Video, Target, Heart, Share2, CheckCircle, Clock, Award, Search } from 'lucide-react'
+import { ArrowRight, ChevronRight, Instagram, Facebook, Twitter, Linkedin, Youtube, TrendingUp, Users, MessageCircle, ArrowDown, DollarSign, BarChart2, PieChart, FileText, ImageIcon, Target, Heart, Share2, CheckCircle, Clock, Award, Search } from 'lucide-react'
 import Form from "./form"
 import { QuotePopup } from "./quote-popup"
 import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
@@ -479,7 +479,7 @@ const SocialMediaMarketing = () => {
           >
             <h2 className="text-3xl font-light text-gray-700 mb-4">Why Social Media Marketing Matters</h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              In today's digital landscape, social media is essential for businesses of all sizes. Here's why investing
+              In today&apos;s digital landscape, social media is essential for businesses of all sizes. Here&apos;s why investing
               in social media marketing is crucial for your business growth.
             </p>
           </motion.div>
@@ -496,7 +496,7 @@ const SocialMediaMarketing = () => {
               </div>
               <h3 className="text-lg font-medium mb-2 text-gray-800">4.8 Billion Social Media Users Worldwide</h3>
               <p className="text-gray-600 text-sm">
-                With over 60% of the world's population on social media, these platforms provide unparalleled access to
+                With over 60% of the world&apos;s population on social media, these platforms provide unparalleled access to
                 your target audience.
               </p>
             </motion.div>
@@ -684,8 +684,8 @@ const SocialMediaMarketing = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Our Social Media Impact</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We've helped hundreds of businesses achieve significant growth through strategic social media marketing.
-            Here's our track record of success.
+            We&apos;ve helped hundreds of businesses achieve significant growth through strategic social media marketing.
+            Here&apos;s our track record of success.
           </p>
         </motion.div>
 
@@ -879,7 +879,7 @@ const SocialMediaMarketing = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Benefits of Social Media Marketing</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Investing in social media marketing provides numerous advantages for businesses of all sizes. Here's how
+            Investing in social media marketing provides numerous advantages for businesses of all sizes. Here&apos;s how
             strategic social media can benefit your business.
           </p>
         </motion.div>
@@ -940,7 +940,7 @@ const SocialMediaMarketing = () => {
               <span>Improved Customer Insights</span>
             </h3>
             <p className="text-gray-600">
-              Gain valuable data about your audience's preferences, behaviors, and needs through social listening and
+              Gain valuable data about your audience&apos;s preferences, behaviors, and needs through social listening and
               analytics.
             </p>
           </motion.div>

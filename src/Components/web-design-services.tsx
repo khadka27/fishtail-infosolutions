@@ -486,7 +486,7 @@ const WebDesignServices = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Our Experience by the Numbers</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We've helped businesses of all sizes achieve their digital goals. Here&apos;s a snapshot of our work over the
+            We&apos;ve helped businesses of all sizes achieve their digital goals. Here&apos;s a snapshot of our work over the
             years.
           </p>
         </motion.div>

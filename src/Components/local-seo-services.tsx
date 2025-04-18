@@ -392,7 +392,7 @@ const LocalSEOServices = () => {
           >
             <h2 className="text-3xl font-light text-gray-700 mb-4">Why Local SEO Matters</h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Local SEO is essential for businesses that serve specific geographic areas. Here's why investing in local
+              Local SEO is essential for businesses that serve specific geographic areas. Here&apos;s why investing in local
               search optimization is crucial for your business growth.
             </p>
           </motion.div>
@@ -604,8 +604,8 @@ const LocalSEOServices = () => {
         >
           <h2 className="text-3xl font-light text-gray-700 mb-4">Our Local SEO Impact</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We've helped hundreds of local businesses achieve significant growth through strategic local search
-            optimization. Here's our track record of success.
+            We&apos;ve helped hundreds of local businesses achieve significant growth through strategic local search
+            optimization. Here&apos;s our track record of success.
           </p>
         </motion.div>
 
@@ -800,7 +800,7 @@ const LocalSEOServices = () => {
           <h2 className="text-3xl font-light text-gray-700 mb-4">Benefits of Local SEO</h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
             Investing in local SEO provides numerous advantages for businesses that serve specific geographic areas.
-            Here's how local search optimization can benefit your business.
+            Here&apos;s how local search optimization can benefit your business.
           </p>
         </motion.div>
 
