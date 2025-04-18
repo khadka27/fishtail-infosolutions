@@ -20,6 +20,7 @@ import {
 import { QuotePopup } from "./quote-popup"
 import Form from "./form"
 import Image from "next/image"
+import footprint from "@/Images/Footprints.png"
 
 import discovery from "@/Images/data-discovery.jpg"
 import audit from "@/Images/comprehensive-audit.webp"
@@ -105,9 +106,9 @@ export default function OnlinePresenceAnalysis() {
               className="lg:w-1/2"
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-xl transform rotate-3"></div>
+                <div className="absolute inset-0 "></div>
                 <Image
-                  src={implementation || "/digital-presence-dashboard.png"}
+                  src={footprint || "/digital-presence-dashboard.png"}
                   alt="Online Presence Analysis Dashboard"
                   width={600}
                   height={400}
