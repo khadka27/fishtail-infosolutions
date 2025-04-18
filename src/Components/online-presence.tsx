@@ -130,7 +130,7 @@ export default function OnlinePresenceAnalysis() {
       </section>
 
       {/* Analysis Areas Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Complete Digital Presence Analysis</h2>
@@ -205,7 +205,7 @@ export default function OnlinePresenceAnalysis() {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 px-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Our Analysis Process</h2>
@@ -289,7 +289,7 @@ export default function OnlinePresenceAnalysis() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Frequently Asked Questions</h2>
@@ -366,7 +366,7 @@ export default function OnlinePresenceAnalysis() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-gradient-to-br from-teal-900 to-emerald-900 text-white">
+      <section className="py-20 px-20 bg-gradient-to-br from-teal-900 to-emerald-900 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Analyze Your Online Presence?</h2>
@@ -426,7 +426,7 @@ export default function OnlinePresenceAnalysis() {
       </section>
 
       {/* Contact Section */}
-      <section ref={contactRef} className="py-20 bg-white">
+      <section ref={contactRef} className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
