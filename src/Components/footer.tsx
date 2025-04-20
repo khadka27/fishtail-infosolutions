@@ -148,7 +148,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import logo1 from "@/Images/Logo-Fishtail-Infosolutions.png";
+import logo1 from "@/Images/fishtailfotter.png";
 import { QuotePopup } from "./quote-popup";
 
 export function Footer() {
