@@ -289,6 +289,7 @@ export function Footer() {
                 alt="Fishtail Infosolutions Logo"
                 width={180}
                 height={60}
+                unoptimized
                 className="h-auto"
               />
             </div>
