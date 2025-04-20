@@ -383,10 +383,6 @@ export default function TeamMemberClient({
                             <h4 className="font-medium text-gray-800">
                               {area}
                             </h4>
-                            <p className="text-gray-600 text-sm">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit. Sed do eiusmod tempor incididunt ut labore.
-                            </p>
                           </div>
                         </motion.div>
                       ))
@@ -412,10 +408,6 @@ export default function TeamMemberClient({
                             <h4 className="font-medium text-gray-800">
                               {area}
                             </h4>
-                            <p className="text-gray-600 text-sm">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing
-                              elit. Sed do eiusmod tempor incididunt ut labore.
-                            </p>
                           </div>
                         </motion.div>
                       ))}
