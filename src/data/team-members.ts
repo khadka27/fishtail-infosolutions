@@ -12,6 +12,9 @@ export type TeamMember = {
   linkedin?: string;
   twitter?: string;
   expertise?: string[];
+  experience?: string[];
+  projects?: string[];
+  skills?: { skill: string; level: number }[];
 };
 
 export const teamMembers: TeamMember[] = [
@@ -25,6 +28,17 @@ export const teamMembers: TeamMember[] = [
     bio: "Rahul leads Fishtail Info Solutions with over 10 years of experience in digital marketing and innovative strategies that drive results for our clients.",
     email: "rahul@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/rahul-rauniyar",
+    twitter: "https://twitter.com/rahulrauniyar",
+    experience: ["10+ years in Digital Marketing"],
+    projects: ["20 + Projects"],
+    expertise: ["Digital Marketing Strategy", "SEO & SEM", "Content Marketing"],
+    skills: [
+      { skill: "SEO Strategy", level: 95 },
+      { skill: "Content Marketing", level: 90 },
+      { skill: "Social Media Management", level: 85 },
+      { skill: "PPC Campaigns", level: 80 },
+      { skill: "Analytics & Reporting", level: 92 },
+    ],
   },
   {
     name: "Bikash Gupta",
@@ -36,6 +50,14 @@ export const teamMembers: TeamMember[] = [
     bio: "Bikash specializes in search engine optimization and has helped numerous clients achieve top rankings for competitive keywords.",
     email: "bikash@fishtailinfosolutions.com",
     expertise: ["SEO", "Keyword Research", "Content Optimization"],
+    experience: ["1+ years in Digital Marketing"],
+    projects: ["2+ Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 90 },
+      { skill: "Content Marketing", level: 85 },
+      { skill: "PPC Campaigns", level: 70 },
+      { skill: "Analytics & Reporting", level: 80 },
+    ],
   },
   {
     name: "Rahul Gupta",
@@ -48,6 +70,14 @@ export const teamMembers: TeamMember[] = [
     email: "rahul@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/rahul-gupta",
     expertise: ["Content Strategy", "SEO Writing", "Team Management"],
+    experience: ["1+ years in Digital Marketing"],
+    projects: ["2+ Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 85 },
+      { skill: "Content Marketing", level: 90 },
+      { skill: "Social Media Management", level: 80 },
+      { skill: "PPC Campaigns", level: 75 },
+    ],
   },
   {
     name: "Abishek Khadka",
@@ -60,6 +90,14 @@ export const teamMembers: TeamMember[] = [
     email: "abishekkhadka@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/khadka27",
     expertise: ["React", "Next.js", "Node.js", "Database Design"],
+    experience: ["1+ years in Web Development"],
+    projects: ["3 + Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 65 },
+      { skill: "Content Marketing", level: 70 },
+      { skill: "PPC Campaigns", level: 50 },
+      { skill: "Analytics & Reporting", level: 60 },
+    ],
   },
   {
     name: "Ashish Rauniyar",
@@ -71,6 +109,16 @@ export const teamMembers: TeamMember[] = [
     bio: "Ashish oversees our human resources department, ensuring we attract and retain top talent while maintaining a positive company culture.",
     email: "ashish@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/ashish-rauniyar",
+    experience: ["1+ years in HR Management"],
+    expertise: ["Talent Acquisition", "Employee Relations", "HR Strategy"],
+    projects: ["5+ Employee Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 60 },
+      { skill: "Content Marketing", level: 65 },
+      { skill: "Social Media Management", level: 70 },
+      { skill: "PPC Campaigns", level: 55 },
+      { skill: "Analytics & Reporting", level: 50 },
+    ],
   },
   {
     name: "Pratikshya Sheersh",
@@ -83,6 +131,14 @@ export const teamMembers: TeamMember[] = [
     email: "pratikshya@fishtailinfo.com",
     twitter: "https://twitter.com/pratikshya",
     expertise: ["Digital Marketing", "Campaign Management", "Analytics"],
+    experience: ["1+ years in Digital Marketing"],
+    projects: ["2+ Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 75 },
+      { skill: "Content Marketing", level: 80 },
+      { skill: "PPC Campaigns", level: 90 },
+      { skill: "Analytics & Reporting", level: 85 },
+    ],
   },
   {
     name: "Diwas Gurung",
@@ -95,6 +151,14 @@ export const teamMembers: TeamMember[] = [
     email: "diwasgrg@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/diwas-gurung",
     expertise: ["React", "CSS", "UI/UX"],
+    experience: ["1+ years in Web Development"],
+    projects: ["3 + Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 70 },
+      { skill: "Content Marketing", level: 65 },
+      { skill: "PPC Campaigns", level: 60 },
+      { skill: "Analytics & Reporting", level: 75 },
+    ],
   },
 
   {
@@ -107,6 +171,14 @@ export const teamMembers: TeamMember[] = [
     bio: "Mamata is passionate about crafting compelling content that connects with audiences and boosts brand storytelling. She is skilled in transforming ideas into engaging blog posts and SEO-rich web pages. Her attention to detail ensures content is always polished and professional.",
     email: "mamata@fishtailinfosolutions.com",
     expertise: ["Blog Writing", "SEO Content", "Proofreading"],
+    experience: ["1+ years in Content Writing"],
+    projects: ["1 + Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 50 },
+      { skill: "Content Marketing", level: 60 },
+      { skill: "PPC Campaigns", level: 55 },
+      { skill: "Analytics & Reporting", level: 60 },
+    ],
   },
   {
     name: "Tilamsmi Subedi",
@@ -118,6 +190,14 @@ export const teamMembers: TeamMember[] = [
     bio: "Tilamsmi contributes creative and engaging content to support client SEO goals and build consistent messaging. Her writing style is clear, impactful, and tailored to specific brand voices. She’s always researching new trends to keep content fresh and relevant.",
     email: "tilamsmi@fishtailinfosolutions.com",
     expertise: ["Content Research", "SEO Writing", "Grammar Editing"],
+    experience: ["1+ years in Content Writing"],
+    projects: ["1+ Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 65 },
+      { skill: "Content Marketing", level: 70 },
+      { skill: "PPC Campaigns", level: 50 },
+      { skill: "Analytics & Reporting", level: 60 },
+    ],
   },
   {
     name: "Sadikshya Budhathoki",
@@ -129,6 +209,15 @@ export const teamMembers: TeamMember[] = [
     bio: "Sadikshya delivers polished content that blends creativity with optimization to enhance digital visibility. She excels at turning complex topics into easy-to-read articles that engage readers. Her strength lies in crafting content strategies that build brand trust.",
     email: "sadikshya@fishtailinfosolutions.com",
     expertise: ["Copywriting", "Content Strategy", "Editing"],
+    experience: ["1+ years in Content Writing"],
+    projects: ["1 + Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 50 },
+      { skill: "Content Marketing", level: 40 },
+      { skill: "Social Media Management", level: 70 },
+      { skill: "PPC Campaigns", level: 80 },
+      { skill: "Analytics & Reporting", level: 92 },
+    ],
   },
   {
     name: "Prity Thapa",
@@ -140,5 +229,13 @@ export const teamMembers: TeamMember[] = [
     bio: "Prity brings a fresh voice to the content team with her knack for clear and compelling storytelling. She specializes in creating engaging content that aligns with brand goals and connects with target audiences. Her dedication to learning and adapting makes her a valuable asset in dynamic content projects.",
     email: "prity@fishtailinfosolutions.com",
     expertise: ["Copywriting", "Content Strategy", "Editing"],
+    experience: ["1+ years in Content Writing"],
+    projects: ["1+ Projects"],
+    skills: [
+      { skill: "SEO Strategy", level: 60 },
+      { skill: "Content Marketing", level: 65 },
+      { skill: "PPC Campaigns", level: 50 },
+      { skill: "Analytics & Reporting", level: 55 },
+    ],
   },
 ];

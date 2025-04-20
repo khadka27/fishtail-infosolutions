@@ -216,13 +216,13 @@ export default function TeamMemberClient({
   ];
 
   // Sample skills
-  const skills = [
-    { skill: "SEO Strategy", level: 95 },
-    { skill: "Content Marketing", level: 90 },
-    { skill: "Social Media Management", level: 85 },
-    { skill: "PPC Campaigns", level: 80 },
-    { skill: "Analytics & Reporting", level: 92 },
-  ];
+  // const skills = [
+  //   { skill: "SEO Strategy", level: 95 },
+  //   { skill: "Content Marketing", level: 90 },
+  //   { skill: "Social Media Management", level: 85 },
+  //   { skill: "PPC Campaigns", level: 80 },
+  //   { skill: "Analytics & Reporting", level: 92 },
+  // ];
 
   return (
     <div className="bg-gray-50">
@@ -308,7 +308,9 @@ export default function TeamMemberClient({
                 <div className="flex flex-wrap gap-4 mb-8">
                   <div className="flex items-center text-gray-600">
                     <Briefcase className="h-5 w-5 mr-2 text-blue-500" />
-                    <span>8+ years experience</span>
+                    <span>
+                      {teamMember.experience ?? "0+ years experience"}
+                    </span>
                   </div>
                   <div className="flex items-center text-gray-600">
                     <Award className="h-5 w-5 mr-2 text-blue-500" />
@@ -316,7 +318,7 @@ export default function TeamMemberClient({
                   </div>
                   <div className="flex items-center text-gray-600">
                     <BookOpen className="h-5 w-5 mr-2 text-blue-500" />
-                    <span>15+ successful projects</span>
+                    <span>{teamMember.projects ?? "Working projects"}</span>
                   </div>
                 </div>
                 <motion.button
@@ -350,7 +352,7 @@ export default function TeamMemberClient({
                 <h3 className="text-xl font-medium text-gray-700 mb-6">
                   Core Competencies
                 </h3>
-                {skills.map((skill, index) => (
+                {teamMember.skills?.map((skill, index) => (
                   <SkillBar
                     key={index}
                     skill={skill.skill}
