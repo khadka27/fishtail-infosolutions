@@ -25,6 +25,7 @@ import Image from "next/image"
 import ecommerce from "@/Images/Ecommerce-Services.webp"
 import saas from "@/Images/saas.jpg"
 import financial from "@/Images/finance.webp"
+import grow from "@/Images/grow-business.jpg"
 
 export default function AffiliateManagement() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false)
@@ -104,7 +105,7 @@ export default function AffiliateManagement() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-xl transform rotate-3"></div>
                 <Image
-                  src={ecommerce || "/affiliate-network-illustration.png"}
+                  src={grow || "/affiliate-network-illustration.png"}
                   alt="Affiliate Network Illustration"
                   width={600}
                   height={400}

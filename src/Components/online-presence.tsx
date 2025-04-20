@@ -274,9 +274,9 @@ export default function OnlinePresenceAnalysis() {
                             step.image || `/placeholder.svg?height=150&width=200&query=digital analysis ${step.title}`
                           }
                           alt={step.title}
-                          width={200}
+                          width={250}
                           height={150}
-                          className="rounded-lg shadow-sm w-full h-auto"
+                          className="rounded-lg shadow-sm "
                         />
                       </div>
                     </div>
