@@ -1,10 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
 // Define the testimonial type for better type safety
 interface Testimonial {
@@ -13,6 +13,7 @@ interface Testimonial {
   name: string;
   title: string;
   image: string;
+  rating?: number;
 }
 
 const testimonials: Testimonial[] = [
@@ -20,9 +21,10 @@ const testimonials: Testimonial[] = [
     id: 1,
     quote:
       "We've looked at a lot of SEO solutions but these guys were always the clear favorite. They have the right strategy and they've been awesome to work with.",
-    name: "Irene Warner",
+    name: "Rahul Rauniyar",
     title: "CEO & Founder",
-    image: "/images/testimonial-avatar.png",
+    image: "/Image/rahul-rauniyar.jpg",
+    rating: 5,
   },
   {
     id: 2,
@@ -30,7 +32,8 @@ const testimonials: Testimonial[] = [
       "Their SEO expertise has transformed our online presence. Our organic traffic has increased by 200% in just six months.",
     name: "Michael Chen",
     title: "Marketing Director",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/confident-professional.png",
+    rating: 5,
   },
   {
     id: 3,
@@ -38,7 +41,8 @@ const testimonials: Testimonial[] = [
       "The team's attention to detail and data-driven approach has made all the difference for our business.",
     name: "Sarah Johnson",
     title: "E-commerce Manager",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/confident-professional.png",
+    rating: 4,
   },
 ];
 
@@ -47,7 +51,9 @@ export default function TestimonialsSection() {
   const [direction, setDirection] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const goToPrevious = () => {
     if (isAnimating) return;
@@ -74,6 +80,23 @@ export default function TestimonialsSection() {
     setIsAnimating(true);
   };
 
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        goToPrevious();
+      } else if (e.key === "ArrowRight") {
+        goToNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isAnimating]);
+
+  // Handle auto-rotation
   useEffect(() => {
     const resetTimer = () => {
       if (timerRef.current) {
@@ -92,6 +115,43 @@ export default function TestimonialsSection() {
       }
     };
   }, [currentIndex, isPaused]);
+
+  // Handle touch events for swipe
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.changedTouches[0].screenX;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    };
+
+    const handleSwipe = () => {
+      const swipeThreshold = 50;
+      if (touchStartX - touchEndX > swipeThreshold) {
+        // Swipe left
+        goToNext();
+      } else if (touchEndX - touchStartX > swipeThreshold) {
+        // Swipe right
+        goToPrevious();
+      }
+    };
+
+    container.addEventListener("touchstart", handleTouchStart);
+    container.addEventListener("touchend", handleTouchEnd);
+
+    return () => {
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [isAnimating]);
 
   const variants = {
     enter: (direction: number) => ({
@@ -119,14 +179,30 @@ export default function TestimonialsSection() {
     }),
   };
 
+  const renderStars = (rating = 5) => {
+    return (
+      <div className="flex mb-4">
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            className={`w-5 h-5 ${
+              i < rating ? "text-[#0084FF] fill-[#0084FF]" : "text-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <section
-      className="py-16 bg-[#8cc63f]"
+      className="py-16 bg-gray-100 text-gray-900"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      ref={containerRef}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
           What Our Clients Say
         </h2>
 
@@ -145,12 +221,16 @@ export default function TestimonialsSection() {
               animate="center"
               exit="exit"
               className="bg-white rounded-xl shadow-lg overflow-hidden"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
             >
               <div className="p-6 md:p-10">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
                   <div className="relative flex-shrink-0">
                     <div
-                      className="absolute inset-0 bg-gray-200 rounded-full"
+                      className="absolute inset-0 bg-[#0084FF]/10 rounded-full"
                       style={{ transform: "scale(1.15)" }}
                     ></div>
                     <div className="relative z-10">
@@ -161,14 +241,17 @@ export default function TestimonialsSection() {
                         alt={testimonials[currentIndex].name}
                         width={100}
                         height={100}
+                        unoptimized
                         className="rounded-full border-4 border-white shadow-md"
                       />
                     </div>
                   </div>
 
                   <div className="flex-1 text-center md:text-left">
+                    <Quote className="w-10 h-10 text-[#0084FF]/20 mb-2 mx-auto md:mx-0" />
+                    {renderStars(testimonials[currentIndex].rating)}
                     <blockquote className="text-xl md:text-2xl font-light mb-6 leading-relaxed text-gray-700 italic">
-                      "{testimonials[currentIndex].quote}"
+                      &quot;{testimonials[currentIndex].quote}&quot;
                     </blockquote>
 
                     <div className="mt-4">
@@ -186,36 +269,42 @@ export default function TestimonialsSection() {
           </AnimatePresence>
 
           {/* Navigation buttons */}
-          <button
+          <motion.button
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white hover:bg-gray-100 text-gray-800 rounded-full p-3 shadow-lg transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8cc63f] z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white hover:bg-gray-100 text-gray-800 rounded-full p-3 shadow-lg transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0084FF] z-10"
             aria-label="Previous testimonial"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
             <ChevronLeft className="w-5 h-5" />
-          </button>
+          </motion.button>
 
-          <button
+          <motion.button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white hover:bg-gray-100 text-gray-800 rounded-full p-3 shadow-lg transition-transform duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8cc63f] z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-[#0084FF] hover:bg-[#0066cc] text-white rounded-full p-3 shadow-lg transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0084FF] z-10"
             aria-label="Next testimonial"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
             <ChevronRight className="w-5 h-5" />
-          </button>
+          </motion.button>
         </div>
 
         {/* Navigation dots */}
         <div className="flex justify-center mt-8 space-x-3">
           {testimonials.map((_, index) => (
-            <button
+            <motion.button
               key={index}
               onClick={() => goToSlide(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 currentIndex === index
-                  ? "bg-white scale-125"
-                  : "bg-white/50 hover:bg-white/70"
+                  ? "bg-[#0084FF] scale-125"
+                  : "bg-gray-300 hover:bg-[#0084FF]/50"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
               aria-current={currentIndex === index ? "true" : "false"}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
             />
           ))}
         </div>

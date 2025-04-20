@@ -11,7 +11,7 @@ import TestimonialsSection from "@/Components/testimonial-section";
 import { CaseStudiesSection } from "@/Components/case-studies-section";
 import ScrollToTopButton from "@/Components/scroll-to-top-button";
 import SectionDivider from "@/Components/section-divider";
-import {LoadingSpinner} from "@/Components/loading-spinner";
+import { LoadingSpinner } from "@/Components/loading-spinner";
 
 export const metadata: Metadata = {
   title: "Digital Marketing & SEO Agency | Boost Your Online Presence",
@@ -125,13 +125,6 @@ export default function Home() {
 
         <SectionDivider />
 
-        {/* Client Logos Section */}
-        <section id="clients" aria-label="Our Clients">
-          <Suspense fallback={<LoadingSpinner />}>
-            <ClientLogos />
-          </Suspense>
-        </section>
-
         {/* Testimonials Section */}
         <section id="testimonials" aria-label="Testimonials">
           <Suspense fallback={<LoadingSpinner />}>
@@ -145,6 +138,13 @@ export default function Home() {
         <section id="case-studies" aria-label="Case Studies">
           <Suspense fallback={<LoadingSpinner />}>
             <CaseStudiesSection />
+          </Suspense>
+        </section>
+
+        {/* Client Logos Section */}
+        <section id="clients" aria-label="Our Clients">
+          <Suspense fallback={<LoadingSpinner />}>
+            <ClientLogos />
           </Suspense>
         </section>
       </main>
