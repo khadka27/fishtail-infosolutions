@@ -232,25 +232,25 @@ export function Footer() {
     {
       icon: <Twitter className="w-5 h-5" />,
       label: "Twitter",
-      href: "#",
+      href: "https://x.com/fishtailinfo",
       hoverColor: "#1DA1F2",
     },
     {
       icon: <Facebook className="w-5 h-5" />,
       label: "Facebook",
-      href: "#",
+      href: "https://www.facebook.com/share/16Hxkk7xAb/?mibextid=wwXIfr",
       hoverColor: "#4267B2",
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
       label: "LinkedIn",
-      href: "#",
+      href: "https://www.linkedin.com/company/fishtailinfosolutions/",
       hoverColor: "#0077B5",
     },
     {
       icon: <Instagram className="w-5 h-5" />,
       label: "Instagram",
-      href: "#",
+      href: "https://www.instagram.com/fishtailinfosolutions/",
       hoverColor: "#E1306C",
     },
   ];

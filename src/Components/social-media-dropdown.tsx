@@ -15,7 +15,7 @@ export function SocialMediaDropdown() {
       </Link>
 
       <Link
-        href="https://www.instagram.com/fishtailinfosolutions?igsh=MW16ZjNva3JpZG84"
+        href="https://www.instagram.com/fishtailinfosolutions"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center px-4 py-3 hover:bg-gray-100"
