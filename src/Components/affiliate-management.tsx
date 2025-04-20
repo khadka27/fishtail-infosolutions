@@ -1,7 +1,6 @@
-"use client"
-
-import { useState, useRef } from "react"
-import { motion } from "framer-motion"
+"use client";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import {
   Users,
   BarChart,
@@ -17,24 +16,27 @@ import {
   TrendingUp,
   CheckCircle2,
   ArrowUpRight,
-} from "lucide-react"
-import { QuotePopup } from "./quote-popup"
-import Form from "./form"
-import Image from "next/image"
+} from "lucide-react";
+import { QuotePopup } from "./quote-popup";
+import Form from "./form";
+import Image from "next/image";
+
 
 import ecommerce from "@/Images/Ecommerce-Services.webp"
 import saas from "@/Images/saas.jpg"
 import financial from "@/Images/finance.webp"
 import grow from "@/Images/grow-business.jpg"
 
+
+
 export default function AffiliateManagement() {
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState(0)
-  const contactRef = useRef<HTMLDivElement>(null)
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -74,11 +76,12 @@ export default function AffiliateManagement() {
               className="lg:w-1/2 mb-12 lg:mb-0"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Grow Your Business Through <span className="text-yellow-300">Partner Networks</span>
+                Grow Your Business Through{" "}
+                <span className="text-yellow-300">Partner Networks</span>
               </h1>
               <p className="text-xl mb-8 text-orange-100 max-w-xl">
-                Expert affiliate program management that builds, optimizes, and scales your partner marketing channels
-                for maximum ROI
+                Expert affiliate program management that builds, optimizes, and
+                scales your partner marketing channels for maximum ROI
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
@@ -109,6 +112,7 @@ export default function AffiliateManagement() {
                   alt="Affiliate Network Illustration"
                   width={600}
                   height={400}
+                  unoptimized
                   className="relative z-10 rounded-xl shadow-2xl w-full h-auto"
                 />
               </div>
@@ -117,7 +121,11 @@ export default function AffiliateManagement() {
         </div>
 
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 70C840 80 960 100 1080 100C1200 100 1320 80 1380 70L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
               fill="white"
@@ -141,7 +149,9 @@ export default function AffiliateManagement() {
                 <DollarSign className="w-8 h-8 text-orange-600" />
               </div>
               <h3 className="text-3xl font-bold text-gray-800 mb-2">327%</h3>
-              <p className="text-gray-600">Average ROI for our affiliate programs</p>
+              <p className="text-gray-600">
+                Average ROI for our affiliate programs
+              </p>
             </motion.div>
 
             <motion.div
@@ -155,7 +165,9 @@ export default function AffiliateManagement() {
                 <Users className="w-8 h-8 text-yellow-600" />
               </div>
               <h3 className="text-3xl font-bold text-gray-800 mb-2">5,400+</h3>
-              <p className="text-gray-600">Active affiliates recruited and managed</p>
+              <p className="text-gray-600">
+                Active affiliates recruited and managed
+              </p>
             </motion.div>
 
             <motion.div
@@ -169,7 +181,9 @@ export default function AffiliateManagement() {
                 <ShoppingCart className="w-8 h-8 text-amber-600" />
               </div>
               <h3 className="text-3xl font-bold text-gray-800 mb-2">$12.4M</h3>
-              <p className="text-gray-600">Revenue generated through affiliate channels</p>
+              <p className="text-gray-600">
+                Revenue generated through affiliate channels
+              </p>
             </motion.div>
 
             <motion.div
@@ -183,7 +197,9 @@ export default function AffiliateManagement() {
                 <BarChart className="w-8 h-8 text-red-600" />
               </div>
               <h3 className="text-3xl font-bold text-gray-800 mb-2">42%</h3>
-              <p className="text-gray-600">Average conversion rate improvement</p>
+              <p className="text-gray-600">
+                Average conversion rate improvement
+              </p>
             </motion.div>
           </div>
         </div>
@@ -197,7 +213,8 @@ export default function AffiliateManagement() {
               Comprehensive Affiliate Management Services
             </h2>
             <p className="text-lg text-gray-600">
-              End-to-end affiliate program management that drives sustainable growth
+              End-to-end affiliate program management that drives sustainable
+              growth
             </p>
           </div>
 
@@ -213,7 +230,8 @@ export default function AffiliateManagement() {
               {
                 icon: <Users className="w-6 h-6 text-yellow-600" />,
                 title: "Affiliate Recruitment",
-                description: "Strategic outreach and onboarding of high-quality affiliates aligned with your brand",
+                description:
+                  "Strategic outreach and onboarding of high-quality affiliates aligned with your brand",
                 color: "yellow",
               },
               {
@@ -226,19 +244,22 @@ export default function AffiliateManagement() {
               {
                 icon: <Settings className="w-6 h-6 text-red-600" />,
                 title: "Platform Management",
-                description: "Technical setup and ongoing management of your affiliate tracking platform",
+                description:
+                  "Technical setup and ongoing management of your affiliate tracking platform",
                 color: "red",
               },
               {
                 icon: <FileText className="w-6 h-6 text-pink-600" />,
                 title: "Content & Resource Creation",
-                description: "Development of high-converting creative assets and marketing materials for affiliates",
+                description:
+                  "Development of high-converting creative assets and marketing materials for affiliates",
                 color: "pink",
               },
               {
                 icon: <TrendingUp className="w-6 h-6 text-rose-600" />,
                 title: "Performance Optimization",
-                description: "Continuous analysis and optimization of affiliate campaigns to maximize ROI",
+                description:
+                  "Continuous analysis and optimization of affiliate campaigns to maximize ROI",
                 color: "rose",
               },
             ].map((service, index) => (
@@ -255,9 +276,14 @@ export default function AffiliateManagement() {
                 >
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">
+                  {service.title}
+                </h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
-                <a href="#" className={`inline-flex items-center text-${service.color}-600 font-medium`}>
+                <a
+                  href="#"
+                  className={`inline-flex items-center text-${service.color}-600 font-medium`}
+                >
                   Learn more <ArrowUpRight className="ml-1 w-4 h-4" />
                 </a>
               </motion.div>
@@ -270,26 +296,33 @@ export default function AffiliateManagement() {
       <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">How Our Affiliate Management Works</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+              How Our Affiliate Management Works
+            </h2>
             <p className="text-lg text-gray-600">
-              A proven process for building and scaling successful affiliate programs
+              A proven process for building and scaling successful affiliate
+              programs
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="flex justify-center mb-8">
               <div className="inline-flex bg-gray-100 rounded-full p-1">
-                {["Program Setup", "Affiliate Growth", "Optimization"].map((tab, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTab(index)}
-                    className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                      activeTab === index ? "bg-orange-500 text-white shadow-sm" : "text-gray-600 hover:text-gray-800"
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
+                {["Program Setup", "Affiliate Growth", "Optimization"].map(
+                  (tab, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveTab(index)}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                        activeTab === index
+                          ? "bg-orange-500 text-white shadow-sm"
+                          : "text-gray-600 hover:text-gray-800"
+                      }`}
+                    >
+                      {tab}
+                    </button>
+                  )
+                )}
               </div>
             </div>
 
@@ -302,10 +335,13 @@ export default function AffiliateManagement() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 text-gray-800">Program Setup & Strategy</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                      Program Setup & Strategy
+                    </h3>
                     <p className="text-gray-600 mb-6">
-                      We begin by developing a comprehensive strategy for your affiliate program, including commission
-                      structures, terms & conditions, and technical implementation.
+                      We begin by developing a comprehensive strategy for your
+                      affiliate program, including commission structures, terms
+                      & conditions, and technical implementation.
                     </p>
                     <ul className="space-y-3">
                       {[
@@ -328,6 +364,7 @@ export default function AffiliateManagement() {
                       alt="Affiliate Program Setup"
                       width={400}
                       height={300}
+                      unoptimized
                       className="rounded-xl shadow-lg max-w-full h-auto"
                     />
                   </div>
@@ -342,10 +379,13 @@ export default function AffiliateManagement() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 text-gray-800">Affiliate Recruitment & Onboarding</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                      Affiliate Recruitment & Onboarding
+                    </h3>
                     <p className="text-gray-600 mb-6">
-                      We identify and recruit high-quality affiliates who align with your brand, then provide
-                      comprehensive onboarding to set them up for success.
+                      We identify and recruit high-quality affiliates who align
+                      with your brand, then provide comprehensive onboarding to
+                      set them up for success.
                     </p>
                     <ul className="space-y-3">
                       {[
@@ -368,6 +408,7 @@ export default function AffiliateManagement() {
                       alt="Affiliate Recruitment"
                       width={400}
                       height={300}
+                      unoptimized
                       className="rounded-xl shadow-lg max-w-full h-auto"
                     />
                   </div>
@@ -382,10 +423,13 @@ export default function AffiliateManagement() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 >
                   <div>
-                    <h3 className="text-2xl font-bold mb-4 text-gray-800">Ongoing Management & Optimization</h3>
+                    <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                      Ongoing Management & Optimization
+                    </h3>
                     <p className="text-gray-600 mb-6">
-                      We continuously monitor, manage, and optimize your affiliate program to maximize performance and
-                      drive sustainable growth.
+                      We continuously monitor, manage, and optimize your
+                      affiliate program to maximize performance and drive
+                      sustainable growth.
                     </p>
                     <ul className="space-y-3">
                       {[
@@ -408,6 +452,7 @@ export default function AffiliateManagement() {
                       alt="Affiliate Optimization"
                       width={400}
                       height={300}
+                      unoptimized
                       className="rounded-xl shadow-lg max-w-full h-auto"
                     />
                   </div>
@@ -422,9 +467,12 @@ export default function AffiliateManagement() {
       <section className="py-20 px-20 bg-gradient-to-br from-orange-600 to-pink-600 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Success Stories
+            </h2>
             <p className="text-lg text-orange-100">
-              See how our affiliate management services have transformed businesses across industries
+              See how our affiliate management services have transformed
+              businesses across industries
             </p>
           </div>
 
@@ -476,22 +524,29 @@ export default function AffiliateManagement() {
                   <Image
                     src={
                       study.image ||
-                      `/placeholder.svg?height=300&width=500&query=affiliate marketing for ${study.industry || "/placeholder.svg"} business`
+                      `/placeholder.svg?height=300&width=500&query=affiliate marketing for ${
+                        study.industry || "/placeholder.svg"
+                      } business`
                     }
                     alt={study.title}
                     width={500}
                     height={300}
+                    unoptimized
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <div className="text-yellow-300 text-sm font-medium mb-2">{study.industry}</div>
+                  <div className="text-yellow-300 text-sm font-medium mb-2">
+                    {study.industry}
+                  </div>
                   <h3 className="text-xl font-bold mb-3">{study.title}</h3>
                   <p className="text-orange-100 mb-4">{study.description}</p>
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     {study.stats.map((stat, i) => (
                       <div key={i} className="bg-white/5 rounded-lg p-3">
-                        <div className="text-sm text-orange-200">{stat.label}</div>
+                        <div className="text-sm text-orange-200">
+                          {stat.label}
+                        </div>
                         <div className="text-xl font-bold">{stat.value}</div>
                       </div>
                     ))}
@@ -511,7 +566,8 @@ export default function AffiliateManagement() {
               Why Choose Our Affiliate Management Services?
             </h2>
             <p className="text-lg text-gray-600">
-              Expert management that drives sustainable growth through affiliate partnerships
+              Expert management that drives sustainable growth through affiliate
+              partnerships
             </p>
           </div>
 
@@ -520,42 +576,50 @@ export default function AffiliateManagement() {
               {
                 icon: <Percent className="w-8 h-8 text-orange-500" />,
                 title: "Performance-Based Marketing",
-                description: "Pay only for results, making affiliate marketing one of the highest ROI channels",
+                description:
+                  "Pay only for results, making affiliate marketing one of the highest ROI channels",
               },
               {
                 icon: <Users className="w-8 h-8 text-yellow-500" />,
                 title: "Expanded Reach",
-                description: "Tap into new audiences and markets through established affiliate relationships",
+                description:
+                  "Tap into new audiences and markets through established affiliate relationships",
               },
               {
                 icon: <Link className="w-8 h-8 text-amber-500" />,
                 title: "Quality Backlinks",
-                description: "Gain valuable backlinks from reputable sites, boosting your SEO efforts",
+                description:
+                  "Gain valuable backlinks from reputable sites, boosting your SEO efforts",
               },
               {
                 icon: <DollarSign className="w-8 h-8 text-red-500" />,
                 title: "Cost-Effective Growth",
-                description: "Lower customer acquisition costs compared to traditional advertising",
+                description:
+                  "Lower customer acquisition costs compared to traditional advertising",
               },
               {
                 icon: <Award className="w-8 h-8 text-pink-500" />,
                 title: "Brand Advocacy",
-                description: "Transform partners into passionate advocates for your brand",
+                description:
+                  "Transform partners into passionate advocates for your brand",
               },
               {
                 icon: <TrendingUp className="w-8 h-8 text-rose-500" />,
                 title: "Scalable Revenue",
-                description: "Easily scale your program as you add more high-performing affiliates",
+                description:
+                  "Easily scale your program as you add more high-performing affiliates",
               },
               {
                 icon: <Zap className="w-8 h-8 text-orange-500" />,
                 title: "Faster Time to Market",
-                description: "Quickly launch new products or enter new markets with affiliate support",
+                description:
+                  "Quickly launch new products or enter new markets with affiliate support",
               },
               {
                 icon: <BarChart className="w-8 h-8 text-yellow-500" />,
                 title: "Measurable Results",
-                description: "Track every click, conversion, and commission with precise analytics",
+                description:
+                  "Track every click, conversion, and commission with precise analytics",
               },
             ].map((benefit, index) => (
               <motion.div
@@ -567,7 +631,9 @@ export default function AffiliateManagement() {
                 className="bg-gradient-to-br from-gray-50 to-orange-50 p-6 rounded-xl border border-orange-100"
               >
                 <div className="mb-4">{benefit.icon}</div>
-                <h3 className="text-lg font-bold mb-2 text-gray-800">{benefit.title}</h3>
+                <h3 className="text-lg font-bold mb-2 text-gray-800">
+                  {benefit.title}
+                </h3>
                 <p className="text-gray-600">{benefit.description}</p>
               </motion.div>
             ))}
@@ -590,11 +656,14 @@ export default function AffiliateManagement() {
                   Ready to Launch or Scale Your Affiliate Program?
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  Whether you&apos;re starting from scratch or looking to optimize an existing program, our team of affiliate
-                  marketing experts is here to help you achieve your goals.
+                  Whether you&apos;re starting from scratch or looking to
+                  optimize an existing program, our team of affiliate marketing
+                  experts is here to help you achieve your goals.
                 </p>
                 <div className="bg-orange-50 rounded-lg p-6 mb-6 border border-orange-100">
-                  <h3 className="text-xl font-bold mb-3 text-orange-800">Our Commitment to You:</h3>
+                  <h3 className="text-xl font-bold mb-3 text-orange-800">
+                    Our Commitment to You:
+                  </h3>
                   <ul className="space-y-3">
                     {[
                       "Dedicated affiliate manager for your program",
@@ -642,5 +711,5 @@ export default function AffiliateManagement() {
 
       <QuotePopup isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </div>
-  )
+  );
 }

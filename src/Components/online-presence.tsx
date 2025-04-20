@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion } from "framer-motion"
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import {
   Globe,
   Search,
@@ -16,37 +16,41 @@ import {
   CheckCircle,
   ChevronDown,
   ChevronUp,
-} from "lucide-react"
-import { QuotePopup } from "./quote-popup"
-import Form from "./form"
-import Image from "next/image"
-import footprint from "@/Images/Footprints.png"
+} from "lucide-react";
+import { QuotePopup } from "./quote-popup";
+import Form from "./form";
+import Image from "next/image";
+import footprint from "@/Images/Footprints.png";
 
-import discovery from "@/Images/data-discovery.jpg"
-import audit from "@/Images/comprehensive-audit.webp"
-import gapAnalysis from "@/Images/gap-analysis.jpg"
-import implementation from "@/Images/implementation-planning.jpg"
-import strategy from "@/Images/seo-strategy.webp"
+import discovery from "@/Images/data-discovery.jpg";
+import audit from "@/Images/comprehensive-audit.webp";
+import gapAnalysis from "@/Images/gap-analysis.jpg";
+import implementation from "@/Images/implementation-planning.jpg";
+import strategy from "@/Images/seo-strategy.webp";
 
 export default function OnlinePresenceAnalysis() {
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false)
-  const [activeAccordion, setActiveAccordion] = useState<number | null>(null)
-  const contactRef = useRef<HTMLDivElement>(null)
+  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const [activeAccordion, setActiveAccordion] = useState<number | null>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
 
   const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const toggleAccordion = (index: number) => {
-    setActiveAccordion(activeAccordion === index ? null : index)
-  }
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-teal-900 via-teal-800 to-emerald-900 text-white">
         <div className="absolute inset-0 opacity-30">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <svg
+            className="w-full h-full"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+          >
             {Array.from({ length: 20 }).map((_, i) => (
               <circle
                 key={i}
@@ -59,7 +63,11 @@ export default function OnlinePresenceAnalysis() {
             {Array.from({ length: 10 }).map((_, i) => (
               <path
                 key={`path-${i}`}
-                d={`M${Math.random() * 100},${Math.random() * 100} Q${Math.random() * 100},${Math.random() * 100} ${Math.random() * 100},${Math.random() * 100}`}
+                d={`M${Math.random() * 100},${Math.random() * 100} Q${
+                  Math.random() * 100
+                },${Math.random() * 100} ${Math.random() * 100},${
+                  Math.random() * 100
+                }`}
                 stroke="white"
                 strokeWidth="0.2"
                 fill="none"
@@ -77,11 +85,13 @@ export default function OnlinePresenceAnalysis() {
               className="lg:w-1/2 mb-12 lg:mb-0"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Discover Your True <span className="text-teal-300">Digital Footprint</span>
+                Discover Your True{" "}
+                <span className="text-teal-300">Digital Footprint</span>
               </h1>
               <p className="text-xl mb-8 text-teal-100 max-w-xl">
-                Comprehensive analysis of your entire online presence across search, social, and review platforms to
-                uncover opportunities and threats
+                Comprehensive analysis of your entire online presence across
+                search, social, and review platforms to uncover opportunities
+                and threats
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
@@ -112,6 +122,7 @@ export default function OnlinePresenceAnalysis() {
                   alt="Online Presence Analysis Dashboard"
                   width={600}
                   height={400}
+                  unoptimized
                   className="relative z-10 rounded-xl shadow-2xl w-full h-auto"
                 />
               </div>
@@ -120,7 +131,11 @@ export default function OnlinePresenceAnalysis() {
         </div>
 
         <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 70C840 80 960 100 1080 100C1200 100 1320 80 1380 70L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
               fill="white"
@@ -133,9 +148,12 @@ export default function OnlinePresenceAnalysis() {
       <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Complete Digital Presence Analysis</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+              Complete Digital Presence Analysis
+            </h2>
             <p className="text-lg text-gray-600">
-              We analyze every aspect of your online presence to provide a comprehensive view of your digital footprint
+              We analyze every aspect of your online presence to provide a
+              comprehensive view of your digital footprint
             </p>
           </div>
 
@@ -151,13 +169,15 @@ export default function OnlinePresenceAnalysis() {
               {
                 icon: <Users className="w-6 h-6 text-emerald-600" />,
                 title: "Social Media Presence",
-                description: "In-depth analysis of your social profiles, engagement metrics, and audience demographics",
+                description:
+                  "In-depth analysis of your social profiles, engagement metrics, and audience demographics",
                 color: "emerald",
               },
               {
                 icon: <MessageSquare className="w-6 h-6 text-green-600" />,
                 title: "Review & Reputation Audit",
-                description: "Thorough examination of your online reviews, ratings, and overall brand sentiment",
+                description:
+                  "Thorough examination of your online reviews, ratings, and overall brand sentiment",
                 color: "green",
               },
               {
@@ -170,13 +190,15 @@ export default function OnlinePresenceAnalysis() {
               {
                 icon: <Share2 className="w-6 h-6 text-blue-600" />,
                 title: "Competitor Benchmarking",
-                description: "Side-by-side comparison with competitors across all digital channels",
+                description:
+                  "Side-by-side comparison with competitors across all digital channels",
                 color: "blue",
               },
               {
                 icon: <BarChart3 className="w-6 h-6 text-indigo-600" />,
                 title: "Analytics & Tracking Review",
-                description: "Evaluation of your analytics setup, data accuracy, and tracking implementation",
+                description:
+                  "Evaluation of your analytics setup, data accuracy, and tracking implementation",
                 color: "indigo",
               },
             ].map((service, index) => (
@@ -193,9 +215,14 @@ export default function OnlinePresenceAnalysis() {
                 >
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-800">{service.title}</h3>
+                <h3 className="text-xl font-bold mb-3 text-gray-800">
+                  {service.title}
+                </h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
-                <a href="#" className={`inline-flex items-center text-${service.color}-600 font-medium`}>
+                <a
+                  href="#"
+                  className={`inline-flex items-center text-${service.color}-600 font-medium`}
+                >
                   Learn more <ArrowRight className="ml-1 w-4 h-4" />
                 </a>
               </motion.div>
@@ -208,9 +235,12 @@ export default function OnlinePresenceAnalysis() {
       <section className="py-20 px-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Our Analysis Process</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+              Our Analysis Process
+            </h2>
             <p className="text-lg text-gray-600">
-              A methodical approach to understanding your complete digital footprint
+              A methodical approach to understanding your complete digital
+              footprint
             </p>
           </div>
 
@@ -255,7 +285,9 @@ export default function OnlinePresenceAnalysis() {
                 viewport={{ once: true }}
                 className="mb-8 relative"
               >
-                {index < 4 && <div className="absolute left-10 top-20 bottom-0 w-1 bg-teal-200 hidden md:block"></div>}
+                {index < 4 && (
+                  <div className="absolute left-10 top-20 bottom-0 w-1 bg-teal-200 hidden md:block"></div>
+                )}
                 <div className="flex flex-col md:flex-row">
                   <div className="md:w-20 flex-shrink-0 flex items-start justify-center mb-4 md:mb-0">
                     <div className="w-12 h-12 rounded-full bg-teal-500 text-white flex items-center justify-center text-xl font-bold z-10">
@@ -265,18 +297,23 @@ export default function OnlinePresenceAnalysis() {
                   <div className="flex-grow bg-white rounded-xl shadow-sm p-6 border border-gray-200">
                     <div className="flex flex-col md:flex-row gap-6">
                       <div className="md:w-2/3">
-                        <h3 className="text-xl font-bold mb-3 text-gray-800">{step.title}</h3>
+                        <h3 className="text-xl font-bold mb-3 text-gray-800">
+                          {step.title}
+                        </h3>
                         <p className="text-gray-600">{step.description}</p>
                       </div>
                       <div className="md:w-1/3">
                         <Image
                           src={
-                            step.image || `/placeholder.svg?height=150&width=200&query=digital analysis ${step.title}`
+                            step.image ||
+                            `/placeholder.svg?height=150&width=200&query=digital analysis ${step.title}`
                           }
                           alt={step.title}
                           width={250}
                           height={150}
+
                           className="rounded-lg shadow-sm "
+
                         />
                       </div>
                     </div>
@@ -292,16 +329,20 @@ export default function OnlinePresenceAnalysis() {
       <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">Frequently Asked Questions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+              Frequently Asked Questions
+            </h2>
             <p className="text-lg text-gray-600">
-              Everything you need to know about our Online Presence Analysis service
+              Everything you need to know about our Online Presence Analysis
+              service
             </p>
           </div>
 
           <div className="max-w-3xl mx-auto">
             {[
               {
-                question: "What exactly is included in the Online Presence Analysis?",
+                question:
+                  "What exactly is included in the Online Presence Analysis?",
                 answer:
                   "Our comprehensive analysis includes an audit of your search engine visibility, social media presence, online reviews and reputation, website performance, competitor benchmarking, and analytics setup. We examine all aspects of your digital footprint to provide a complete picture of your online presence.",
               },
@@ -321,7 +362,8 @@ export default function OnlinePresenceAnalysis() {
                   "Absolutely. Our analysis isn't just about identifying issues—it's about providing solutions. You'll receive a detailed report with prioritized, actionable recommendations for improving your online presence, along with an implementation roadmap to help you put those recommendations into practice.",
               },
               {
-                question: "Do you offer implementation services for your recommendations?",
+                question:
+                  "Do you offer implementation services for your recommendations?",
                 answer:
                   "Yes, we offer full-service implementation of all our recommendations. While you're welcome to implement the recommendations yourself or with your existing team, many clients choose to work with us for seamless execution of the strategies we develop.",
               },
@@ -347,7 +389,9 @@ export default function OnlinePresenceAnalysis() {
                       : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
                   }`}
                 >
-                  <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {faq.question}
+                  </h3>
                   {activeAccordion === index ? (
                     <ChevronUp className="w-5 h-5 text-teal-600" />
                   ) : (
@@ -369,9 +413,12 @@ export default function OnlinePresenceAnalysis() {
       <section className="py-20 px-20 bg-gradient-to-br from-teal-900 to-emerald-900 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Analyze Your Online Presence?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Analyze Your Online Presence?
+            </h2>
             <p className="text-lg text-teal-100">
-              A comprehensive analysis provides the foundation for all your digital marketing efforts
+              A comprehensive analysis provides the foundation for all your
+              digital marketing efforts
             </p>
           </div>
 
@@ -380,32 +427,38 @@ export default function OnlinePresenceAnalysis() {
               {
                 icon: <Eye className="w-8 h-8 text-teal-300" />,
                 title: "Complete Visibility",
-                description: "Gain a comprehensive understanding of your entire digital footprint across all platforms",
+                description:
+                  "Gain a comprehensive understanding of your entire digital footprint across all platforms",
               },
               {
                 icon: <Zap className="w-8 h-8 text-teal-300" />,
                 title: "Identify Quick Wins",
-                description: "Discover high-impact, low-effort improvements you can implement immediately",
+                description:
+                  "Discover high-impact, low-effort improvements you can implement immediately",
               },
               {
                 icon: <TrendingUp className="w-8 h-8 text-teal-300" />,
                 title: "Strategic Direction",
-                description: "Develop a data-driven roadmap for improving your digital presence",
+                description:
+                  "Develop a data-driven roadmap for improving your digital presence",
               },
               {
                 icon: <Users className="w-8 h-8 text-teal-300" />,
                 title: "Understand Your Audience",
-                description: "Gain insights into how your audience perceives and interacts with your brand online",
+                description:
+                  "Gain insights into how your audience perceives and interacts with your brand online",
               },
               {
                 icon: <BarChart3 className="w-8 h-8 text-teal-300" />,
                 title: "Competitive Intelligence",
-                description: "See how you stack up against competitors and identify opportunities to gain an edge",
+                description:
+                  "See how you stack up against competitors and identify opportunities to gain an edge",
               },
               {
                 icon: <Globe className="w-8 h-8 text-teal-300" />,
                 title: "Holistic Perspective",
-                description: "Break down silos between channels for a unified view of your digital presence",
+                description:
+                  "Break down silos between channels for a unified view of your digital presence",
               },
             ].map((benefit, index) => (
               <motion.div
@@ -440,11 +493,14 @@ export default function OnlinePresenceAnalysis() {
                   Ready to Discover Your True Digital Footprint?
                 </h2>
                 <p className="text-lg text-gray-600 mb-6">
-                  Get a free initial assessment of your online presence. Our team will analyze your digital footprint
-                  and provide a high-level overview of your strengths and opportunities.
+                  Get a free initial assessment of your online presence. Our
+                  team will analyze your digital footprint and provide a
+                  high-level overview of your strengths and opportunities.
                 </p>
                 <div className="bg-teal-50 rounded-lg p-6 mb-6 border border-teal-100">
-                  <h3 className="text-xl font-bold mb-3 text-teal-800">What You&apos;ll Receive:</h3>
+                  <h3 className="text-xl font-bold mb-3 text-teal-800">
+                    What You&apos;ll Receive:
+                  </h3>
                   <ul className="space-y-3">
                     {[
                       "High-level assessment of your search visibility",
@@ -492,5 +548,5 @@ export default function OnlinePresenceAnalysis() {
 
       <QuotePopup isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </div>
-  )
+  );
 }
