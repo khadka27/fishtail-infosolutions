@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Twitter, Instagram, Facebook, Linkedin } from "lucide-react"
+import Link from "next/link";
+import { Twitter, Instagram, Facebook, Linkedin } from "lucide-react";
 
 export function SocialMediaDropdown() {
   return (
@@ -43,9 +43,6 @@ export function SocialMediaDropdown() {
         <Linkedin className="h-6 w-6 text-blue-700 mr-3" />
         <span className="text-base">LinkedIn</span>
       </Link>
-
-
     </div>
-  )
+  );
 }
-
