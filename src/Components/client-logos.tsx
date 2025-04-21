@@ -274,7 +274,7 @@ export default function ClientLogos() {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
-            Trusted by Industry Leaders
+            Trusted by Innovators
           </motion.h2>
           <motion.p
             className="text-gray-600 max-w-2xl mx-auto"
@@ -282,10 +282,9 @@ export default function ClientLogos() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            We've helped{" "}
+            200+ brands {" "}
             <span className="font-bold text-[#0084FF]">{clientCount}+</span>{" "}
-            organizations achieve their digital marketing goals with proven
-            strategies and measurable results
+            rely on our expertise to solve complex digital challenges and drive revenue.
           </motion.p>
         </div>
 

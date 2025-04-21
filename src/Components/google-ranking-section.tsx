@@ -108,21 +108,21 @@ export function GoogleRankingSection() {
   const features = [
     {
       icon: User,
-      title: "Connect with pre-qualified customers",
+      title: "Pre-Qualified Leads",
       description:
-        "Our SEO strategies target users who are actively searching for your products or services, resulting in higher quality leads and better conversion rates.",
+        "We target users actively searching for your services, ensuring higher conversions and lower customer acquisition costs.",
     },
     {
       icon: Clock,
-      title: "Save time and money",
+      title: "Maximize ROI",
       description:
-        "Compared to traditional advertising, SEO provides better ROI by focusing on users who are already interested in what you offer, reducing wasted ad spend.",
+        "SEO delivers lasting results at a fraction of traditional ad costs by focusing on high-intent audiences.",
     },
     {
       icon: Trophy,
-      title: "Rely on an experienced and knowledgeable team",
+      title: "10+ Years of Expertise",
       description:
-        "With over 10 years of experience in digital marketing, our certified SEO specialists have helped hundreds of businesses achieve top rankings.",
+        "Our certified team has helped 200+ businesses achieve top rankings through scalable, ethical SEO strategies.",
     },
   ];
 
@@ -130,20 +130,20 @@ export function GoogleRankingSection() {
     {
       title: "Local SEO",
       content:
-        "Dominate local search results and attract nearby customers with our specialized local SEO strategies. We optimize your Google Business Profile, build local citations, and implement location-based keywords.",
-      stats: { value: "78%", label: "Local Visibility Increase" },
+        "Attract nearby customers with Google My Business optimization, local citations, and geo-targeted content that drives foot traffic.",
+      stats: { value: "78%", label: "More Local Leads" },
     },
     {
       title: "E-commerce SEO",
       content:
-        "Boost your online store's visibility with our e-commerce SEO services. We optimize product pages, implement schema markup, and create a seamless shopping experience that both users and search engines love.",
-      stats: { value: "143%", label: "Product Page Traffic" },
+        "Optimize product pages, fix crawl errors, and leverage schema markup to boost your online store’s visibility and sales",
+      stats: { value: "143%", label: "More Product Views" },
     },
     {
       title: "Technical SEO",
       content:
-        "Ensure your website meets all technical requirements for optimal search engine performance. We address site speed, mobile-friendliness, indexing issues, and structural problems that could be holding you back.",
-      stats: { value: "2.1s", label: "Page Load Time" },
+        "Fix indexing issues, improve Core Web Vitals, and ensure mobile-first crawling to meet Google’s strictest standards.",
+      stats: { value: "2.1s", label:"Local Speed" },
     },
   ];
 
@@ -186,12 +186,10 @@ export function GoogleRankingSection() {
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-[#003C8F]">
-            Appear On the Front Page of Google!
+          Rank #1 on Google!
           </h2>
           <p className="text-gray-600 max-w-3xl mx-auto">
-            We offer professional SEO services that help websites increase their
-            organic search score drastically in order to compete for the highest
-            rankings — even when it comes to highly competitive keywords.
+          Our SEO experts optimize every pixel and keyword to propel your site to the top—even in cutthroat industries—with white-hat tactics.
           </p>
         </div>
 

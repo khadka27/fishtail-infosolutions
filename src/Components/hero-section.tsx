@@ -130,13 +130,10 @@ export function HeroSection() {
                   }`}
                 >
                   <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6">
-                    Guaranteed increase
-                    <br />
-                    of your website sales
+                  Custom Web Development
                   </h1>
                   <p className="text-white text-base sm:text-lg opacity-90 mb-8 max-w-lg">
-                    Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo,
-                    tortor mauris condimentum nibh, ut fermentum massa justo.
+                  Boost your online presence with custom web development. Our team creates responsive, user-friendly websites designed to enhance your brand&apos;s digital experience. From concept to launch, we ensure your website stands out.
                   </p>
 
                   {/* SEO, SMM, CRO badges - visible on mobile */}
@@ -247,15 +244,13 @@ export function HeroSection() {
                     }`}
                   >
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-white leading-tight mb-6">
-                      Mobile-Oriented
-                      <br />
-                      PPC Campaigns
+                    Search Engine Optimization
                     </h1>
                     <p className="text-white text-base sm:text-lg opacity-90 mb-8 max-w-lg">
-                      Donec sed odio dui. Fusce dapibus, tellus ac cursus
-                      commodo, tortor mauris condimentum nibh, ut fermentum
-                      massa justo.
+                    Maximize your search engine visibility and drive organic traffic. Our SEO services optimize your website to rank higher, ensuring you reach your target audience and increase conversions.
+
                     </p>
+            
 
                     {/* PPC, Responsive Ads, SMM badges - visible on mobile */}
                     <div className="flex flex-wrap gap-2 md:hidden mb-6">
@@ -543,17 +538,14 @@ export function HeroSection() {
                   animationReset ? "opacity-0" : ""
                 }`}
               >
-                Social Media
-                <br />
-                Optimization
+                Targeted Lead Generation
               </h1>
               <p
                 className={`text-white text-base sm:text-lg opacity-90 mb-8 max-w-lg mx-auto animate-fade-in ${
                   animationReset ? "opacity-0" : ""
                 }`}
               >
-                Donec sed odio dui. Fusce dapibus, tellus ac cursus commodo,
-                tortor mauris condimentum nibh, ut fermentum massa justo.
+                Generate high-quality leads that convert. We employ data-driven strategies to attract and nurture prospects, turning them into loyal customers and driving your business growth.
               </p>
 
               {/* Learn More button */}

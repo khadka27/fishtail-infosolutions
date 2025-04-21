@@ -68,44 +68,45 @@ export function FeaturesSection() {
   const features = [
     {
       icon: Shield,
-      title: "Online Reputation Management",
+      title: "Web Development",
       description:
-        "We analyze and address negative content about your brand through sentiment analysis, strategic response, and press release distribution.",
-      extendedDescription:
-        "Established in 2015, our reputation management services offer 24/7 monitoring, competitor insights, and proactive strategies to safeguard and enhance your brand’s digital presence.",
+        "We design fast, secure, and scalable websites with intuitive UX, CMS integration, and e-commerce functionality to drive engagement.",
+        extendedDescription: 
+        "Our full-stack developers leverage modern frameworks (React, Laravel, Shopify) to create custom sites aligned with your brand and business goals.",
+      
       benefits: [
-        "24/7 Brand Monitoring",
-        "Sentiment Analysis",
-        "Crisis Management",
-        "Competitor Tracking",
+        "Mobile-First Design",
+        "CMS & E-Commerce",
+        "API Integrations",
+        "Performance Optimization",
       ],
     },
     {
       icon: BarChart3,
-      title: "Conversion Rate Optimization",
+      title: "SEO Services",
       description:
-        "Convert visitors into loyal customers with expert strategies tailored to improve your website's performance and engagement.",
+        "Dominate search rankings with keyword research, on-page SEO, and technical audits to boost organic traffic and authority.",
       extendedDescription:
         "Our CRO process uses advanced analytics and A/B testing to pinpoint and eliminate conversion roadblocks, resulting in measurable improvements in your lead and sales funnel.",
       benefits: [
-        "A/B Testing",
-        "User Journey Analysis",
-        "Funnel Optimization",
-        "Behavioral Analytics",
+        "Keyword research & optimization",
+        "On-page SEO improvements",
+        "Technical SEO audits",
+        "Content strategy & marketing",
       ],
     },
     {
       icon: LineChart,
-      title: "Real-Time Social Media Analytics",
+      title: "Lead Generation",
       description:
-        "Track your social campaigns with customized reports and actionable insights across major platforms.",
+        "Convert prospects into customers with targeted ads, email campaigns, and CRM-driven strategies for steady pipeline growth.",
       extendedDescription:
         "Gain a competitive edge with our real-time analytics dashboards—providing instant access to engagement metrics, audience behavior, and content performance trends, all in one place.",
       benefits: [
-        "Real-time Dashboards",
-        "Engagement Metrics",
-        "Audience Insights",
-        "Content Performance",
+        "Data-driven prospect targeting",
+        "Conversion-focused campaigns",
+        "Automated lead nurturing",
+        "Multi-channel outreach strategies",
       ],
     },
   ];
@@ -170,12 +171,10 @@ export function FeaturesSection() {
     <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-white border-b border-[#F5F5F5]">
       <div className="container mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 text-[#003C8F]">
-          Our Featured Services
+          Our Core Services
         </h2>
         <p className="text-center text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto">
-          Empowering your business with next-gen web development and digital
-          marketing strategies that drive real growth in a competitive digital.
-          world.
+        Elevate your digital presence with cutting-edge web solutions, search engine dominance, and laser-focused lead generation—all designed for measurable success.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
@@ -291,7 +290,7 @@ export function FeaturesSection() {
                 {stats.projects}+
               </div>
               <div className="text-[#003C8F] font-medium">
-                Projects Completed
+                Projects Delivered
               </div>
             </div>
             <div className="text-center">
@@ -299,7 +298,7 @@ export function FeaturesSection() {
                 {stats.satisfaction}%
               </div>
               <div className="text-[#003C8F] font-medium">
-                Client Satisfaction
+                Client Retention
               </div>
             </div>
           </div>

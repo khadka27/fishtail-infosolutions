@@ -290,6 +290,7 @@ export function Footer() {
                 width={180}
                 height={60}
                 unoptimized
+
                 className="h-auto"
               />
             </div>

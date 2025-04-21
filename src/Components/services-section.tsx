@@ -219,58 +219,58 @@ export function ServicesSection() {
   // Service cards data
   const serviceCards = [
     {
-      title: "Social Media Marketing",
+      title: "Lead Generation",
       image: image1,
       color: "#0084FF",
       description:
-        "Amplify your brand presence and community engagement across all major social platforms with customized, data-driven strategies.",
+        "Turn clicks into customers with hyper-targeted ads, LinkedIn outreach, and high-converting funnels.",
       features: [
-        "Content Creation",
-        "Community Management",
-        "Paid Campaigns",
-        "Performance Analytics",
+        "PPC Campaigns",
+        "Email Automation",
+        "LinkedIn Ads",
+        
       ],
       stats: { value: "4.2x", label: "Engagement Increase" },
     },
     {
-      title: "Organic Long-Term SEO",
+      title: "Organic SEO",
       image: image2,
       color: "#003C8F",
       description:
-        "Achieve sustainable search visibility and authority through a proven SEO strategy tailored to your long-term success.",
+        "Sustainable growth through keyword mastery, backlink building, and content that ranks.",
       features: [
-        "Keyword Research",
-        "On-Page Optimization",
-        "Technical SEO",
-        "Content Strategy",
+        "Competitor Analysis",
+        "On-Page SEO",
+        "Backlink Strategy",
+        "Blogging",
       ],
       stats: { value: "187%", label: "Traffic Growth" },
     },
     {
-      title: "Advanced Analytics",
+      title: "Performance Analytics",
       image: image3,
       color: "#0084FF",
       description:
-        "Transform data into actionable insights with our comprehensive analytics solutions designed for smarter decision-making.",
+        "Track KPIs, user behavior, and campaign ROI with real-time dashboards and granular reports.",
       features: [
-        "Custom Dashboards",
-        "Conversion Tracking",
-        "User Behavior Analysis",
-        "ROI Reporting",
+        "Funnel Tracking",
+        "A/B Testing",
+        "Heatmaps",
+        "ROI Forecasting",
       ],
       stats: { value: "3.5x", label: "ROI Improvement" },
     },
     {
-      title: "Pay Per Click Strategies",
+      title: "PPC Advertising",
       image: image4,
       color: "#003C8F",
       description:
-        "Drive immediate results with targeted PPC campaigns crafted to maximize your reach and return on investment.",
+        "Immediate traffic with Google, Meta, and LinkedIn ads optimized for conversions.",
       features: [
-        "Google Ads",
-        "Social Media Ads",
-        "Retargeting",
-        "A/B Testing",
+        "Search Ads",
+        "Display Ads",
+        "Remarketing",
+        "Geo-Targeting",
       ],
       stats: { value: "68%", label: "Cost Reduction" },
     },
@@ -279,97 +279,97 @@ export function ServicesSection() {
   // Additional services data
   const additionalServices = [
     {
-      title: "Local Search Strategy",
+      title: "Web Development",
       description:
-        "Dominate local search results and connect with nearby customers through strategic optimization.",
+        "Custom sites built for speed, security, and scalability—whether it’s SaaS, e-commerce, or CMS.",
       icon: MapPin,
       color: "#0084FF",
       details:
-        "Our local SEO experts help your business stand out in your city or region with optimized listings, local backlinks, and tailored content strategies.",
+        "We use agile methodologies to deliver pixel-perfect, SEO-friendly websites that align with your business objectives.",
     },
     {
-      title: "Maps Search Optimization",
+      title: "SEO Strategy",
       description:
-        "Ensure your business appears prominently on Google Maps and other location-based search platforms.",
+        "Climb rankings with technical audits, content optimization, and authoritative backlinks.",
       icon: Map,
       color: "#003C8F",
       details:
-        "We optimize your business listings with precision to improve visibility, attract local traffic, and increase walk-ins and calls.",
+        "Our granular approach targets low-hanging keywords, fixes site issues, and builds domain authority.",
     },
     {
-      title: "Link Building & Content",
+      title: "Lead Funnels",
       description:
-        "Boost your website authority with strategic link building and high-quality content.",
+        "Capture and nurture leads with automated workflows and high-CTR campaigns.",
       icon: Link2,
       color: "#0084FF",
       details:
-        "We create and promote valuable content to earn authoritative backlinks, improving your search rankings and driving long-term traffic.",
+        "From LinkedIn outreach to cold email sequencing, we fill your pipeline with qualified prospects.",
     },
     {
-      title: "Paid Search Advertising",
+      title: "Paid Advertising",
       description:
-        "Get fast results with expertly managed PPC campaigns across Google and Bing.",
+        "Scale growth with Google, Meta, and native ads tuned for maximum conversions.",
       icon: Target,
       color: "#003C8F",
       details:
         "Our paid advertising team crafts high-converting campaigns that focus on targeting the right audience, optimizing ad spend, and maximizing ROI.",
     },
     {
-      title: "Custom Website Design",
+      title: "Custom Web Apps",
       description:
-        "Stunning, responsive websites built to elevate your brand and convert visitors into customers.",
+        "Tailored SaaS, portals, and internal tools to streamline operations and engagement.",
       icon: PenTool,
       color: "#0084FF",
       details:
-        "We design user-centric, SEO-friendly websites tailored to your business goals, ensuring fast load times and intuitive navigation across all devices.",
+        "Our PPC experts structure campaigns to target buyer intent, reduce CPA, and amplify ROI.",
     },
     {
-      title: "Custom Email Design",
+      title: "Email Marketing",
       description:
-        "Engage your audience with beautifully branded, conversion-focused email campaigns.",
+        "Drive opens, clicks, and sales with segmented, automated email sequences.",
       icon: Mail,
       color: "#003C8F",
       details:
-        "From design to deployment, our email specialists create compelling templates and sequences that drive engagement and customer retention.",
+        "We design mobile-responsive templates and A/B test subject lines to boost deliverability.",
     },
   ];
 
   // Service tabs
   const serviceTabs = [
     {
-      title: "For Small Business",
+      title: "For Startups",
       icon: Users,
       content:
-        "Affordable and scalable digital marketing and development services for startups and local businesses ready to grow online.",
+        "Cost-effective web and SEO packages to establish your online presence and attract early adopters.",
       services: [
         "Local SEO",
-        "Social Media Management",
-        "Google Business Profile",
-        "Basic Analytics",
+        "Google Ads",
+        "Landing Pages",
+        "Basic Web Dev",
       ],
     },
     {
       title: "For E-commerce",
       icon: BarChart,
       content:
-        "E-commerce-focused SEO, ad campaigns, and conversion strategies tailored to increase sales and customer lifetime value.",
+        "SEO and PPC strategies to increase product visibility, cart size, and repeat purchases.",
       services: [
-        "Product SEO",
-        "Shopping Ads",
-        "Conversion Optimization",
-        "Customer Retargeting",
+        "Shopify SEO",
+        "Google Shopping",
+        "Checkout Optimization",
+        "Retargeting Ads" ,
       ],
     },
     {
       title: "For Enterprise",
       icon: TrendingUp,
       content:
-        "End-to-end web development and digital marketing solutions for enterprise clients with global reach and complex needs.",
+        "Enterprise-grade web solutions, multi-channel SEO, and automation to streamline global operations.",
       services: [
-        "Enterprise SEO",
-        "Cross-Channel Marketing",
-        "Advanced Analytics",
-        "Brand Management",
+        "Scalable SEO",
+        "Omnichannel Marketing",
+        "Data Warehousing",
+        "API-Driven Tools",
       ],
     },
   ];
@@ -417,12 +417,10 @@ export function ServicesSection() {
           }`}
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-2 lg:mb-4 text-[#003C8F]">
-            Full Service Digital Marketing Agency
+          Full-Cycle Digital Solutions
           </h2>
           <p className="text-center text-gray-600 mb-8 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
-            Search Engine & Social Media Optimization Experts using proven
-            strategies to grow your business online and deliver measurable
-            results.
+          From web development to lead capture, we merge creativity and analytics to fuel sustainable growth.
           </p>
         </div>
 

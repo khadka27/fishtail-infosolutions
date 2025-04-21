@@ -3,11 +3,7 @@ import {
   FileText,
   Laptop,
   Code,
-  Smartphone,
-  Briefcase,
-  Award,
-  Search,
-  MapPin,
+  Search,  
   Share2,
   Mail,
   DollarSign,
@@ -23,9 +19,18 @@ export function ServicesDropdown() {
       {/* WEB DEVELOPMENT Column */}
       <div>
         <h3 className="text-gray-600 font-semibold text-base uppercase mb-1">WEB DEVELOPMENT</h3>
-        <p className="text-gray-500 text-xs mb-4">Web Design & Development Solutions</p>
+        <p className="text-gray-500 text-xs mb-4">Web Redesign</p>
 
         <div className="space-y-3">
+        <Link
+            href="/Services/web-redesign"
+            className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
+          >
+            <span className="text-gray-400 mr-3 w-5 text-center">
+              <FileText className="h-4 w-4 inline-block" />
+            </span>
+            <span>Website Redesign</span>
+          </Link>
           <Link
             href="/Services/content-marketing"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
@@ -33,7 +38,7 @@ export function ServicesDropdown() {
             <span className="text-gray-400 mr-3 w-5 text-center">
               <FileText className="h-4 w-4 inline-block" />
             </span>
-            <span>Content Marketing Strategy</span>
+            <span>Content Writing/Marketing</span>
           </Link>
 
           <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
@@ -52,8 +57,17 @@ export function ServicesDropdown() {
             </span>
             <span>Web Development</span>
           </Link>
-
           <Link
+            href="/Services/online-marketing"
+            className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
+          >
+            <span className="text-gray-400 mr-3 w-5 text-center">
+              <Code className="h-4 w-4 inline-block" />
+            </span>
+            <span>Online Marketing</span>
+          </Link>
+
+          {/* <Link
             href="/Services/mobile-marketing"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
           >
@@ -81,7 +95,7 @@ export function ServicesDropdown() {
               <Award className="h-4 w-4 inline-block" />
             </span>
             <span>Reputation Management</span>
-          </Link>
+          </Link> */}
         </div>
       </div>
 
@@ -98,12 +112,14 @@ export function ServicesDropdown() {
             <span>Search Engine Optimization</span>
           </Link>
 
-          <Link href="/Services/local-seo" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          {/* <Link href="/Services/local-seo" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <MapPin className="h-4 w-4 inline-block" />
             </span>
             <span>Local SEO</span>
-          </Link>
+          </Link> */}
+
+          
 
           <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -128,6 +144,7 @@ export function ServicesDropdown() {
             </span>
             <span>Pay Per Click (PPC) Management</span>
           </Link>
+          
         </div>
       </div>
 
@@ -137,6 +154,17 @@ export function ServicesDropdown() {
         <p className="text-gray-500 text-xs mb-4">Improve the success of marketing efforts</p>
 
         <div className="space-y-3">
+        <Link
+            href="/Services/lead-generation"
+            className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
+          >
+            <span className="text-gray-400 mr-3 w-5 text-center">
+              <Globe className="h-4 w-4 inline-block" />
+            </span>
+            <span>Lead Generation</span>
+          </Link>
+
+       
           <Link
             href="/Services/conversion-rate"
             className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
@@ -147,15 +175,7 @@ export function ServicesDropdown() {
             <span>Conversion Rate Optimization</span>
           </Link>
 
-          <Link
-            href="/Services/online-presence"
-            className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
-          >
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <Globe className="h-4 w-4 inline-block" />
-            </span>
-            <span>Online presence analysis</span>
-          </Link>
+         
 
           <Link
             href="/Services/affiliate-management"

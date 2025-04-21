@@ -29,21 +29,13 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     quote:
-      "Their SEO expertise has transformed our online presence. Our organic traffic has increased by 200% in just six months.",
-    name: "Michael Chen",
+      "“Fishtail’s SEO and ads tripled our leads in 6 months. Their team is strategic, transparent, and results-driven!”",
+    name: "Sarah K., CMO at GrowthLabs",
     title: "Marketing Director",
     image: "/confident-professional.png",
     rating: 5,
   },
-  {
-    id: 3,
-    quote:
-      "The team's attention to detail and data-driven approach has made all the difference for our business.",
-    name: "Sarah Johnson",
-    title: "E-commerce Manager",
-    image: "/confident-professional.png",
-    rating: 4,
-  },
+  
 ];
 
 export default function TestimonialsSection() {
