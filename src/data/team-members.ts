@@ -165,7 +165,7 @@ export const teamMembers: TeamMember[] = [
     name: "Mamata Bhattarai",
     position: "Jr. Content Writer",
     department: "Content",
-    avatar: "/Image/mamata-bhattarai.jpg",
+    avatar: "/Image/default-girl.jpg",
     bgColor: "bg-yellow-200",
     slug: "mamata-bhattarai",
     bio: "Mamata is passionate about crafting compelling content that connects with audiences and boosts brand storytelling. She is skilled in transforming ideas into engaging blog posts and SEO-rich web pages. Her attention to detail ensures content is always polished and professional.",
