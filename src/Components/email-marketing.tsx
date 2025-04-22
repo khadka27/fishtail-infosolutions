@@ -1,15 +1,34 @@
-"use client"
-import { useRef, useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, ChevronRight, Mail, BarChart2, Users, FileText, ArrowDown, DollarSign, PieChart, Clock, Target, Zap, Repeat, CheckCircle, Inbox, Send, Settings } from 'lucide-react'
-import Form from "./form"
-import { QuotePopup } from "./quote-popup"
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image2 from "@/Images/services-seo-alt-colors-optimized.png"
-import image3 from "@/Images/services-payperclick-alt-colors-optimized.png"
-import emailMarketing from "@/Images/email-marketing.png"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  ArrowRight,
+  ChevronRight,
+  Mail,
+  BarChart2,
+  Users,
+  FileText,
+  ArrowDown,
+  DollarSign,
+  PieChart,
+  Clock,
+  Target,
+  Zap,
+  Repeat,
+  CheckCircle,
+  Inbox,
+  Send,
+  Settings,
+} from "lucide-react";
+import Form from "./form";
+import { QuotePopup } from "./quote-popup";
+import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
+import image2 from "@/Images/services-seo-alt-colors-optimized.png";
+import image3 from "@/Images/services-payperclick-alt-colors-optimized.png";
+import emailMarketing from "@/Images/email-marketing.png";
 
 // Define email marketing features
 const emailFeatures = [
@@ -55,7 +74,7 @@ const emailFeatures = [
     icon: BarChart2,
     color: "teal",
   },
-]
+];
 
 // Define email marketing process steps
 const emailSteps = [
@@ -95,7 +114,7 @@ const emailSteps = [
       "We analyze campaign results, provide detailed reports, and implement data-driven improvements.",
     icon: PieChart,
   },
-]
+];
 
 // Define case studies
 const caseStudies = [
@@ -139,54 +158,54 @@ const caseStudies = [
     bgColor: "bg-[#dd4124]",
     stats: { value: "34%", label: "Churn Reduction" },
   },
-]
+];
 
 const EmailMarketing = () => {
-  const formRef = useRef<HTMLDivElement>(null)
-  const [showQuotePopup, setShowQuotePopup] = useState(false)
-  const [activeFeature, setActiveFeature] = useState<number | null>(null)
-  const [activeStep, setActiveStep] = useState<number | null>(null)
-  const [currentCaseIndex, setCurrentCaseIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLDivElement>(null);
+  const [showQuotePopup, setShowQuotePopup] = useState(false);
+  const [activeFeature, setActiveFeature] = useState<number | null>(null);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [currentCaseIndex, setCurrentCaseIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const toggleQuotePopup = () => {
-    setShowQuotePopup((prev) => !prev)
-  }
+    setShowQuotePopup((prev) => !prev);
+  };
 
   // Auto-rotate case studies
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentCaseIndex((prev) => (prev + 1) % caseStudies.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
+      setCurrentCaseIndex((prev) => (prev + 1) % caseStudies.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Check if element is in viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
     return () => {
       if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+        observer.unobserve(sectionRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   // Animation variants
   const containerVariants = {
@@ -197,7 +216,7 @@ const EmailMarketing = () => {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -206,7 +225,7 @@ const EmailMarketing = () => {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
     <div className="flex flex-col" ref={sectionRef}>
@@ -256,9 +275,13 @@ const EmailMarketing = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            We help your business <span className="font-bold">connect directly with your audience</span>, drive{" "}
-            <span className="font-bold">consistent revenue</span>, and build lasting customer relationships through
-            strategic email marketing.
+            We help your business{" "}
+            <span className="font-bold">
+              connect directly with your audience
+            </span>
+            , drive <span className="font-bold">consistent revenue</span>, and
+            build lasting customer relationships through strategic email
+            marketing.
           </motion.p>
 
           <motion.div
@@ -271,7 +294,9 @@ const EmailMarketing = () => {
               className="bg-white text-[#0084ff] hover:bg-gray-100 py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
               onClick={scrollToForm}
             >
-              <span className="font-medium">Get a Free Email Marketing Audit</span>
+              <span className="font-medium">
+                Get a Free Email Marketing Audit
+              </span>
               <ArrowRight className="ml-2 h-4 w-4" />
             </button>
             <button
@@ -307,10 +332,13 @@ const EmailMarketing = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Comprehensive Email Marketing Solutions</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Comprehensive Email Marketing Solutions
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Our email marketing services are designed to help your business build meaningful connections with your
-            audience, drive consistent revenue, and maximize customer lifetime value.
+            Our email marketing services are designed to help your business
+            build meaningful connections with your audience, drive consistent
+            revenue, and maximize customer lifetime value.
           </p>
         </motion.div>
 
@@ -324,16 +352,24 @@ const EmailMarketing = () => {
             <motion.div
               key={index}
               className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                activeFeature === index ? `ring-2 ring-${feature.color}-500` : ""
+                activeFeature === index
+                  ? `ring-2 ring-${feature.color}-500`
+                  : ""
               }`}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              onClick={() => setActiveFeature(activeFeature === index ? null : index)}
+              onClick={() =>
+                setActiveFeature(activeFeature === index ? null : index)
+              }
             >
-              <div className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}>
+              <div
+                className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}
+              >
                 <feature.icon className={`w-6 h-6 text-${feature.color}-500`} />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">{feature.title}</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                {feature.title}
+              </h3>
 
               <AnimatePresence>
                 {activeFeature === index && (
@@ -374,10 +410,13 @@ const EmailMarketing = () => {
             animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Why Email Marketing Matters</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Why Email Marketing Matters
+            </h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Email marketing remains one of the most effective digital marketing channels. Here&apos;s why investing in
-              email marketing is crucial for your business growth.
+              Email marketing remains one of the most effective digital
+              marketing channels. Here&apos;s why investing in email marketing
+              is crucial for your business growth.
             </p>
           </motion.div>
 
@@ -387,68 +426,106 @@ const EmailMarketing = () => {
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
           >
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#0084ff]/10 flex items-center justify-center mb-4">
                 <DollarSign className="w-6 h-6 text-[#0084ff]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">4200% Average ROI</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                4200% Average ROI
+              </h3>
               <p className="text-gray-600 text-sm">
-                Email marketing generates an average return of $42 for every $1 spent, making it one of the highest-ROI
-                marketing channels available.
+                Email marketing generates an average return of $42 for every $1
+                spent, making it one of the highest-ROI marketing channels
+                available.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#00a0b0]/10 flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-[#00a0b0]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">4.3 Billion Email Users Worldwide</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                4.3 Billion Email Users Worldwide
+              </h3>
               <p className="text-gray-600 text-sm">
-                With over half the world&apos;s population using email, it provides unparalleled reach for your marketing
-                messages.
+                With over half the world&apos;s population using email, it
+                provides unparalleled reach for your marketing messages.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#6b5b95]/10 flex items-center justify-center mb-4">
                 <Inbox className="w-6 h-6 text-[#6b5b95]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">99% Daily Email Checking</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                99% Daily Email Checking
+              </h3>
               <p className="text-gray-600 text-sm">
-                Nearly all email users check their inbox at least once daily, with many checking multiple times
-                throughout the day.
+                Nearly all email users check their inbox at least once daily,
+                with many checking multiple times throughout the day.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#88b04b]/10 flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-[#88b04b]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">60% Higher Conversion Rate</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                60% Higher Conversion Rate
+              </h3>
               <p className="text-gray-600 text-sm">
-                Email marketing drives conversions at a rate 60% higher than social media and other marketing channels.
+                Email marketing drives conversions at a rate 60% higher than
+                social media and other marketing channels.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#dd4124]/10 flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-[#dd4124]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Segmented Emails Drive 760% More Revenue</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Segmented Emails Drive 760% More Revenue
+              </h3>
               <p className="text-gray-600 text-sm">
-                Targeted, segmented email campaigns generate significantly higher revenue than generic, one-size-fits-all
-                approaches.
+                Targeted, segmented email campaigns generate significantly
+                higher revenue than generic, one-size-fits-all approaches.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#0084ff]/10 flex items-center justify-center mb-4">
                 <Clock className="w-6 h-6 text-[#0084ff]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Automated Emails Generate 320% More Revenue</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Automated Emails Generate 320% More Revenue
+              </h3>
               <p className="text-gray-600 text-sm">
-                Automated email sequences deliver timely, relevant messages that drive significantly higher revenue than
-                manual campaigns.
+                Automated email sequences deliver timely, relevant messages that
+                drive significantly higher revenue than manual campaigns.
               </p>
             </motion.div>
           </motion.div>
@@ -469,10 +546,13 @@ const EmailMarketing = () => {
             animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Our Email Marketing Process</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Our Email Marketing Process
+            </h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              We follow a proven, data-driven approach to email marketing that consistently delivers results for
-              businesses across industries and markets.
+              We follow a proven, data-driven approach to email marketing that
+              consistently delivers results for businesses across industries and
+              markets.
             </p>
           </motion.div>
 
@@ -489,16 +569,24 @@ const EmailMarketing = () => {
               {emailSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""} items-center gap-8`}
+                  className={`flex flex-col md:flex-row ${
+                    index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  } items-center gap-8`}
                   variants={itemVariants}
                 >
-                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+                  <div
+                    className={`w-full md:w-1/2 ${
+                      index % 2 === 0 ? "md:text-left" : "md:text-right"
+                    }`}
+                  >
                     <motion.div
                       className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
                         activeStep === index ? "ring-2 ring-[#0084ff]" : ""
                       }`}
                       whileHover={{ scale: 1.03 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
+                      onClick={() =>
+                        setActiveStep(activeStep === index ? null : index)
+                      }
                     >
                       <h3 className="text-xl font-medium mb-2 text-gray-800 flex items-center">
                         {index % 2 === 0 ? (
@@ -530,7 +618,9 @@ const EmailMarketing = () => {
 
                       {activeStep !== index && (
                         <div
-                          className={`flex items-center text-sm text-gray-500 mt-2 ${index % 2 === 0 ? "" : "justify-end"}`}
+                          className={`flex items-center text-sm text-gray-500 mt-2 ${
+                            index % 2 === 0 ? "" : "justify-end"
+                          }`}
                         >
                           {index % 2 === 0 ? (
                             <>
@@ -552,7 +642,9 @@ const EmailMarketing = () => {
                     <motion.div
                       className="w-8 h-8 rounded-full bg-[#0084ff] text-white flex items-center justify-center z-10 relative"
                       whileHover={{ scale: 1.2 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
+                      onClick={() =>
+                        setActiveStep(activeStep === index ? null : index)
+                      }
                     >
                       {index + 1}
                     </motion.div>
@@ -579,10 +671,13 @@ const EmailMarketing = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Our Email Marketing Impact</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Our Email Marketing Impact
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We&apos;ve helped hundreds of businesses achieve significant growth through strategic email marketing. Here&apos;s our
-            track record of success.
+            We&apos;ve helped hundreds of businesses achieve significant growth
+            through strategic email marketing. Here&apos;s our track record of
+            success.
           </p>
         </motion.div>
 
@@ -671,97 +766,6 @@ const EmailMarketing = () => {
         </button>
       </motion.div>
 
-      {/* Case Studies */}
-      {/* <motion.div
-        className="bg-gray-50 py-16 px-4"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="flex justify-between items-center mb-8"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-light text-gray-700">Email marketing success stories</h2>
-            <Link href="/case-studies" className="text-[#0084ff] text-sm hover:underline flex items-center">
-              <span>See all case studies</span>
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </motion.div>
-
-          <div className="relative">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              {[0, 1, 2].map((i) => {
-                const caseIndex = (currentCaseIndex + i) % caseStudies.length
-                const caseStudy = caseStudies[caseIndex]
-
-                return (
-                  <motion.div
-                    key={caseIndex}
-                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className={`h-48 ${caseStudy.bgColor} flex items-center justify-center relative`}>
-                      <Image
-                        src={
-                          caseStudy.image ||
-                          "/placeholder.svg?height=150&width=200&query=email marketing campaign dashboard"
-                         || "/placeholder.svg"}
-                        alt={caseStudy.title}
-                        width={200}
-                        height={150}
-                        className="object-contain"
-                      />
-                      <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full text-xs flex items-center">
-                        <BarChart2 className="w-3 h-3 mr-1 text-[#0084ff]" />
-                        <span className="font-bold text-gray-800">{caseStudy.stats.value}</span>
-                        <span className="ml-1 text-gray-600 text-[10px]">{caseStudy.stats.label}</span>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-medium mb-2">{caseStudy.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{caseStudy.description}</p>
-                      <Link
-                        href={`/case-studies/${caseStudy.title.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="inline-flex items-center text-[#0084ff] text-sm font-medium"
-                      >
-                        <span>View case study</span>
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div> */}
-
-            {/* Pagination Dots */}
-            {/* <div className="flex justify-center gap-2 mb-8">
-              {caseStudies.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentCaseIndex / 3) === Math.floor(index / 3) ? "w-6 bg-[#0084ff]" : "bg-gray-300"
-                  }`}
-                  onClick={() => setCurrentCaseIndex(index)}
-                  aria-label={`Go to case study set ${Math.floor(index / 3) + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div> */}
-
       {/* Email Marketing Benefits */}
       <motion.div
         className="py-16 px-4 max-w-6xl mx-auto"
@@ -775,10 +779,13 @@ const EmailMarketing = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Benefits of Email Marketing</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Benefits of Email Marketing
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Investing in email marketing provides numerous advantages for businesses of all sizes. Here&apos;s how strategic
-            email marketing can benefit your business.
+            Investing in email marketing provides numerous advantages for
+            businesses of all sizes. Here&apos;s how strategic email marketing
+            can benefit your business.
           </p>
         </motion.div>
 
@@ -788,91 +795,123 @@ const EmailMarketing = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Highest ROI of Any Marketing Channel</span>
             </h3>
             <p className="text-gray-600">
-              Email marketing consistently delivers the highest return on investment compared to other marketing
-              channels, with an average of $42 for every $1 spent.
+              Email marketing consistently delivers the highest return on
+              investment compared to other marketing channels, with an average
+              of $42 for every $1 spent.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Direct Access to Your Audience</span>
             </h3>
             <p className="text-gray-600">
-              Email provides direct access to your audience&apos;s inbox, without algorithm changes or platform restrictions
-              that affect social media and other channels.
+              Email provides direct access to your audience&apos;s inbox,
+              without algorithm changes or platform restrictions that affect
+              social media and other channels.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Highly Personalized Communication</span>
             </h3>
             <p className="text-gray-600">
-              Email allows for deep personalization based on customer data, behaviors, and preferences, creating more
-              relevant and engaging experiences.
+              Email allows for deep personalization based on customer data,
+              behaviors, and preferences, creating more relevant and engaging
+              experiences.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Automated Customer Journeys</span>
             </h3>
             <p className="text-gray-600">
-              Automation enables you to deliver the right message at the right time based on customer actions, creating
-              efficient, scalable marketing workflows.
+              Automation enables you to deliver the right message at the right
+              time based on customer actions, creating efficient, scalable
+              marketing workflows.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Measurable Results & Insights</span>
             </h3>
             <p className="text-gray-600">
-              Email provides detailed metrics and analytics that allow you to measure performance, test strategies, and
-              continuously improve results.
+              Email provides detailed metrics and analytics that allow you to
+              measure performance, test strategies, and continuously improve
+              results.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Increased Customer Lifetime Value</span>
             </h3>
             <p className="text-gray-600">
-              Regular, valuable communication through email helps build stronger customer relationships, increasing
-              retention, repeat purchases, and lifetime value.
+              Regular, valuable communication through email helps build stronger
+              customer relationships, increasing retention, repeat purchases,
+              and lifetime value.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Ownership of Your Audience</span>
             </h3>
             <p className="text-gray-600">
-              Unlike social media followers, your email list is an owned asset that can&apos;t be affected by platform
-              changes, providing long-term marketing stability.
+              Unlike social media followers, your email list is an owned asset
+              that can&apos;t be affected by platform changes, providing
+              long-term marketing stability.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#0084ff]" />
               <span>Scalable for Businesses of All Sizes</span>
             </h3>
             <p className="text-gray-600">
-              Email marketing can be effectively implemented by businesses of any size, from small startups to large
-              enterprises, with strategies that scale with your growth.
+              Email marketing can be effectively implemented by businesses of
+              any size, from small startups to large enterprises, with
+              strategies that scale with your growth.
             </p>
           </motion.div>
         </motion.div>
@@ -887,10 +926,13 @@ const EmailMarketing = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Get Your Free Email Marketing Audit</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Get Your Free Email Marketing Audit
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover how your email marketing is performing and receive actionable recommendations to improve your
-              open rates, click-through rates, and conversions.
+              Discover how your email marketing is performing and receive
+              actionable recommendations to improve your open rates,
+              click-through rates, and conversions.
             </p>
           </div>
           <Form />
@@ -900,7 +942,7 @@ const EmailMarketing = () => {
       {/* Quote Popup */}
       <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
     </div>
-  )
-}
+  );
+};
 
-export default EmailMarketing
+export default EmailMarketing;

@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, ChevronRight, Instagram, Facebook, Twitter, Linkedin, Youtube, TrendingUp, Users, MessageCircle, ArrowDown, DollarSign, BarChart2, PieChart, FileText, ImageIcon, Target, Heart, Share2, CheckCircle, Clock, Award, Search } from 'lucide-react'
 import Form from "./form"

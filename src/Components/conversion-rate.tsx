@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import {
   LineChart,
   BarChart,
@@ -15,7 +14,7 @@ import {
   Gauge,
   ArrowUpRight,
   CheckCircle2,
-  ChevronRight,
+  
 } from "lucide-react";
 import { QuotePopup } from "./quote-popup";
 import Form from "./form";
@@ -25,9 +24,9 @@ import hypothesis from "@/Images/Types-of-hypotheses.jpg";
 import testDesign from "@/Images/test.jpg";
 import implementation from "@/Images/implementation.webp";
 import analysis from "@/Images/analysis.jpg";
-import ecommerce from "@/Images/Ecommerce-Services.webp";
-import saas from "@/Images/saas.jpg";
-import financial from "@/Images/finance.webp";
+// import ecommerce from "@/Images/Ecommerce-Services.webp";
+// import saas from "@/Images/saas.jpg";
+// import financial from "@/Images/finance.webp";
 import testing from "@/Images/testing.png";
 
 export default function ConversionRateOptimization() {

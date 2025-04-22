@@ -1,8 +1,9 @@
-"use client"
-import { useRef, useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
+/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client";
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ChevronRight,
@@ -20,18 +21,19 @@ import {
   LineChart,
   Users,
   Globe,
-} from "lucide-react"
-import Form from "./form"
-import { QuotePopup } from "./quote-popup"
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image2 from "@/Images/services-seo-alt-colors-optimized.png"
-import image3 from "@/Images/services-payperclick-alt-colors-optimized.png"
+} from "lucide-react";
+import Form from "./form";
+import { QuotePopup } from "./quote-popup";
+import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
+import image2 from "@/Images/services-seo-alt-colors-optimized.png";
+import image3 from "@/Images/services-payperclick-alt-colors-optimized.png";
 
 // Define PPC marketing features
 const ppcFeatures = [
   {
     title: "Google Ads Management",
-    description: "Strategic management of Google Search, Display, Shopping, and YouTube ad campaigns to maximize ROI.",
+    description:
+      "Strategic management of Google Search, Display, Shopping, and YouTube ad campaigns to maximize ROI.",
     icon: Search,
     color: "blue",
   },
@@ -70,7 +72,7 @@ const ppcFeatures = [
     icon: BarChart2,
     color: "teal",
   },
-]
+];
 
 // Define PPC marketing process steps
 const ppcSteps = [
@@ -110,7 +112,7 @@ const ppcSteps = [
       "We continuously optimize campaigns based on performance data and scale successful strategies to drive growth.",
     icon: TrendingUp,
   },
-]
+];
 
 // Define case studies
 const caseStudies = [
@@ -154,54 +156,54 @@ const caseStudies = [
     bgColor: "bg-[#673ab7]",
     stats: { value: "3", label: "New Markets" },
   },
-]
+];
 
 const PPCMarketing = () => {
-  const formRef = useRef<HTMLDivElement>(null)
-  const [showQuotePopup, setShowQuotePopup] = useState(false)
-  const [activeFeature, setActiveFeature] = useState<number | null>(null)
-  const [activeStep, setActiveStep] = useState<number | null>(null)
-  const [currentCaseIndex, setCurrentCaseIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLDivElement>(null);
+  const [showQuotePopup, setShowQuotePopup] = useState(false);
+  const [activeFeature, setActiveFeature] = useState<number | null>(null);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [currentCaseIndex, setCurrentCaseIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const toggleQuotePopup = () => {
-    setShowQuotePopup((prev) => !prev)
-  }
+    setShowQuotePopup((prev) => !prev);
+  };
 
   // Auto-rotate case studies
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentCaseIndex((prev) => (prev + 1) % caseStudies.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
+      setCurrentCaseIndex((prev) => (prev + 1) % caseStudies.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Check if element is in viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
     return () => {
       if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+        observer.unobserve(sectionRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   // Animation variants
   const containerVariants = {
@@ -212,7 +214,7 @@ const PPCMarketing = () => {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -221,7 +223,7 @@ const PPCMarketing = () => {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
     <div className="flex flex-col" ref={sectionRef}>
@@ -271,9 +273,10 @@ const PPCMarketing = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            We help your business <span className="font-bold">drive targeted traffic</span>, generate{" "}
-            <span className="font-bold">qualified leads</span>, and increase conversions through strategic pay-per-click
-            advertising campaigns.
+            We help your business{" "}
+            <span className="font-bold">drive targeted traffic</span>, generate{" "}
+            <span className="font-bold">qualified leads</span>, and increase
+            conversions through strategic pay-per-click advertising campaigns.
           </motion.p>
 
           <motion.div
@@ -322,7 +325,9 @@ const PPCMarketing = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl font-light text-gray-700">We manage all major PPC platforms</h2>
+          <h2 className="text-2xl font-light text-gray-700">
+            We manage all major PPC platforms
+          </h2>
         </motion.div>
 
         <motion.div
@@ -496,10 +501,13 @@ const PPCMarketing = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Comprehensive PPC Solutions</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Comprehensive PPC Solutions
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Our pay-per-click marketing services are designed to help your business drive targeted traffic, generate
-            qualified leads, and maximize return on ad spend across all major platforms.
+            Our pay-per-click marketing services are designed to help your
+            business drive targeted traffic, generate qualified leads, and
+            maximize return on ad spend across all major platforms.
           </p>
         </motion.div>
 
@@ -513,16 +521,24 @@ const PPCMarketing = () => {
             <motion.div
               key={index}
               className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                activeFeature === index ? `ring-2 ring-${feature.color}-500` : ""
+                activeFeature === index
+                  ? `ring-2 ring-${feature.color}-500`
+                  : ""
               }`}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              onClick={() => setActiveFeature(activeFeature === index ? null : index)}
+              onClick={() =>
+                setActiveFeature(activeFeature === index ? null : index)
+              }
             >
-              <div className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}>
+              <div
+                className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}
+              >
                 <feature.icon className={`w-6 h-6 text-${feature.color}-500`} />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">{feature.title}</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                {feature.title}
+              </h3>
 
               <AnimatePresence>
                 {activeFeature === index && (
@@ -563,10 +579,14 @@ const PPCMarketing = () => {
             animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Why PPC Marketing Matters</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Why PPC Marketing Matters
+            </h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Pay-per-click advertising offers unique advantages that make it an essential component of a comprehensive
-              digital marketing strategy. Here&apos;s why investing in PPC is crucial for your business growth.
+              Pay-per-click advertising offers unique advantages that make it an
+              essential component of a comprehensive digital marketing strategy.
+              Here&apos;s why investing in PPC is crucial for your business
+              growth.
             </p>
           </motion.div>
 
@@ -576,69 +596,111 @@ const PPCMarketing = () => {
             initial="hidden"
             animate={isVisible ? "visible" : "hidden"}
           >
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#4285f4]/10 flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-[#4285f4]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Immediate Results</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Immediate Results
+              </h3>
               <p className="text-gray-600 text-sm">
-                Unlike SEO, PPC delivers immediate visibility and traffic, allowing you to generate leads and sales from
-                day one of campaign launch.
+                Unlike SEO, PPC delivers immediate visibility and traffic,
+                allowing you to generate leads and sales from day one of
+                campaign launch.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#34a853]/10 flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-[#34a853]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Precise Targeting</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Precise Targeting
+              </h3>
               <p className="text-gray-600 text-sm">
-                PPC allows for highly specific audience targeting based on demographics, interests, behaviors, and
-                search intent, ensuring your ads reach the right people.
+                PPC allows for highly specific audience targeting based on
+                demographics, interests, behaviors, and search intent, ensuring
+                your ads reach the right people.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#fbbc05]/10 flex items-center justify-center mb-4">
                 <DollarSign className="w-6 h-6 text-[#fbbc05]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Controlled Budget & Costs</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Controlled Budget & Costs
+              </h3>
               <p className="text-gray-600 text-sm">
-                With PPC, you have complete control over your advertising budget, with the ability to set daily or
-                monthly limits and adjust in real-time.
+                With PPC, you have complete control over your advertising
+                budget, with the ability to set daily or monthly limits and
+                adjust in real-time.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#ea4335]/10 flex items-center justify-center mb-4">
                 <BarChart2 className="w-6 h-6 text-[#ea4335]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Measurable ROI</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Measurable ROI
+              </h3>
               <p className="text-gray-600 text-sm">
-                PPC provides detailed performance metrics and conversion tracking, allowing you to measure exact return
-                on investment for every dollar spent.
+                PPC provides detailed performance metrics and conversion
+                tracking, allowing you to measure exact return on investment for
+                every dollar spent.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#673ab7]/10 flex items-center justify-center mb-4">
                 <Settings className="w-6 h-6 text-[#673ab7]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Testing & Optimization</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Testing & Optimization
+              </h3>
               <p className="text-gray-600 text-sm">
-                PPC enables rapid testing of different messages, offers, and landing pages, providing valuable insights
-                that can improve all marketing efforts.
+                PPC enables rapid testing of different messages, offers, and
+                landing pages, providing valuable insights that can improve all
+                marketing efforts.
               </p>
             </motion.div>
 
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-md"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+            >
               <div className="w-12 h-12 rounded-full bg-[#4285f4]/10 flex items-center justify-center mb-4">
                 <Globe className="w-6 h-6 text-[#4285f4]" />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">Competitive Advantage</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                Competitive Advantage
+              </h3>
               <p className="text-gray-600 text-sm">
-                PPC allows you to compete effectively with larger competitors by appearing alongside them in search
-                results and targeted placements.
+                PPC allows you to compete effectively with larger competitors by
+                appearing alongside them in search results and targeted
+                placements.
               </p>
             </motion.div>
           </motion.div>
@@ -659,10 +721,13 @@ const PPCMarketing = () => {
             animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Our PPC Management Process</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Our PPC Management Process
+            </h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              We follow a proven, data-driven approach to PPC management that consistently delivers results for
-              businesses across industries and markets.
+              We follow a proven, data-driven approach to PPC management that
+              consistently delivers results for businesses across industries and
+              markets.
             </p>
           </motion.div>
 
@@ -679,16 +744,24 @@ const PPCMarketing = () => {
               {ppcSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""} items-center gap-8`}
+                  className={`flex flex-col md:flex-row ${
+                    index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  } items-center gap-8`}
                   variants={itemVariants}
                 >
-                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+                  <div
+                    className={`w-full md:w-1/2 ${
+                      index % 2 === 0 ? "md:text-left" : "md:text-right"
+                    }`}
+                  >
                     <motion.div
                       className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
                         activeStep === index ? "ring-2 ring-[#4285f4]" : ""
                       }`}
                       whileHover={{ scale: 1.03 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
+                      onClick={() =>
+                        setActiveStep(activeStep === index ? null : index)
+                      }
                     >
                       <h3 className="text-xl font-medium mb-2 text-gray-800 flex items-center">
                         {index % 2 === 0 ? (
@@ -720,7 +793,9 @@ const PPCMarketing = () => {
 
                       {activeStep !== index && (
                         <div
-                          className={`flex items-center text-sm text-gray-500 mt-2 ${index % 2 === 0 ? "" : "justify-end"}`}
+                          className={`flex items-center text-sm text-gray-500 mt-2 ${
+                            index % 2 === 0 ? "" : "justify-end"
+                          }`}
                         >
                           {index % 2 === 0 ? (
                             <>
@@ -742,7 +817,9 @@ const PPCMarketing = () => {
                     <motion.div
                       className="w-8 h-8 rounded-full bg-[#4285f4] text-white flex items-center justify-center z-10 relative"
                       whileHover={{ scale: 1.2 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
+                      onClick={() =>
+                        setActiveStep(activeStep === index ? null : index)
+                      }
                     >
                       {index + 1}
                     </motion.div>
@@ -769,10 +846,13 @@ const PPCMarketing = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Our PPC Marketing Impact</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Our PPC Marketing Impact
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We&apos;ve helped hundreds of businesses achieve significant growth through strategic pay-per-click advertising.
-            Here&apos;s our track record of success.
+            We&apos;ve helped hundreds of businesses achieve significant growth
+            through strategic pay-per-click advertising. Here&apos;s our track
+            record of success.
           </p>
         </motion.div>
 
@@ -833,7 +913,9 @@ const PPCMarketing = () => {
             whileHover={{ y: -5 }}
           >
             <div className="text-4xl font-light text-[#4285f4] mb-2">167%</div>
-            <div className="text-sm text-gray-600">Avg. Conversion Increase</div>
+            <div className="text-sm text-gray-600">
+              Avg. Conversion Increase
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -861,98 +943,6 @@ const PPCMarketing = () => {
         </button>
       </motion.div>
 
-      {/* Case Studies */}
-      {/* <motion.div
-        className="bg-gray-50 py-16 px-4"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="flex justify-between items-center mb-8"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-light text-gray-700">PPC success stories</h2>
-            <Link href="/case-studies" className="text-[#4285f4] text-sm hover:underline flex items-center">
-              <span>See all case studies</span>
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </motion.div>
-
-          <div className="relative">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              {[0, 1, 2].map((i) => {
-                const caseIndex = (currentCaseIndex + i) % caseStudies.length
-                const caseStudy = caseStudies[caseIndex]
-
-                return (
-                  <motion.div
-                    key={caseIndex}
-                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className={`h-48 ${caseStudy.bgColor} flex items-center justify-center relative`}>
-                      <Image
-                        src={
-                          caseStudy.image ||
-                          "/placeholder.svg?height=150&width=200&query=ppc advertising campaign dashboard" ||
-                          "/placeholder.svg"
-                        }
-                        alt={caseStudy.title}
-                        width={200}
-                        height={150}
-                        className="object-contain"
-                      />
-                      <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full text-xs flex items-center">
-                        <LineChart className="w-3 h-3 mr-1 text-[#4285f4]" />
-                        <span className="font-bold text-gray-800">{caseStudy.stats.value}</span>
-                        <span className="ml-1 text-gray-600 text-[10px]">{caseStudy.stats.label}</span>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-medium mb-2">{caseStudy.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{caseStudy.description}</p>
-                      <Link
-                        href={`/case-studies/${caseStudy.title.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="inline-flex items-center text-[#4285f4] text-sm font-medium"
-                      >
-                        <span>View case study</span>
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
-                    </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div> */}
-
-            {/* Pagination Dots */}
-            {/* <div className="flex justify-center gap-2 mb-8">
-              {caseStudies.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentCaseIndex / 3) === Math.floor(index / 3) ? "w-6 bg-[#4285f4]" : "bg-gray-300"
-                  }`}
-                  onClick={() => setCurrentCaseIndex(index)}
-                  aria-label={`Go to case study set ${Math.floor(index / 3) + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div> */}
-
       {/* PPC Benefits */}
       <motion.div
         className="py-16 px-4 max-w-6xl mx-auto"
@@ -966,10 +956,13 @@ const PPCMarketing = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Benefits of PPC Marketing</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Benefits of PPC Marketing
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Investing in pay-per-click marketing provides numerous advantages for businesses of all sizes. Here&apos;s how
-            strategic PPC can benefit your business.
+            Investing in pay-per-click marketing provides numerous advantages
+            for businesses of all sizes. Here&apos;s how strategic PPC can
+            benefit your business.
           </p>
         </motion.div>
 
@@ -979,102 +972,138 @@ const PPCMarketing = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Immediate Visibility & Traffic</span>
             </h3>
             <p className="text-gray-600">
-              PPC delivers instant visibility in search results and ad placements, driving immediate traffic to your
-              website without waiting for organic SEO results.
+              PPC delivers instant visibility in search results and ad
+              placements, driving immediate traffic to your website without
+              waiting for organic SEO results.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Highly Targeted Audience Reach</span>
             </h3>
             <p className="text-gray-600">
-              PPC allows you to target specific demographics, locations, interests, behaviors, and search intent,
-              ensuring your ads reach the most relevant potential customers.
+              PPC allows you to target specific demographics, locations,
+              interests, behaviors, and search intent, ensuring your ads reach
+              the most relevant potential customers.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Complete Budget Control</span>
             </h3>
             <p className="text-gray-600">
-              With PPC, you set your own budget and only pay when someone clicks your ad, giving you complete control
-              over your advertising costs and spending.
+              With PPC, you set your own budget and only pay when someone clicks
+              your ad, giving you complete control over your advertising costs
+              and spending.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Measurable Performance & ROI</span>
             </h3>
             <p className="text-gray-600">
-              PPC provides detailed metrics on impressions, clicks, conversions, and costs, allowing you to measure
-              exact return on investment and optimize for better results.
+              PPC provides detailed metrics on impressions, clicks, conversions,
+              and costs, allowing you to measure exact return on investment and
+              optimize for better results.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Rapid Testing & Optimization</span>
             </h3>
             <p className="text-gray-600">
-              PPC enables quick testing of different ad copy, headlines, offers, and landing pages, providing valuable
-              insights that can be applied to improve all marketing efforts.
+              PPC enables quick testing of different ad copy, headlines, offers,
+              and landing pages, providing valuable insights that can be applied
+              to improve all marketing efforts.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Rapid Testing & Optimization</span>
             </h3>
             <p className="text-gray-600">
-              PPC enables quick testing of different ad copy, headlines, offers, and landing pages, providing valuable
-              insights that can be applied to improve all marketing efforts.
+              PPC enables quick testing of different ad copy, headlines, offers,
+              and landing pages, providing valuable insights that can be applied
+              to improve all marketing efforts.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Competitive Advantage</span>
             </h3>
             <p className="text-gray-600">
-              PPC allows businesses of any size to compete effectively with larger competitors by appearing alongside
-              them in search results and targeted placements.
+              PPC allows businesses of any size to compete effectively with
+              larger competitors by appearing alongside them in search results
+              and targeted placements.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Remarketing Opportunities</span>
             </h3>
             <p className="text-gray-600">
-              PPC enables remarketing to people who have previously visited your website, viewed specific products, or
-              taken certain actions, significantly increasing conversion rates.
+              PPC enables remarketing to people who have previously visited your
+              website, viewed specific products, or taken certain actions,
+              significantly increasing conversion rates.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
             <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
               <CheckCircle className="w-5 h-5 mr-2 text-[#4285f4]" />
               <span>Complementary to SEO</span>
             </h3>
             <p className="text-gray-600">
-              PPC works synergistically with SEO efforts, providing immediate visibility while you build organic
-              rankings, and offering valuable keyword and conversion data to inform SEO strategy.
+              PPC works synergistically with SEO efforts, providing immediate
+              visibility while you build organic rankings, and offering valuable
+              keyword and conversion data to inform SEO strategy.
             </p>
           </motion.div>
         </motion.div>
@@ -1089,10 +1118,13 @@ const PPCMarketing = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Get Your Free PPC Audit</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Get Your Free PPC Audit
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover how your PPC campaigns are performing and receive actionable recommendations to improve your
-              click-through rates, quality scores, and conversions.
+              Discover how your PPC campaigns are performing and receive
+              actionable recommendations to improve your click-through rates,
+              quality scores, and conversions.
             </p>
           </div>
           <Form />
@@ -1102,7 +1134,7 @@ const PPCMarketing = () => {
       {/* Quote Popup */}
       <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
     </div>
-  )
-}
+  );
+};
 
-export default PPCMarketing
+export default PPCMarketing;
