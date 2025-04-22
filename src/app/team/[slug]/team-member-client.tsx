@@ -215,14 +215,6 @@ export default function TeamMemberClient({
     },
   ];
 
-  // Sample skills
-  // const skills = [
-  //   { skill: "SEO Strategy", level: 95 },
-  //   { skill: "Content Marketing", level: 90 },
-  //   { skill: "Social Media Management", level: 85 },
-  //   { skill: "PPC Campaigns", level: 80 },
-  //   { skill: "Analytics & Reporting", level: 92 },
-  // ];
 
   return (
     <div className="bg-gray-50">
@@ -259,28 +251,28 @@ export default function TeamMemberClient({
               <div className="flex justify-center mt-6 space-x-4">
                 <motion.a
                   whileHover={{ y: -3, color: "#0077B5" }}
-                  href="#"
+                  href={teamMember.linkedin}
                   className="text-gray-500 hover:text-blue-600 transition-colors"
                 >
                   <Linkedin className="h-5 w-5" />
                 </motion.a>
                 <motion.a
                   whileHover={{ y: -3, color: "#1DA1F2" }}
-                  href="#"
+                  href={teamMember.twitter}
                   className="text-gray-500 hover:text-blue-400 transition-colors"
                 >
                   <Twitter className="h-5 w-5" />
                 </motion.a>
                 <motion.a
                   whileHover={{ y: -3, color: "#4267B2" }}
-                  href="#"
+                  href={teamMember.facebook}
                   className="text-gray-500 hover:text-blue-800 transition-colors"
                 >
                   <Facebook className="h-5 w-5" />
                 </motion.a>
                 <motion.a
                   whileHover={{ y: -3, color: "#EA4335" }}
-                  href="#"
+                  href={`mailto:${teamMember.email}`}
                   className="text-gray-500 hover:text-red-500 transition-colors"
                 >
                   <Mail className="h-5 w-5" />

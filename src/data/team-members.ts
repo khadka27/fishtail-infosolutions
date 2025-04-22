@@ -11,6 +11,7 @@ export type TeamMember = {
   email?: string;
   linkedin?: string;
   twitter?: string;
+  facebook?: string;
   expertise?: string[];
   experience?: string[];
   projects?: string[];
@@ -27,8 +28,10 @@ export const teamMembers: TeamMember[] = [
     slug: "rahul-rauniyar",
     bio: "Rahul leads Fishtail Info Solutions with over 10 years of experience in digital marketing and innovative strategies that drive results for our clients.",
     email: "rahul@fishtailinfosolutions.com",
-    linkedin: "https://linkedin.com/in/rahul-rauniyar",
-    twitter: "https://twitter.com/rahulrauniyar",
+    linkedin: "https://in.linkedin.com/in/geekishrahul",
+    twitter: "https://x.com/GeekishRahul",
+    facebook: "https://www.facebook.com/GeekishRahul/",
+
     experience: ["10+ years in Digital Marketing"],
     projects: ["20 + Projects"],
     expertise: ["Digital Marketing Strategy", "SEO & SEM", "Content Marketing"],
@@ -49,6 +52,10 @@ export const teamMembers: TeamMember[] = [
     slug: "bikash-gupta",
     bio: "Bikash specializes in search engine optimization and has helped numerous clients achieve top rankings for competitive keywords.",
     email: "bikash@fishtailinfosolutions.com",
+    linkedin: "https://www.linkedin.com/in/bikash-gupta-0321b8288",
+    twitter: "https://x.com/_jr_bikash?s=09",
+    facebook: "https://www.facebook.com/viikash.k?mibextid=JRoKGi",
+
     expertise: ["SEO", "Keyword Research", "Content Optimization"],
     experience: ["1+ years in Digital Marketing"],
     projects: ["2+ Projects"],
@@ -67,8 +74,11 @@ export const teamMembers: TeamMember[] = [
     bgColor: "bg-blue-500",
     slug: "rahul-gupta",
     bio: "Rahul crafts in-depth content strategies that align with brand goals and resonate with target audiences. With strong editorial experience, he elevates brand voice across all channels.",
-    email: "rahul@fishtailinfosolutions.com",
+    email: "guptarahul@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/rahul-gupta",
+    twitter: "https://twitter.com/rahulgupta",
+    facebook: "https://facebook.com/rahulgupta",
+
     expertise: ["Content Strategy", "SEO Writing", "Team Management"],
     experience: ["1+ years in Digital Marketing"],
     projects: ["2+ Projects"],
@@ -89,6 +99,9 @@ export const teamMembers: TeamMember[] = [
     bio: "Abishek develops robust web applications using modern technologies, ensuring our clients have scalable and maintainable solutions. He is highly skilled in React and Next.js with backend integration.",
     email: "abishekkhadka@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/khadka27",
+    twitter: "https://twitter.com/abishek_khadka",
+    facebook: "https://facebook.com/abishek.khadka.7",
+
     expertise: ["React", "Next.js", "Node.js", "Database Design"],
     experience: ["1+ years in Web Development"],
     projects: ["3 + Projects"],
@@ -109,6 +122,9 @@ export const teamMembers: TeamMember[] = [
     bio: "Ashish oversees our human resources department, ensuring we attract and retain top talent while maintaining a positive company culture.",
     email: "ashish@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/ashish-rauniyar",
+    twitter: "https://twitter.com/ashishrauniyar",
+    facebook: "https://facebook.com/ashishrauniyar",
+
     experience: ["1+ years in HR Management"],
     expertise: ["Talent Acquisition", "Employee Relations", "HR Strategy"],
     projects: ["5+ Employee Projects"],
@@ -130,6 +146,8 @@ export const teamMembers: TeamMember[] = [
     bio: "Pratikshya specializes in creating and implementing marketing campaigns that deliver measurable results for our clients.",
     email: "pratikshya@fishtailinfo.com",
     twitter: "https://twitter.com/pratikshya",
+    linkedin: "https://linkedin.com/in/pratikshya-sheersh",
+    facebook: "https://linkedin.com/in/pratikshya-sheersh",
     expertise: ["Digital Marketing", "Campaign Management", "Analytics"],
     experience: ["1+ years in Digital Marketing"],
     projects: ["2+ Projects"],
@@ -149,7 +167,10 @@ export const teamMembers: TeamMember[] = [
     slug: "diwas-gurung",
     bio: "Diwas creates beautiful, responsive user interfaces using modern frontend technologies like React and Next.js.",
     email: "diwasgrg@fishtailinfosolutions.com",
-    linkedin: "https://linkedin.com/in/diwas-gurung",
+    linkedin: "https://www.linkedin.com/in/diwas-grg-419578256/",
+    twitter: "#",
+    facebook: "https://www.facebook.com/share/1ASXe8FGfB/?mibextid=wwXIfr",
+
     expertise: ["React", "CSS", "UI/UX"],
     experience: ["1+ years in Web Development"],
     projects: ["3 + Projects"],
@@ -170,6 +191,10 @@ export const teamMembers: TeamMember[] = [
     slug: "mamata-bhattarai",
     bio: "Mamata is passionate about crafting compelling content that connects with audiences and boosts brand storytelling. She is skilled in transforming ideas into engaging blog posts and SEO-rich web pages. Her attention to detail ensures content is always polished and professional.",
     email: "mamata@fishtailinfosolutions.com",
+    linkedin: "https://linkedin.com/in/mamata-bhattarai",
+    twitter: "https://twitter.com/mamata_bhattarai",
+    facebook: "https://facebook.com/mamata.bhattarai.1",
+
     expertise: ["Blog Writing", "SEO Content", "Proofreading"],
     experience: ["1+ years in Content Writing"],
     projects: ["1 + Projects"],
@@ -189,6 +214,10 @@ export const teamMembers: TeamMember[] = [
     slug: "tilamsmi-subadhi",
     bio: "Tilamsmi contributes creative and engaging content to support client SEO goals and build consistent messaging. Her writing style is clear, impactful, and tailored to specific brand voices. She’s always researching new trends to keep content fresh and relevant.",
     email: "tilamsmi@fishtailinfosolutions.com",
+    linkedin: "https://linkedin.com/in/tilamsmi-subedi",
+    twitter: "https://twitter.com/tilamsmi_subedi",
+    facebook: "https://facebook.com/tilamsmi.subedi",
+
     expertise: ["Content Research", "SEO Writing", "Grammar Editing"],
     experience: ["1+ years in Content Writing"],
     projects: ["1+ Projects"],
@@ -208,6 +237,9 @@ export const teamMembers: TeamMember[] = [
     slug: "sadikshya-budhathoki",
     bio: "Sadikshya delivers polished content that blends creativity with optimization to enhance digital visibility. She excels at turning complex topics into easy-to-read articles that engage readers. Her strength lies in crafting content strategies that build brand trust.",
     email: "sadikshya@fishtailinfosolutions.com",
+    linkedin: "https://linkedin.com/in/sadikshya-budhathoki",
+    twitter: "https://twitter.com/sadikshya_budhathoki",
+    facebook: "https://facebook.com/sadikshya.budhathoki",
     expertise: ["Copywriting", "Content Strategy", "Editing"],
     experience: ["1+ years in Content Writing"],
     projects: ["1 + Projects"],
@@ -228,6 +260,9 @@ export const teamMembers: TeamMember[] = [
     slug: "prity-thapa",
     bio: "Prity brings a fresh voice to the content team with her knack for clear and compelling storytelling. She specializes in creating engaging content that aligns with brand goals and connects with target audiences. Her dedication to learning and adapting makes her a valuable asset in dynamic content projects.",
     email: "prity@fishtailinfosolutions.com",
+    linkedin: "https://linkedin.com/in/prity-thapa",
+    twitter: "https://twitter.com/prity_thapa",
+    facebook: "https://facebook.com/prity.thapa.1",
     expertise: ["Copywriting", "Content Strategy", "Editing"],
     experience: ["1+ years in Content Writing"],
     projects: ["1+ Projects"],
