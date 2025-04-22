@@ -121,7 +121,7 @@ export function ServicesDropdown() {
 
           
 
-          <Link href="/Services/web-design" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
+          <Link href="/Services/social-media" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
               <Share2 className="h-4 w-4 inline-block" />
             </span>

@@ -24,6 +24,7 @@ import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
+import design from "@/Images/design.png"
 import { QuotePopup } from "./quote-popup"
 
 // Define service features
@@ -222,13 +223,14 @@ const WebDesignServices = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="relative w-64 h-64">
+            <div className="relative ">
               <Image
-                src={image1 || "/placeholder.svg"}
+                src={design || "/placeholder.svg"}
                 alt="Web Design Services"
                 width={256}
                 height={256}
-                className="object-contain"
+                className="object-contain "
+               
               />
               <motion.div
                 className="absolute -top-4 -right-4 bg-white text-[#f47b20] px-3 py-1 rounded-full text-sm font-bold shadow-lg"
@@ -577,7 +579,7 @@ const WebDesignServices = () => {
       </motion.div>
 
       {/* Web Design Projects */}
-      <motion.div
+      {/* <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
         animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
@@ -647,7 +649,7 @@ const WebDesignServices = () => {
               })}
             </motion.div>
 
-            {/* Pagination Dots */}
+        
             <div className="flex justify-center gap-2 mb-8">
               {projects.map((_, index) => (
                 <button
@@ -662,7 +664,7 @@ const WebDesignServices = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Approach Section */}
       <motion.div

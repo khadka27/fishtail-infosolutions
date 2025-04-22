@@ -19,6 +19,10 @@ import {
 import Image from "next/image"
 import Form from "./form";
 import { QuotePopup } from "./quote-popup"
+import leadGeneration from "@/Images/lead-generation.jpg"
+import audience from "@/Images/audience-targeting.jpg"
+import leadCapture from "@/Images/lead-capture.jpg"
+import leadNurture from "@/Images/nurture.jpg"
 
 export default function LeadGeneration() {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
@@ -98,11 +102,12 @@ export default function LeadGeneration() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-xl transform rotate-3"></div>
                 <Image
-                  src="/lead-generation-analysis.png"
+                  src={leadGeneration}
                   alt="Lead Generation Illustration"
                   width={600}
                   height={400}
                   className="relative z-10 rounded-xl shadow-2xl w-full h-auto"
+                  unoptimized
                 />
               </div>
             </motion.div>
@@ -319,11 +324,12 @@ export default function LeadGeneration() {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/data-driven-marketing-insights.png"
+                      src={audience}
                       alt="Audience Targeting"
                       width={400}
                       height={300}
                       className="rounded-xl shadow-lg max-w-full h-auto"
+                      unoptimized
                     />
                   </div>
                 </motion.div>
@@ -359,11 +365,12 @@ export default function LeadGeneration() {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/landing-page-optimization.png"
+                      src={leadCapture}
                       alt="Lead Capture"
                       width={400}
                       height={300}
                       className="rounded-xl shadow-lg max-w-full h-auto"
+                      unoptimized
                     />
                   </div>
                 </motion.div>
@@ -399,11 +406,12 @@ export default function LeadGeneration() {
                   </div>
                   <div className="flex items-center justify-center">
                     <Image
-                      src="/email-automation-flowchart.png"
+                      src={leadNurture}
                       alt="Lead Nurturing"
                       width={400}
                       height={300}
                       className="rounded-xl shadow-lg max-w-full h-auto"
+                      unoptimized
                     />
                   </div>
                 </motion.div>
@@ -414,7 +422,7 @@ export default function LeadGeneration() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-20 px-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      {/* <section className="py-20 px-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Success Stories</h2>
@@ -490,7 +498,7 @@ export default function LeadGeneration() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Benefits Section */}
       <section className="py-20 px-20 bg-white">

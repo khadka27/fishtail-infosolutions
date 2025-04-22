@@ -27,6 +27,7 @@ import Form from "./form"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
+import webdev from "@/Images/web-dev.png"
 import { QuotePopup } from "./quote-popup"
 
 // Define development features
@@ -228,7 +229,7 @@ const WebDevelopmentServices = () => {
           >
             <div className="relative w-64 h-64">
               <Image
-                src={image2 || "/placeholder.svg"}
+                src={webdev || "/placeholder.svg"}
                 alt="Web Development Services"
                 width={256}
                 height={256}
@@ -578,7 +579,7 @@ const WebDevelopmentServices = () => {
       </motion.div>
 
       {/* Web Development Projects */}
-      <motion.div
+      {/* <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
         animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
@@ -648,7 +649,7 @@ const WebDevelopmentServices = () => {
               })}
             </motion.div>
 
-            {/* Pagination Dots */}
+            
             <div className="flex justify-center gap-2 mb-8">
               {projects.map((_, index) => (
                 <button
@@ -663,7 +664,7 @@ const WebDevelopmentServices = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Technology Stack Section */}
       <motion.div

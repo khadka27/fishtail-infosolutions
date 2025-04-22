@@ -566,7 +566,7 @@ const SearchEngineOptimization = () => {
       </motion.div>
 
       {/* Case Studies */}
-      <motion.div
+      {/* <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
         animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
@@ -634,10 +634,10 @@ const SearchEngineOptimization = () => {
                   </motion.div>
                 )
               })}
-            </motion.div>
+            </motion.div> */}
 
             {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mb-8">
+            {/* <div className="flex justify-center gap-2 mb-8">
               {caseStudies.map((_, index) => (
                 <button
                   key={index}
@@ -651,7 +651,7 @@ const SearchEngineOptimization = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* SEO Tools & Technologies */}
       <motion.div

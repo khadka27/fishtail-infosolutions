@@ -9,6 +9,7 @@ import { QuotePopup } from "./quote-popup"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image3 from "@/Images/services-payperclick-alt-colors-optimized.png"
+import emailMarketing from "@/Images/email-marketing.png"
 
 // Define email marketing features
 const emailFeatures = [
@@ -225,7 +226,7 @@ const EmailMarketing = () => {
           >
             <div className="relative w-64 h-64">
               <Image
-                src={image1 || "/placeholder.svg?key=rzxyn"}
+                src={emailMarketing || "/placeholder.svg?key=rzxyn"}
                 alt="Email Marketing Services"
                 width={256}
                 height={256}
@@ -671,7 +672,7 @@ const EmailMarketing = () => {
       </motion.div>
 
       {/* Case Studies */}
-      <motion.div
+      {/* <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
         animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
@@ -742,10 +743,10 @@ const EmailMarketing = () => {
                   </motion.div>
                 )
               })}
-            </motion.div>
+            </motion.div> */}
 
             {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mb-8">
+            {/* <div className="flex justify-center gap-2 mb-8">
               {caseStudies.map((_, index) => (
                 <button
                   key={index}
@@ -759,7 +760,7 @@ const EmailMarketing = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Email Marketing Benefits */}
       <motion.div

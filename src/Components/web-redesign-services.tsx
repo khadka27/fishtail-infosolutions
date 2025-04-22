@@ -1,7 +1,7 @@
 "use client"
 import { useRef, useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
+// import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import {
   ArrowRight,
@@ -12,7 +12,7 @@ import {
   Monitor,
   Zap,
   ArrowDown,
-  MessageSquare,
+ 
   DollarSign,
   RefreshCw,
   TrendingUp,
@@ -20,7 +20,7 @@ import {
   Layers,
 } from "lucide-react"
 import Form from "./form"
-
+import redesign from "@/Images/redesign.png"
 import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
@@ -223,12 +223,12 @@ const WebsiteRedesign = () => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="relative w-64 h-64">
+            <div className="relative">
               <Image
-                src={image1 || "/placeholder.svg"}
+                src={redesign || "/placeholder.svg"}
                 alt="Website Redesign Services"
-                width={256}
-                height={256}
+                width={400}
+                height={400}
                 className="object-contain"
               />
               <motion.div
@@ -552,7 +552,7 @@ const WebsiteRedesign = () => {
         </motion.div>
       </motion.div>
 
-      {/* CTA Buttons */}
+      {/* CTA Buttons
       <motion.div
         className="py-12 px-4 max-w-6xl mx-auto flex flex-col sm:flex-row justify-center gap-4"
         initial={{ opacity: 0, y: 20 }}
@@ -575,7 +575,7 @@ const WebsiteRedesign = () => {
         </button>
       </motion.div>
 
-      {/* Redesign Projects */}
+      Redesign Projects
       <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
@@ -646,22 +646,22 @@ const WebsiteRedesign = () => {
               })}
             </motion.div>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mb-8">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentProjectIndex / 3) === Math.floor(index / 3) ? "w-6 bg-[#3498db]" : "bg-gray-300"
-                  }`}
-                  onClick={() => setCurrentProjectIndex(index)}
-                  aria-label={`Go to project set ${Math.floor(index / 3) + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
+     
+      //       <div className="flex justify-center gap-2 mb-8">
+      //         {projects.map((_, index) => (
+      //           <button
+      //             key={index}
+      //             className={`w-2 h-2 rounded-full transition-all duration-300 ${
+      //               Math.floor(currentProjectIndex / 3) === Math.floor(index / 3) ? "w-6 bg-[#3498db]" : "bg-gray-300"
+      //             }`}
+      //             onClick={() => setCurrentProjectIndex(index)}
+      //             aria-label={`Go to project set ${Math.floor(index / 3) + 1}`}
+      //           />
+      //         ))}
+      //       </div>
+      //     </div>
+      //   </div>
+      // </motion.div> */}
 
       {/* Approach Section */}
       <motion.div

@@ -1,131 +1,69 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+"use client"
 
-"use client";
-
-import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
-import casestudy1 from "@/Images/case1.png";
-import casestudy2 from "@/Images/case2.png";
-import casestudy3 from "@/Images/case3.png";
-import casestudy4 from "@/Images/case1.png";
-import casestudy5 from "@/Images/case2.png";
-import casestudy6 from "@/Images/case3.png";
-
-// Define case study data with additional fields
-const caseStudies = [
-  [
-    {
-      image: casestudy1,
-      title: "EduFirst University",
-      description:
-        "Implemented a complete SEO overhaul that resulted in a 45% year-over-year growth in organic search traffic and significantly higher student application rates.",
-      category: "SEO Optimization",
-      stats: "45% Organic Growth",
-      link: "/case-studies/edufirst",
-    },
-    {
-      image: casestudy2,
-      title: "DesignNest Studio",
-      description:
-        "Redesigned the website with a mobile-first approach, enhancing user experience and achieving a 32% increase in mobile conversion rates.",
-      category: "Web Development",
-      stats: "32% Conversion Boost",
-      link: "/case-studies/designnest",
-    },
-    {
-      image: casestudy3,
-      title: "TechReach Solutions",
-      description:
-        "Executed a targeted SEO and content strategy that captured 65% of the company’s niche market and boosted brand authority.",
-      category: "Market Domination",
-      stats: "65% Market Share",
-      link: "/case-studies/techreach",
-    },
-  ],
-  [
-    {
-      image: casestudy4,
-      title: "CraftCommerce",
-      description:
-        "Optimized long-tail keyword structure, driving a 78% increase in organic traffic and attracting highly qualified leads.",
-      category: "Long-tail SEO",
-      stats: "78% Organic Lift",
-      link: "/case-studies/craftcommerce",
-    },
-    {
-      image: casestudy5,
-      title: "GrowthGenix",
-      description:
-        "Revamped site architecture and integrated analytics-driven improvements, resulting in a 65% surge in overall traffic.",
-      category: "Web Architecture",
-      stats: "65% Traffic Growth",
-      link: "/case-studies/growthgenix",
-    },
-    {
-      image: casestudy6,
-      title: "IndexPro Systems",
-      description:
-        "Through consistent content creation and SEO alignment, 55% of their revenue now comes from organic search channels.",
-      category: "Revenue via SEO",
-      stats: "55% Revenue from SEO",
-      link: "/case-studies/indexpro",
-    },
-  ],
-];
+import { useState, useRef, useEffect } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react"
+import { projects } from "@/data/project-data" // Import from your data file
 
 export function CaseStudiesSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [isHovering, setIsHovering] = useState<number | null>(null);
-  const [autoplay, setAutoplay] = useState(true);
-  const totalSlides = caseStudies.length;
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [isHovering, setIsHovering] = useState<number | null>(null)
+  const [autoplay, setAutoplay] = useState(true)
+
+  // Split projects into groups of 3 for the carousel
+  const projectGroups = []
+  for (let i = 0; i < projects.length; i += 3) {
+    projectGroups.push(projects.slice(i, i + 3))
+  }
+
+  const totalSlides = projectGroups.length
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   // Check if mobile on mount and window resize
   useEffect(() => {
     const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+      setIsMobile(window.innerWidth < 768)
+    }
 
-    checkIfMobile();
-    window.addEventListener("resize", checkIfMobile);
+    checkIfMobile()
+    window.addEventListener("resize", checkIfMobile)
 
     return () => {
-      window.removeEventListener("resize", checkIfMobile);
-    };
-  }, []);
+      window.removeEventListener("resize", checkIfMobile)
+    }
+  }, [])
 
   // Autoplay functionality
   useEffect(() => {
-    if (!autoplay) return;
+    if (!autoplay) return
 
     const interval = setInterval(() => {
-      goToSlide((activeIndex + 1) % totalSlides);
-    }, 6000);
+      goToSlide((activeIndex + 1) % totalSlides)
+    }, 6000)
 
-    return () => clearInterval(interval);
-  }, [activeIndex, autoplay, totalSlides]);
+    return () => clearInterval(interval)
+  }, [activeIndex, autoplay, totalSlides])
 
   const goToSlide = (index: number) => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setActiveIndex(index);
-    setTimeout(() => setIsAnimating(false), 500);
-  };
+    if (isAnimating) return
+    setIsAnimating(true)
+    setActiveIndex(index)
+    setTimeout(() => setIsAnimating(false), 500)
+  }
 
   const handlePrev = () => {
-    setAutoplay(false);
-    goToSlide((activeIndex - 1 + totalSlides) % totalSlides);
-  };
+    setAutoplay(false)
+    goToSlide((activeIndex - 1 + totalSlides) % totalSlides)
+  }
 
   const handleNext = () => {
-    setAutoplay(false);
-    goToSlide((activeIndex + 1) % totalSlides);
-  };
+    setAutoplay(false)
+    goToSlide((activeIndex + 1) % totalSlides)
+  }
 
   return (
     <section className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-[#003C8F] relative overflow-hidden">
@@ -136,12 +74,9 @@ export function CaseStudiesSection() {
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-12">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-              Our Case Studies
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Our Case Studies</h2>
             <p className="text-white/70 text-sm sm:text-base max-w-md">
-              Real results for real businesses. See how our strategies drive
-              growth.
+              Real results for real businesses. See how our strategies drive growth.
             </p>
           </div>
           <Link
@@ -187,43 +122,41 @@ export function CaseStudiesSection() {
               className="w-full"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {caseStudies[activeIndex].map((study, studyIndex) => (
+                {projectGroups[activeIndex]?.map((project, projectIndex) => (
                   <motion.div
-                    key={studyIndex}
+                    key={project.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: studyIndex * 0.1 }}
+                    transition={{ duration: 0.5, delay: projectIndex * 0.1 }}
                     className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col"
-                    onMouseEnter={() => setIsHovering(studyIndex)}
+                    onMouseEnter={() => setIsHovering(projectIndex)}
                     onMouseLeave={() => setIsHovering(null)}
                   >
                     <div className="relative overflow-hidden">
                       <div className="absolute top-4 left-4 z-10 bg-[#0084FF] text-white text-xs px-2 py-1 rounded-full">
-                        {study.category}
+                        {project.category}
                       </div>
                       <Image
-                        src={study.image || "/placeholder.svg"}
-                        alt={`Case Study: ${study.title}`}
+                        src={project.image || "/placeholder.svg"}
+                        alt={`Case Study: ${project.title}`}
                         width={400}
                         height={200}
                         className={`w-full h-48 object-cover transition-transform duration-500 ${
-                          isHovering === studyIndex ? "scale-110" : "scale-100"
+                          isHovering === projectIndex ? "scale-110" : "scale-100"
                         }`}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <div className="absolute bottom-4 right-4 bg-white text-[#0084FF] font-bold text-sm px-3 py-1 rounded-full">
-                        {study.stats}
+                      <div
+                        className={`absolute bottom-4 right-4 ${project.bgColor} text-white font-bold text-sm px-3 py-1 rounded-full`}
+                      >
+                        Featured
                       </div>
                     </div>
                     <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="font-bold text-lg mb-2 text-[#003C8F]">
-                        {study.title}
-                      </h3>
-                      <p className="text-gray-600 text-sm flex-grow">
-                        {study.description}
-                      </p>
+                      <h3 className="font-bold text-lg mb-2 text-[#003C8F]">{project.title}</h3>
+                      <p className="text-gray-600 text-sm flex-grow">{project.description}</p>
                       <Link
-                        href={study.link}
+                        href={`/project/${project.id}`}
                         className="mt-4 inline-flex items-center text-[#0084FF] hover:text-[#003C8F] text-sm font-medium"
                       >
                         View case study
@@ -234,12 +167,7 @@ export function CaseStudiesSection() {
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </Link>
                     </div>
@@ -263,13 +191,11 @@ export function CaseStudiesSection() {
                 <button
                   key={index}
                   onClick={() => {
-                    goToSlide(index);
-                    setAutoplay(false);
+                    goToSlide(index)
+                    setAutoplay(false)
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    activeIndex === index
-                      ? "bg-white w-4"
-                      : "bg-white/50 hover:bg-white/70"
+                    activeIndex === index ? "bg-white w-4" : "bg-white/50 hover:bg-white/70"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -290,8 +216,8 @@ export function CaseStudiesSection() {
               <button
                 key={index}
                 onClick={() => {
-                  goToSlide(index);
-                  setAutoplay(false);
+                  goToSlide(index)
+                  setAutoplay(false)
                 }}
                 className={`transition-all duration-300 ${
                   activeIndex === index
@@ -315,5 +241,5 @@ export function CaseStudiesSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }

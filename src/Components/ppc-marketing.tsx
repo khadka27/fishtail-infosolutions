@@ -862,7 +862,7 @@ const PPCMarketing = () => {
       </motion.div>
 
       {/* Case Studies */}
-      <motion.div
+      {/* <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
         animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
@@ -934,10 +934,10 @@ const PPCMarketing = () => {
                   </motion.div>
                 )
               })}
-            </motion.div>
+            </motion.div> */}
 
             {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mb-8">
+            {/* <div className="flex justify-center gap-2 mb-8">
               {caseStudies.map((_, index) => (
                 <button
                   key={index}
@@ -951,7 +951,7 @@ const PPCMarketing = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* PPC Benefits */}
       <motion.div

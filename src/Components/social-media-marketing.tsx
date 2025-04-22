@@ -10,6 +10,7 @@ import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
 import image2 from "@/Images/services-seo-alt-colors-optimized.png"
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
+import socialmarketing from "@/Images/social-marketing.png"
 
 // Define social media marketing features
 const socialMediaFeatures = [
@@ -226,7 +227,7 @@ const SocialMediaMarketing = () => {
           >
             <div className="relative w-64 h-64">
               <Image
-                src={image2 ||"/social-media-marketing-illustration.png"}
+                src={socialmarketing ||"/social-media-marketing-illustration.png"}
                 alt="Social Media Marketing Services"
                 width={256}
                 height={256}
@@ -775,7 +776,7 @@ const SocialMediaMarketing = () => {
       </motion.div>
 
       {/* Case Studies */}
-      <motion.div
+      {/* <motion.div
         className="bg-gray-50 py-16 px-4"
         initial={{ opacity: 0 }}
         animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
@@ -845,10 +846,10 @@ const SocialMediaMarketing = () => {
                   </motion.div>
                 )
               })}
-            </motion.div>
+            </motion.div> */}
 
             {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mb-8">
+            {/* <div className="flex justify-center gap-2 mb-8">
               {caseStudies.map((_, index) => (
                 <button
                   key={index}
@@ -862,7 +863,7 @@ const SocialMediaMarketing = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Social Media Benefits */}
       <motion.div
