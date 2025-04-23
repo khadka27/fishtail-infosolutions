@@ -18,8 +18,15 @@ import logo3 from "@/Images/logo3.png";
 import logo4 from "@/Images/logo4.png";
 import logo5 from "@/Images/logo5.png";
 import logo6 from "@/Images/logo-6.png";
+import sujalfoods from "@/Images/sujalfoods.png"
+// import doorstha from "@/Images/doorsth.png"
+import manipal from "@/Images/manipal.png"
+import upgrad from "@/Images/upgrad.png"
+import shikshanerd from "@/Images/shiksha.png"
+import nmis from "@/Images/nmims.png"
+import eduversity from "@/Images/eduversitylogo.png"
 
-// Client testimonials
+
 const clients = [
   {
     name: "Oxford International College",
@@ -105,7 +112,94 @@ const clients = [
       rating: 4,
     },
   },
+  // New clients
+  {
+    name: "Manipal University",
+    logo: manipal, // You should import logo7 like the others
+    description:
+      "A prestigious university offering a wide range of undergraduate, postgraduate, and doctoral programs.",
+    industry: "Education",
+    testimonial: {
+      quote:
+        "Fishtail's marketing strategy helped us boost student enrollments and global visibility. Their team is strategic and results-driven.",
+      author: "Dr. Ramesh Kumar",
+      title: "Director of Admissions",
+      rating: 5,
+    },
+  },
+  {
+    name: "Sujal Foods",
+    logo: sujalfoods, // You should import logo8 like the others
+    description:
+      "A well-known food manufacturing company specializing in organic and health-conscious food products.",
+    industry: "Food & Beverage",
+    testimonial: {
+      quote:
+        "Thanks to their digital strategies, we reached new markets and significantly improved our brand awareness. Their team is innovative and highly responsive.",
+      author: "Sujal Patel",
+      title: "Founder & CEO",
+      rating: 5,
+    },
+  },
+  {
+    name: "NMIS",
+    logo: nmis, // You should import logo9 like the others
+    description:
+      "National Management and Information Systems, a leading institute for business and technology education.",
+    industry: "Education",
+    testimonial: {
+      quote:
+        "The digital marketing efforts from Fishtail helped elevate our online presence, attracting more students and enhancing our reputation.",
+      author: "Anil Sharma",
+      title: "CEO",
+      rating: 4,
+    },
+  },
+  // Added new clients
+  {
+    name: "Eduversity",
+    logo: eduversity, // You should import logo10 like the others
+    description:
+      "An innovative online platform offering affordable and accessible education to students across the world.",
+    industry: "Education",
+    testimonial: {
+      quote:
+        "Fishtail's web development and marketing efforts helped us increase online course registrations and reach a global audience.",
+      author: "Sanjay Sharma",
+      title: "Founder & CEO",
+      rating: 5,
+    },
+  },
+  {
+    name: "UpGrad",
+    logo: upgrad, // You should import logo11 like the others
+    description:
+      "A leading online education provider offering high-quality degree programs in partnership with top universities.",
+    industry: "Education",
+    testimonial: {
+      quote:
+        "Their expertise in SEO and PPC campaigns helped us drive traffic and significantly increase our course enrollments.",
+      author: "Radhika Mehra",
+      title: "Marketing Head",
+      rating: 5,
+    },
+  },
+  {
+    name: "ShikshaNerd",
+    logo: shikshanerd, // You should import logo12 like the others
+    description:
+      "A platform dedicated to helping students with their academic journey by offering expert advice and resources.",
+    industry: "Education",
+    testimonial: {
+      quote:
+        "Fishtail's SEO services and content marketing strategy helped us attract more traffic and improve our conversion rates.",
+      author: "Manoj Gupta",
+      title: "Founder & CEO",
+      rating: 5,
+    },
+  },
 ];
+
 
 export default function ClientLogos() {
   const containerRef = useRef<HTMLDivElement>(null);
