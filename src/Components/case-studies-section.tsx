@@ -148,7 +148,7 @@ export function CaseStudiesSection() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                       <div
-                        className={`absolute bottom-4 right-4 ${project.bgColor} text-white font-bold text-sm px-3 py-1 rounded-full`}
+                        className={`absolute bottom-4 right-4 ${project.bgColor} text-[#0084FF] font-bold text-sm px-3 py-1 rounded-full`}
                       >
                         Featured
                       </div>
