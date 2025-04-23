@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Briefcase, FileText, Package2, Users, MessageSquare, FileBarChart } from "lucide-react"
+import { Briefcase, FileText, Package2, FileBarChart } from "lucide-react"
 
 export function AboutDropdown() {
   return (
@@ -36,24 +36,8 @@ export function AboutDropdown() {
       {/* EXPERIENCE Column */}
       <div>
         <h3 className="text-gray-600 font-semibold text-base uppercase mb-1">EXPERIENCE</h3>
-        <p className="text-gray-500 text-xs mb-4">Selected clients and projects</p>
+        <p className="text-gray-500 text-xs mb-4">Case studies</p>
 
-        <div className="space-y-3">
-          <Link href="/about" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <Users className="h-4 w-4 inline-block" />
-            </span>
-            <span>Our Clients</span>
-          </Link>
-
-          <Link href="/about" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <MessageSquare className="h-4 w-4 inline-block" />
-            </span>
-            <span>Testimonials</span>
-          </Link>
-
-         
 
           <Link href="/project" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
             <span className="text-gray-400 mr-3 w-5 text-center">
@@ -63,7 +47,7 @@ export function AboutDropdown() {
           </Link>
         </div>
       </div>
-    </div>
+
   )
 }
 

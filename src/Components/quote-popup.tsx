@@ -539,7 +539,7 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
       const response = await emailjs.sendForm(
         serviceId,
         templateId,
-        formRef.current!
+        formRef.current as HTMLFormElement
       );
 
       console.log("Email sent successfully:", response);
