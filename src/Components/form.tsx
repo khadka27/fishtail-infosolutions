@@ -51,11 +51,11 @@ export default function Form() {
     try {
       // Replace these with your actual EmailJS credentials or use environment variables
       const serviceId =
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_h967f6o";
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_nxr837d";
       const templateId =
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_lv0qx1i";
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_3resqzt";
       const publicKey =
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "uQppVqAvJvbh7-6tg";
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "Bc-i5YdvnKq246_sc";
 
       const response = await emailjs.sendForm(
         serviceId,
