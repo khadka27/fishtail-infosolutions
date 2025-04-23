@@ -21,13 +21,10 @@ import { QuotePopup } from "./quote-popup";
 import Form from "./form";
 import Image from "next/image";
 
-
-import ecommerce from "@/Images/Ecommerce-Services.webp"
-import saas from "@/Images/saas.jpg"
-import financial from "@/Images/finance.webp"
-import grow from "@/Images/grow-business.jpg"
-
-
+import ecommerce from "@/Images/Ecommerce-Services.webp";
+import saas from "@/Images/saas.jpg";
+import financial from "@/Images/finance.webp";
+import grow from "@/Images/grow-business.jpg";
 
 export default function AffiliateManagement() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -464,99 +461,6 @@ export default function AffiliateManagement() {
       </section>
 
       {/* Case Studies */}
-      {/* <section className="py-20 px-20 bg-gradient-to-br from-orange-600 to-pink-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Success Stories
-            </h2>
-            <p className="text-lg text-orange-100">
-              See how our affiliate management services have transformed
-              businesses across industries
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                industry: "E-commerce",
-                title: "432% Growth in Affiliate Revenue",
-                description:
-                  "Revitalized a struggling affiliate program for a fashion retailer, resulting in 432% revenue growth in 12 months",
-                stats: [
-                  { label: "Revenue Growth", value: "432%" },
-                  { label: "Active Affiliates", value: "1,200+" },
-                ],
-                image: ecommerce,
-              },
-              {
-                industry: "SaaS",
-                title: "3.2x Increase in Trial Signups",
-                description:
-                  "Developed a B2B affiliate program for a SaaS company that tripled trial signups within 6 months",
-                stats: [
-                  { label: "Signup Increase", value: "3.2x" },
-                  { label: "Conversion Rate", value: "18.7%" },
-                ],
-                image: saas,
-              },
-              {
-                industry: "Health & Wellness",
-                title: "$1.8M in New Revenue",
-                description:
-                  "Built an affiliate program from scratch for a supplement brand, generating $1.8M in first-year revenue",
-                stats: [
-                  { label: "First Year Revenue", value: "$1.8M" },
-                  { label: "Program ROI", value: "412%" },
-                ],
-                image: financial,
-              },
-            ].map((study, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/15 transition-all"
-              >
-                <div className="h-48 overflow-hidden">
-                  <Image
-                    src={
-                      study.image ||
-                      `/placeholder.svg?height=300&width=500&query=affiliate marketing for ${
-                        study.industry || "/placeholder.svg"
-                      } business`
-                    }
-                    alt={study.title}
-                    width={500}
-                    height={300}
-                    unoptimized
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="text-yellow-300 text-sm font-medium mb-2">
-                    {study.industry}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{study.title}</h3>
-                  <p className="text-orange-100 mb-4">{study.description}</p>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    {study.stats.map((stat, i) => (
-                      <div key={i} className="bg-white/5 rounded-lg p-3">
-                        <div className="text-sm text-orange-200">
-                          {stat.label}
-                        </div>
-                        <div className="text-xl font-bold">{stat.value}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* Benefits Section */}
       <section className="py-20 px-20 bg-white">

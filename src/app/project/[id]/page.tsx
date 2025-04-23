@@ -11,9 +11,9 @@ import { projects,getProjectById, getRelatedProjects } from "@/data/project-data
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }): Promise<Metadata> {
-  const project = getProjectById(params.id)
+  const project = getProjectById((await params).id)
 
   if (!project) {
     return {
@@ -41,18 +41,18 @@ export async function generateMetadata({
 }
 
 // Default page component
-export default function ProjectPage({
+export default async function ProjectPage({
   params,
 }: {
-  params: { id: string }
+  params:Promise< { id: string }>
 }) {
-  const project = getProjectById(params.id)
+  const project = getProjectById((await params).id)
 
   if (!project) {
     notFound()
   }
 
-  const relatedProjects = getRelatedProjects(params.id, 3)
+  const relatedProjects = getRelatedProjects((await params).id, 3)
 
   return (
     <div className="bg-gray-50 min-h-screen pb-16 px-20">

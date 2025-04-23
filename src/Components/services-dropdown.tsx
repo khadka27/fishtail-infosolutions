@@ -66,36 +66,6 @@ export function ServicesDropdown() {
             </span>
             <span>Online Marketing</span>
           </Link>
-
-          {/* <Link
-            href="/Services/mobile-marketing"
-            className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
-          >
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <Smartphone className="h-4 w-4 inline-block" />
-            </span>
-            <span>Mobile Marketing</span>
-          </Link>
-
-          <Link
-            href="/Services/digital-consultancy"
-            className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
-          >
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <Briefcase className="h-4 w-4 inline-block" />
-            </span>
-            <span>Digital Consultancy</span>
-          </Link>
-
-          <Link
-            href="/Services/reputation-management"
-            className="flex items-center text-gray-700 hover:text-blue-600 text-sm"
-          >
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <Award className="h-4 w-4 inline-block" />
-            </span>
-            <span>Reputation Management</span>
-          </Link> */}
         </div>
       </div>
 
@@ -111,13 +81,6 @@ export function ServicesDropdown() {
             </span>
             <span>Search Engine Optimization</span>
           </Link>
-
-          {/* <Link href="/Services/local-seo" className="flex items-center text-gray-700 hover:text-blue-600 text-sm">
-            <span className="text-gray-400 mr-3 w-5 text-center">
-              <MapPin className="h-4 w-4 inline-block" />
-            </span>
-            <span>Local SEO</span>
-          </Link> */}
 
           
 

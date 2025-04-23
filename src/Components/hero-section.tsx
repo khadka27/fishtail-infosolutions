@@ -107,7 +107,7 @@ export function HeroSection() {
   }, [currentSlide]);
 
   return (
-    <>
+
       <section
         className="relative overflow-hidden max-h-[430px]"
         onTouchStart={handleTouchStart}
@@ -566,6 +566,5 @@ export function HeroSection() {
           progress={progress}
         /> */}
       </section>
-    </>
   );
 }

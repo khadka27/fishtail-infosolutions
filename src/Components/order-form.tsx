@@ -41,7 +41,7 @@ export default function OrderForm({
     state: "",
     country: "United States",
     zipCode: "",
-    details: "", // Changed from projectDetails to details
+    details: "", 
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<{
