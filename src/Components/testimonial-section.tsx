@@ -2,17 +2,20 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
-
+import client1 from "@/Images/client1.jpeg"
+import client2 from "@/Images/client2.jpeg";
+import client3 from "@/Images/client3.jpeg"
+import client4 from "@/Images/client4.jpeg"
+import client5 from "@/Images/client5.jpeg"
 // Define the testimonial type for better type safety
 interface Testimonial {
   id: number;
   quote: string;
   name: string;
-  title: string;
-  image: string;
+  image: StaticImageData | string;
   rating?: number;
 }
 
@@ -21,20 +24,42 @@ const testimonials: Testimonial[] = [
     id: 1,
     quote:
       "We've looked at a lot of SEO solutions but these guys were always the clear favorite. They have the right strategy and they've been awesome to work with.",
-    name: "Rahul Rauniyar",
-    title: "CEO & Founder",
-    image: "/Image/rahul-rauniyar.jpg",
+    name: "Julian A. Spence",
+  
+    image: client1,
     rating: 5,
   },
   {
     id: 2,
     quote:
       "“Fishtail’s SEO and ads tripled our leads in 6 months. Their team is strategic, transparent, and results-driven!”",
-    name: "Sarah K., CMO at GrowthLabs",
-    title: "Marketing Director",
-    image: "/confident-professional.png",
+    name: "Patricia H. Dudley",
+    image: client2,
     rating: 5,
   },
+  {
+    id: 3,
+    quote: "“The web development team at Fishtail exceeded our expectations. Our website is faster, more responsive, and user-friendly. We’ve seen a significant increase in conversions since the launch!”",
+    name: "David M. Parker",
+    image: client3,
+    rating: 5
+},
+{
+  id: 4,
+  quote: "“The team at Fishtail delivered exceptional results for our business. Our website’s performance has dramatically improved, and the user experience is top-notch. We’ve seen a noticeable rise in customer engagement since the redesign!”",
+  name: "Rajesh Kumar",
+  image: client4,
+  rating: 5
+},
+{
+  id: 5,
+  quote: "“Fishtail’s web development services have been outstanding. Our website is now much faster, mobile-friendly, and intuitive. We’ve noticed a sharp increase in user retention and overall satisfaction!”",
+  name: "Sita Thapa",
+  image: client5,
+  rating: 5
+}
+
+
   
 ];
 
@@ -250,9 +275,7 @@ export default function TestimonialsSection() {
                       <p className="font-semibold text-xl text-gray-900">
                         {testimonials[currentIndex].name}
                       </p>
-                      <p className="text-gray-600">
-                        {testimonials[currentIndex].title}
-                      </p>
+                    
                     </div>
                   </div>
                 </div>
