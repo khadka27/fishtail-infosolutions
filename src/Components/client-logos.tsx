@@ -19,7 +19,6 @@ import logo4 from "@/Images/logo4.png";
 import logo5 from "@/Images/logo5.png";
 import logo6 from "@/Images/logo-6.png";
 import sujalfoods from "@/Images/sujalfoods.png"
-// import doorstha from "@/Images/doorsth.png"
 import manipal from "@/Images/manipal.png"
 import upgrad from "@/Images/upgrad.png"
 import shikshanerd from "@/Images/shiksha.png"
