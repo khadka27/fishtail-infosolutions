@@ -881,6 +881,7 @@ export function QuotePopup({ isOpen, onClose }: QuotePopupProps) {
                         height={120}
                         className="object-contain w-20 h-20"
                         priority
+                        unoptimized
                       />
                     </div>
                   </div>

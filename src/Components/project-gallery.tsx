@@ -156,6 +156,7 @@ export default function ProjectGallery() {
                 alt={galleryItems[activeIndex].title}
                 width={1200}
                 height={800}
+                unoptimized
                 className="object-contain w-full"
               />
 

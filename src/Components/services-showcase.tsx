@@ -567,6 +567,7 @@ const ServicesShowcase = () => {
                         alt={testimonial.name}
                         width={80}
                         height={80}
+                        unoptimized
                         className="object-cover"
                       />
                     </div>

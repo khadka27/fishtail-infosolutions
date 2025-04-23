@@ -92,6 +92,7 @@ const ContactForm = ({
                       alt={testimonial.author} 
                       width={48} 
                       height={48}
+                      unoptimized
                       className="object-cover"
                     />
                   </div>

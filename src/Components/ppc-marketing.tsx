@@ -247,6 +247,7 @@ const PPCMarketing = () => {
                 alt="PPC Marketing Services"
                 width={256}
                 height={256}
+                unoptimized
                 className="object-contain"
               />
               <motion.div

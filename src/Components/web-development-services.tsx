@@ -232,6 +232,7 @@ const WebDevelopmentServices = () => {
                 alt="Web Development Services"
                 width={256}
                 height={256}
+                unoptimized
                 className="object-contain"
               />
               <motion.div

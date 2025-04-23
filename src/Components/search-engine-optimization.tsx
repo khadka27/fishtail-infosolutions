@@ -220,6 +220,7 @@ const SearchEngineOptimization = () => {
                 alt="Search Engine Optimization Services"
                 width={256}
                 height={256}
+                unoptimized
                 className="object-contain"
               />
               <motion.div

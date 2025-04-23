@@ -41,6 +41,7 @@ export default function RelatedProjects({ currentProjectId }: { currentProjectId
                 alt={project.title}
                 width={400}
                 height={300}
+                unoptimized
                 className="object-cover w-full h-full"
               />
             </motion.div>

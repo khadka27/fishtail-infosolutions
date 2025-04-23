@@ -142,6 +142,7 @@ export function TestimonialSlider({ testimonials }: TestimonialSliderProps) {
                   alt={testimonials[currentIndex].name}
                   width={100}
                   height={100}
+                  unoptimized
                   className="rounded-full border-2 border-white relative z-10"
                 />
               </motion.div>

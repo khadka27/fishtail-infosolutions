@@ -228,6 +228,7 @@ const WebDesignServices = () => {
                 alt="Web Design Services"
                 width={256}
                 height={256}
+                unoptimized
                 className="object-contain "
                
               />

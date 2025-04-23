@@ -220,6 +220,7 @@ export function SeoAnalysisSection() {
                     alt={testimonials[activeTestimonial].author}
                     width={60}
                     height={60}
+                    unoptimized
                     className="rounded-full mr-4"
                   />
                   <div>

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-"use client"
-import { useRef, useState, useEffect } from "react"
-import Image from "next/image"
+"use client";
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 // import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ChevronRight,
@@ -13,180 +13,196 @@ import {
   Monitor,
   Zap,
   ArrowDown,
- 
   DollarSign,
   RefreshCw,
   TrendingUp,
   Search,
   Layers,
-} from "lucide-react"
-import Form from "./form"
-import redesign from "@/Images/redesign.png"
-import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image2 from "@/Images/services-seo-alt-colors-optimized.png"
-import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
-import { QuotePopup } from "./quote-popup"
+} from "lucide-react";
+import Form from "./form";
+import redesign from "@/Images/redesign.png";
+import image3 from "@/Images/services-analytics-alt-colors-optimized.png";
+import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
+import image2 from "@/Images/services-seo-alt-colors-optimized.png";
+import image4 from "@/Images/services-payperclick-alt-colors-optimized.png";
+import { QuotePopup } from "./quote-popup";
 
 // Define service features
 const redesignFeatures = [
   {
     title: "UX/UI modernization",
-    description: "Transform outdated interfaces into modern, intuitive experiences that delight your users.",
+    description:
+      "Transform outdated interfaces into modern, intuitive experiences that delight your users.",
     icon: Layout,
     color: "blue",
   },
   {
     title: "Performance optimization",
-    description: "Improve loading speeds and overall performance to reduce bounce rates and increase conversions.",
+    description:
+      "Improve loading speeds and overall performance to reduce bounce rates and increase conversions.",
     icon: Zap,
     color: "red",
   },
   {
     title: "Responsive redesign",
-    description: "Ensure your website works flawlessly across all devices with a mobile-first approach.",
+    description:
+      "Ensure your website works flawlessly across all devices with a mobile-first approach.",
     icon: Smartphone,
     color: "green",
   },
   {
     title: "Technical debt cleanup",
-    description: "Refactor outdated code and modernize your tech stack for better maintainability.",
+    description:
+      "Refactor outdated code and modernize your tech stack for better maintainability.",
     icon: Code,
     color: "purple",
   },
   {
     title: "Brand refresh",
-    description: "Align your website with your current brand identity and marketing objectives.",
+    description:
+      "Align your website with your current brand identity and marketing objectives.",
     icon: RefreshCw,
     color: "orange",
   },
   {
     title: "SEO preservation & enhancement",
-    description: "Maintain your search rankings while improving on-page optimization factors.",
+    description:
+      "Maintain your search rankings while improving on-page optimization factors.",
     icon: Search,
     color: "teal",
   },
-]
+];
 
 // Define process steps
 const processSteps = [
   {
     title: "Audit & Analysis",
-    description: "We analyze your current website's performance, UX issues, and technical limitations.",
+    description:
+      "We analyze your current website's performance, UX issues, and technical limitations.",
     icon: Search,
   },
   {
     title: "Strategy",
-    description: "We develop a comprehensive redesign strategy based on data and business objectives.",
+    description:
+      "We develop a comprehensive redesign strategy based on data and business objectives.",
     icon: Layers,
   },
   {
     title: "Wireframing",
-    description: "We create wireframes and prototypes to visualize the new structure and user flows.",
+    description:
+      "We create wireframes and prototypes to visualize the new structure and user flows.",
     icon: Layout,
   },
   {
     title: "Design",
-    description: "Our designers create modern, engaging visual designs aligned with your brand.",
+    description:
+      "Our designers create modern, engaging visual designs aligned with your brand.",
     icon: Monitor,
   },
   {
     title: "Development",
-    description: "Our developers rebuild your website with clean, efficient, and future-proof code.",
+    description:
+      "Our developers rebuild your website with clean, efficient, and future-proof code.",
     icon: Code,
   },
   {
     title: "Launch & Optimization",
-    description: "We carefully launch your redesigned site and continuously optimize its performance.",
+    description:
+      "We carefully launch your redesigned site and continuously optimize its performance.",
     icon: TrendingUp,
   },
-]
+];
 
 // Define projects
 const projects = [
   {
     title: "Quantum Finance",
-    description: "Complete redesign increased conversion rates by 45% and reduced bounce rate by 32%.",
+    description:
+      "Complete redesign increased conversion rates by 45% and reduced bounce rate by 32%.",
     image: image2,
     bgColor: "bg-[#1ab5b3]",
     stats: { value: "45%", label: "Conversion Increase" },
   },
   {
     title: "Nexus Healthcare",
-    description: "Modernized UI/UX resulted in 78% improvement in user satisfaction scores.",
+    description:
+      "Modernized UI/UX resulted in 78% improvement in user satisfaction scores.",
     image: image3,
     bgColor: "bg-[#2c3e50]",
     stats: { value: "78%", label: "User Satisfaction" },
   },
   {
     title: "Vertex Media",
-    description: "Responsive redesign led to 52% increase in mobile engagement and conversions.",
+    description:
+      "Responsive redesign led to 52% increase in mobile engagement and conversions.",
     image: image4,
     bgColor: "bg-[#8bc34a]",
     stats: { value: "52%", label: "Mobile Engagement" },
   },
   {
     title: "Alpine Retail",
-    description: "E-commerce redesign resulted in 3.2x increase in average order value.",
+    description:
+      "E-commerce redesign resulted in 3.2x increase in average order value.",
     image: image1,
     bgColor: "bg-[#e74c3c]",
     stats: { value: "3.2x", label: "Order Value" },
   },
   {
     title: "Pulse Technology",
-    description: "SaaS platform redesign reduced customer support tickets by 64%.",
+    description:
+      "SaaS platform redesign reduced customer support tickets by 64%.",
     image: image2,
     bgColor: "bg-[#9b59b6]",
     stats: { value: "64%", label: "Support Reduction" },
   },
-]
+];
 
 const WebsiteRedesign = () => {
-  const formRef = useRef<HTMLDivElement>(null)
-  const [showQuotePopup, setShowQuotePopup] = useState(false)
-  const [activeFeature, setActiveFeature] = useState<number | null>(null)
-  const [activeStep, setActiveStep] = useState<number | null>(null)
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLDivElement>(null);
+  const [showQuotePopup, setShowQuotePopup] = useState(false);
+  const [activeFeature, setActiveFeature] = useState<number | null>(null);
+  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const toggleQuotePopup = () => {
-    setShowQuotePopup((prev) => !prev)
-  }
+    setShowQuotePopup((prev) => !prev);
+  };
 
   // Auto-rotate projects
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentProjectIndex((prev) => (prev + 1) % projects.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
+      setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Check if element is in viewport
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 },
-    )
+      { threshold: 0.1 }
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
     return () => {
       if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
+        observer.unobserve(sectionRef.current);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   // Animation variants
   const containerVariants = {
@@ -197,7 +213,7 @@ const WebsiteRedesign = () => {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -206,7 +222,7 @@ const WebsiteRedesign = () => {
       opacity: 1,
       transition: { duration: 0.5 },
     },
-  }
+  };
 
   return (
     <div className="flex flex-col" ref={sectionRef}>
@@ -230,6 +246,7 @@ const WebsiteRedesign = () => {
                 alt="Website Redesign Services"
                 width={400}
                 height={400}
+                unoptimized
                 className="object-contain"
               />
               <motion.div
@@ -256,8 +273,10 @@ const WebsiteRedesign = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            Transform your outdated website into a <span className="font-bold">high-performing digital asset</span> that
-            drives engagement, conversions, and <span className="font-bold">business growth</span> in today&apos;s
+            Transform your outdated website into a{" "}
+            <span className="font-bold">high-performing digital asset</span>{" "}
+            that drives engagement, conversions, and{" "}
+            <span className="font-bold">business growth</span> in today&apos;s
             competitive landscape.
           </motion.p>
 
@@ -307,10 +326,13 @@ const WebsiteRedesign = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Is your website holding your business back?</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Is your website holding your business back?
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            In today&apos;s digital-first world, an outdated website can significantly impact your business growth. Our
-            redesign services transform underperforming websites into powerful conversion tools.
+            In today&apos;s digital-first world, an outdated website can
+            significantly impact your business growth. Our redesign services
+            transform underperforming websites into powerful conversion tools.
           </p>
         </motion.div>
 
@@ -324,16 +346,24 @@ const WebsiteRedesign = () => {
             <motion.div
               key={index}
               className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                activeFeature === index ? `ring-2 ring-${feature.color}-500` : ""
+                activeFeature === index
+                  ? `ring-2 ring-${feature.color}-500`
+                  : ""
               }`}
               variants={itemVariants}
               whileHover={{ y: -5 }}
-              onClick={() => setActiveFeature(activeFeature === index ? null : index)}
+              onClick={() =>
+                setActiveFeature(activeFeature === index ? null : index)
+              }
             >
-              <div className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}>
+              <div
+                className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}
+              >
                 <feature.icon className={`w-6 h-6 text-${feature.color}-500`} />
               </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">{feature.title}</h3>
+              <h3 className="text-lg font-medium mb-2 text-gray-800">
+                {feature.title}
+              </h3>
 
               <AnimatePresence>
                 {activeFeature === index && (
@@ -374,10 +404,13 @@ const WebsiteRedesign = () => {
             animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Our Redesign Process</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Our Redesign Process
+            </h2>
             <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              We follow a data-driven, strategic approach to website redesign that preserves what works while
-              transforming what doesn&apos;t. Our process ensures a smooth transition with minimal disruption.
+              We follow a data-driven, strategic approach to website redesign
+              that preserves what works while transforming what doesn&apos;t.
+              Our process ensures a smooth transition with minimal disruption.
             </p>
           </motion.div>
 
@@ -394,16 +427,24 @@ const WebsiteRedesign = () => {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""} items-center gap-8`}
+                  className={`flex flex-col md:flex-row ${
+                    index % 2 === 0 ? "md:flex-row-reverse" : ""
+                  } items-center gap-8`}
                   variants={itemVariants}
                 >
-                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
+                  <div
+                    className={`w-full md:w-1/2 ${
+                      index % 2 === 0 ? "md:text-left" : "md:text-right"
+                    }`}
+                  >
                     <motion.div
                       className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
                         activeStep === index ? "ring-2 ring-[#3498db]" : ""
                       }`}
                       whileHover={{ scale: 1.03 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
+                      onClick={() =>
+                        setActiveStep(activeStep === index ? null : index)
+                      }
                     >
                       <h3 className="text-xl font-medium mb-2 text-gray-800 flex items-center">
                         {index % 2 === 0 ? (
@@ -435,7 +476,9 @@ const WebsiteRedesign = () => {
 
                       {activeStep !== index && (
                         <div
-                          className={`flex items-center text-sm text-gray-500 mt-2 ${index % 2 === 0 ? "" : "justify-end"}`}
+                          className={`flex items-center text-sm text-gray-500 mt-2 ${
+                            index % 2 === 0 ? "" : "justify-end"
+                          }`}
                         >
                           {index % 2 === 0 ? (
                             <>
@@ -457,7 +500,9 @@ const WebsiteRedesign = () => {
                     <motion.div
                       className="w-8 h-8 rounded-full bg-[#3498db] text-white flex items-center justify-center z-10 relative"
                       whileHover={{ scale: 1.2 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
+                      onClick={() =>
+                        setActiveStep(activeStep === index ? null : index)
+                      }
                     >
                       {index + 1}
                     </motion.div>
@@ -484,10 +529,13 @@ const WebsiteRedesign = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Redesign Impact by the Numbers</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Redesign Impact by the Numbers
+          </h2>
           <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Our website redesigns deliver measurable results that directly impact your bottom line. Here&apos;s what our
-            clients have achieved after working with us.
+            Our website redesigns deliver measurable results that directly
+            impact your bottom line. Here&apos;s what our clients have achieved
+            after working with us.
           </p>
         </motion.div>
 
@@ -503,7 +551,9 @@ const WebsiteRedesign = () => {
             whileHover={{ y: -5 }}
           >
             <div className="text-4xl font-light text-[#3498db] mb-2">42%</div>
-            <div className="text-sm text-gray-600">Average conversion rate increase</div>
+            <div className="text-sm text-gray-600">
+              Average conversion rate increase
+            </div>
           </motion.div>
 
           <motion.div
@@ -521,7 +571,9 @@ const WebsiteRedesign = () => {
             whileHover={{ y: -5 }}
           >
             <div className="text-4xl font-light text-[#2ecc71] mb-2">3.2x</div>
-            <div className="text-sm text-gray-600">Mobile engagement increase</div>
+            <div className="text-sm text-gray-600">
+              Mobile engagement increase
+            </div>
           </motion.div>
 
           <motion.div
@@ -530,7 +582,9 @@ const WebsiteRedesign = () => {
             whileHover={{ y: -5 }}
           >
             <div className="text-4xl font-light text-[#f1c40f] mb-2">85%</div>
-            <div className="text-sm text-gray-600">User satisfaction improvement</div>
+            <div className="text-sm text-gray-600">
+              User satisfaction improvement
+            </div>
           </motion.div>
 
           <motion.div
@@ -539,7 +593,9 @@ const WebsiteRedesign = () => {
             whileHover={{ y: -5 }}
           >
             <div className="text-4xl font-light text-[#e67e22] mb-2">58%</div>
-            <div className="text-sm text-gray-600">Increase in page views per session</div>
+            <div className="text-sm text-gray-600">
+              Increase in page views per session
+            </div>
           </motion.div>
 
           <motion.div
@@ -548,7 +604,9 @@ const WebsiteRedesign = () => {
             whileHover={{ y: -5 }}
           >
             <div className="text-4xl font-light text-[#e84393] mb-2">2.4x</div>
-            <div className="text-sm text-gray-600">Return on redesign investment</div>
+            <div className="text-sm text-gray-600">
+              Return on redesign investment
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>
@@ -677,7 +735,9 @@ const WebsiteRedesign = () => {
           animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Our Redesign Philosophy</h2>
+          <h2 className="text-3xl font-light text-gray-700 mb-4">
+            Our Redesign Philosophy
+          </h2>
         </motion.div>
 
         <motion.div
@@ -686,23 +746,37 @@ const WebsiteRedesign = () => {
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800">Data-Driven Redesign Approach</h3>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
+            <h3 className="text-xl font-medium mb-4 text-gray-800">
+              Data-Driven Redesign Approach
+            </h3>
             <p className="text-gray-700 leading-relaxed">
-              We don&apos;t just make your website look better—we make it perform better. Our redesign process begins with
-              comprehensive analytics and user behavior analysis to identify exactly what&apos;s working and what isn&apos;t. This
-              data-driven approach ensures that every design decision is strategic and focused on improving key
-              performance metrics that matter to your business.
+              We don&apos;t just make your website look better—we make it
+              perform better. Our redesign process begins with comprehensive
+              analytics and user behavior analysis to identify exactly
+              what&apos;s working and what isn&apos;t. This data-driven approach
+              ensures that every design decision is strategic and focused on
+              improving key performance metrics that matter to your business.
             </p>
           </motion.div>
 
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800">Seamless Transition Strategy</h3>
+          <motion.div
+            className="bg-white p-6 rounded-lg shadow-md"
+            variants={itemVariants}
+          >
+            <h3 className="text-xl font-medium mb-4 text-gray-800">
+              Seamless Transition Strategy
+            </h3>
             <p className="text-gray-700 leading-relaxed">
-              One of the biggest concerns with website redesigns is maintaining SEO rankings and ensuring a smooth
-              transition for existing users. Our carefully planned migration strategy preserves your digital equity
-              while implementing improvements. We use proper redirects, content preservation techniques, and phased
-              rollouts to minimize disruption and maximize the positive impact of your redesign.
+              One of the biggest concerns with website redesigns is maintaining
+              SEO rankings and ensuring a smooth transition for existing users.
+              Our carefully planned migration strategy preserves your digital
+              equity while implementing improvements. We use proper redirects,
+              content preservation techniques, and phased rollouts to minimize
+              disruption and maximize the positive impact of your redesign.
             </p>
           </motion.div>
         </motion.div>
@@ -717,10 +791,12 @@ const WebsiteRedesign = () => {
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Ready to Transform Your Website?</h2>
+            <h2 className="text-3xl font-light text-gray-700 mb-4">
+              Ready to Transform Your Website?
+            </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Tell us about your current website challenges and goals, and we&apos;ll provide a free consultation and
-              redesign proposal.
+              Tell us about your current website challenges and goals, and
+              we&apos;ll provide a free consultation and redesign proposal.
             </p>
           </div>
           <Form />
@@ -730,7 +806,7 @@ const WebsiteRedesign = () => {
       {/* Quote Popup */}
       <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
     </div>
-  )
-}
+  );
+};
 
-export default WebsiteRedesign
+export default WebsiteRedesign;
