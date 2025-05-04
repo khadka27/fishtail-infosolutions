@@ -57,7 +57,7 @@ class BlogPostCard extends React.Component<BlogPostCardProps> {
             {category}
           </div>
           <motion.div
-            className="h-48 md:h-full w-full relative"
+            className="h-48 md:h-20 w-20 relative"
             animate={{ scale: isHovered ? 1.05 : 1 }}
             transition={{ duration: 0.4 }}
           >
@@ -66,7 +66,7 @@ class BlogPostCard extends React.Component<BlogPostCardProps> {
               alt={title}
               className="object-cover"
               fill
-              sizes="(max-width: 768px) 100vw, 33vw"
+              // sizes="(max-width: 768px) 100vw, 33vw"
             />
           </motion.div>
         </div>
