@@ -10,6 +10,7 @@ import TableOfContents from "@/Components/TableOfContents";
 import CommentForm from "@/Components/CommentForm";
 import type { Metadata } from "next";
 
+
 // Sample blog posts data with enhanced metadata
 const blogPosts = [
   {
@@ -20,8 +21,8 @@ const blogPosts = [
     date: "April 17, 2023",
     author: "John Smith",
     readTime: "5 min read",
-    category: "SEO",
-    image: "/images/seo-submission.jpg",
+    category: "SEO",    
+    image: "/Image/services-payperclick-alt-colors-optimized.png",
   },
   {
     id: "inbound-linking",
@@ -32,7 +33,7 @@ const blogPosts = [
     author: "Jane Doe",
     readTime: "4 min read",
     category: "Link Building",
-    image: "/images/inbound-links.jpg",
+    image: "/Image/services-analytics-alt-colors-optimized.png",
   },
   {
     id: "anchor-text",
@@ -43,7 +44,7 @@ const blogPosts = [
     author: "Mike Johnson",
     readTime: "6 min read",
     category: "Link Building",
-    image: "/images/anchor-text.jpg",
+    image: "/Image/seo_specialist_workplace-optimized.png",
   },
   {
     id: "absolute-vs-relative-links",
@@ -54,7 +55,7 @@ const blogPosts = [
     author: "Sarah Williams",
     readTime: "7 min read",
     category: "Technical SEO",
-    image: "/images/absolute-relative-links.jpg",
+    image: "/Image/services-seo-alt-colors-optimized.png",
   },
 ];
 
@@ -149,12 +150,13 @@ function BlogPostHeader({ post }: { post: (typeof blogPosts)[0] }) {
         </Link>
       </div>
 
-      <div className="relative w-full h-[300px] md:h-[400px] mb-6 rounded-xl overflow-hidden">
+      <div className="relative h-[300px] md:h-[400px] mb-6 rounded-xl overflow-hidden">
         <Image
           src={post.image || "/placeholder.svg?height=400&width=800"}
           alt={post.title}
-          fill
-          className="object-cover"
+          height={300}
+          width={300}
+          className="ml-140"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

@@ -460,12 +460,12 @@ export default function BlogPage() {
                   className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
                   onClick={() => handlePostClick(post.id)}
                 >
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative ml-20 h-48 w-50 overflow-hidden">
                     <Image
                       src={post.imageUrl || "/placeholder.svg"}
                       alt={post.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover md:h-30  group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute top-2 left-2 bg-[#0084FF] text-white text-xs px-2 py-1 rounded-full">
                       {post.category}

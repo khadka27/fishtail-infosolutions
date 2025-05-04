@@ -3,7 +3,7 @@
 
 import type React from "react";
 import { useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import {
   Calendar,
@@ -21,7 +21,7 @@ import {
 interface RelatedPost {
   id: string;
   title: string;
-  imageUrl: any;
+  imageUrl: StaticImageData | string;
 }
 
 interface BlogPostProps {
@@ -185,7 +185,7 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({
           className="bg-white rounded-lg shadow-md p-6 mt-6"
         >
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-            <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
+            {/* <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
               <Image
                 src="/placeholder.svg?height=80&width=80"
                 alt={author}
@@ -193,7 +193,7 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({
                 height={80}
                 className="object-cover"
               />
-            </div>
+            </div> */}
             <div>
               <h3 className="text-lg font-medium text-gray-800 mb-1">
                 {author}
@@ -232,7 +232,7 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({
               {/* Sample comment */}
               <div className="border-b border-gray-100 pb-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
+                  {/* <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-gray-200">
                     <Image
                       src="/placeholder.svg?height=40&width=40"
                       alt="Commenter"
@@ -240,7 +240,7 @@ const BlogPostComponent: React.FC<BlogPostProps> = ({
                       height={40}
                       className="object-cover"
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-medium text-gray-800">Jane Cooper</h4>
