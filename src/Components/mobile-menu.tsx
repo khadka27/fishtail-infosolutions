@@ -7,10 +7,9 @@ import Link from "next/link";
 // Define the dropdown menu items for each navigation link
 const menuItems = {
   about: [
-    { label: "Our Story", href: "/about/story" },
-    { label: "Our Team", href: "/about/team" },
-    { label: "Testimonials", href: "/about/testimonials" },
-    { label: "Careers", href: "/about/careers" },
+    { label: "Our Agency", href: "/about" },
+    { label: "Our Team", href: "/team" },
+    { label: "Pricing Packages", href: "/pricing" },
   ],
   services: [
     { label: "SEO Optimization", href: "/Services/search-engine" },
@@ -20,21 +19,16 @@ const menuItems = {
     { label: "Web Development", href: "/Services/web-development" },
   ],
   projects: [
-    { label: "Case Studies", href: "/projects/case-studies" },
-    { label: "Portfolio", href: "/projects/portfolio" },
-    { label: "Success Stories", href: "/projects/success-stories" },
+    { label: "Case Studies", href: "/project" },
   ],
   blog: [
-    { label: "Latest Articles", href: "/blog/latest" },
-    { label: "SEO Tips", href: "/blog/seo-tips" },
-    { label: "Industry News", href: "/blog/news" },
-    { label: "Guides & Tutorials", href: "/blog/guides" },
+    { label: "Latest Articles", href: "/blog" },
   ],
   contact: [
-    { label: "Get in Touch", href: "/contact/get-in-touch" },
-    { label: "Request a Quote", href: "/contact/quote" },
-    { label: "Support", href: "/contact/support" },
-    { label: "Locations", href: "/contact/locations" },
+    { label: "Get in Touch", href: "/contact" },
+    { label: "Instant SEO Services Quote", href: "/contact/seo" },
+    { label: "Web Development Services Quote", href: "/contact/web-dev-quote" },
+    { label: "Locations", href: "/contact/multiple" },
   ],
 };
 
