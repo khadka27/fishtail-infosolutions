@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
-import Link from "next/link"
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 // Define the dropdown menu items for each navigation link
 const menuItems = {
@@ -13,11 +13,11 @@ const menuItems = {
     { label: "Careers", href: "/about/careers" },
   ],
   services: [
-    { label: "SEO Optimization", href: "/services/seo" },
-    { label: "PPC Management", href: "/services/ppc" },
-    { label: "Social Media Marketing", href: "/services/social-media" },
-    { label: "Content Marketing", href: "/services/content" },
-    { label: "Email Marketing", href: "/services/email" },
+    { label: "SEO Optimization", href: "/Services/search-engine" },
+    { label: "Lead Generation", href: "/Services/lead-generation" },
+    { label: "Social Media Marketing", href: "/Services/social-media" },
+    { label: "Content Marketing", href: "/Services/content-marketing" },
+    { label: "Web Development", href: "/Services/web-development" },
   ],
   projects: [
     { label: "Case Studies", href: "/projects/case-studies" },
@@ -36,40 +36,49 @@ const menuItems = {
     { label: "Support", href: "/contact/support" },
     { label: "Locations", href: "/contact/locations" },
   ],
-}
+};
 
 export function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [expandedItems, setExpandedItems] = useState<string[]>([])
+  const [isOpen, setIsOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   const toggleExpand = (item: string) => {
     if (expandedItems.includes(item)) {
-      setExpandedItems(expandedItems.filter((i) => i !== item))
+      setExpandedItems(expandedItems.filter((i) => i !== item));
     } else {
-      setExpandedItems([...expandedItems, item])
+      setExpandedItems([...expandedItems, item]);
     }
-  }
+  };
 
   return (
     <div className="md:hidden">
-      <button onClick={toggleMenu} className="text-gray-700 hover:text-blue-600 focus:outline-none">
+      <button
+        onClick={toggleMenu}
+        className="text-gray-700 hover:text-blue-600 focus:outline-none"
+      >
         <Menu className="h-8 w-8" />
       </button>
 
       {/* Mobile menu overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-black bg-opacity-50" onClick={toggleMenu}>
+        <div
+          className="fixed inset-0 z-50 bg-black bg-opacity-50"
+          onClick={toggleMenu}
+        >
           <div
             className="fixed top-0 right-0 h-full w-80 bg-white shadow-lg overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center p-5 border-b">
               <h2 className="text-xl font-bold">Menu</h2>
-              <button onClick={toggleMenu} className="text-gray-500 hover:text-gray-700">
+              <button
+                onClick={toggleMenu}
+                className="text-gray-500 hover:text-gray-700"
+              >
                 <X className="h-7 w-7" />
               </button>
             </div>
@@ -83,7 +92,9 @@ export function MobileMenu() {
                     onClick={() => toggleExpand("about")}
                   >
                     <span className="font-medium text-lg">About</span>
-                    <span className="text-base text-gray-500">{expandedItems.includes("about") ? "−" : "+"}</span>
+                    <span className="text-base text-gray-500">
+                      {expandedItems.includes("about") ? "−" : "+"}
+                    </span>
                   </div>
                   {expandedItems.includes("about") && (
                     <ul className="pl-4 mt-2 space-y-2">
@@ -109,7 +120,9 @@ export function MobileMenu() {
                     onClick={() => toggleExpand("services")}
                   >
                     <span className="font-medium text-lg">Services</span>
-                    <span className="text-base text-gray-500">{expandedItems.includes("services") ? "−" : "+"}</span>
+                    <span className="text-base text-gray-500">
+                      {expandedItems.includes("services") ? "−" : "+"}
+                    </span>
                   </div>
                   {expandedItems.includes("services") && (
                     <ul className="pl-4 mt-2 space-y-2">
@@ -135,7 +148,9 @@ export function MobileMenu() {
                     onClick={() => toggleExpand("projects")}
                   >
                     <span className="font-medium text-lg">Projects</span>
-                    <span className="text-base text-gray-500">{expandedItems.includes("projects") ? "−" : "+"}</span>
+                    <span className="text-base text-gray-500">
+                      {expandedItems.includes("projects") ? "−" : "+"}
+                    </span>
                   </div>
                   {expandedItems.includes("projects") && (
                     <ul className="pl-4 mt-2 space-y-2">
@@ -161,7 +176,9 @@ export function MobileMenu() {
                     onClick={() => toggleExpand("blog")}
                   >
                     <span className="font-medium text-lg">Blog</span>
-                    <span className="text-base text-gray-500">{expandedItems.includes("blog") ? "−" : "+"}</span>
+                    <span className="text-base text-gray-500">
+                      {expandedItems.includes("blog") ? "−" : "+"}
+                    </span>
                   </div>
                   {expandedItems.includes("blog") && (
                     <ul className="pl-4 mt-2 space-y-2">
@@ -187,7 +204,9 @@ export function MobileMenu() {
                     onClick={() => toggleExpand("contact")}
                   >
                     <span className="font-medium text-lg">Contact</span>
-                    <span className="text-base text-gray-500">{expandedItems.includes("contact") ? "−" : "+"}</span>
+                    <span className="text-base text-gray-500">
+                      {expandedItems.includes("contact") ? "−" : "+"}
+                    </span>
                   </div>
                   {expandedItems.includes("contact") && (
                     <ul className="pl-4 mt-2 space-y-2">
@@ -221,6 +240,5 @@ export function MobileMenu() {
         </div>
       )}
     </div>
-  )
+  );
 }
-
