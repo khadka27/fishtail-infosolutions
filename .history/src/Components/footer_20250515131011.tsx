@@ -279,8 +279,8 @@ export function Footer() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-white">+910 8771234567</div>
-                  <div className="text-white/60 text-sm">Sun–FRI 9AM–6PM</div>
+                  <div className="text-white">+1 (234) 567.890.11</div>
+                  <div className="text-white/60 text-sm">MON–FRI 9AM–6PM</div>
                 </div>
               </motion.div>
 
@@ -289,7 +289,7 @@ export function Footer() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-white">info@fishtailinfosolutions.com</div>
+                  <div className="text-white">info@fishtailinfoolutions.com</div>
                   <div className="text-white/60 text-sm">
                     We reply within 24 hours
                   </div>
@@ -301,9 +301,9 @@ export function Footer() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-white">604 Carson Dr CAK-953</div>
+                  <div className="text-white">123 Business Avenue</div>
                   <div className="text-white/60 text-sm">
-                    Bear, DE 19701-1450
+                    New York, NY 10001
                   </div>
                 </div>
               </motion.div>

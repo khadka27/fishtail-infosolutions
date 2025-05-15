@@ -303,7 +303,7 @@ export function Footer() {
                 <div>
                   <div className="text-white">604 Carson Dr CAK-953</div>
                   <div className="text-white/60 text-sm">
-                    Bear, DE 19701-1450
+                    New York, NY 10001
                   </div>
                 </div>
               </motion.div>

@@ -301,9 +301,9 @@ export function Footer() {
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-white">604 Carson Dr CAK-953</div>
+                  <div className="text-white"></div>
                   <div className="text-white/60 text-sm">
-                    Bear, DE 19701-1450
+                    New York, NY 10001
                   </div>
                 </div>
               </motion.div>
