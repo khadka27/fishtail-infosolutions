@@ -95,9 +95,9 @@ export function Footer() {
     { name: "SEO Optimization", href: "/Services/local-seo" },
     { name: "Social Media Marketing", href: "/Services/social-media" },
     { name: "PPC Campaigns", href: "/Services/ppc-marketing" },
-    { name: "Content Marketing", href: "/Services/content-marketing" },
-    { name: "Email Marketing", href: "/Services/email-marketing" },
-    { name: "Lead Generation", href: "/Services/lead-generation" },
+    { name: "Content Marketing", href: "/Services/content" },
+    { name: "Email Marketing", href: "/services/email" },
+    { name: "Analytics & Reporting", href: "/services/analytics" },
   ];
 
   // Social media links with hover colors

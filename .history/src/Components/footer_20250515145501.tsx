@@ -92,12 +92,12 @@ export function Footer() {
 
   // Services links
   const serviceLinks = [
-    { name: "SEO Optimization", href: "/Services/local-seo" },
-    { name: "Social Media Marketing", href: "/Services/social-media" },
-    { name: "PPC Campaigns", href: "/Services/ppc-marketing" },
-    { name: "Content Marketing", href: "/Services/content-marketing" },
-    { name: "Email Marketing", href: "/Services/email-marketing" },
-    { name: "Lead Generation", href: "/Services/lead-generation" },
+    { name: "SEO Optimization", href: "/services/seo" },
+    { name: "Social Media Marketing", href: "/services/social-media" },
+    { name: "PPC Campaigns", href: "/services/ppc" },
+    { name: "Content Marketing", href: "/services/content" },
+    { name: "Email Marketing", href: "/services/email" },
+    { name: "Analytics & Reporting", href: "/services/analytics" },
   ];
 
   // Social media links with hover colors
