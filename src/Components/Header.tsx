@@ -25,24 +25,24 @@ import { QuotePopup } from "./quote-popup";
 // Define the dropdown menu items for each navigation link
 const menuItems = {
   about: [
-    { label: "Our Story", href: "/about/story" },
-    { label: "Team", href: "/about/team" },
-    { label: "Careers", href: "/about/careers" },
+    { label: "Our Agency", href: "/about" },
+    { label: "Our Team", href: "/team" },
+    { label: "Pricing Packages", href: "/pricing" },
   ],
   services: [
-    { label: "SEO", href: "/services/seo" },
-    { label: "Content Marketing", href: "/services/content" },
-    { label: "Social Media", href: "/services/social" },
-    { label: "PPC", href: "/services/ppc" },
+    { label: "SEO Optimization", href: "/Services/search-engine" },
+    { label: "Lead Generation", href: "/Services/lead-generation" },
+    { label: "Social Media Marketing", href: "/Services/social-media" },
+    { label: "Content Marketing", href: "/Services/content-marketing" },
+    { label: "Web Development", href: "/Services/web-development" },
   ],
-  projects: [
-    { label: "Case Studies", href: "/projects/case-studies" },
-    { label: "Portfolio", href: "/projects/portfolio" },
-  ],
+  projects: [{ label: "Case Studies", href: "/project" }],
+  blog: [{ label: "Latest Articles", href: "/blog" }],
   contact: [
-    { label: "Single Address", href: "/contact" },
-    { label: "Multi Address", href: "/contact/multiple" },
-    { label: "Instant SEO quote", href: "/contact/seo" },
+    { label: "Get in Touch", href: "/contact" },
+    { label: "Instant SEO Services Quote", href: "/contact/seo" },
+    { label: "Web Development Services Quote", href: "/contact/web-dev-quote" },
+    { label: "Locations", href: "/contact/multiple" },
   ],
 };
 
@@ -178,7 +178,7 @@ export function Header() {
               >
                 <Phone className="h-4 w-4 md:h-4 md:w-4 mr-0 md:mr-2" />
                 <span className="hidden md:inline text-sm md:text-base">
-                      +910 8771234567
+                  +910 8771234567
                 </span>
               </div>
 
