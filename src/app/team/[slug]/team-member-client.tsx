@@ -164,7 +164,7 @@ export default function TeamMemberClient({ teamMember, prevMember, nextMember }:
         </div>
       </div>
 
-      {/* Skills & Expertise Section */}
+      {/* Skills & Expertise Section ... */}
       <div className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div
