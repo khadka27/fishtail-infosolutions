@@ -38,104 +38,101 @@ export default function AffiliateManagement() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative px-4 sm:px-6 md:px-10 lg:px-20 overflow-hidden bg-gradient-to-r from-orange-600 to-pink-600 text-white">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-[url('/network-pattern.png')] bg-repeat opacity-10"></div>
-        {Array.from({ length: 20 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/30 backdrop-blur-sm"
-            style={{
-              width: `${Math.random() * 5 + 2}rem`,
-              height: `${Math.random() * 5 + 2}rem`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              x: [0, Math.random() * 40 - 20],
-              y: [0, Math.random() * 40 - 20],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Number.POSITIVE_INFINITY,
-              repeatType: "reverse",
-            }}
-          />
-        ))}
-      </div>
+      <section className="relative px-20 overflow-hidden bg-gradient-to-r from-orange-600 to-pink-600 text-white">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[url('/network-pattern.png')] bg-repeat opacity-10"></div>
+          {Array.from({ length: 20 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-white/30 backdrop-blur-sm"
+              style={{
+                width: Math.random() * 100 + 50,
+                height: Math.random() * 100 + 50,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                x: [0, Math.random() * 40 - 20],
+                y: [0, Math.random() * 40 - 20],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+              }}
+            />
+          ))}
+        </div>
 
-      <div className="container mx-auto py-12 sm:py-16 md:py-20 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="w-full lg:w-1/2"
-          >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
-              Grow Your Business Through <span className="text-yellow-300">Partner Networks</span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-orange-100 max-w-xl">
-              Expert affiliate program management that builds, optimizes, and scales your partner marketing channels for
-              maximum ROI
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => setIsQuoteOpen(true)}
-                className="px-6 sm:px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-gray-900 rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto text-center"
-              >
-                Start Your Affiliate Program
-              </button>
-              <button
-                onClick={scrollToContact}
-                className="px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium transition-all border border-white/30 w-full sm:w-auto text-center"
-              >
-                Learn More
-              </button>
-            </div>
-          </motion.div>
+        <div className="container mx-auto px-4 py-20 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="lg:w-1/2 mb-12 lg:mb-0"
+            >
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Grow Your Business Through{" "}
+                <span className="text-yellow-300">Partner Networks</span>
+              </h1>
+              <p className="text-xl mb-8 text-orange-100 max-w-xl">
+                Expert affiliate program management that builds, optimizes, and
+                scales your partner marketing channels for maximum ROI
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={() => setIsQuoteOpen(true)}
+                  className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-gray-900 rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg"
+                >
+                  Start Your Affiliate Program
+                </button>
+                <button
+                  onClick={scrollToContact}
+                  className="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium transition-all border border-white/30"
+                >
+                  Learn More
+                </button>
+              </div>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full lg:w-1/2 mt-8 lg:mt-0"
-          >
-            <div className="relative max-w-md mx-auto lg:max-w-none">
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-xl transform rotate-3"></div>
-              <div className="relative z-10 rounded-xl shadow-2xl overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="lg:w-1/2"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-xl transform rotate-3"></div>
                 <Image
                   src={grow || "/affiliate-network-illustration.png"}
                   alt="Affiliate Network Illustration"
                   width={600}
                   height={400}
-                  className="w-full h-auto"
-                  priority
+                  unoptimized
+                  className="relative z-10 rounded-xl shadow-2xl w-full h-auto"
                 />
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
-      </div>
 
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-auto"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 70C840 80 960 100 1080 100C1200 100 1320 80 1380 70L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-            fill="white"
-          />
-        </svg>
-      </div>
-    </section>
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg
+            viewBox="0 0 1440 120"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 70C840 80 960 100 1080 100C1200 100 1320 80 1380 70L1440 60V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+      </section>
 
       {/* Key Metrics Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-white">
+      <section className="py-16 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <motion.div
@@ -206,7 +203,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* Services Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-gray-50">
+      <section className="py-20 px-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
@@ -293,7 +290,7 @@ export default function AffiliateManagement() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-white">
+      <section className="py-20 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">

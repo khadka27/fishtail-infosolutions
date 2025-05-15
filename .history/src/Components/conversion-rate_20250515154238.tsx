@@ -39,16 +39,21 @@ export default function ConversionRateOptimization() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+      {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-purple-900 to-indigo-800 text-white">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('/data-visualization-pattern.png')] bg-repeat opacity-10"></div>
-          <div className="hidden sm:grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 grid-rows-3 sm:grid-rows-4 md:grid-rows-6 h-full w-full">
+          <div className="grid grid-cols-12 grid-rows-6 h-full w-full">
             {Array.from({ length: 72 }).map((_, i) => (
-              <div key={i} className="border border-white/5 flex items-center justify-center">
+              <div
+                key={i}
+                className="border border-white/5 flex items-center justify-center"
+              >
                 {Math.random() > 0.92 && (
                   <div
-                    className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400"
-                    style={{ opacity: Math.floor(Math.random() * 60 + 20) / 100 }}
+                    className={`w-2 h-2 rounded-full bg-green-400 opacity-${
+                      Math.floor(Math.random() * 80) + 20
+                    }`}
                   ></div>
                 )}
               </div>
@@ -56,26 +61,31 @@ export default function ConversionRateOptimization() {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 relative z-10">
+        <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                 Turn <span className="text-green-400">Visitors</span> Into{" "}
                 <span className="text-green-400">Customers</span>
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-slate-200 max-w-3xl mx-auto">
-                Data-driven conversion rate optimization that boosts your bottom line with scientific precision
+              <p className="text-xl md:text-2xl mb-8 text-slate-200">
+                Data-driven conversion rate optimization that boosts your bottom
+                line with scientific precision
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
                   onClick={() => setIsQuoteOpen(true)}
-                  className="px-6 sm:px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
+                  className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg"
                 >
                   Get a Free CRO Audit
                 </button>
                 <button
                   onClick={scrollToContact}
-                  className="px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium transition-all border border-white/30 w-full sm:w-auto"
+                  className="px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium transition-all border border-white/30"
                 >
                   Learn More
                 </button>
@@ -84,12 +94,12 @@ export default function ConversionRateOptimization() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-8 sm:h-12 md:h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
       </section>
 
       {/* Introduction Section */}
       {/* Key Metrics Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-white">
+      <section className="py-16 px-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div
