@@ -348,8 +348,8 @@ export function Header() {
             <div className="flex flex-col h-full">
               <div className="flex justify-between items-center p-4 border-b">
                 <div className="flex items-center">
-                  <span className="text-blue-800 font-bold text-xl">SEO</span>
-                  <span className="text-blue-400 font-bold text-xl">WP</span>
+                  <span className="text-blue-800 font-bold text-xl">Fishtail</span>
+                  <span className="text-blue-400 font-bold text-xl">Infosolutions</span>
                 </div>
                 <button
                   onClick={toggleDrawer}
