@@ -64,9 +64,7 @@ class BlogPostCard extends React.Component<BlogPostCardProps> {
             <Image
               src={imageUrl || "/placeholder.svg"}
               alt={title}
-              height={100}
-              width={200}
-              className="object-cover ml-5"
+              className="object-cover"
               
               // sizes="(max-width: 768px) 100vw, 33vw"
             />

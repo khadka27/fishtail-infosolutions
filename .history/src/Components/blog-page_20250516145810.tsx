@@ -1,28 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState, useEffect, useRef } from "react";
-import {
-  ArrowLeft,
- 
-  Search,
-  Calendar,
-  User,
-  ChevronRight,
-} from "lucide-react";
-import Image from "next/image";
-import BlogPostCard from "@/Components/blog-post-card-class";
-import BlogPostComponent from "@/Components/blog-post";
-import { motion, AnimatePresence } from "framer-motion";
-import image1 from "@/Images/Is-Search-Engine-Submission-Necessary.png";
-import image2 from "@/Images/SEO-link-builder.png";
-import image3 from "@/Images/Anchor-Text.jpg";
-import image4 from "@/Images/absolutevsrelative.jpg";
+import { useState, useEffect, useRef } from "react"
+import { ArrowLeft, Search, Calendar, User, ChevronRight } from "lucide-react"
+import Image from "next/image"
+import BlogPostCard from "@/Components/blog-post-card-class"
+import BlogPostComponent from "@/Components/blog-post-with-comments"
+import { motion, AnimatePresence } from "framer-motion"
+import image1 from "@/Images/Is-Search-Engine-Submission-Necessary.png"
+import image2 from "@/Images/SEO-link-builder.png"
+import image3 from "@/Images/Anchor-Text.jpg"
+import image4 from "@/Images/absolutevsrelative.jpg"
 
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation"
 
 // Sample blog posts data
 const blogPosts = [
@@ -108,7 +101,7 @@ const blogPosts = [
     category: "Technical SEO",
     readTime: "7 min read",
   },
-];
+]
 
 // Sample related posts for each blog post
 const relatedPosts = {
@@ -180,94 +173,79 @@ const relatedPosts = {
       imageUrl: image3,
     },
   ],
-};
+}
 
 // Categories for filter
-const categories = [
-  "All",
-  "SEO",
-  "Link Building",
-  "Technical SEO",
-  "Content Marketing",
-];
+const categories = ["All", "SEO", "Link Building", "Technical SEO", "Content Marketing"]
 
 export default function BlogPage() {
-  const params = useParams();
-  const router = useRouter();
-  const slugFromUrl = params?.slug as string | undefined;
+  const params = useParams()
+  const router = useRouter()
+  const slugFromUrl = params?.slug as string | undefined
 
-  const [selectedPostId, setSelectedPostId] = useState<string | null>(
-    slugFromUrl || null
-  );
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [selectedPostId, setSelectedPostId] = useState<string | null>(slugFromUrl || null)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("All")
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [isSubscribed, setIsSubscribed] = useState(false)
+  const [isSearchFocused, setIsSearchFocused] = useState(false)
 
-  const subscribeFormRef = useRef<HTMLDivElement>(null);
+  const subscribeFormRef = useRef<HTMLDivElement>(null)
 
   // Update selectedPostId when URL params change
   useEffect(() => {
     if (slugFromUrl) {
-      setSelectedPostId(slugFromUrl);
+      setSelectedPostId(slugFromUrl)
     }
-  }, [slugFromUrl]);
+  }, [slugFromUrl])
 
   const handlePostClick = (id: string) => {
-    setSelectedPostId(id);
+    setSelectedPostId(id)
     // Update URL without full page reload
-    router.push(`/blog/${id}`, { scroll: false });
+    router.push(`/blog/${id}`, { scroll: false })
     // Scroll to top when a post is selected
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
 
   const handleBackClick = () => {
-    setSelectedPostId(null);
-    router.push("/blog", { scroll: false });
-  };
+    setSelectedPostId(null)
+    router.push("/blog", { scroll: false })
+  }
 
   const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     // Simulate subscription success
-    setIsSubscribed(true);
+    setIsSubscribed(true)
     // Reset form after 3 seconds
     setTimeout(() => {
-      setIsSubscribed(false);
-      setEmail("");
-      setName("");
-    }, 3000);
-  };
+      setIsSubscribed(false)
+      setEmail("")
+      setName("")
+    }, 3000)
+  }
 
   const scrollToSubscribe = () => {
-    subscribeFormRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+    subscribeFormRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   // Find the selected post
-  const selectedPost = selectedPostId
-    ? blogPosts.find((post) => post.id === selectedPostId)
-    : null;
+  const selectedPost = selectedPostId ? blogPosts.find((post) => post.id === selectedPostId) : null
 
   // Filter posts based on search term and category
   const filteredPosts = blogPosts.filter((post) => {
     const matchesSearch =
       post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory =
-      selectedCategory === "All" || post.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+    const matchesCategory = selectedCategory === "All" || post.category === selectedCategory
+    return matchesSearch && matchesCategory
+  })
 
   return (
     <>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white min-h-screen">
         {selectedPost ? (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <button
               onClick={handleBackClick}
               className="mb-6 flex items-center text-[#0084FF] hover:text-[#003C8F] transition-colors group"
@@ -282,10 +260,9 @@ export default function BlogPage() {
               content={selectedPost.content}
               comments={selectedPost.comments}
               author={selectedPost.author}
-              relatedPosts={
-                relatedPosts[selectedPost.id as keyof typeof relatedPosts]
-              }
+              relatedPosts={relatedPosts[selectedPost.id as keyof typeof relatedPosts]}
               onRelatedPostClick={handlePostClick}
+              postId={selectedPost.id}
             />
           </motion.div>
         ) : (
@@ -392,16 +369,12 @@ export default function BlogPage() {
                   <div className="text-[#0084FF] mb-4">
                     <Search className="h-12 w-12 mx-auto" />
                   </div>
-                  <h3 className="text-xl font-medium text-gray-700 mb-2">
-                    No results found
-                  </h3>
-                  <p className="text-gray-500 mb-6">
-                    We couldn't find any posts matching your search criteria.
-                  </p>
+                  <h3 className="text-xl font-medium text-gray-700 mb-2">No results found</h3>
+                  <p className="text-gray-500 mb-6">We couldn't find any posts matching your search criteria.</p>
                   <button
                     onClick={() => {
-                      setSearchTerm("");
-                      setSelectedCategory("All");
+                      setSearchTerm("")
+                      setSelectedCategory("All")
                     }}
                     className="px-4 py-2 bg-[#0084FF] text-white rounded-md hover:bg-[#003C8F] transition-colors"
                   >
@@ -410,9 +383,6 @@ export default function BlogPage() {
                 </motion.div>
               )}
             </AnimatePresence>
-
-            
-           
           </>
         )}
       </div>
@@ -461,9 +431,7 @@ export default function BlogPage() {
                       <User className="h-3 w-3 mr-1" />
                       <span>{post.author}</span>
                     </div>
-                    <p className="text-gray-600 text-sm line-clamp-2">
-                      {post.excerpt}
-                    </p>
+                    <p className="text-gray-600 text-sm line-clamp-2">{post.excerpt}</p>
                   </div>
                 </motion.div>
               ))}
@@ -473,11 +441,7 @@ export default function BlogPage() {
       )}
 
       {/* Subscribe section */}
-      <div
-        id="subscribe"
-        ref={subscribeFormRef}
-        className="bg-[#0084FF] text-white py-12 px-4 sm:px-6 lg:px-8"
-      >
+      <div id="subscribe" ref={subscribeFormRef} className="bg-[#0084FF] text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -487,8 +451,8 @@ export default function BlogPage() {
           >
             <h2 className="text-2xl font-semibold mb-2">Stay Updated</h2>
             <p className="text-white/80 max-w-2xl mx-auto">
-              Subscribe to our newsletter to receive the latest blog posts,
-              industry news, and exclusive tips directly to your inbox.
+              Subscribe to our newsletter to receive the latest blog posts, industry news, and exclusive tips directly
+              to your inbox.
             </p>
           </motion.div>
 
@@ -506,12 +470,7 @@ export default function BlogPage() {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <h3 className="text-xl font-medium mb-2">Thank You!</h3>
@@ -558,5 +517,5 @@ export default function BlogPage() {
         </div>
       </div>
     </>
-  );
+  )
 }

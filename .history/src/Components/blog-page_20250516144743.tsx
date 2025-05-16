@@ -7,7 +7,7 @@ import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import {
   ArrowLeft,
- 
+  ArrowRight,
   Search,
   Calendar,
   User,
@@ -412,7 +412,7 @@ export default function BlogPage() {
             </AnimatePresence>
 
             
-           
+            )}
           </>
         )}
       </div>

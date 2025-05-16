@@ -22,7 +22,7 @@ const blogPosts = [
     author: "John Smith",
     readTime: "5 min read",
     category: "SEO",    
-    image: "/Image/Is-Search-Engine-Submission-Necessary.png",
+    image: "/Image/",
   },
   {
     id: "inbound-linking",
@@ -33,7 +33,7 @@ const blogPosts = [
     author: "Jane Doe",
     readTime: "4 min read",
     category: "Link Building",
-    image: "/Image/SEO-link-builder.png",
+    image: "/Image/services-analytics-alt-colors-optimized.png",
   },
   {
     id: "anchor-text",
@@ -44,7 +44,7 @@ const blogPosts = [
     author: "Mike Johnson",
     readTime: "6 min read",
     category: "Link Building",
-    image: "/Image/Anchor-Text.jpg",
+    image: "/Image/seo_specialist_workplace-optimized.png",
   },
   {
     id: "absolute-vs-relative-links",
@@ -55,7 +55,7 @@ const blogPosts = [
     author: "Sarah Williams",
     readTime: "7 min read",
     category: "Technical SEO",
-    image: "/Image/absolutevsrelative.jpg",
+    image: "/Image/services-seo-alt-colors-optimized.png",
   },
 ];
 
@@ -155,9 +155,8 @@ function BlogPostHeader({ post }: { post: (typeof blogPosts)[0] }) {
           src={post.image || "/placeholder.svg?height=400&width=800"}
           alt={post.title}
           height={300}
-          width={400}
-          className="ml-130"
-          
+          width={300}
+          className="ml-140"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

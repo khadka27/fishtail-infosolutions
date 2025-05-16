@@ -557,6 +557,90 @@ export default function BlogPage() {
           )}
         </div>
       </div>
+      {/* Subscribe section */}
+      <div
+        id="subscribe"
+        ref={subscribeFormRef}
+        className="bg-[#0084FF] text-white py-12 px-4 sm:px-6 lg:px-8"
+      >
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl font-semibold mb-2">Stay Updated</h2>
+            <p className="text-white/80 max-w-2xl mx-auto">
+              Subscribe to our newsletter to receive the latest blog posts,
+              industry news, and exclusive tips directly to your inbox.
+            </p>
+          </motion.div>
+
+          {isSubscribed ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-white/10 rounded-lg p-6 text-center max-w-md mx-auto"
+            >
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-[#0084FF] mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-medium mb-2">Thank You!</h3>
+              <p>You've been successfully subscribed to our newsletter.</p>
+            </motion.div>
+          ) : (
+            <motion.form
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              onSubmit={handleSubscribe}
+              className="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto"
+            >
+              <div className="flex-1">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                  required
+                />
+              </div>
+              <div className="flex-1">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                  required
+                />
+              </div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                type="submit"
+                className="bg-white text-[#0084FF] px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors shadow-md"
+              >
+                Subscribe
+              </motion.button>
+            </motion.form>
+          )}
+        </div>
     </>
   );
 }

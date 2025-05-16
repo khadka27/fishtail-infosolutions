@@ -476,9 +476,9 @@ export default function BlogPage() {
       <div
         id="subscribe"
         ref={subscribeFormRef}
-        className="bg-[#0084FF] text-white py-12 px-4 sm:px-6 lg:px-8"
+        className="bg-[#0084FF] text-white py-12  sm:px-6 "
       >
-        <div className="max-w-5xl mx-auto">
+        <div >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -557,6 +557,7 @@ export default function BlogPage() {
           )}
         </div>
       </div>
+      
     </>
   );
 }

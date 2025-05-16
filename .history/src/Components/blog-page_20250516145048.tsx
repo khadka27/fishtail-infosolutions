@@ -476,7 +476,7 @@ export default function BlogPage() {
       <div
         id="subscribe"
         ref={subscribeFormRef}
-        className="bg-[#0084FF] text-white py-12 px-4 sm:px-6 lg:px-8"
+        className="bg-[#0084FF] text-white py-12  sm:px-6 "
       >
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -557,6 +557,7 @@ export default function BlogPage() {
           )}
         </div>
       </div>
+      
     </>
   );
 }

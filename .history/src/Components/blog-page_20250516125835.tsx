@@ -7,7 +7,7 @@ import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import {
   ArrowLeft,
- 
+  ArrowRight,
   Search,
   Calendar,
   User,
@@ -18,9 +18,9 @@ import BlogPostCard from "@/Components/blog-post-card-class";
 import BlogPostComponent from "@/Components/blog-post";
 import { motion, AnimatePresence } from "framer-motion";
 import image1 from "@/Images/Is-Search-Engine-Submission-Necessary.png";
-import image2 from "@/Images/SEO-link-builder.png";
-import image3 from "@/Images/Anchor-Text.jpg";
-import image4 from "@/Images/absolutevsrelative.jpg";
+import image2 from "@/Images/Can-Link-Building-Hurt-Your-SEO.webp";
+import image3 from "@/Images/seo_specialist_workplace-optimized.png";
+import image4 from "@/Images/services-seo-alt-colors-optimized.png";
 
 import { useParams, useRouter } from "next/navigation";
 
@@ -411,8 +411,29 @@ export default function BlogPage() {
               )}
             </AnimatePresence>
 
-            
-           
+            {filteredPosts.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex justify-center mt-12 mb-8"
+              >
+                <nav
+                  className="inline-flex rounded-md shadow-sm"
+                  aria-label="Pagination"
+                >
+                  <button className="px-4 py-2 text-sm font-medium text-white bg-[#0084FF] rounded-l-md hover:bg-[#003C8F] transition-colors">
+                    1
+                  </button>
+                  <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 transition-colors">
+                    2
+                  </button>
+                  <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 transition-colors">
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </nav>
+              </motion.div>
+            )}
           </>
         )}
       </div>

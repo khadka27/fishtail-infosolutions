@@ -57,17 +57,15 @@ class BlogPostCard extends React.Component<BlogPostCardProps> {
             {category}
           </div>
           <motion.div
-            className="h-48 ml-10 md:h-40 w-80 relative"
+            className="h-48 mlmd:h-40 w-100 relative"
             animate={{ scale: isHovered ? 1.05 : 1 }}
             transition={{ duration: 0.4 }}
           >
             <Image
               src={imageUrl || "/placeholder.svg"}
               alt={title}
-              height={100}
-              width={200}
-              className="object-cover ml-5"
-              
+              className="object-cover"
+              fill
               // sizes="(max-width: 768px) 100vw, 33vw"
             />
           </motion.div>

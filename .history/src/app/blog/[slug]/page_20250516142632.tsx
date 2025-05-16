@@ -55,7 +55,7 @@ const blogPosts = [
     author: "Sarah Williams",
     readTime: "7 min read",
     category: "Technical SEO",
-    image: "/Image/absolutevsrelative.jpg",
+    image: "/Image/absolutevsrelative.png",
   },
 ];
 

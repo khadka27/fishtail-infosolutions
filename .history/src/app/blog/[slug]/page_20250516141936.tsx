@@ -33,7 +33,7 @@ const blogPosts = [
     author: "Jane Doe",
     readTime: "4 min read",
     category: "Link Building",
-    image: "/Image/SEO-link-builder.png",
+    image: "/Image/Can-Link-Building-Hurt-Your-SEO.webp",
   },
   {
     id: "anchor-text",
@@ -55,7 +55,7 @@ const blogPosts = [
     author: "Sarah Williams",
     readTime: "7 min read",
     category: "Technical SEO",
-    image: "/Image/absolutevsrelative.jpg",
+    image: "/Image/absolutevsrelative.png",
   },
 ];
 
@@ -156,7 +156,7 @@ function BlogPostHeader({ post }: { post: (typeof blogPosts)[0] }) {
           alt={post.title}
           height={300}
           width={400}
-          className="ml-130"
+          className="ml-100"
           
           priority
         />

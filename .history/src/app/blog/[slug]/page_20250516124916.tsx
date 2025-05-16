@@ -7,7 +7,7 @@ import BlogPageComponent from "@/Components/blog-page";
 import BlogPostClientInteractions from "@/Components/BlogPostClientInteractions";
 import ProgressBar from "@/Components/progress-bar";
 // import TableOfContents from "@/Components/table-of-contents";
-// import CommentForm from "@/Components/comment-form";
+import CommentForm from "@/Components/comment-form";
 import type { Metadata } from "next";
 
 
@@ -22,7 +22,7 @@ const blogPosts = [
     author: "John Smith",
     readTime: "5 min read",
     category: "SEO",    
-    image: "/Image/Is-Search-Engine-Submission-Necessary.png",
+    image: "/Image/services-payperclick-alt-colors-optimized.png",
   },
   {
     id: "inbound-linking",
@@ -33,7 +33,7 @@ const blogPosts = [
     author: "Jane Doe",
     readTime: "4 min read",
     category: "Link Building",
-    image: "/Image/SEO-link-builder.png",
+    image: "/Image/services-analytics-alt-colors-optimized.png",
   },
   {
     id: "anchor-text",
@@ -44,7 +44,7 @@ const blogPosts = [
     author: "Mike Johnson",
     readTime: "6 min read",
     category: "Link Building",
-    image: "/Image/Anchor-Text.jpg",
+    image: "/Image/seo_specialist_workplace-optimized.png",
   },
   {
     id: "absolute-vs-relative-links",
@@ -55,7 +55,7 @@ const blogPosts = [
     author: "Sarah Williams",
     readTime: "7 min read",
     category: "Technical SEO",
-    image: "/Image/absolutevsrelative.jpg",
+    image: "/Image/services-seo-alt-colors-optimized.png",
   },
 ];
 
@@ -155,9 +155,8 @@ function BlogPostHeader({ post }: { post: (typeof blogPosts)[0] }) {
           src={post.image || "/placeholder.svg?height=400&width=800"}
           alt={post.title}
           height={300}
-          width={400}
-          className="ml-130"
-          
+          width={300}
+          className="ml-140"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -224,8 +223,48 @@ function BlogPost({ post }: { post: (typeof blogPosts)[0] }) {
 
           
 
-          
-              
+          {/* Related posts section */}
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h2 className="text-2xl font-semibold text-[#003C8F] mb-6">
+              Related Articles
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {blogPosts
+                .filter((relatedPost) => relatedPost.id !== post.id)
+                .slice(0, 3)
+                .map((relatedPost) => (
+                  <Link
+                    key={relatedPost.id}
+                    href={`/blog/${relatedPost.id}`}
+                    className="group"
+                  >
+                    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+                      <div className="relative h-40 overflow-hidden">
+                        <Image
+                          src={
+                            relatedPost.image ||
+                            "/placeholder.svg?height=200&width=400" ||
+                            "/placeholder.svg"
+                          }
+                          alt={relatedPost.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-lg font-medium text-gray-800 mb-2 group-hover:text-[#0084FF] transition-colors">
+                          {relatedPost.title}
+                        </h3>
+                        <div className="flex items-center text-gray-500 text-xs">
+                          <Calendar className="h-3 w-3 mr-1" />
+                          <span>{relatedPost.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>

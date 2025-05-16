@@ -33,7 +33,7 @@ const blogPosts = [
     author: "Jane Doe",
     readTime: "4 min read",
     category: "Link Building",
-    image: "/Image/SEO-link-builder.png",
+    image: "/Image/services-analytics-alt-colors-optimized.png",
   },
   {
     id: "anchor-text",
@@ -44,7 +44,7 @@ const blogPosts = [
     author: "Mike Johnson",
     readTime: "6 min read",
     category: "Link Building",
-    image: "/Image/Anchor-Text.jpg",
+    image: "/Image/seo_specialist_workplace-optimized.png",
   },
   {
     id: "absolute-vs-relative-links",
@@ -55,7 +55,7 @@ const blogPosts = [
     author: "Sarah Williams",
     readTime: "7 min read",
     category: "Technical SEO",
-    image: "/Image/absolutevsrelative.jpg",
+    image: "/Image/services-seo-alt-colors-optimized.png",
   },
 ];
 
@@ -154,9 +154,9 @@ function BlogPostHeader({ post }: { post: (typeof blogPosts)[0] }) {
         <Image
           src={post.image || "/placeholder.svg?height=400&width=800"}
           alt={post.title}
-          height={300}
-          width={400}
-          className="ml-130"
+          height={600}
+          width={300}
+          // className="ml-140"
           
           priority
         />

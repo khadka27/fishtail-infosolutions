@@ -33,7 +33,7 @@ const blogPosts = [
     author: "Jane Doe",
     readTime: "4 min read",
     category: "Link Building",
-    image: "/Image/SEO-link-builder.png",
+    image: "/Image/SEO-link-builde",
   },
   {
     id: "anchor-text",
@@ -55,7 +55,7 @@ const blogPosts = [
     author: "Sarah Williams",
     readTime: "7 min read",
     category: "Technical SEO",
-    image: "/Image/absolutevsrelative.jpg",
+    image: "/Image/absolutevsrelative.png",
   },
 ];
 
