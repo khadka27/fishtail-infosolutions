@@ -255,6 +255,7 @@ export default function BlogPage() {
             </button>
 
             <BlogPostComponent
+            id={selectedPost.id}
               title={selectedPost.title}
               date={selectedPost.date}
               content={selectedPost.content}
@@ -262,7 +263,7 @@ export default function BlogPage() {
               author={selectedPost.author}
               relatedPosts={relatedPosts[selectedPost.id as keyof typeof relatedPosts]}
               onRelatedPostClick={handlePostClick}
-              postId={selectedPost.id}
+              id={selectedPost.id}
             />
           </motion.div>
         ) : (

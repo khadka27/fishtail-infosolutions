@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import Image from "next/image"
 import { Calendar, User, MessageSquare } from "lucide-react"

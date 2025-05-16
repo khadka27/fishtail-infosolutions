@@ -262,7 +262,7 @@ export default function BlogPage() {
               author={selectedPost.author}
               relatedPosts={relatedPosts[selectedPost.id as keyof typeof relatedPosts]}
               onRelatedPostClick={handlePostClick}
-              postId={selectedPost.id}
+              postid={selectedPost.id}
             />
           </motion.div>
         ) : (
