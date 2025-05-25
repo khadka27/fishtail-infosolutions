@@ -1,6 +1,6 @@
 "use client"
 
-import { type ReactNode } from "react"
+import { type ReactNode, useState, useEffect } from "react"
 import { PageTransition } from "@/Components/page-transition"
 
 interface PageWrapperProps {
@@ -8,6 +8,11 @@ interface PageWrapperProps {
 }
 
 export default function PageWrapper({ children }: PageWrapperProps) {
+
+  useEffect(() => {
+    // Simulate loading time
+    return () => clearTimeout(timer)
+  }, [])
 
 
   return <PageTransition>{children}</PageTransition>

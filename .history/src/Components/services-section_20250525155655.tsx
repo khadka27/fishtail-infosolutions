@@ -518,7 +518,7 @@ export function ServicesSection() {
                     width={180}
                     height={180}
                     unoptimized
-                    className="w-[120px] h-[180px] sm:w-[150px] md:w-[160px] lg:w-[180px] object-contain"
+                    className="w-[120px]  sm:w-[150px] md:w-[160px] lg:w-[180px] object-contain"
                   />
                 </div>
                 <h3 className="text-center font-semibold text-lg sm:text-xl lg:text-2xl text-white mb-3">

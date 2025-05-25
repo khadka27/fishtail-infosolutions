@@ -152,7 +152,7 @@ export function HeroSection() {
                 </div>
 
                 <a
-                  href="/Services/web-development"
+                  href="/Services/seo"
                   className="inline-block px-6 py-2.5 bg-white text-[#0084FF] rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0084FF]"
                 >
                   Learn More
@@ -270,12 +270,10 @@ export function HeroSection() {
                     </span>
                   </div>
 
-                  <a
-                  href="/Services/local-seo"
-                  className="inline-block px-6 py-2.5 bg-white text-[#0084FF] rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0084FF]"
-                >
-                  Learn More
-                </a>
+                  {/* Learn More button */}
+                  <button className="px-6 py-2.5 bg-white text-[#003C8F] dark:text-[#0084FF] rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#003C8F]">
+                    Learn More
+                  </button>
                 </div>
               </div>
 
@@ -539,12 +537,10 @@ export function HeroSection() {
               loyal customers and driving your business growth.
             </p>
 
-            <a
-                  href="/Services/lead-generation"
-                  className="inline-block px-6 py-2.5 bg-white text-[#0084FF] rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0084FF]"
-                >
-                  Learn More
-                </a>
+            {/* Learn More button */}
+            <button className="px-6 py-2.5 bg-white text-black rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black">
+              Learn More
+            </button>
           </div>
         </div>
       </div>

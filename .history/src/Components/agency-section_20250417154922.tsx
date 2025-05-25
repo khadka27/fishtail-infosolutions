@@ -117,7 +117,7 @@ export default function AgencyPage({
                 search engine rankings.
               </p>
               <Link
-                href="/Services"
+                href="/services"
                 className="inline-flex items-center bg-white text-[#0084FF] px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105 shadow-md"
               >
                 Our Services

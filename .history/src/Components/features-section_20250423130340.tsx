@@ -12,7 +12,6 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-
 export function FeaturesSection() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
@@ -263,13 +262,10 @@ export function FeaturesSection() {
         </div>
 
         <div className="mt-12 text-center">
-  <a
-    href="/Services"
-    className="inline-block px-6 py-3 bg-[#0084FF] hover:bg-[#003C8F] text-white rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#0084FF] focus:ring-offset-2"
-  >
-    Explore All Services
-  </a>
-</div>
+          <button className="px-6 py-3 bg-[#0084FF] hover:bg-[#003C8F] text-white rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#0084FF] focus:ring-offset-2">
+            Explore All Services
+          </button>
+        </div>
       </div>
     </section>
   );

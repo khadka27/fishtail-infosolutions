@@ -245,7 +245,7 @@ export function ServicesSection() {
       features: [
         "Competitor Analysis",
         "On-Page SEO",
-
+        "Backlink Strategy",
         "Blogging",
       ],
       stats: { value: "187%", label: "Traffic Growth" },
@@ -261,10 +261,10 @@ export function ServicesSection() {
         "Funnel Tracking",
         "A/B Testing",
         "Heatmaps",
-
+        "ROI Forecasting",
       ],
       stats: { value: "3.5x", label: "ROI Improvement" },
-      link: "/Services/web-development",
+      link: "/Services/analytics",
     },
     {
       title: "PPC Advertising",
@@ -276,7 +276,7 @@ export function ServicesSection() {
         "Search Ads",
         "Display Ads",
         "Remarketing",
-
+        "Geo-Targeting",
       ],
       stats: { value: "68%", label: "Cost Reduction" },
       link: "/Services/ppc-marketing",
@@ -518,7 +518,7 @@ export function ServicesSection() {
                     width={180}
                     height={180}
                     unoptimized
-                    className="w-[120px] h-[180px] sm:w-[150px] md:w-[160px] lg:w-[180px] object-contain"
+                    className="w-[120px] h-auto sm:w-[150px] md:w-[160px] lg:w-[180px] object-contain"
                   />
                 </div>
                 <h3 className="text-center font-semibold text-lg sm:text-xl lg:text-2xl text-white mb-3">
@@ -547,7 +547,7 @@ export function ServicesSection() {
                     ))}
                   </ul>
                   <div className="mt-4 flex justify-center">
-                    <Link href={service.link}className="flex items-center text-white hover:text-white/80 transition-colors text-sm bg-white/20 px-3 py-1 rounded-full">
+                    <Link href={}className="flex items-center text-white hover:text-white/80 transition-colors text-sm bg-white/20 px-3 py-1 rounded-full">
                       Learn more <ArrowRight className="ml-1 w-3 h-3" />
                     </Link>
                   </div>

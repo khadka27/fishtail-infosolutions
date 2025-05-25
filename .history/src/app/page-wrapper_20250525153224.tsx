@@ -1,6 +1,6 @@
 "use client"
 
-import { type ReactNode } from "react"
+import { type ReactNode, useState, useEffect } from "react"
 import { PageTransition } from "@/Components/page-transition"
 
 interface PageWrapperProps {
