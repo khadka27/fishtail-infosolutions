@@ -165,12 +165,7 @@ export function Header() {
         {/* Top bar */}
         <div className="w-full bg-blue-800 text-white py-3 px-4 md:py-4 md:px-6">
           <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
-            <div className="flex items-center text-center md:text-left">
-              {/* <Heart className="h-4 w-4 md:h-5 md:w-5 mr-2 md:mr-3" />
-              <span className="text-sm md:text-base">
-                Easy to use theme with exciting features
-              </span> */}
-            </div>
+            ?
             <div className="flex items-center space-x-4 md:space-x-8">
               <div
                 className="flex items-center cursor-pointer hover:text-primary transition-colors"
