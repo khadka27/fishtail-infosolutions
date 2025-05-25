@@ -296,8 +296,7 @@ export default function TestimonialsSection() {
 
           <motion.button
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white hover:bg-gray-100 text-gray-800 rounded-full p-3 shadow-lg transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0084FF] z-10"
-            aria-label="Next testimonial"
+            className="absolute -0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white hover:bg-gray-100 text-gray-800 rounded-full p-3 shadow-lg transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0084FF] z-10"            aria-label="Next testimonial"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
