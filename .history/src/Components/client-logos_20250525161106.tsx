@@ -8,10 +8,10 @@ import {
   motion,
   useAnimation,
   useInView,
-  // AnimatePresence,
+  AnimatePresence,
 } from "framer-motion";
 import Image from "next/image";
-// import { ChevronLeft, ChevronRight,  Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 import logo1 from "@/Images/logo1.png";
 import logo2 from "@/Images/logo2.png";
 import logo3 from "@/Images/logo3.png";
@@ -24,7 +24,6 @@ import upgrad from "@/Images/upgrad.png"
 import shikshanerd from "@/Images/shiksha.png"
 import nmis from "@/Images/nmims.png"
 import eduversity from "@/Images/eduversitylogo.png"
-import Link from "next/link";
 
 
 const clients = [
@@ -204,7 +203,7 @@ const clients = [
 export default function ClientLogos() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
-  // const carouselRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
   const controls = useAnimation();
   const [activeClient, setActiveClient] = useState(0);
@@ -271,15 +270,15 @@ export default function ClientLogos() {
     },
   };
 
-  // const handlePrev = () => {
-  //   setActiveClient((prev) => (prev - 1 + clients.length) % clients.length);
-  //   setAutoplay(false);
-  // };
+  const handlePrev = () => {
+    setActiveClient((prev) => (prev - 1 + clients.length) % clients.length);
+    setAutoplay(false);
+  };
 
-  // const handleNext = () => {
-  //   setActiveClient((prev) => (prev + 1) % clients.length);
-  //   setAutoplay(false);
-  // };
+  const handleNext = () => {
+    setActiveClient((prev) => (prev + 1) % clients.length);
+    setAutoplay(false);
+  };
 
   const handleLogoClick = (index: number) => {
     setActiveClient(index);
@@ -374,13 +373,13 @@ export default function ClientLogos() {
         </div>
 
         {/* Testimonial Section */}
-        {/* <div className="relative bg-[#F5F5F5] rounded-xl p-6 md:p-8 mb-8 overflow-hidden">
-
+        <div className="relative bg-[#F5F5F5] rounded-xl p-6 md:p-8 mb-8 overflow-hidden">
+          {/* Background decoration */}
           <div className="absolute top-0 right-0 w-40 h-40 opacity-5">
             <Quote className="w-full h-full text-[#0084FF]" />
           </div>
 
-   
+          {/* Navigation buttons */}
           <div className="absolute top-1/2 left-4 -translate-y-1/2 z-10">
             <button
               onClick={handlePrev}
@@ -398,10 +397,10 @@ export default function ClientLogos() {
             >
               <ChevronRight className="w-5 h-5 text-[#003C8F]" />
             </button>
-          </div> */}
+          </div>
 
         
-          {/* <div
+          <div
             className="overflow-hidden"
             ref={carouselRef}
             onMouseEnter={() => setIsHovering(true)}
@@ -458,7 +457,7 @@ export default function ClientLogos() {
                 </div>
               </motion.div>
             </AnimatePresence>
-          </div> */}
+          </div>
 
           {/* Pagination dots
           <div className="flex justify-center mt-6 gap-2">
@@ -488,11 +487,11 @@ export default function ClientLogos() {
             Join our growing list of satisfied clients and experience the
             difference
           </p>
-          <Link href="/contact"className="px-6 py-2 bg-[#0084FF] hover:bg-[#003C8F] text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+          <button className="px-6 py-2 bg-[#0084FF] hover:bg-[#003C8F] text-white rounded-full transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
             Request a Free Consultation
-          </Link>
+          </button>
         </motion.div>
-      {/* </div> */}
+      </div>
     </section>
   );
 }

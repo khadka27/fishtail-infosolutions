@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   // Ensure nepalOffice is valid before passing it to MapWrapper
-  const indiaOffice = officeLocations.find((loc) => loc.country === "Nepal")
+  const indiaOffice = officeLocations.find((loc) => loc.country === "India")
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -42,8 +42,8 @@ export default function ContactPage() {
           <div className="flex items-start space-x-4">
             <Phone className="w-5 h-5 text-gray-400 mt-1" />
             <div>
-              <h3 className="text-xl text-gray-700">+910 8771234567</h3>
-              <p className="text-sm text-gray-500">Sunday–Friday 9am-6pm</p>
+              <h3 className="text-xl text-gray-700">+977 61 123456</h3>
+              <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
             </div>
           </div>
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
               <p className="text-gray-700">Pokhara</p>
               <p className="text-gray-700">Nepal</p>
               <p className="text-sm text-gray-500 mt-2">Our office is open:</p>
-              <p className="text-sm text-gray-500">Sun to Fri from 9am to 6pm</p>
+              <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
             </div>
           </div>
         </div>

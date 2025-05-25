@@ -70,7 +70,7 @@ export default function ContactPage() {
               <p className="text-gray-700">Pokhara</p>
               <p className="text-gray-700">Nepal</p>
               <p className="text-sm text-gray-500 mt-2">Our office is open:</p>
-              <p className="text-sm text-gray-500">Sun to Fri from 9am to 6pm</p>
+              <p className="text-sm text-gray-500">Sun to Fri from 8am to 6pm</p>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ import {
   // AnimatePresence,
 } from "framer-motion";
 import Image from "next/image";
-// import { ChevronLeft, ChevronRight,  Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight,  Quote } from "lucide-react";
 import logo1 from "@/Images/logo1.png";
 import logo2 from "@/Images/logo2.png";
 import logo3 from "@/Images/logo3.png";
@@ -271,15 +271,15 @@ export default function ClientLogos() {
     },
   };
 
-  // const handlePrev = () => {
-  //   setActiveClient((prev) => (prev - 1 + clients.length) % clients.length);
-  //   setAutoplay(false);
-  // };
+  const handlePrev = () => {
+    setActiveClient((prev) => (prev - 1 + clients.length) % clients.length);
+    setAutoplay(false);
+  };
 
-  // const handleNext = () => {
-  //   setActiveClient((prev) => (prev + 1) % clients.length);
-  //   setAutoplay(false);
-  // };
+  const handleNext = () => {
+    setActiveClient((prev) => (prev + 1) % clients.length);
+    setAutoplay(false);
+  };
 
   const handleLogoClick = (index: number) => {
     setActiveClient(index);
@@ -492,7 +492,7 @@ export default function ClientLogos() {
             Request a Free Consultation
           </Link>
         </motion.div>
-      {/* </div> */}
+      </div>
     </section>
   );
 }

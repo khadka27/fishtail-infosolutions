@@ -43,7 +43,7 @@ export default function ContactPage() {
             <Phone className="w-5 h-5 text-gray-400 mt-1" />
             <div>
               <h3 className="text-xl text-gray-700">+910 8771234567</h3>
-              <p className="text-sm text-gray-500">Sunday–Friday 9am-6pm</p>
+              <p className="text-sm text-gray-500">day–Friday 9am-6pm</p>
             </div>
           </div>
 
@@ -70,7 +70,7 @@ export default function ContactPage() {
               <p className="text-gray-700">Pokhara</p>
               <p className="text-gray-700">Nepal</p>
               <p className="text-sm text-gray-500 mt-2">Our office is open:</p>
-              <p className="text-sm text-gray-500">Sun to Fri from 9am to 6pm</p>
+              <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
             </div>
           </div>
         </div>

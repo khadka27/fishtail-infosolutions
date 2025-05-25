@@ -11,7 +11,7 @@ import {
   // AnimatePresence,
 } from "framer-motion";
 import Image from "next/image";
-// import { ChevronLeft, ChevronRight,  Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight,  Quote } from "lucide-react";
 import logo1 from "@/Images/logo1.png";
 import logo2 from "@/Images/logo2.png";
 import logo3 from "@/Images/logo3.png";
