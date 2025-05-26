@@ -300,12 +300,17 @@ const QuickBookingCard = ({ calendlyUrl }: { calendlyUrl: string }) => {
 export default function LeadGeneration() {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
   const [showInlineCalendly, setShowInlineCalendly] = useState(false)
+  const [activeTab, setActiveTab] = useState(0)
   const contactRef = useRef<HTMLDivElement>(null)
 
   const { openPopup, isLoading: calendlyLoading, error: calendlyError } = useCalendly()
 
   // Your actual Calendly URL
   const CALENDLY_URL = "https://calendly.com/internal-fishtailinfosolutions/30min"
+
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
 
   const handleScheduleClick = () => {
     openPopup(CALENDLY_URL)
