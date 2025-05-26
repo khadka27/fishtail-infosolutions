@@ -459,7 +459,7 @@ export function LeadGenerationPopup({ isOpen, onClose }: LeadGenerationPopupProp
   )
 
   useEffect(() => {
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "aj-iLAzvWtbcif478"
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "Bc-i5YdvnKq246_sc"
     emailjs.init(publicKey)
 
     if (isOpen) {

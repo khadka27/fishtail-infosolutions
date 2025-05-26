@@ -459,7 +459,7 @@ export function LeadGenerationPopup({ isOpen, onClose }: LeadGenerationPopupProp
   )
 
   useEffect(() => {
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "aj-iLAzvWtbcif478"
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "Bc-i5YdvnKq246_sc"
     emailjs.init(publicKey)
 
     if (isOpen) {
@@ -587,7 +587,7 @@ export function LeadGenerationPopup({ isOpen, onClose }: LeadGenerationPopupProp
     setSubmitStatus(null)
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "service_r9efrxa"
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "service_nxr837d"
       const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "template_sp51qhi"
 
       const response = await emailjs.sendForm(serviceId, templateId, formRef.current)
