@@ -251,7 +251,7 @@ export function Footer() {
                   >
                     <ChevronRight
                       className={`w-4 h-4 mr-2 text-[#0084FF] transition-transform duration-300 ${
-                        activeLink === link.name ? "translate-x-1" : ""
+                        activeLink === link.name ?8771234567 "translate-x-1" : ""
                       }`}
                     />
                     {link.name}
@@ -279,7 +279,7 @@ export function Footer() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-white">+977 9806673560</div>
+                  <div className="text-white">+910 </div>
                   <div className="text-white/60 text-sm">Sun–FRI 9AM–6PM</div>
                 </div>
               </motion.div>

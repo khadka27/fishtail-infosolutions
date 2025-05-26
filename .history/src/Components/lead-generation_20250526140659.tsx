@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useState, useRef, useEffect } from "react"
@@ -27,7 +27,7 @@ import audience from "@/Images/audience-targeting.jpg"
 import leadCapture from "@/Images/lead-capture.jpg"
 import leadNurture from "@/Images/nurture.jpg"
 
-// Enhanced Calendly Widget Component with better error handling
+// Calendly Widget Component
 const CalendlyWidget = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   useEffect(() => {
     if (isOpen) {
@@ -36,30 +36,21 @@ const CalendlyWidget = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
         const script = document.createElement("script")
         script.src = "https://assets.calendly.com/assets/external/widget.js"
         script.async = true
-        script.onload = () => {
-          console.log("Calendly script loaded successfully")
-        }
-        script.onerror = () => {
-          console.error("Failed to load Calendly script")
-        }
         document.head.appendChild(script)
       }
 
-      // Initialize Calendly widget with longer timeout
+      // Initialize Calendly widget
       const timer = setTimeout(() => {
         if (window.Calendly) {
-          console.log("Initializing Calendly popup widget")
           window.Calendly.initPopupWidget({
-            url: "https://calendly.com/internal-fishtailinfosolutions/30min",
+            url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
             text: "Schedule time with me",
             color: "#2563eb",
             textColor: "#ffffff",
             branding: true,
           })
-        } else {
-          console.error("Calendly object not available")
         }
-      }, 500) // Increased timeout
+      }, 100)
 
       return () => clearTimeout(timer)
     }
@@ -69,8 +60,8 @@ const CalendlyWidget = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
     if (isOpen) {
       const handleCalendlyEvent = (e: MessageEvent) => {
         if (e.data.event && e.data.event.indexOf("calendly") === 0) {
-          console.log("Calendly event:", e.data.event)
           if (e.data.event === "calendly.event_scheduled") {
+            // Handle successful booking
             console.log("Event scheduled:", e.data.payload)
             onClose()
           }
@@ -85,93 +76,38 @@ const CalendlyWidget = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
   return null
 }
 
-// Enhanced Calendly Inline Widget Component
+// Calendly Inline Widget Component
 const CalendlyInlineWidget = ({ url }: { url: string }) => {
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
   useEffect(() => {
     // Load Calendly script if not already loaded
     if (!document.querySelector('script[src*="calendly.com"]')) {
       const script = document.createElement("script")
       script.src = "https://assets.calendly.com/assets/external/widget.js"
       script.async = true
-      script.onload = () => {
-        console.log("Calendly script loaded for inline widget")
-        initializeWidget()
-      }
-      script.onerror = () => {
-        console.error("Failed to load Calendly script for inline widget")
-        setError("Failed to load calendar. Please try again later.")
-        setIsLoading(false)
-      }
       document.head.appendChild(script)
-    } else {
-      initializeWidget()
     }
 
-    function initializeWidget() {
-      const timer = setTimeout(() => {
-        if (window.Calendly) {
-          const element = document.getElementById("calendly-inline-widget")
-          if (element) {
-            console.log("Initializing Calendly inline widget")
-            window.Calendly.initInlineWidget({
-              url: url,
-              parentElement: element,
-              prefill: {},
-              utm: {},
-            })
-            setIsLoading(false)
-          } else {
-            console.error("Calendly inline widget element not found")
-            setError("Calendar container not found.")
-            setIsLoading(false)
-          }
-        } else {
-          console.error("Calendly object not available for inline widget")
-          setError("Calendar service unavailable. Please try again later.")
-          setIsLoading(false)
-        }
-      }, 1000) // Longer timeout for inline widget
+    // Initialize inline widget
+    const timer = setTimeout(() => {
+      if (window.Calendly) {
+        window.Calendly.initInlineWidget({
+          url: url,
+          parentElement: document.getElementById("calendly-inline-widget"),
+          prefill: {},
+          utm: {},
+        })
+      }
+    }, 100)
 
-      return () => clearTimeout(timer)
-    }
+    return () => clearTimeout(timer)
   }, [url])
 
-  if (error) {
-    return (
-      <div className="flex items-center justify-center h-96 bg-gray-100 rounded-lg">
-        <div className="text-center">
-          <Calendar className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-          <p className="text-gray-600">{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Reload Page
-          </button>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="relative">
-      {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg z-10">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading calendar...</p>
-          </div>
-        </div>
-      )}
-      <div
-        id="calendly-inline-widget"
-        style={{ minWidth: "320px", height: "630px" }}
-        className="rounded-lg overflow-hidden"
-      />
-    </div>
+    <div
+      id="calendly-inline-widget"
+      style={{ minWidth: "320px", height: "630px" }}
+      className="rounded-lg overflow-hidden"
+    />
   )
 }
 
@@ -180,103 +116,40 @@ export default function LeadGeneration() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false)
   const [showInlineCalendly, setShowInlineCalendly] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
-  const [calendlyLoading, setCalendlyLoading] = useState(false)
   const contactRef = useRef<HTMLDivElement>(null)
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" })
   }
 
-  const loadCalendlyScript = (): Promise<void> => {
-    return new Promise((resolve, reject) => {
-      if (window.Calendly) {
-        resolve()
-        return
-      }
-
-      const existingScript = document.querySelector('script[src*="calendly.com"]')
-      if (existingScript) {
-        // Script is loading, wait for it
-        const checkCalendly = setInterval(() => {
-          if (window.Calendly) {
-            clearInterval(checkCalendly)
-            resolve()
-          }
-        }, 100)
-
-        setTimeout(() => {
-          clearInterval(checkCalendly)
-          reject(new Error("Calendly script timeout"))
-        }, 10000)
-        return
-      }
-
+  const openCalendlyPopup = () => {
+    if (window.Calendly) {
+      window.Calendly.initPopupWidget({
+        url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
+        text: "Schedule time with me",
+        color: "#2563eb",
+        textColor: "#ffffff",
+        branding: true,
+      })
+    } else {
+      // Fallback: load script and try again
       const script = document.createElement("script")
       script.src = "https://assets.calendly.com/assets/external/widget.js"
       script.async = true
       script.onload = () => {
-        console.log("Calendly script loaded successfully")
-        // Wait a bit more for Calendly to initialize
-        setTimeout(() => {
-          if (window.Calendly) {
-            resolve()
-          } else {
-            reject(new Error("Calendly object not available"))
-          }
-        }, 500)
-      }
-      script.onerror = () => {
-        reject(new Error("Failed to load Calendly script"))
+        if (window.Calendly) {
+          window.Calendly.initPopupWidget({
+            url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
+            text: "Schedule time with me",
+            color: "#2563eb",
+            textColor: "#ffffff",
+            branding: true,
+          })
+        }
       }
       document.head.appendChild(script)
-    })
-  }
-
-  const openCalendlyPopup = async () => {
-    try {
-      setCalendlyLoading(true)
-      console.log("Attempting to open Calendly popup...")
-
-      await loadCalendlyScript()
-
-      if (window.Calendly) {
-        console.log("Opening Calendly popup widget")
-        window.Calendly.initPopupWidget({
-          url: "https://calendly.com/internal-fishtailinfosolutions/30min",
-          text: "Schedule time with me",
-          color: "#2563eb",
-          textColor: "#ffffff",
-          branding: true,
-        })
-      } else {
-        throw new Error("Calendly is not available")
-      }
-    } catch (error) {
-      console.error("Error opening Calendly popup:", error)
-      // Fallback: open Calendly in new tab
-      window.open("https://calendly.com/internal-fishtailinfosolutions/30min", "_blank")
-    } finally {
-      setCalendlyLoading(false)
     }
   }
-
-  // Test function to check if Calendly URL is valid
-  const testCalendlyUrl = async () => {
-    try {
-      const response = await fetch("https://calendly.com/internal-fishtailinfosolutions/30min", {
-        method: "HEAD",
-        mode: "no-cors",
-      })
-      console.log("Calendly URL test completed")
-    } catch (error) {
-      console.error("Calendly URL might be invalid:", error)
-    }
-  }
-
-  useEffect(() => {
-    // Test the Calendly URL on component mount
-    testCalendlyUrl()
-  }, [])
 
   return (
     <div className="min-h-screen bg-white">
@@ -769,27 +642,17 @@ export default function LeadGeneration() {
                 Ready to Discuss Your Lead Generation Strategy?
               </h2>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Book a free 30-minute consultation with our lead generation experts. We&lsquo;ll analyze your current approach
+                Book a free 30-minute consultation with our lead generation experts. We'll analyze your current approach
                 and provide actionable recommendations to boost your lead quality and conversion rates.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <button
                   onClick={openCalendlyPopup}
-                  disabled={calendlyLoading}
-                  className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg disabled:transform-none disabled:cursor-not-allowed"
+                  className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg"
                 >
-                  {calendlyLoading ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Loading...
-                    </>
-                  ) : (
-                    <>
-                      <Calendar className="w-5 h-5 mr-2" />
-                      Schedule a Consultation
-                    </>
-                  )}
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Schedule a Consultation
                 </button>
                 <button
                   onClick={() => setShowInlineCalendly(!showInlineCalendly)}
@@ -807,7 +670,7 @@ export default function LeadGeneration() {
                   transition={{ duration: 0.5 }}
                   className="bg-white rounded-xl shadow-lg p-6 border border-gray-200"
                 >
-                  <CalendlyInlineWidget url="https://calendly.com/internal-fishtailinfosolutions/30min" />
+                  <CalendlyInlineWidget url="https://calendly.com/your-calendly-username/consultation" />
                 </motion.div>
               )}
 
@@ -881,20 +744,10 @@ export default function LeadGeneration() {
                   </button>
                   <button
                     onClick={openCalendlyPopup}
-                    disabled={calendlyLoading}
-                    className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 disabled:bg-gray-100 disabled:text-gray-400 disabled:border-gray-300 rounded-lg font-medium transition-all text-center disabled:cursor-not-allowed"
+                    className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all text-center"
                   >
-                    {calendlyLoading ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2"></div>
-                        Loading...
-                      </>
-                    ) : (
-                      <>
-                        <Calendar className="w-4 h-4 mr-2" />
-                        Schedule a Consultation
-                      </>
-                    )}
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Schedule a Consultation
                   </button>
                 </div>
               </motion.div>

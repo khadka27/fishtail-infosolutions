@@ -279,7 +279,7 @@ export function Footer() {
                   <Phone className="h-5 w-5" />
                 </div>
                 <div>
-                  <div className="text-white">+977 9806673560</div>
+                  <div className="text-white">+910 8771234567</div>
                   <div className="text-white/60 text-sm">Sun–FRI 9AM–6PM</div>
                 </div>
               </motion.div>

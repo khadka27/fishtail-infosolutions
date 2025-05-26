@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useState, useRef, useEffect } from "react"
@@ -769,7 +768,7 @@ export default function LeadGeneration() {
                 Ready to Discuss Your Lead Generation Strategy?
               </h2>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Book a free 30-minute consultation with our lead generation experts. We&lsquo;ll analyze your current approach
+                Book a free 30-minute consultation with our lead generation experts. We'll analyze your current approach
                 and provide actionable recommendations to boost your lead quality and conversion rates.
               </p>
 
