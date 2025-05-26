@@ -42,7 +42,7 @@ const CalendlyWidget = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
       const timer = setTimeout(() => {
         if (window.Calendly) {
           window.Calendly.initPopupWidget({
-            url: "https://calendly.com/event_types/user", // Replace with your actual Calendly URL
+            url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
             text: "Schedule time with me",
             color: "#2563eb",
             textColor: "#ffffff",
@@ -124,7 +124,7 @@ export default function LeadGeneration() {
   const openCalendlyPopup = () => {
     if (window.Calendly) {
       window.Calendly.initPopupWidget({
-        url: "https://calendly.com/event_types/user", // Replace with your actual Calendly URL
+        url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
         text: "Schedule time with me",
         color: "#2563eb",
         textColor: "#ffffff",
@@ -138,7 +138,7 @@ export default function LeadGeneration() {
       script.onload = () => {
         if (window.Calendly) {
           window.Calendly.initPopupWidget({
-            url: "https://calendly.com/event_types/user", 
+            url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
             text: "Schedule time with me",
             color: "#2563eb",
             textColor: "#ffffff",

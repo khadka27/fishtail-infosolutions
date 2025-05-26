@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { motion } from "framer-motion"
 import {
   Users,
@@ -16,7 +15,6 @@ import {
   TrendingUp,
   CheckCircle2,
   ArrowUpRight,
-  Calendar,
 } from "lucide-react"
 import Image from "next/image"
 import Form from "./form"
@@ -26,128 +24,13 @@ import audience from "@/Images/audience-targeting.jpg"
 import leadCapture from "@/Images/lead-capture.jpg"
 import leadNurture from "@/Images/nurture.jpg"
 
-// Calendly Widget Component
-const CalendlyWidget = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  useEffect(() => {
-    if (isOpen) {
-      // Load Calendly script if not already loaded
-      if (!document.querySelector('script[src*="calendly.com"]')) {
-        const script = document.createElement("script")
-        script.src = "https://assets.calendly.com/assets/external/widget.js"
-        script.async = true
-        document.head.appendChild(script)
-      }
-
-      // Initialize Calendly widget
-      const timer = setTimeout(() => {
-        if (window.Calendly) {
-          window.Calendly.initPopupWidget({
-            url: "https://calendly.com/event_types/user", // Replace with your actual Calendly URL
-            text: "Schedule time with me",
-            color: "#2563eb",
-            textColor: "#ffffff",
-            branding: true,
-          })
-        }
-      }, 100)
-
-      return () => clearTimeout(timer)
-    }
-  }, [isOpen])
-
-  useEffect(() => {
-    if (isOpen) {
-      const handleCalendlyEvent = (e: MessageEvent) => {
-        if (e.data.event && e.data.event.indexOf("calendly") === 0) {
-          if (e.data.event === "calendly.event_scheduled") {
-            // Handle successful booking
-            console.log("Event scheduled:", e.data.payload)
-            onClose()
-          }
-        }
-      }
-
-      window.addEventListener("message", handleCalendlyEvent)
-      return () => window.removeEventListener("message", handleCalendlyEvent)
-    }
-  }, [isOpen, onClose])
-
-  return null
-}
-
-// Calendly Inline Widget Component
-const CalendlyInlineWidget = ({ url }: { url: string }) => {
-  useEffect(() => {
-    // Load Calendly script if not already loaded
-    if (!document.querySelector('script[src*="calendly.com"]')) {
-      const script = document.createElement("script")
-      script.src = "https://assets.calendly.com/assets/external/widget.js"
-      script.async = true
-      document.head.appendChild(script)
-    }
-
-    // Initialize inline widget
-    const timer = setTimeout(() => {
-      if (window.Calendly) {
-        window.Calendly.initInlineWidget({
-          url: url,
-          parentElement: document.getElementById("calendly-inline-widget"),
-          prefill: {},
-          utm: {},
-        })
-      }
-    }, 100)
-
-    return () => clearTimeout(timer)
-  }, [url])
-
-  return (
-    <div
-      id="calendly-inline-widget"
-      style={{ minWidth: "320px", height: "630px" }}
-      className="rounded-lg overflow-hidden"
-    />
-  )
-}
-
 export default function LeadGeneration() {
   const [isPopupOpen, setIsPopupOpen] = useState(false)
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false)
-  const [showInlineCalendly, setShowInlineCalendly] = useState(false)
   const [activeTab, setActiveTab] = useState(0)
   const contactRef = useRef<HTMLDivElement>(null)
 
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  const openCalendlyPopup = () => {
-    if (window.Calendly) {
-      window.Calendly.initPopupWidget({
-        url: "https://calendly.com/event_types/user", // Replace with your actual Calendly URL
-        text: "Schedule time with me",
-        color: "#2563eb",
-        textColor: "#ffffff",
-        branding: true,
-      })
-    } else {
-      // Fallback: load script and try again
-      const script = document.createElement("script")
-      script.src = "https://assets.calendly.com/assets/external/widget.js"
-      script.async = true
-      script.onload = () => {
-        if (window.Calendly) {
-          window.Calendly.initPopupWidget({
-            url: "https://calendly.com/event_types/user", 
-            text: "Schedule time with me",
-            color: "#2563eb",
-            textColor: "#ffffff",
-            branding: true,
-          })
-        }
-      }
-      document.head.appendChild(script)
-    }
   }
 
   return (
@@ -624,83 +507,6 @@ export default function LeadGeneration() {
         </div>
       </section>
 
-      {/* Calendly Booking Section */}
-      <section className="py-8 md:py-16 px-10 md:px-20 bg-gradient-to-br from-blue-50 to-cyan-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center justify-center w-20 h-20 bg-blue-100 rounded-full mb-6 mx-auto">
-                <Calendar className="w-10 h-10 text-blue-600" />
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-                Ready to Discuss Your Lead Generation Strategy?
-              </h2>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Book a free 30-minute consultation with our lead generation experts. We&rsquo;ll analyze your current approach
-                and provide actionable recommendations to boost your lead quality and conversion rates.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                <button
-                  onClick={openCalendlyPopup}
-                  className="inline-flex items-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg"
-                >
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Schedule a Consultation
-                </button>
-                <button
-                  onClick={() => setShowInlineCalendly(!showInlineCalendly)}
-                  className="px-8 py-4 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all"
-                >
-                  {showInlineCalendly ? "Hide Calendar" : "View Available Times"}
-                </button>
-              </div>
-
-              {showInlineCalendly && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white rounded-xl shadow-lg p-6 border border-gray-200"
-                >
-                  <CalendlyInlineWidget url="https://https://calendly.com/event_types/user/me" />
-                </motion.div>
-              )}
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                  <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4 mx-auto">
-                    <CheckCircle2 className="w-6 h-6 text-green-600" />
-                  </div>
-                  <h3 className="text-lg font-bold mb-2 text-gray-800">Free Consultation</h3>
-                  <p className="text-gray-600">No cost, no obligation. Just valuable insights for your business.</p>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                  <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4 mx-auto">
-                    <Target className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-lg font-bold mb-2 text-gray-800">Personalized Strategy</h3>
-                  <p className="text-gray-600">Tailored recommendations based on your specific business needs.</p>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                  <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mb-4 mx-auto">
-                    <TrendingUp className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <h3 className="text-lg font-bold mb-2 text-gray-800">Actionable Insights</h3>
-                  <p className="text-gray-600">Walk away with concrete steps to improve your lead generation.</p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section ref={contactRef} className="py-8 md:py-16 px-10 md:px-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -741,13 +547,12 @@ export default function LeadGeneration() {
                   >
                     Get Your Custom Strategy
                   </button>
-                  <button
-                    onClick={openCalendlyPopup}
-                    className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all text-center"
+                  <a
+                    href="#"
+                    className="px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all text-center"
                   >
-                    <Calendar className="w-4 h-4 mr-2" />
                     Schedule a Consultation
-                  </button>
+                  </a>
                 </div>
               </motion.div>
 
@@ -767,30 +572,6 @@ export default function LeadGeneration() {
 
       {/* Lead Generation Popup */}
       <LeadGenerationPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
-
-      {/* Calendly Widget */}
-      <CalendlyWidget isOpen={isCalendlyOpen} onClose={() => setIsCalendlyOpen(false)} />
     </div>
   )
-}
-
-// Add TypeScript declarations for Calendly
-declare global {
-  interface Window {
-    Calendly: {
-      initPopupWidget: (options: {
-        url: string
-        text?: string
-        color?: string
-        textColor?: string
-        branding?: boolean
-      }) => void
-      initInlineWidget: (options: {
-        url: string
-        parentElement: HTMLElement | null
-        prefill?: Record<string, any>
-        utm?: Record<string, any>
-      }) => void
-    }
-  }
 }

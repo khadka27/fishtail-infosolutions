@@ -424,7 +424,7 @@ const ServicesShowcase = () => {
                 className="bg-[#3498db] hover:bg-[#2980b9] text-white py-3 px-6 rounded flex items-center justify-center"
                 size="lg"
               >
-                <Link href="/contact">
+                <Link href="/Con">
                   <MessageSquare className="mr-2 h-5 w-5" />
                   Free SEO Consultation
                 </Link>

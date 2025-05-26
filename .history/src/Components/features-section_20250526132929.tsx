@@ -11,7 +11,7 @@ import {
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
-import Link from "next/link";
+import { link } from "fs";
 
 
 export function FeaturesSection() {
@@ -216,9 +216,9 @@ export function FeaturesSection() {
                       ))}
                     </ul>
 
-                    <Link href={feature.link}className="flex items-center text-[#0084FF] hover:text-[#003C8F] transition-colors">
+                    <Link className="flex items-center text-[#0084FF] hover:text-[#003C8F] transition-colors">
                       Learn more <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>

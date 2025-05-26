@@ -138,7 +138,7 @@ export default function LeadGeneration() {
       script.onload = () => {
         if (window.Calendly) {
           window.Calendly.initPopupWidget({
-            url: "https://calendly.com/event_types/user", 
+            url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
             text: "Schedule time with me",
             color: "#2563eb",
             textColor: "#ffffff",

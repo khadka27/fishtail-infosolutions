@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useState, useRef, useEffect } from "react"
 import { motion } from "framer-motion"
@@ -42,7 +41,7 @@ const CalendlyWidget = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
       const timer = setTimeout(() => {
         if (window.Calendly) {
           window.Calendly.initPopupWidget({
-            url: "https://calendly.com/event_types/user", // Replace with your actual Calendly URL
+            url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
             text: "Schedule time with me",
             color: "#2563eb",
             textColor: "#ffffff",
@@ -124,7 +123,7 @@ export default function LeadGeneration() {
   const openCalendlyPopup = () => {
     if (window.Calendly) {
       window.Calendly.initPopupWidget({
-        url: "https://calendly.com/event_types/user", // Replace with your actual Calendly URL
+        url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
         text: "Schedule time with me",
         color: "#2563eb",
         textColor: "#ffffff",
@@ -138,7 +137,7 @@ export default function LeadGeneration() {
       script.onload = () => {
         if (window.Calendly) {
           window.Calendly.initPopupWidget({
-            url: "https://calendly.com/event_types/user", 
+            url: "https://calendly.com/your-calendly-username/consultation", // Replace with your actual Calendly URL
             text: "Schedule time with me",
             color: "#2563eb",
             textColor: "#ffffff",
@@ -641,7 +640,7 @@ export default function LeadGeneration() {
                 Ready to Discuss Your Lead Generation Strategy?
               </h2>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Book a free 30-minute consultation with our lead generation experts. We&rsquo;ll analyze your current approach
+                Book a free 30-minute consultation with our lead generation experts. We'll analyze your current approach
                 and provide actionable recommendations to boost your lead quality and conversion rates.
               </p>
 
@@ -669,7 +668,7 @@ export default function LeadGeneration() {
                   transition={{ duration: 0.5 }}
                   className="bg-white rounded-xl shadow-lg p-6 border border-gray-200"
                 >
-                  <CalendlyInlineWidget url="https://https://calendly.com/event_types/user/me" />
+                  <CalendlyInlineWidget url="https://calendly.com/your-calendly-username/consultation" />
                 </motion.div>
               )}
 

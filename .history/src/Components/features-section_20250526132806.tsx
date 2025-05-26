@@ -11,7 +11,6 @@ import {
   ArrowRight,
   CheckCircle,
 } from "lucide-react";
-import Link from "next/link";
 
 
 export function FeaturesSection() {
@@ -39,7 +38,6 @@ export function FeaturesSection() {
         "API Integrations",
         "Performance Optimization",
       ],
-      link: "/Services/web-development",
     },
     {
       icon: BarChart3,
@@ -54,7 +52,6 @@ export function FeaturesSection() {
         "Technical SEO audits",
         "Content strategy & marketing",
       ],
-      link: "/Services/local-seo",
     },
     {
       icon: LineChart,
@@ -69,7 +66,6 @@ export function FeaturesSection() {
         "Automated lead nurturing",
         "Multi-channel outreach strategies",
       ],
-      link: "/Services/lead-generation",
     },
   ];
 
@@ -216,9 +212,9 @@ export function FeaturesSection() {
                       ))}
                     </ul>
 
-                    <Link href={feature.link}className="flex items-center text-[#0084FF] hover:text-[#003C8F] transition-colors">
+                    <button className="flex items-center text-[#0084FF] hover:text-[#003C8F] transition-colors">
                       Learn more <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
+                    </button>
                   </div>
                 )}
               </div>
