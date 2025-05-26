@@ -405,8 +405,9 @@ export default function LeadGeneration() {
                 >
                   Boost Your Lead Generation
                 </button>
-                <Link
-                  href={CALENDLY_URL}
+                <button
+                  onClick={handleScheduleClick}
+                  disabled={calendlyLoading}
                   className="px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium transition-all border border-white/30 w-full sm:w-auto text-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {calendlyLoading ? (
@@ -420,7 +421,7 @@ export default function LeadGeneration() {
                       Schedule Consultation
                     </>
                   )}
-                </Link>
+                </button>
               </div>
 
               {calendlyError && (

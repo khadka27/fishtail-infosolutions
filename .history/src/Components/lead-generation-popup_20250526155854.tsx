@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client"
 
 import type React from "react"
@@ -1138,6 +1137,7 @@ export function LeadGenerationPopup({ isOpen, onClose }: LeadGenerationPopupProp
                   <p className="text-sm text-blue-800 font-medium mb-1">What happens next?</p>
                   <ul className="text-sm text-blue-700 space-y-1">
                     <li>• Our lead generation experts will review your requirements</li>
+                    // eslint-disable-next-line react/no-unescaped-entities
                     <li>• We'll prepare a custom strategy proposal within 24 hours</li>
                     <li>• Schedule a consultation to discuss your personalized plan</li>
                     <li>• Get started with a proven lead generation system</li>

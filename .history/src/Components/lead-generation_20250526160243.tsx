@@ -24,7 +24,6 @@ import Image from "next/image"
 import Form from "./form"
 import { LeadGenerationPopup } from "./lead-generation-popup"
 import leadGeneration from "@/Images/lead-generation.jpg"
-import Link from "next/link"
 
 // Enhanced Calendly Hook with better error handling
 const useCalendly = () => {
@@ -292,10 +291,9 @@ const QuickBookingCard = ({ calendlyUrl }: { calendlyUrl: string }) => {
         )}
 
         <div className="space-y-3">
-          <Link
-          href={calendlyUrl}
-           
-           
+          <lINK
+            onClick={handleScheduleClick}
+            disabled={isLoading}
             className="w-full inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-lg font-medium transition-all disabled:cursor-not-allowed"
           >
             {isLoading ? (
@@ -309,7 +307,7 @@ const QuickBookingCard = ({ calendlyUrl }: { calendlyUrl: string }) => {
                 Schedule Now
               </>
             )}
-          </Link>
+          </button>
 
           <button
             onClick={handleDirectLink}
@@ -405,8 +403,9 @@ export default function LeadGeneration() {
                 >
                   Boost Your Lead Generation
                 </button>
-                <Link
-                  href={CALENDLY_URL}
+                <button
+                  onClick={handleScheduleClick}
+                  disabled={calendlyLoading}
                   className="px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium transition-all border border-white/30 w-full sm:w-auto text-center disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {calendlyLoading ? (
@@ -420,7 +419,7 @@ export default function LeadGeneration() {
                       Schedule Consultation
                     </>
                   )}
-                </Link>
+                </button>
               </div>
 
               {calendlyError && (
@@ -737,8 +736,9 @@ export default function LeadGeneration() {
                   >
                     Get Your Custom Strategy
                   </button>
-                  <Link
-                    href={CALENDLY_URL}
+                  <button
+                    onClick={handleScheduleClick}
+                    disabled={calendlyLoading}
                     className="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 disabled:bg-gray-100 disabled:text-gray-400 disabled:border-gray-300 rounded-lg font-medium transition-all text-center disabled:cursor-not-allowed"
                   >
                     {calendlyLoading ? (
@@ -752,7 +752,7 @@ export default function LeadGeneration() {
                         Schedule a Consultation
                       </>
                     )}
-                  </Link>
+                  </button>
                 </div>
               </motion.div>
 

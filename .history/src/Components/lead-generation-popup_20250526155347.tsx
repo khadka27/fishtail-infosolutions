@@ -85,7 +85,7 @@ const COUNTRY_CODES = [
   { code: "+7", country: "RU", flag: "🇷🇺", name: "Russia" },
   { code: "+380", country: "UA", flag: "🇺🇦", name: "Ukraine" },
   { code: "+375", country: "BY", flag: "🇧🇾", name: "Belarus" },
-  { code: "+373", country: "MD", flag: "���🇩", name: "Moldova" },
+  { code: "+373", country: "MD", flag: "🇲🇩", name: "Moldova" },
   { code: "+81", country: "JP", flag: "🇯🇵", name: "Japan" },
   { code: "+82", country: "KR", flag: "🇰🇷", name: "South Korea" },
   { code: "+86", country: "CN", flag: "🇨🇳", name: "China" },
@@ -459,7 +459,7 @@ export function LeadGenerationPopup({ isOpen, onClose }: LeadGenerationPopupProp
   )
 
   useEffect(() => {
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "Bc-i5YdvnKq246_sc"
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "aj-iLAzvWtbcif478"
     emailjs.init(publicKey)
 
     if (isOpen) {
@@ -587,8 +587,8 @@ export function LeadGenerationPopup({ isOpen, onClose }: LeadGenerationPopupProp
     setSubmitStatus(null)
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "service_nxr837d"
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "template_3resqzt"
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "service_r9efrxa"
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "template_sp51qhi"
 
       const response = await emailjs.sendForm(serviceId, templateId, formRef.current)
       console.log("Email sent successfully:", response)
@@ -1233,39 +1233,20 @@ export function LeadGenerationPopup({ isOpen, onClose }: LeadGenerationPopupProp
                   <input type="hidden" name="name" value={formData.name} />
                   <input type="hidden" name="email" value={formData.email} />
                   <input type="hidden" name="company" value={formData.company} />
-                  <input type="hidden" name="website" value={formData.website || ""} />
-                  <input
-                    type="hidden"
-                    name="businessSize"
-                    value={BUSINESS_SIZES.find((s) => s.id === formData.businessSize)?.label || ""}
-                  />
-                  <input
-                    type="hidden"
-                    name="monthlyBudget"
-                    value={MONTHLY_BUDGETS.find((b) => b.id === formData.monthlyBudget)?.label || ""}
-                  />
-                  <input
-                    type="hidden"
-                    name="services"
-                    value={formData.services
-                      .map((serviceId) => LEAD_GENERATION_SERVICES.find((s) => s.id === serviceId)?.label)
-                      .filter(Boolean)
-                      .join(", ")}
-                  />
+                  <input type="hidden" name="website" value={formData.website} />
+                  <input type="hidden" name="phone" value={formData.phone} />
+                  <input type="hidden" name="businessSize" value={formData.businessSize} />
+                  <input type="hidden" name="monthlyBudget" value={formData.monthlyBudget} />
+                  <input type="hidden" name="services" value={formData.services.join(", ")} />
                   <input type="hidden" name="currentChallenges" value={formData.currentChallenges} />
                   <input type="hidden" name="goals" value={formData.goals} />
-                  <input type="hidden" name="timeline" value={formData.timeline || ""} />
+                  <input type="hidden" name="timeline" value={formData.timeline} />
                   <input type="hidden" name="countryCode" value={formData.countryCode} />
                   <input
                     type="hidden"
                     name="phone"
-                    value={
-                      formData.phone
-                        ? `${formData.countryCode} ${formatPhoneNumber(formData.phone, formData.countryCode)}`
-                        : ""
-                    }
+                    value={formData.phone ? `${formData.countryCode} ${formData.phone}` : ""}
                   />
-                  <input type="hidden" name="time" value={new Date().toLocaleString()} />
 
                   <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
                     {currentStep > 1 ? (
