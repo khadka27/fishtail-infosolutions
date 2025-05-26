@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useState, useRef, useEffect, useCallback } from "react"
@@ -626,7 +625,7 @@ export default function LeadGeneration() {
                 Ready to Discuss Your Lead Generation Strategy?
               </h2>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Book a free 30-minute consultation with our lead generation experts. We&apos;ll analyze your current approach
+                Book a free 30-minute consultation with our lead generation experts. We'll analyze your current approach
                 and provide actionable recommendations to boost your lead quality and conversion rates.
               </p>
             </motion.div>
@@ -655,7 +654,7 @@ export default function LeadGeneration() {
                   ) : (
                     <div className="flex flex-col items-center justify-center h-96 bg-gray-50 rounded-lg">
                       <Calendar className="w-16 h-16 text-gray-400 mb-4" />
-                      <p className="text-gray-600 mb-4">Click &quot;Show Calendar&quot; to view available times</p>
+                      <p className="text-gray-600 mb-4">Click "Show Calendar" to view available times</p>
                       <button
                         onClick={() => setShowInlineCalendly(true)}
                         className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import { useState, useRef, useEffect, useCallback } from "react"
@@ -25,7 +24,7 @@ import Form from "./form"
 import { LeadGenerationPopup } from "./lead-generation-popup"
 import leadGeneration from "@/Images/lead-generation.jpg"
 
-// Enhanced Calendly Hook with better error handling
+// Enhanced Calendly Hook with better error handling and debugging
 const useCalendly = () => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -33,8 +32,11 @@ const useCalendly = () => {
 
   const loadCalendlyScript = useCallback((): Promise<void> => {
     return new Promise((resolve, reject) => {
+      console.log("🔄 Starting Calendly script load...")
+
       // Check if Calendly is already available
       if (window.Calendly) {
+        console.log("✅ Calendly already loaded")
         setIsLoaded(true)
         resolve()
         return
@@ -43,9 +45,11 @@ const useCalendly = () => {
       // Check if script is already in DOM
       const existingScript = document.querySelector('script[src*="calendly.com"]')
       if (existingScript) {
+        console.log("⏳ Calendly script already loading, waiting...")
         // Wait for existing script to load
         const checkInterval = setInterval(() => {
           if (window.Calendly) {
+            console.log("✅ Calendly loaded from existing script")
             clearInterval(checkInterval)
             setIsLoaded(true)
             resolve()
@@ -56,6 +60,7 @@ const useCalendly = () => {
         setTimeout(() => {
           clearInterval(checkInterval)
           if (!window.Calendly) {
+            console.error("❌ Calendly script timeout")
             setError("Calendar service is taking too long to load")
             reject(new Error("Calendly script timeout"))
           }
@@ -64,26 +69,31 @@ const useCalendly = () => {
       }
 
       // Load the script
+      console.log("📥 Loading Calendly script...")
       const script = document.createElement("script")
       script.src = "https://assets.calendly.com/assets/external/widget.js"
       script.async = true
       script.type = "text/javascript"
 
       script.onload = () => {
+        console.log("📦 Calendly script loaded, waiting for initialization...")
         // Give Calendly time to initialize
         setTimeout(() => {
           if (window.Calendly) {
+            console.log("✅ Calendly fully initialized")
             setIsLoaded(true)
             setError(null)
             resolve()
           } else {
+            console.error("❌ Calendly object not available after script load")
             setError("Calendar service failed to initialize")
             reject(new Error("Calendly object not available"))
           }
-        }, 1000)
+        }, 1000) // Increased timeout
       }
 
-      script.onerror = () => {
+      script.onerror = (e) => {
+        console.error("❌ Failed to load Calendly script:", e)
         setError("Failed to load calendar service")
         reject(new Error("Failed to load Calendly script"))
       }
@@ -95,6 +105,7 @@ const useCalendly = () => {
   const openPopup = useCallback(
     async (url: string) => {
       try {
+        console.log("🚀 Attempting to open Calendly popup for:", url)
         setIsLoading(true)
         setError(null)
 
@@ -108,6 +119,7 @@ const useCalendly = () => {
         await loadCalendlyScript()
 
         if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+          console.log("🎯 Opening Calendly popup widget...")
           window.Calendly.initPopupWidget({
             url: url,
             text: "Schedule time with me",
@@ -115,12 +127,16 @@ const useCalendly = () => {
             textColor: "#ffffff",
             branding: true,
           })
+          console.log("✅ Calendly popup opened successfully")
         } else {
           throw new Error("Calendly popup function not available")
         }
       } catch (err) {
+        console.error("❌ Error opening Calendly popup:", err)
         setError("Unable to open calendar popup")
+
         // Fallback: open in new tab
+        console.log("🔄 Falling back to new tab...")
         window.open(url, "_blank", "noopener,noreferrer")
       } finally {
         setIsLoading(false)
@@ -129,16 +145,33 @@ const useCalendly = () => {
     [loadCalendlyScript],
   )
 
+  // Test function to verify Calendly URL
+  const testUrl = useCallback(async (url: string) => {
+    try {
+      console.log("🧪 Testing Calendly URL:", url)
+      const response = await fetch(url, {
+        method: "HEAD",
+        mode: "no-cors",
+      })
+      console.log("✅ URL test completed")
+      return true
+    } catch (error) {
+      console.warn("⚠️ URL test failed (this might be normal due to CORS):", error)
+      return false
+    }
+  }, [])
+
   return {
     isLoaded,
     isLoading,
     error,
     openPopup,
     loadScript: loadCalendlyScript,
+    testUrl,
   }
 }
 
-// Calendly Inline Widget Component
+// Improved Calendly Inline Widget Component
 const CalendlyInlineWidget = ({ url, onLoad }: { url: string; onLoad?: () => void }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -147,11 +180,13 @@ const CalendlyInlineWidget = ({ url, onLoad }: { url: string; onLoad?: () => voi
 
   const initializeWidget = useCallback(async () => {
     try {
+      console.log("🔄 Initializing Calendly inline widget...")
       setIsLoading(true)
       setError(null)
 
       // Load script if not already loaded
       if (!window.Calendly) {
+        console.log("📥 Loading Calendly script for inline widget...")
         const script = document.createElement("script")
         script.src = "https://assets.calendly.com/assets/external/widget.js"
         script.async = true
@@ -160,6 +195,7 @@ const CalendlyInlineWidget = ({ url, onLoad }: { url: string; onLoad?: () => voi
           script.onload = () => {
             setTimeout(() => {
               if (window.Calendly) {
+                console.log("✅ Calendly script loaded for inline widget")
                 resolve()
               } else {
                 reject(new Error("Calendly not available"))
@@ -173,6 +209,8 @@ const CalendlyInlineWidget = ({ url, onLoad }: { url: string; onLoad?: () => voi
 
       // Initialize the widget
       if (containerRef.current && window.Calendly) {
+        console.log("🎯 Initializing Calendly inline widget...")
+
         // Clear any existing content
         containerRef.current.innerHTML = ""
 
@@ -186,12 +224,14 @@ const CalendlyInlineWidget = ({ url, onLoad }: { url: string; onLoad?: () => voi
               utm: {},
             })
 
+            console.log("✅ Calendly inline widget initialized")
             setIsLoading(false)
             onLoad?.()
           }
         }, 500)
       }
     } catch (err) {
+      console.error("❌ Error initializing Calendly widget:", err)
       setError("Unable to load calendar")
       setIsLoading(false)
     }
@@ -252,15 +292,23 @@ const CalendlyInlineWidget = ({ url, onLoad }: { url: string; onLoad?: () => voi
   )
 }
 
-// Quick booking component
+// Enhanced Quick booking component
 const QuickBookingCard = ({ calendlyUrl }: { calendlyUrl: string }) => {
-  const { openPopup, isLoading, error } = useCalendly()
+  const { openPopup, isLoading, error, testUrl } = useCalendly()
+  const [urlTested, setUrlTested] = useState(false)
+
+  useEffect(() => {
+    // Test the URL on component mount
+    testUrl(calendlyUrl).then(() => setUrlTested(true))
+  }, [calendlyUrl, testUrl])
 
   const handleScheduleClick = () => {
+    console.log("📅 Schedule button clicked")
     openPopup(calendlyUrl)
   }
 
   const handleDirectLink = () => {
+    console.log("🔗 Opening direct link")
     window.open(calendlyUrl, "_blank", "noopener,noreferrer")
   }
 
@@ -317,6 +365,15 @@ const QuickBookingCard = ({ calendlyUrl }: { calendlyUrl: string }) => {
             Open in New Tab
           </button>
         </div>
+
+        {/* Debug info in development */}
+        {process.env.NODE_ENV === "development" && (
+          <div className="mt-4 p-2 bg-gray-100 rounded text-xs text-left">
+            <p>URL: {calendlyUrl}</p>
+            <p>Tested: {urlTested ? "✅" : "⏳"}</p>
+            <p>Calendly Loaded: {window.Calendly ? "✅" : "❌"}</p>
+          </div>
+        )}
       </div>
     </div>
   )
@@ -338,10 +395,53 @@ export default function LeadGeneration() {
   }
 
   const handleScheduleClick = () => {
+    console.log("📅 Main schedule button clicked")
     openPopup(CALENDLY_URL)
   }
 
   // Add this useEffect to test the URL on component mount
+  useEffect(() => {
+    // Test if Calendly URL is accessible
+    const testCalendlyUrl = async () => {
+      try {
+        console.log("🧪 Testing Calendly URL:", CALENDLY_URL)
+        const url = new URL(CALENDLY_URL)
+        console.log("✅ Calendly URL is valid:", url.href)
+
+        // Try to fetch the URL to see if it's accessible
+        fetch(CALENDLY_URL, { method: "HEAD", mode: "no-cors" })
+          .then(() => console.log("✅ Calendly URL is accessible"))
+          .catch(() => console.warn("⚠️ Calendly URL test failed (might be CORS)"))
+      } catch (error) {
+        console.error("❌ Invalid Calendly URL:", error)
+      }
+    }
+
+    testCalendlyUrl()
+  }, [])
+
+  // Debug Component (only shows in development)
+  const DebugPanel = () => {
+    if (process.env.NODE_ENV !== "development") return null
+
+    return (
+      <div className="fixed bottom-4 right-4 bg-black text-white p-4 rounded-lg text-xs max-w-xs z-50">
+        <h4 className="font-bold mb-2">Calendly Debug</h4>
+        <div className="space-y-1">
+          <p>URL: {CALENDLY_URL}</p>
+          <p>Script Loaded: {window.Calendly ? "✅" : "❌"}</p>
+          <p>Loading: {calendlyLoading ? "⏳" : "✅"}</p>
+          <p>Error: {calendlyError || "None"}</p>
+          <button
+            onClick={() => console.log("Calendly object:", window.Calendly)}
+            className="bg-blue-600 px-2 py-1 rounded mt-2"
+          >
+            Log Calendly Object
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -353,8 +453,8 @@ export default function LeadGeneration() {
             const size = 2 + (i % 4) + 1
             const left = (i * 8.33) % 100
             const top = ((i * 13) % 80) + 10
-            const moveX = (i % 3) - 1 * 20
-            const moveY = ((i + 1) % 3) - 1 * 20
+            const moveX = ((i % 3) - 1) * 20
+            const moveY = (((i + 1) % 3) - 1) * 20
             const duration = 10 + (i % 5) * 2
 
             return (
@@ -626,7 +726,7 @@ export default function LeadGeneration() {
                 Ready to Discuss Your Lead Generation Strategy?
               </h2>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                Book a free 30-minute consultation with our lead generation experts. We&apos;ll analyze your current approach
+                Book a free 30-minute consultation with our lead generation experts. We'll analyze your current approach
                 and provide actionable recommendations to boost your lead quality and conversion rates.
               </p>
             </motion.div>
@@ -651,11 +751,11 @@ export default function LeadGeneration() {
                   </div>
 
                   {showInlineCalendly ? (
-                    <CalendlyInlineWidget url={CALENDLY_URL} />
+                    <CalendlyInlineWidget url={CALENDLY_URL} onLoad={() => console.log("Calendly widget loaded")} />
                   ) : (
                     <div className="flex flex-col items-center justify-center h-96 bg-gray-50 rounded-lg">
                       <Calendar className="w-16 h-16 text-gray-400 mb-4" />
-                      <p className="text-gray-600 mb-4">Click &quot;Show Calendar&quot; to view available times</p>
+                      <p className="text-gray-600 mb-4">Click "Show Calendar" to view available times</p>
                       <button
                         onClick={() => setShowInlineCalendly(true)}
                         className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -772,6 +872,7 @@ export default function LeadGeneration() {
 
       {/* Lead Generation Popup */}
       <LeadGenerationPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+      <DebugPanel />
     </div>
   )
 }
