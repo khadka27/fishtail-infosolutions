@@ -78,7 +78,6 @@ export default function TestimonialsSection() {
      const [direction, setDirection] = useState(0);
      const [isAnimating, setIsAnimating] = useState(false);
      const [isPaused, setIsPaused] = useState(false);
-     const [isHovered, setIsHovered] = useState(false);
      const timerRef = useRef<NodeJS.Timeout | null>(null);
      const containerRef = useRef<HTMLDivElement>(null);
 
@@ -107,22 +106,6 @@ export default function TestimonialsSection() {
           setIsAnimating(true);
      };
 
-     // Handle keyboard navigation
-     useEffect(() => {
-          const handleKeyDown = (e: KeyboardEvent) => {
-               if (e.key === "ArrowLeft") {
-                    goToPrevious();
-               } else if (e.key === "ArrowRight") {
-                    goToNext();
-               }
-          };
-
-          window.addEventListener("keydown", handleKeyDown);
-          return () => {
-               window.removeEventListener("keydown", handleKeyDown);
-          };
-     }, [isAnimating]);
-
      // Handle auto-rotation
      useEffect(() => {
           const resetTimer = () => {
@@ -130,7 +113,7 @@ export default function TestimonialsSection() {
                     clearTimeout(timerRef.current);
                }
                if (!isPaused) {
-                    timerRef.current = setTimeout(goToNext, 6000);
+                    timerRef.current = setTimeout(goToNext, 5000);
                }
           };
 
@@ -180,28 +163,25 @@ export default function TestimonialsSection() {
 
      const variants = {
           enter: (direction: number) => ({
-               x: direction > 0 ? 400 : -400,
+               x: direction > 0 ? 300 : -300,
                opacity: 0,
-               scale: 0.85,
-               rotateY: direction > 0 ? 25 : -25,
+               scale: 0.9,
           }),
           center: {
                x: 0,
                opacity: 1,
                scale: 1,
-               rotateY: 0,
                transition: {
-                    duration: 0.6,
+                    duration: 0.5,
                     ease: [0.25, 0.46, 0.45, 0.94],
                },
           },
           exit: (direction: number) => ({
-               x: direction < 0 ? 400 : -400,
+               x: direction < 0 ? 300 : -300,
                opacity: 0,
-               scale: 0.85,
-               rotateY: direction < 0 ? 25 : -25,
+               scale: 0.9,
                transition: {
-                    duration: 0.4,
+                    duration: 0.3,
                     ease: [0.55, 0.085, 0.68, 0.53],
                },
           }),
@@ -209,7 +189,7 @@ export default function TestimonialsSection() {
 
      const renderStars = (rating = 5) => {
           return (
-               <div className="flex justify-center md:justify-start mb-4 lg:mb-6">
+               <div className="flex justify-center md:justify-start mb-3">
                     {[...Array(5)].map((_, i) => (
                          <motion.div
                               key={i}
@@ -218,7 +198,7 @@ export default function TestimonialsSection() {
                               transition={{ delay: i * 0.1, duration: 0.4 }}
                          >
                               <Star
-                                   className={`w-5 h-5 mx-0.5 ${
+                                   className={`w-4 h-4 mx-0.5 ${
                                         i < rating
                                              ? "text-amber-400 fill-amber-400"
                                              : "text-gray-300"
@@ -232,29 +212,29 @@ export default function TestimonialsSection() {
 
      return (
           <section
-               className="relative py-16 lg:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 overflow-hidden"
+               className="relative py-8 sm:py-10 md:py-12 lg:py-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
                onMouseEnter={() => setIsPaused(true)}
                onMouseLeave={() => setIsPaused(false)}
                ref={containerRef}
           >
-               {/* Background decorative elements */}
-               <div className="absolute inset-0">
-                    <div className="absolute top-10 left-10 w-20 h-20 bg-blue-200/30 rounded-full blur-xl"></div>
-                    <div className="absolute top-32 right-20 w-32 h-32 bg-indigo-200/20 rounded-full blur-2xl"></div>
-                    <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-purple-200/25 rounded-full blur-xl"></div>
-                    <div className="absolute bottom-32 right-10 w-16 h-16 bg-blue-300/30 rounded-full blur-lg"></div>
+               {/* Compact Background decorative elements */}
+               <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-4 left-4 w-12 h-12 bg-blue-200/20 rounded-full blur-xl"></div>
+                    <div className="absolute top-8 right-8 w-16 h-16 bg-indigo-200/15 rounded-full blur-2xl"></div>
+                    <div className="absolute bottom-4 left-1/4 w-10 h-10 bg-purple-200/20 rounded-full blur-lg"></div>
+                    <div className="absolute bottom-8 right-4 w-8 h-8 bg-blue-300/25 rounded-full blur-md"></div>
                </div>
 
-               <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Header */}
+               <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    {/* Compact Header */}
                     <motion.div
-                         className="text-center mb-12 lg:mb-16"
-                         initial={{ opacity: 0, y: 30 }}
+                         className="text-center mb-4 lg:mb-6"
+                         initial={{ opacity: 0, y: 20 }}
                          animate={{ opacity: 1, y: 0 }}
                          transition={{ duration: 0.6 }}
                     >
                          <motion.h2
-                              className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent mb-4"
+                              className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-indigo-900 bg-clip-text text-transparent mb-2"
                               initial={{ opacity: 0, scale: 0.9 }}
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ duration: 0.8, delay: 0.2 }}
@@ -262,8 +242,8 @@ export default function TestimonialsSection() {
                               What Our Clients Say
                          </motion.h2>
                          <motion.p
-                              className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
-                              initial={{ opacity: 0, y: 20 }}
+                              className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto"
+                              initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.6, delay: 0.4 }}
                          >
@@ -272,8 +252,8 @@ export default function TestimonialsSection() {
                          </motion.p>
                     </motion.div>
 
-                    {/* Main testimonial carousel */}
-                    <div className="relative max-w-6xl mx-auto">
+                    {/* Compact testimonial carousel */}
+                    <div className="relative max-w-4xl mx-auto">
                          <AnimatePresence
                               initial={false}
                               custom={direction}
@@ -288,40 +268,23 @@ export default function TestimonialsSection() {
                                    animate="center"
                                    exit="exit"
                                    className="relative"
-                                   onMouseEnter={() => setIsHovered(true)}
-                                   onMouseLeave={() => setIsHovered(false)}
                               >
-                                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl lg:rounded-3xl shadow-2xl border border-white/20 overflow-hidden">
-                                        <div className="p-6 sm:p-8 lg:p-12">
-                                             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
-                                                  {/* Avatar section */}
+                                   <div className="bg-white/80 backdrop-blur-sm rounded-xl lg:rounded-2xl shadow-lg border border-white/20 overflow-hidden">
+                                        <div className="p-4 sm:p-6 lg:p-8">
+                                             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 lg:gap-6">
+                                                  {/* Compact Avatar section */}
                                                   <div className="relative flex-shrink-0">
                                                        <motion.div
                                                             className="absolute inset-0 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full opacity-20"
                                                             style={{
                                                                  transform:
-                                                                      "scale(1.2)",
+                                                                      "scale(1.1)",
                                                             }}
                                                             animate={{
                                                                  rotate: 360,
                                                             }}
                                                             transition={{
-                                                                 duration: 20,
-                                                                 repeat: Infinity,
-                                                                 ease: "linear",
-                                                            }}
-                                                       ></motion.div>
-                                                       <motion.div
-                                                            className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-full opacity-10"
-                                                            style={{
-                                                                 transform:
-                                                                      "scale(1.4)",
-                                                            }}
-                                                            animate={{
-                                                                 rotate: -360,
-                                                            }}
-                                                            transition={{
-                                                                 duration: 25,
+                                                                 duration: 15,
                                                                  repeat: Infinity,
                                                                  ease: "linear",
                                                             }}
@@ -348,29 +311,29 @@ export default function TestimonialsSection() {
                                                                            ]
                                                                                 .name
                                                                       }
-                                                                      className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full border-4 border-white shadow-xl"
+                                                                      className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full border-3 border-white shadow-lg"
                                                                  />
                                                             </motion.div>
                                                        </div>
                                                   </div>
 
-                                                  {/* Content section */}
-                                                  <div className="flex-1 text-center lg:text-left">
+                                                  {/* Compact Content section */}
+                                                  <div className="flex-1 text-center md:text-left">
                                                        <motion.div
                                                             initial={{
                                                                  scale: 0,
-                                                                 rotate: -180,
+                                                                 rotate: -90,
                                                             }}
                                                             animate={{
                                                                  scale: 1,
                                                                  rotate: 0,
                                                             }}
                                                             transition={{
-                                                                 duration: 0.5,
-                                                                 delay: 0.2,
+                                                                 duration: 0.4,
+                                                                 delay: 0.1,
                                                             }}
                                                        >
-                                                            <Quote className="w-8 h-8 lg:w-12 lg:h-12 text-blue-500/30 mb-4 mx-auto lg:mx-0" />
+                                                            <Quote className="w-6 h-6 lg:w-8 lg:h-8 text-blue-500/30 mb-2 mx-auto md:mx-0" />
                                                        </motion.div>
 
                                                        {renderStars(
@@ -380,18 +343,18 @@ export default function TestimonialsSection() {
                                                        )}
 
                                                        <motion.blockquote
-                                                            className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-light mb-6 lg:mb-8 leading-relaxed text-gray-700 italic"
+                                                            className="text-sm sm:text-base lg:text-lg font-medium mb-4 leading-relaxed text-gray-700 italic line-clamp-3"
                                                             initial={{
                                                                  opacity: 0,
-                                                                 y: 20,
+                                                                 y: 10,
                                                             }}
                                                             animate={{
                                                                  opacity: 1,
                                                                  y: 0,
                                                             }}
                                                             transition={{
-                                                                 duration: 0.6,
-                                                                 delay: 0.3,
+                                                                 duration: 0.5,
+                                                                 delay: 0.2,
                                                             }}
                                                        >
                                                             "
@@ -404,35 +367,35 @@ export default function TestimonialsSection() {
                                                        </motion.blockquote>
 
                                                        <motion.div
-                                                            className="space-y-2"
+                                                            className="space-y-1"
                                                             initial={{
                                                                  opacity: 0,
-                                                                 x: -20,
+                                                                 x: -10,
                                                             }}
                                                             animate={{
                                                                  opacity: 1,
                                                                  x: 0,
                                                             }}
                                                             transition={{
-                                                                 duration: 0.6,
-                                                                 delay: 0.4,
+                                                                 duration: 0.5,
+                                                                 delay: 0.3,
                                                             }}
                                                        >
-                                                            <p className="font-bold text-xl lg:text-2xl text-gray-900">
+                                                            <p className="font-bold text-base lg:text-lg text-gray-900">
                                                                  {
                                                                       testimonials[
                                                                            currentIndex
                                                                       ].name
                                                                  }
                                                             </p>
-                                                            <p className="text-sm lg:text-base text-blue-600 font-medium">
+                                                            <p className="text-xs lg:text-sm text-blue-600 font-medium">
                                                                  {
                                                                       testimonials[
                                                                            currentIndex
                                                                       ].role
                                                                  }
                                                             </p>
-                                                            <p className="text-sm lg:text-base text-gray-500">
+                                                            <p className="text-xs lg:text-sm text-gray-500">
                                                                  {
                                                                       testimonials[
                                                                            currentIndex
@@ -447,55 +410,40 @@ export default function TestimonialsSection() {
                               </motion.div>
                          </AnimatePresence>
 
-                         {/* Navigation buttons */}
+                         {/* Compact Navigation buttons */}
                          <motion.button
                               onClick={goToPrevious}
-                              className="absolute left-2 sm:left-4 lg:-left-6 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-800 rounded-full p-3 lg:p-4 shadow-xl border border-white/20 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 z-20"
+                              className="absolute left-1 sm:left-2 lg:-left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-800 rounded-full p-2 lg:p-3 shadow-lg border border-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 z-20"
                               aria-label="Previous testimonial"
-                              whileHover={{
-                                   scale: 1.1,
-                                   backgroundColor: "rgba(255,255,255,1)",
-                                   boxShadow:
-                                        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                              }}
+                              whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.95 }}
                          >
-                              <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6" />
+                              <ChevronLeft className="w-4 h-4 lg:w-5 lg:h-5" />
                          </motion.button>
 
                          <motion.button
                               onClick={goToNext}
-                              className="absolute right-2 sm:right-4 lg:-right-6 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-800 rounded-full p-3 lg:p-4 shadow-xl border border-white/20 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/20 z-20"
+                              className="absolute right-1 sm:right-2 lg:-right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white text-gray-800 rounded-full p-2 lg:p-3 shadow-lg border border-white/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 z-20"
                               aria-label="Next testimonial"
-                              whileHover={{
-                                   scale: 1.1,
-                                   backgroundColor: "rgba(255,255,255,1)",
-                                   boxShadow:
-                                        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                              }}
+                              whileHover={{ scale: 1.1 }}
                               whileTap={{ scale: 0.95 }}
                          >
-                              <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6" />
+                              <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5" />
                          </motion.button>
                     </div>
 
-                    {/* Navigation dots */}
-                    <div className="flex justify-center mt-8 lg:mt-12 space-x-3">
+                    {/* Compact Navigation dots */}
+                    <div className="flex justify-center mt-4 lg:mt-6 space-x-2">
                          {testimonials.map((_, index) => (
                               <motion.button
                                    key={index}
                                    onClick={() => goToSlide(index)}
                                    className={`relative transition-all duration-300 ${
                                         currentIndex === index
-                                             ? "w-12 h-3"
-                                             : "w-3 h-3"
+                                             ? "w-8 h-2"
+                                             : "w-2 h-2"
                                    }`}
                                    aria-label={`Go to testimonial ${index + 1}`}
-                                   aria-current={
-                                        currentIndex === index
-                                             ? "true"
-                                             : "false"
-                                   }
                                    whileHover={{ scale: 1.2 }}
                                    whileTap={{ scale: 0.9 }}
                               >
@@ -516,27 +464,6 @@ export default function TestimonialsSection() {
                                    )}
                               </motion.button>
                          ))}
-                    </div>
-
-                    {/* Progress indicator */}
-                    <div className="flex justify-center mt-6">
-                         <div className="w-32 h-1 bg-gray-200 rounded-full overflow-hidden">
-                              <motion.div
-                                   className="h-full bg-gradient-to-r from-blue-500 to-indigo-600"
-                                   initial={{ width: "0%" }}
-                                   animate={{
-                                        width: `${
-                                             ((currentIndex + 1) /
-                                                  testimonials.length) *
-                                             100
-                                        }%`,
-                                   }}
-                                   transition={{
-                                        duration: 0.5,
-                                        ease: "easeOut",
-                                   }}
-                              />
-                         </div>
                     </div>
                </div>
           </section>

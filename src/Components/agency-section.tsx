@@ -28,6 +28,7 @@ import {
      Star,
 } from "lucide-react";
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
+import marketingimage from "@/Images/digitalpic.png";
 
 import type { TeamMember } from "@/data/team-members";
 
@@ -283,7 +284,7 @@ export default function AgencyPage({
                                         <div className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-6 border border-white/20">
                                              <Image
                                                   src={
-                                                       image1 ||
+                                                       marketingimage ||
                                                        "/placeholder.svg"
                                                   }
                                                   alt="Digital Marketing Illustration"
@@ -662,26 +663,26 @@ export default function AgencyPage({
                </section>
 
                {/* Enhanced Vision Section */}
-               <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+               <section className="py-6 sm:py-8 md:py-12 lg:py-16 xl:py-20 px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 bg-gradient-to-br from-slate-50 via-white to-blue-50">
                     <div className="container mx-auto">
                          <motion.div
                               initial={{ opacity: 0, y: 30 }}
                               whileInView={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.8 }}
                               viewport={{ once: true }}
-                              className="text-center max-w-5xl mx-auto"
+                              className="text-center max-w-6xl mx-auto"
                          >
-                              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-blue-600 text-sm font-medium mb-8">
-                                   <Globe className="w-4 h-4" />
+                              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-blue-600 text-xs sm:text-sm font-medium mb-4 sm:mb-6 md:mb-8">
+                                   <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
                                    Our Vision
-                                   <Sparkles className="w-4 h-4" />
+                                   <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
                               </div>
 
-                              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+                              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 md:mb-8 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text text-transparent leading-tight">
                                    Shaping the Future
                               </h2>
 
-                              <p className="text-xl sm:text-2xl lg:text-3xl font-light text-slate-600 leading-relaxed mb-8">
+                              <p className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-light text-slate-600 leading-relaxed mb-6 sm:mb-8 px-2 sm:px-4">
                                    The most respected Internet marketing agency.
                                    We want to change the way businesses{" "}
                                    <span className="font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -698,24 +699,24 @@ export default function AgencyPage({
                                    online.
                               </p>
 
-                              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center pt-2 sm:pt-4 max-w-lg sm:max-w-none mx-auto">
                                    <Link
                                         href="/contact"
-                                        className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-2xl font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 relative overflow-hidden"
+                                        className="group inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 relative overflow-hidden"
                                    >
                                         <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                                         <span className="relative">
                                              Work With Us
                                         </span>
-                                        <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 relative" />
+                                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1 relative" />
                                    </Link>
 
                                    <Link
                                         href="/about"
-                                        className="group inline-flex items-center gap-3 px-8 py-4 bg-white border-2 border-blue-200 text-blue-600 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-blue-50 hover:border-blue-300 hover:scale-105"
+                                        className="group inline-flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-blue-200 text-blue-600 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-300 hover:bg-blue-50 hover:border-blue-300 hover:scale-105"
                                    >
                                         <span>Learn More</span>
-                                        <Globe className="w-5 h-5 transition-transform duration-300 group-hover:rotate-180" />
+                                        <Globe className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:rotate-180" />
                                    </Link>
                               </div>
                          </motion.div>
