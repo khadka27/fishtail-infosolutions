@@ -4,17 +4,23 @@ import Image from "next/image";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
-  LineChart,
-  BarChart,
-  Target,
-  MousePointerClick,
-  LayoutGrid,
-  Eye,
-  Lightbulb,
-  Gauge,
-  ArrowUpRight,
-  CheckCircle2,
-  
+     LineChart,
+     BarChart,
+     Target,
+     MousePointerClick,
+     LayoutGrid,
+     Eye,
+     Lightbulb,
+     Gauge,
+     ArrowUpRight,
+     CheckCircle2,
+     ArrowRight,
+     CheckCircle,
+     Search,
+     TrendingUp,
+     Users,
+     Award,
+     Sparkles,
 } from "lucide-react";
 import { QuotePopup } from "./quote-popup";
 import Form from "./form";
@@ -29,562 +35,562 @@ import analysis from "@/Images/analysis.jpg";
 // import financial from "@/Images/finance.webp";
 import testing from "@/Images/testing.png";
 
+// Simplified services data
+const services = [
+     {
+          title: "User Experience Analysis",
+          description:
+               "Comprehensive analysis of user behavior and friction points",
+          icon: Eye,
+          color: "blue",
+     },
+     {
+          title: "A/B Testing",
+          description: "Rigorous testing to determine optimal conversion paths",
+          icon: BarChart,
+          color: "green",
+     },
+     {
+          title: "Landing Page Optimization",
+          description: "Strategic redesign to maximize conversion potential",
+          icon: Target,
+          color: "purple",
+     },
+     {
+          title: "Conversion Funnel Analysis",
+          description: "Identify and fix leaks in your sales funnel",
+          icon: Gauge,
+          color: "orange",
+     },
+     {
+          title: "Analytics Implementation",
+          description: "Advanced tracking for meaningful conversion insights",
+          icon: LineChart,
+          color: "teal",
+     },
+     {
+          title: "Personalization Strategies",
+          description: "Tailored experiences to boost individual conversions",
+          icon: Lightbulb,
+          color: "indigo",
+     },
+];
+
+// Simplified process steps
+const processSteps = [
+     {
+          title: "Research & Discovery",
+          description:
+               "Analyze data, conduct user research, and identify conversion barriers",
+          icon: Search,
+          features: [
+               "Analytics Review",
+               "User Research",
+               "Competitor Analysis",
+          ],
+     },
+     {
+          title: "Hypothesis Formation",
+          description:
+               "Develop data-backed hypotheses about optimization opportunities",
+          icon: Lightbulb,
+          features: [
+               "Problem Identification",
+               "Solution Brainstorming",
+               "Priority Ranking",
+          ],
+     },
+     {
+          title: "Test Design & Implementation",
+          description: "Create and execute rigorous A/B tests for optimization",
+          icon: BarChart,
+          features: [
+               "Test Creation",
+               "Traffic Allocation",
+               "Quality Assurance",
+          ],
+     },
+     {
+          title: "Analysis & Optimization",
+          description: "Analyze results and implement winning variations",
+          icon: TrendingUp,
+          features: [
+               "Statistical Analysis",
+               "Winner Implementation",
+               "Continuous Improvement",
+          ],
+     },
+];
+
+// Key benefits
+const benefits = [
+     "Maximize existing traffic ROI",
+     "Reduce customer acquisition costs",
+     "Increase average order value",
+     "Improve user experience",
+     "Make data-driven decisions",
+     "Gain competitive advantage",
+];
+
+// Statistics
+const stats = [
+     { value: "149%", label: "Avg. Conversion Increase", icon: Target },
+     { value: "$4.2M", label: "Revenue Generated", icon: TrendingUp },
+     { value: "312+", label: "A/B Tests Completed", icon: BarChart },
+     { value: "97%", label: "Client Satisfaction", icon: Award },
+];
+
 export default function ConversionRateOptimization() {
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
-  const contactRef = useRef<HTMLDivElement>(null);
+     const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+     const contactRef = useRef<HTMLDivElement>(null);
 
-  const scrollToContact = () => {
-    contactRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+     const scrollToContact = () => {
+          contactRef.current?.scrollIntoView({ behavior: "smooth" });
+     };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
-      <section className="relative overflow-hidden bg-gradient-to-r from-purple-900 to-indigo-800 text-white">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('/data-visualization-pattern.png')] bg-repeat opacity-10"></div>
-          <div className="hidden sm:grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 grid-rows-3 sm:grid-rows-4 md:grid-rows-6 h-full w-full">
-            {Array.from({ length: 72 }).map((_, i) => (
-              <div key={i} className="border border-white/5 flex items-center justify-center">
-                {Math.random() > 0.92 && (
-                  <div
-                    className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400"
-                    style={{ opacity: Math.floor(Math.random() * 60 + 20) / 100 }}
-                  ></div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+     return (
+          <div className="flex flex-col">
+               {/* Hero Section */}
+               <section className="relative bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white py-16 md:py-24 px-4 overflow-hidden">
+                    {/* Background decoration */}
+                    <div className="absolute inset-0 bg-black/10"></div>
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-48 -translate-x-48"></div>
 
-        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-                Turn <span className="text-green-400">Visitors</span> Into{" "}
-                <span className="text-green-400">Customers</span>
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-slate-200 max-w-3xl mx-auto">
-                Data-driven conversion rate optimization that boosts your bottom line with scientific precision
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => setIsQuoteOpen(true)}
-                  className="px-6 sm:px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto"
-                >
-                  Get a Free CRO Audit
-                </button>
-                <button
-                  onClick={scrollToContact}
-                  className="px-6 sm:px-8 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium transition-all border border-white/30 w-full sm:w-auto"
-                >
-                  Learn More
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        </div>
+                    <div className="relative max-w-6xl mx-auto">
+                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                              {/* Content */}
+                              <motion.div
+                                   initial={{ opacity: 0, y: 20 }}
+                                   animate={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   className="text-center lg:text-left"
+                              >
+                                   <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm font-medium mb-6">
+                                        <Sparkles className="w-4 h-4" />
+                                        Data-Driven CRO
+                                   </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-8 sm:h-12 md:h-16 bg-gradient-to-t from-slate-50 to-transparent"></div>
-      </section>
+                                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                                        Turn Visitors Into
+                                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-300">
+                                             Customers
+                                        </span>
+                                   </h1>
 
-      {/* Introduction Section */}
-      {/* Key Metrics Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-xl shadow-sm border border-purple-100"
-            >
-              <div className="flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
-                <Target className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">149%</h3>
-              <p className="text-gray-600">
-                Average conversion rate improvement for our clients
-              </p>
-            </motion.div>
+                                   <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+                                        Boost your conversion rates with
+                                        scientific precision. Our data-driven
+                                        approach identifies and eliminates
+                                        barriers to turn more visitors into
+                                        paying customers.
+                                   </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-indigo-50 to-blue-50 p-8 rounded-xl shadow-sm border border-indigo-100"
-            >
-              <div className="flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-                <LineChart className="w-8 h-8 text-indigo-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">$4.2M</h3>
-              <p className="text-gray-600">
-                Additional revenue generated through our CRO strategies
-              </p>
-            </motion.div>
+                                   <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                                        <button
+                                             onClick={() =>
+                                                  setIsQuoteOpen(true)
+                                             }
+                                             className="bg-white text-purple-700 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                        >
+                                             Get Free CRO Audit
+                                             <ArrowRight className="ml-2 h-5 w-5" />
+                                        </button>
+                                        <button
+                                             onClick={scrollToContact}
+                                             className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-700 px-8 py-3 rounded-full font-semibold flex items-center justify-center transition-all duration-300"
+                                        >
+                                             Learn More
+                                             <Target className="ml-2 h-5 w-5" />
+                                        </button>
+                                   </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-xl shadow-sm border border-blue-100"
-            >
-              <div className="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-                <MousePointerClick className="w-8 h-8 text-blue-600" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-2">312+</h3>
-              <p className="text-gray-600">
-                Successful A/B tests conducted in the last year
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+                                   {/* Quick stats */}
+                                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        {stats.map((stat, index) => (
+                                             <div
+                                                  key={index}
+                                                  className="text-center group"
+                                             >
+                                                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-white/20 transition-all duration-300">
+                                                       <stat.icon className="w-6 h-6 text-white" />
+                                                  </div>
+                                                  <div className="text-2xl font-bold text-green-300">
+                                                       {stat.value}
+                                                  </div>
+                                                  <div className="text-sm text-white/80">
+                                                       {stat.label}
+                                                  </div>
+                                             </div>
+                                        ))}
+                                   </div>
+                              </motion.div>
 
-      {/* Services Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              Our Conversion Optimization Services
-            </h2>
-            <p className="text-lg text-gray-600">
-              We use data-driven strategies to identify and eliminate conversion
-              barriers, creating frictionless paths to purchase
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Eye className="w-6 h-6 text-purple-600" />,
-                title: "User Experience Analysis",
-                description:
-                  "Comprehensive analysis of user behavior, identifying friction points and opportunities for improvement",
-                color: "purple",
-              },
-              {
-                icon: <LayoutGrid className="w-6 h-6 text-indigo-600" />,
-                title: "A/B & Multivariate Testing",
-                description:
-                  "Rigorous testing of design elements, copy, and functionality to determine optimal conversion paths",
-                color: "indigo",
-              },
-              {
-                icon: <LineChart className="w-6 h-6 text-blue-600" />,
-                title: "Analytics Implementation",
-                description:
-                  "Advanced tracking setup to capture meaningful data about user behavior and conversion funnels",
-                color: "blue",
-              },
-              {
-                icon: <Lightbulb className="w-6 h-6 text-green-600" />,
-                title: "Landing Page Optimization",
-                description:
-                  "Strategic redesign of landing pages to maximize relevance, clarity, and conversion potential",
-                color: "green",
-              },
-              {
-                icon: <Gauge className="w-6 h-6 text-teal-600" />,
-                title: "Conversion Funnel Analysis",
-                description:
-                  "In-depth examination of your conversion paths to identify and fix leaks in your sales funnel",
-                color: "teal",
-              },
-              {
-                icon: <BarChart className="w-6 h-6 text-cyan-600" />,
-                title: "Personalization Strategies",
-                description:
-                  "Tailored user experiences based on behavior, demographics, and preferences to boost conversions",
-                color: "cyan",
-              },
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`bg-white p-8 rounded-xl shadow-sm border border-${service.color}-100 hover:shadow-md transition-all group`}
-              >
-                <div
-                  className={`flex items-center justify-center w-12 h-12 bg-${service.color}-100 rounded-lg mb-6 group-hover:bg-${service.color}-200 transition-colors`}
-                >
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-gray-800">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{service.description}</p>
-                <a
-                  href="#"
-                  className={`inline-flex items-center text-${service.color}-600 font-medium`}
-                >
-                  Learn more <ArrowUpRight className="ml-1 w-4 h-4" />
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              Our Data-Driven CRO Process
-            </h2>
-            <p className="text-lg text-gray-600">
-              A methodical approach to understanding user behavior and
-              systematically improving conversion rates
-            </p>
-          </div>
-
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-indigo-100 hidden md:block"></div>
-
-            {[
-              {
-                title: "Research & Discovery",
-                description:
-                  "We analyze your analytics data, conduct user research, and perform heuristic evaluations to identify conversion barriers",
-                image: research,
-              },
-              {
-                title: "Hypothesis Formation",
-                description:
-                  "Based on research findings, we develop data-backed hypotheses about what changes will improve conversion rates",
-                image: hypothesis,
-              },
-              {
-                title: "Test Design & Development",
-                description:
-                  "We create variations of your pages with strategic changes designed to test our hypotheses",
-                image: testDesign,
-              },
-              {
-                title: "A/B Testing",
-                description:
-                  "We implement rigorous split tests to measure the impact of changes on your conversion metrics",
-                image: testing,
-              },
-              {
-                title: "Analysis & Learning",
-                description:
-                  "We analyze test results to determine winners and extract insights about user behavior",
-                image: analysis,
-              },
-              {
-                title: "Implementation & Iteration",
-                description:
-                  "We implement winning variations and use learnings to inform the next round of optimization",
-                image: implementation,
-              },
-            ].map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`flex flex-col md:flex-row items-center mb-12 md:mb-24 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="w-full md:w-1/2 p-4">
-                  <div
-                    className={`p-6 rounded-xl bg-gradient-to-br ${
-                      index % 2 === 0
-                        ? "from-purple-50 to-indigo-50 border border-purple-100"
-                        : "from-indigo-50 to-blue-50 border border-indigo-100"
-                    }`}
-                  >
-                    <div className="flex items-center mb-4">
-                      <div
-                        className={`flex items-center justify-center w-10 h-10 rounded-full ${
-                          index % 2 === 0 ? "bg-purple-600" : "bg-indigo-600"
-                        } text-white font-bold text-lg mr-4`}
-                      >
-                        {index + 1}
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-800">
-                        {step.title}
-                      </h3>
+                              {/* Image */}
+                              <motion.div
+                                   initial={{ opacity: 0, scale: 0.8 }}
+                                   animate={{ opacity: 1, scale: 1 }}
+                                   transition={{ duration: 0.6, delay: 0.2 }}
+                                   className="relative"
+                              >
+                                   <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                                        <Image
+                                             src={testing}
+                                             alt="Conversion Rate Optimization"
+                                             width={500}
+                                             height={900}
+                                             className="object-contain w-full h-auto"
+                                             priority
+                                        />
+                                   </div>
+                              </motion.div>
+                         </div>
                     </div>
-                    <p className="text-gray-600">{step.description}</p>
-                  </div>
-                </div>
-                <div className="w-full md:w-1/2 p-4 flex justify-center">
-                  <div className="relative w-full max-w-sm">
-                    <div className="absolute inset-0 bg-gradient-to-r from-purple-200 to-indigo-200 rounded-xl transform rotate-3"></div>
-                    <Image
-                      src={
-                        step.image ||
-                        `/placeholder.svg?height=300&width=400&query=data visualization for ${step.title}`
-                      }
-                      alt={step.title}
-                      width={400}
-                      height={300}
-                      unoptimized
-                      className="relative z-10 rounded-xl shadow-lg w-full h-auto"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+               </section>
+
+               {/* Services Section */}
+               <section className="py-16 md:py-24 px-4 bg-gray-50">
+                    <div className="max-w-6xl mx-auto">
+                         <div className="text-center mb-16">
+                              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                   Conversion Optimization Services
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                   We use data-driven strategies to identify and
+                                   eliminate conversion barriers, creating
+                                   frictionless paths to purchase.
+                              </p>
+                         </div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                              {services.map((service, index) => (
+                                   <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                             duration: 0.5,
+                                             delay: index * 0.1,
+                                        }}
+                                        viewport={{ once: true }}
+                                        className="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                                   >
+                                        <div
+                                             className={`w-12 h-12 rounded-lg bg-${service.color}-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                                        >
+                                             <service.icon
+                                                  className={`w-6 h-6 text-${service.color}-600`}
+                                             />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                             {service.title}
+                                        </h3>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                             {service.description}
+                                        </p>
+                                   </motion.div>
+                              ))}
+                         </div>
+                    </div>
+               </section>
+
+               {/* Process Section */}
+               <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-slate-50 via-purple-50 to-blue-100 relative overflow-hidden">
+                    {/* Background decoration */}
+                    <div className="absolute top-20 left-10 w-64 h-64 bg-purple-200/30 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+                    <div className="absolute bottom-20 right-10 w-64 h-64 bg-blue-200/30 rounded-full mix-blend-multiply filter blur-xl opacity-70"></div>
+
+                    <div className="max-w-7xl mx-auto relative">
+                         <div className="text-center mb-20">
+                              <motion.div
+                                   initial={{ opacity: 0, y: 20 }}
+                                   whileInView={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   viewport={{ once: true }}
+                                   className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-blue-100 px-6 py-3 rounded-full text-purple-800 text-sm font-semibold mb-6 shadow-sm"
+                              >
+                                   <BarChart className="w-4 h-4" />
+                                   Proven CRO Process
+                              </motion.div>
+                              <motion.h2
+                                   initial={{ opacity: 0, y: 20 }}
+                                   whileInView={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.6, delay: 0.1 }}
+                                   viewport={{ once: true }}
+                                   className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+                              >
+                                   Our CRO Methodology
+                              </motion.h2>
+                              <motion.p
+                                   initial={{ opacity: 0, y: 20 }}
+                                   whileInView={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.6, delay: 0.2 }}
+                                   viewport={{ once: true }}
+                                   className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+                              >
+                                   A systematic approach to understanding user
+                                   behavior and optimizing conversion rates
+                                   through scientific testing and data analysis.
+                              </motion.p>
+                         </div>
+
+                         <div className="relative">
+                              {/* Animated SVG Connection Path */}
+                              <svg
+                                   className="absolute inset-0 w-full h-full hidden lg:block"
+                                   viewBox="0 0 1000 400"
+                                   fill="none"
+                                   xmlns="http://www.w3.org/2000/svg"
+                              >
+                                   <motion.path
+                                        d="M 125 200 Q 312.5 100 500 200 Q 687.5 300 875 200"
+                                        stroke="url(#gradient)"
+                                        strokeWidth="2"
+                                        fill="none"
+                                        strokeDasharray="10,5"
+                                        initial={{ pathLength: 0 }}
+                                        whileInView={{ pathLength: 1 }}
+                                        transition={{ duration: 2, delay: 0.5 }}
+                                        viewport={{ once: true }}
+                                   />
+                                   <defs>
+                                        <linearGradient
+                                             id="gradient"
+                                             x1="0%"
+                                             y1="0%"
+                                             x2="100%"
+                                             y2="0%"
+                                        >
+                                             <stop
+                                                  offset="0%"
+                                                  stopColor="#8B5CF6"
+                                             />
+                                             <stop
+                                                  offset="50%"
+                                                  stopColor="#6366F1"
+                                             />
+                                             <stop
+                                                  offset="100%"
+                                                  stopColor="#3B82F6"
+                                             />
+                                        </linearGradient>
+                                   </defs>
+                              </svg>
+
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+                                   {processSteps.map((step, index) => (
+                                        <motion.div
+                                             key={index}
+                                             initial={{ opacity: 0, y: 40 }}
+                                             whileInView={{ opacity: 1, y: 0 }}
+                                             transition={{
+                                                  duration: 0.6,
+                                                  delay: index * 0.15,
+                                             }}
+                                             viewport={{ once: true }}
+                                             className="relative group"
+                                        >
+                                             <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 hover:bg-white/80 transition-all duration-300 group-hover:shadow-2xl group-hover:-translate-y-2 h-full">
+                                                  <div
+                                                       className={`w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                                                  >
+                                                       <step.icon className="w-8 h-8 text-white" />
+                                                  </div>
+
+                                                  <div className="text-sm text-purple-600 font-bold mb-2">
+                                                       STEP {index + 1}
+                                                  </div>
+
+                                                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-purple-700 transition-colors duration-300">
+                                                       {step.title}
+                                                  </h3>
+
+                                                  <p className="text-gray-600 mb-6 leading-relaxed">
+                                                       {step.description}
+                                                  </p>
+
+                                                  <div className="space-y-2">
+                                                       {step.features.map(
+                                                            (feature, idx) => (
+                                                                 <div
+                                                                      key={idx}
+                                                                      className="flex items-center gap-2 text-sm text-gray-700"
+                                                                 >
+                                                                      <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                                                      {feature}
+                                                                 </div>
+                                                            )
+                                                       )}
+                                                  </div>
+                                             </div>
+
+                                             {/* Step number indicator */}
+                                             <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg">
+                                                  {index + 1}
+                                             </div>
+                                        </motion.div>
+                                   ))}
+                              </div>
+                         </div>
+                    </div>
+               </section>
+
+               {/* Benefits & Results Section */}
+               <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-purple-50 to-blue-50">
+                    <div className="max-w-6xl mx-auto">
+                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                              <motion.div
+                                   initial={{ opacity: 0, x: -20 }}
+                                   whileInView={{ opacity: 1, x: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   viewport={{ once: true }}
+                              >
+                                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                        Why Invest in CRO?
+                                   </h2>
+                                   <p className="text-lg text-gray-600 mb-8">
+                                        Conversion rate optimization delivers
+                                        measurable improvements to your bottom
+                                        line without increasing ad spend or
+                                        traffic costs.
+                                   </p>
+
+                                   <div className="space-y-4">
+                                        {benefits.map((benefit, index) => (
+                                             <motion.div
+                                                  key={index}
+                                                  initial={{
+                                                       opacity: 0,
+                                                       x: -20,
+                                                  }}
+                                                  whileInView={{
+                                                       opacity: 1,
+                                                       x: 0,
+                                                  }}
+                                                  transition={{
+                                                       duration: 0.5,
+                                                       delay: index * 0.1,
+                                                  }}
+                                                  viewport={{ once: true }}
+                                                  className="flex items-center gap-3"
+                                             >
+                                                  <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                                                  <span className="text-gray-700">
+                                                       {benefit}
+                                                  </span>
+                                             </motion.div>
+                                        ))}
+                                   </div>
+                              </motion.div>
+
+                              <motion.div
+                                   initial={{ opacity: 0, x: 20 }}
+                                   whileInView={{ opacity: 1, x: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   viewport={{ once: true }}
+                                   className="grid grid-cols-2 gap-6"
+                              >
+                                   <div className="space-y-6">
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-purple-600 mb-2">
+                                                  149%
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  Avg. Conversion Increase
+                                             </div>
+                                        </div>
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-blue-600 mb-2">
+                                                  4.2M
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  Revenue Generated
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div className="space-y-6 pt-8">
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-indigo-600 mb-2">
+                                                  312+
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  A/B Tests Completed
+                                             </div>
+                                        </div>
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-green-500 mb-2">
+                                                  97%
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  Client Satisfaction
+                                             </div>
+                                        </div>
+                                   </div>
+                              </motion.div>
+                         </div>
+                    </div>
+               </section>
+
+               {/* CTA Section */}
+               <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 to-purple-900 text-white">
+                    <div className="max-w-4xl mx-auto text-center">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                         >
+                              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                                   Ready to Boost Your Conversion Rates?
+                              </h2>
+                              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                                   Get a free CRO audit and discover untapped
+                                   revenue opportunities on your website.
+                              </p>
+                              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                   <button
+                                        onClick={() => setIsQuoteOpen(true)}
+                                        className="bg-white text-purple-700 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                   >
+                                        <Target className="mr-2 h-5 w-5" />
+                                        Get Free CRO Audit
+                                   </button>
+                                   <button
+                                        onClick={scrollToContact}
+                                        className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-semibold flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                   >
+                                        <Users className="mr-2 h-5 w-5" />
+                                        Schedule Consultation
+                                   </button>
+                              </div>
+                         </motion.div>
+                    </div>
+               </section>
+
+               {/* Contact Section */}
+               <section
+                    ref={contactRef}
+                    className="py-16 md:py-24 px-4 bg-gray-50"
+               >
+                    <div className="max-w-4xl mx-auto">
+                         <div className="text-center mb-8">
+                              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                                   Start Optimizing Your Conversions
+                              </h2>
+                              <p className="text-gray-600 max-w-2xl mx-auto">
+                                   Get in touch to discuss how we can help you
+                                   turn more visitors into customers through
+                                   data-driven optimization.
+                              </p>
+                         </div>
+                         <Form />
+                    </div>
+               </section>
+
+               <QuotePopup
+                    isOpen={isQuoteOpen}
+                    onClose={() => setIsQuoteOpen(false)}
+               />
           </div>
-        </div>
-      </section>
-
-      {/* Case Studies */}
-      {/* <section className="py-20 px-20 bg-gradient-to-br from-indigo-900 to-purple-900 text-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Real Results for Real Businesses
-            </h2>
-            <p className="text-lg text-indigo-200">
-              See how our conversion rate optimization strategies have
-              transformed businesses across industries
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                industry: "E-commerce",
-                title: "187% Increase in Add-to-Cart Conversions",
-                description:
-                  "Redesigned product pages with enhanced visuals, social proof, and streamlined checkout process",
-                stats: [
-                  { label: "Conversion Lift", value: "187%" },
-                  { label: "Revenue Increase", value: "$1.2M" },
-                ],
-                image: ecommerce,
-              },
-              {
-                industry: "SaaS",
-                title: "94% More Trial Signups",
-                description:
-                  "Optimized landing pages with clearer value proposition and simplified signup forms",
-                stats: [
-                  { label: "Signup Increase", value: "94%" },
-                  { label: "CAC Reduction", value: "32%" },
-                ],
-                image: saas,
-              },
-              {
-                industry: "Financial Services",
-                title: "63% Higher Lead Quality",
-                description:
-                  "Implemented progressive profiling and personalized content to attract qualified prospects",
-                stats: [
-                  { label: "Lead Quality", value: "+63%" },
-                  { label: "Conversion Rate", value: "8.7%" },
-                ],
-                image: financial,
-              },
-            ].map((study, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden hover:bg-white/15 transition-all"
-              >
-                <div className="h-48 overflow-hidden">
-                  <Image
-                    src={
-                      study.image ||
-                      `/placeholder.svg?height=300&width=500&query=data visualization for ${
-                        study.industry || "/placeholder.svg"
-                      } business`
-                    }
-                    alt={study.title}
-                    width={500}
-                    height={300}
-                    unoptimized
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="text-indigo-300 text-sm font-medium mb-2">
-                    {study.industry}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{study.title}</h3>
-                  <p className="text-indigo-100 mb-4">{study.description}</p>
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    {study.stats.map((stat, i) => (
-                      <div key={i} className="bg-white/5 rounded-lg p-3">
-                        <div className="text-sm text-indigo-200">
-                          {stat.label}
-                        </div>
-                        <div className="text-xl font-bold">{stat.value}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <Link
-                    href="/project"
-                    className="inline-flex items-center text-indigo-300 hover:text-indigo-200 font-medium"
-                  >
-                    View case study <ChevronRight className="ml-1 w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Benefits Section */}
-      <section className="py-8 md:py-16  px-10 md:px-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-              Why Invest in Conversion Rate Optimization?
-            </h2>
-            <p className="text-lg text-gray-600">
-              CRO delivers measurable improvements to your bottom line without
-              increasing ad spend
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                title: "Maximize Existing Traffic",
-                description:
-                  "Get more customers without increasing your marketing budget",
-              },
-              {
-                title: "Reduce Acquisition Costs",
-                description:
-                  "Lower your cost per acquisition by converting more visitors",
-              },
-              {
-                title: "Increase Customer Lifetime Value",
-                description:
-                  "Optimize not just for first purchase, but for long-term customer relationships",
-              },
-              {
-                title: "Data-Driven Decisions",
-                description:
-                  "Replace guesswork with scientific testing and concrete results",
-              },
-              {
-                title: "Improve User Experience",
-                description:
-                  "Create smoother, more intuitive paths to conversion",
-              },
-              {
-                title: "Gain Competitive Edge",
-                description:
-                  "Outperform competitors by converting more of your shared audience",
-              },
-              {
-                title: "Scalable Results",
-                description:
-                  "Improvements compound over time as you implement more optimizations",
-              },
-              {
-                title: "Higher ROI Than Acquisition",
-                description:
-                  "Often delivers better returns than spending more on traffic generation",
-              },
-            ].map((benefit, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-slate-50 to-indigo-50 p-6 rounded-xl border border-indigo-100"
-              >
-                <CheckCircle2 className="w-8 h-8 text-indigo-600 mb-4" />
-                <h3 className="text-lg font-bold mb-2 text-gray-800">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section ref={contactRef} className="py-8 md:py-16  px-10 md:px-20 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-3xl font-bold mb-6 text-gray-800">
-                  Ready to Boost Your Conversion Rates?
-                </h2>
-                <p className="text-lg text-gray-600 mb-6">
-                  Get a free CRO audit and discover untapped revenue
-                  opportunities on your website. Our team will analyze your
-                  current conversion funnels and identify high-impact
-                  optimization opportunities.
-                </p>
-                <div className="bg-indigo-100 rounded-lg p-6 mb-6">
-                  <h3 className="text-xl font-bold mb-3 text-indigo-800">
-                    What You&apos;ll Get:
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "Comprehensive analysis of your current conversion rates",
-                      "Identification of critical conversion barriers",
-                      "Prioritized list of optimization opportunities",
-                      "Competitive benchmark analysis",
-                      "Actionable recommendations you can implement immediately",
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start">
-                        <CheckCircle2 className="w-5 h-5 text-indigo-600 mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-700">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <button
-                    onClick={() => setIsQuoteOpen(true)}
-                    className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium transition-all"
-                  >
-                    Request a Custom Quote
-                  </button>
-                  <a
-                    href="/contact"
-                    className="px-6 py-3 border border-indigo-600 text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition-all text-center"
-                  >
-                    Schedule a Consultation
-                  </a>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-xl shadow-sm p-8 border border-slate-200"
-              >
-                <Form />
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <QuotePopup isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
-    </div>
-  );
+     );
 }

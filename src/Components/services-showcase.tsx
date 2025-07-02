@@ -537,12 +537,12 @@ const ServicesShowcase = () => {
                                    setSelectedCategory(value)
                               }
                          >
-                              <TabsList className="w-full flex flex-wrap justify-center gap-3 sm:gap-4 bg-gradient-to-r from-white via-gray-50 to-white backdrop-blur-sm p-3 sm:p-4 rounded-3xl shadow-2xl border border-gray-200/60">
+                              <TabsList className="w-full flex flex-wrap justify-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-3xl">
                                    {categories.map((category) => (
                                         <TabsTrigger
                                              key={category.id}
                                              value={category.id}
-                                             className="group relative flex-shrink-0 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:via-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/25 data-[state=active]:scale-105 bg-white/80 hover:bg-white text-gray-700 hover:text-blue-600 hover:shadow-lg hover:scale-102 transition-all duration-300 rounded-2xl font-semibold py-3 sm:py-4 px-4 sm:px-6 text-sm sm:text-base border border-gray-200/50 hover:border-blue-300/50 min-w-0 overflow-hidden"
+                                             className="group relative flex-shrink-0 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:via-blue-500 data-[state=active]:to-purple-600 data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:shadow-blue-500/25 data-[state=active]:scale-105 hover:bg-gray-50 text-gray-700 hover:text-blue-600 hover:shadow-lg hover:scale-102 transition-all duration-300 rounded-2xl font-semibold py-3 sm:py-4 px-4 sm:px-6 text-sm sm:text-base border border-gray-200/50 hover:border-blue-300/50 min-w-0 overflow-hidden"
                                         >
                                              {/* Background shimmer effect */}
                                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -590,9 +590,9 @@ const ServicesShowcase = () => {
                          initial="hidden"
                          animate={servicesInView ? "visible" : "hidden"}
                          variants={staggerContainer}
-                         className="w-full max-w-7xl mx-auto px-4 mb-16 sm:mb-20"
+                         className="w-full max-w-6xl mx-auto px-4 mb-12 sm:mb-16"
                     >
-                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                               {filteredServices.map((service, index) => (
                                    <motion.div
                                         key={service.id}
@@ -605,34 +605,33 @@ const ServicesShowcase = () => {
                                         }}
                                         viewport={{ once: true }}
                                         whileHover={{
-                                             scale: 1.03,
+                                             scale: 1.02,
                                              transition: { duration: 0.2 },
                                         }}
-                                        className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 bg-white border border-gray-200/50"
+                                        className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 bg-white border border-gray-200/50"
                                    >
                                         {/* Gradient Overlay */}
                                         <div
-                                             className="absolute inset-0 opacity-90"
+                                             className="absolute inset-0 opacity-80"
                                              style={{
                                                   background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}dd 100%)`,
                                              }}
                                         />
 
-                                        {/* Animated Background Pattern */}
-                                        <div className="absolute inset-0 opacity-20">
-                                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_0%,_transparent_50%)] animate-pulse"></div>
-                                             <div className="absolute inset-0 bg-[linear-gradient(45deg,_transparent_49%,_rgba(255,255,255,0.05)_50%,_transparent_51%)] bg-[length:20px_20px]"></div>
+                                        {/* Simplified Background Pattern */}
+                                        <div className="absolute inset-0 opacity-10">
+                                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.1)_0%,_transparent_50%)]"></div>
                                         </div>
 
-                                        <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col">
+                                        <div className="relative z-10 p-4 sm:p-6 h-full flex flex-col">
                                              {/* Header Section */}
-                                             <div className="flex items-center justify-between mb-6">
-                                                  <div className="flex items-center gap-4">
-                                                       <div className="p-3 sm:p-4 rounded-2xl bg-white/20 backdrop-blur-sm border border-white/30 group-hover:scale-110 transition-transform duration-300">
+                                             <div className="flex items-center justify-between mb-4">
+                                                  <div className="flex items-center gap-3">
+                                                       <div className="p-2.5 sm:p-3 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 group-hover:scale-110 transition-transform duration-300">
                                                             {service.icon}
                                                        </div>
                                                        <div>
-                                                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
+                                                            <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                                                                  {service.title}
                                                             </h3>
                                                             <div className="flex items-center gap-2">
@@ -645,7 +644,7 @@ const ServicesShowcase = () => {
                                              </div>
 
                                              {/* Image Section */}
-                                             <div className="relative h-48 sm:h-56 mb-6 overflow-hidden rounded-xl border border-white/20 bg-white/10 backdrop-blur-sm">
+                                             <div className="relative h-32 sm:h-40 mb-4 overflow-hidden rounded-lg border border-white/20 bg-white/10 backdrop-blur-sm">
                                                   <Image
                                                        src={
                                                             service.image ||
@@ -653,7 +652,7 @@ const ServicesShowcase = () => {
                                                        }
                                                        alt={service.title}
                                                        fill
-                                                       className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                                                       className="object-cover transition-all duration-500 group-hover:scale-105"
                                                   />
                                                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                                              </div>
@@ -661,79 +660,30 @@ const ServicesShowcase = () => {
                                              {/* Content Section */}
                                              <div className="flex-grow">
                                                   <p
-                                                       className={`text-sm sm:text-base ${service.textColor} mb-6 leading-relaxed opacity-90`}
+                                                       className={`text-sm ${service.textColor} mb-4 leading-relaxed opacity-90 line-clamp-3`}
                                                   >
                                                        {service.description}
                                                   </p>
                                              </div>
 
                                              {/* Footer Section */}
-                                             <div className="flex items-center justify-between pt-4 border-t border-white/20">
-                                                  <div className="flex items-center gap-2 text-white/80 text-sm">
-                                                       <Clock className="w-4 h-4" />
+                                             <div className="flex items-center justify-between pt-3 border-t border-white/20">
+                                                  <div className="flex items-center gap-2 text-white/80 text-xs">
+                                                       <Clock className="w-3 h-3" />
                                                        <span>Quick Setup</span>
                                                   </div>
                                                   <Link
                                                        href={service.link}
-                                                       className="group/btn inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-full text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 border border-white/30 hover:border-white/50"
+                                                       className="group/btn inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-lg text-sm font-medium transition-all duration-300 hover:scale-105 border border-white/30 hover:border-white/50"
                                                   >
                                                        <span>Learn More</span>
-                                                       <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                                                       <ArrowRight className="w-3 h-3 transition-transform group-hover/btn:translate-x-1" />
                                                   </Link>
                                              </div>
-
-                                             {/* Hover Effects */}
-                                             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                  <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30">
-                                                       <ArrowRight className="w-4 h-4 text-white" />
-                                                  </div>
-                                             </div>
                                         </div>
-
-                                        {/* Shimmer Effect */}
-                                        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                                    </motion.div>
                               ))}
                          </div>
-
-                         {/* Enhanced Bottom CTA */}
-                         <motion.div
-                              initial={{ opacity: 0, y: 30 }}
-                              whileInView={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.6, delay: 0.5 }}
-                              viewport={{ once: true }}
-                              className="text-center mt-12 sm:mt-16"
-                         >
-                              <div className="bg-gradient-to-r from-blue-50 via-purple-50 to-cyan-50 rounded-2xl p-6 sm:p-8 border border-gray-200/50">
-                                   <h3 className="text-xl sm:text-2xl font-bold mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                                        Need a Custom Solution?
-                                   </h3>
-                                   <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                                        Don't see exactly what you're looking
-                                        for? We create custom digital marketing
-                                        strategies tailored to your unique
-                                        business needs.
-                                   </p>
-                                   <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                                        <Link
-                                             href="/contact"
-                                             className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
-                                        >
-                                             <MessageSquare className="w-4 h-4" />
-                                             <span>Discuss Your Project</span>
-                                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                        </Link>
-                                        <button
-                                             onClick={toggleQuotePopup}
-                                             className="group inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white border-2 border-blue-200 text-blue-600 rounded-full font-semibold transition-all duration-300 hover:bg-blue-50 hover:border-blue-300 hover:scale-105"
-                                        >
-                                             <DollarSign className="w-4 h-4" />
-                                             <span>Get Custom Quote</span>
-                                             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                        </button>
-                                   </div>
-                              </div>
-                         </motion.div>
                     </motion.div>
 
                     {/* Enhanced Additional Services Section */}
