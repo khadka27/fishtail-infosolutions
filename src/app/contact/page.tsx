@@ -95,10 +95,10 @@ export default function ContactPage() {
                </section>
 
                {/* Map Section - Fixed and Enhanced */}
-               <section className="py-8">
+               <section className="mb-8">
                     <div className="container mx-auto max-w-6xl px-4">
                          <div className="text-center mb-6">
-                              <h2 className="text-2xl font-light text-gray-800 mb-2">
+                              <h2 className="text-2xl font-medium text-gray-800 mb-2">
                                    Find Our Office
                               </h2>
                               <p className="text-gray-600">

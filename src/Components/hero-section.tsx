@@ -47,7 +47,7 @@ export function HeroSection() {
                title: "Targeted Lead Generation",
                description:
                     "Generate high-quality leads that convert. We employ data-driven strategies to attract and nurture prospects, turning them into loyal customers.",
-               color: "from-purple-600 to-pink-700",
+               color: "from-blue-800 to-indigo-700",
                badges: ["Analytics", "Conversion", "Growth"],
                icon: Target,
                link: "/Services/lead-generation",

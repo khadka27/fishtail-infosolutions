@@ -67,7 +67,7 @@ export default function MultiAddressContactPage() {
                phone: "+1 (801) 987-0424",
                email: "us@fishtailinfosolutions.com",
                hours: "Monday–Friday 9am-6pm",
-               color: "from-green-500 to-green-600",
+               color: "from-blue-500 to-blue-600",
           },
           {
                name: "Pokhara Office",
@@ -76,7 +76,7 @@ export default function MultiAddressContactPage() {
                phone: "+977 61 123456",
                email: "nepal@fishtailinfosolutions.com",
                hours: "Sunday–Friday 9am-6pm",
-               color: "from-purple-500 to-purple-600",
+               color: "from-blue-500 to-blue-600",
           },
           {
                name: "Delhi Office",
@@ -85,7 +85,7 @@ export default function MultiAddressContactPage() {
                phone: "+91 11 123456",
                email: "india@fishtailinfosolutions.com",
                hours: "Monday–Friday 9am-6pm",
-               color: "from-orange-500 to-orange-600",
+               color: "from-blue-500 to-blue-600",
           },
      ];
 
@@ -97,20 +97,20 @@ export default function MultiAddressContactPage() {
                     <div className="absolute inset-0 pointer-events-none">
                          <div className="absolute top-10 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-3xl animate-pulse"></div>
                          <div
-                              className="absolute bottom-20 right-20 w-40 h-40 bg-purple-200/20 rounded-full blur-3xl animate-pulse"
+                              className="absolute bottom-20 right-20 w-40 h-40 bg-blue-200/20 rounded-full blur-3xl animate-pulse"
                               style={{ animationDelay: "2s" }}
                          ></div>
                     </div>
 
                     <div className="container mx-auto max-w-6xl px-4 relative z-10">
                          <div className="text-center mb-12">
-                              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full text-blue-700 text-sm font-medium mb-6">
+                              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-blue-100 px-4 py-2 rounded-full text-blue-700 text-sm font-medium mb-6">
                                    <Sparkles className="w-4 h-4" />
                                    Global Presence
                               </div>
                               <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-800 mb-4">
                                    Get in
-                                   <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                   <span className="bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
                                         {" "}
                                         Touch
                                    </span>
@@ -135,7 +135,7 @@ export default function MultiAddressContactPage() {
                                         </div>
                                    </div>
                                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 text-center shadow-md border border-white/50">
-                                        <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                                              <Users className="w-6 h-6 text-white" />
                                         </div>
                                         <div className="text-2xl font-bold text-gray-800">
@@ -146,7 +146,7 @@ export default function MultiAddressContactPage() {
                                         </div>
                                    </div>
                                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 text-center shadow-md border border-white/50">
-                                        <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                                              <Clock className="w-6 h-6 text-white" />
                                         </div>
                                         <div className="text-2xl font-bold text-gray-800">
@@ -157,7 +157,7 @@ export default function MultiAddressContactPage() {
                                         </div>
                                    </div>
                                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 text-center shadow-md border border-white/50">
-                                        <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
                                              <Mail className="w-6 h-6 text-white" />
                                         </div>
                                         <div className="text-2xl font-bold text-gray-800">
@@ -196,12 +196,12 @@ export default function MultiAddressContactPage() {
                                         </p>
                                    </div>
 
-                                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+                                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 justify-items-center">
                                         {displayLocations.map(
                                              (location, index) => (
                                                   <div
                                                        key={location.country}
-                                                       className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                                                       className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] w-full max-w-sm"
                                                   >
                                                        {/* Header */}
                                                        <div className="flex items-center gap-3 mb-4">
@@ -281,7 +281,7 @@ export default function MultiAddressContactPage() {
                                    </div>
 
                                    {/* Quick Links */}
-                                   <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-6 text-white mt-8">
+                                   <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white mt-8">
                                         <h3 className="text-xl font-semibold mb-4">
                                              Need Specialized Help?
                                         </h3>
