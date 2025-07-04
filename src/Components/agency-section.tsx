@@ -1,37 +1,71 @@
 "use client";
 
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+     Users,
+     Target,
+     TrendingUp,
+     Award,
+     Globe,
+     Zap,
+     ArrowRight,
+     CheckCircle,
+     Star,
+     Mail,
+     MapPin,
+     Clock,
+     DollarSign,
+     BarChart3,
+     Shield,
+     Lightbulb,
+     Settings,
+     MessageSquare,
+     Share2,
+     Eye,
+     MousePointer,
+     Filter,
+     X,
+     Trophy,
+     User,
+     Search,
+     Heart,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import {
      Twitter,
      Facebook,
      Instagram,
      Linkedin,
-     Award,
      BarChart2,
-     Mail,
-     Trophy,
-     User,
-     Search,
-     Clock,
+     Sparkles,
      Calendar,
      Mic,
      Coffee,
-     ArrowRight,
-     Sparkles,
-     Target,
-     Globe,
-     Zap,
-     Heart,
-     Star,
      Building2,
      PenTool,
      Code,
-     Users,
      Megaphone,
      Users as UsersIcon,
+     Briefcase,
+     GraduationCap,
+     MapPin as MapPinIcon,
+     Phone as PhoneIcon,
+     Mail as MailIcon,
+     Globe as GlobeIcon,
+     Clock as ClockIcon,
+     DollarSign as DollarSignIcon,
+     BarChart3 as BarChart3Icon,
+     Shield as ShieldIcon,
+     Lightbulb as LightbulbIcon,
+     Settings as SettingsIcon,
+     MessageSquare as MessageSquareIcon,
+     Share2 as Share2Icon,
+     Eye as EyeIcon,
+     MousePointer as MousePointerIcon,
+     Filter as FilterIcon,
+     X as XIcon,
 } from "lucide-react";
 import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
 import marketingimage from "@/Images/digitalpic.png";
@@ -179,6 +213,7 @@ export default function AgencyPage({
 }: {
      teamMembers: TeamMember[];
 }) {
+     const [currentSlide, setCurrentSlide] = useState(0);
      const [isVisible, setIsVisible] = useState(false);
      const [animatedStats, setAnimatedStats] = useState(stats.map(() => 0));
      const [animatedBottomStats, setAnimatedBottomStats] = useState(
@@ -188,6 +223,7 @@ export default function AgencyPage({
      );
      const statsRef = useRef<HTMLDivElement>(null);
      const bottomStatsRef = useRef<HTMLDivElement>(null);
+     const sectionRef = useRef<HTMLDivElement>(null);
 
      // Intersection Observer for animations
      useEffect(() => {

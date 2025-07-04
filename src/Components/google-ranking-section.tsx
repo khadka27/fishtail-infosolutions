@@ -333,9 +333,12 @@ export function GoogleRankingSection() {
                                                   ))}
                                              </div>
                                         </div>
-                                        <p className="text-slate-700 text-sm italic mb-2">
-                                             "Our traffic increased by 210% in
-                                             just 3 months!"
+                                        <p className="text-gray-600 mb-6">
+                                             &quot;Fishtail helped us achieve #1
+                                             rankings for our most competitive
+                                             keywords. Their data-driven
+                                             approach delivered measurable
+                                             results.&quot;
                                         </p>
                                         <div className="flex items-center gap-2">
                                              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">

@@ -193,9 +193,13 @@ const steps: Step[] = [
      },
 ];
 
+type SelectionItem = { id: string };
+
 export default function DigitalAdQuoteCalculator() {
      const [currentStep, setCurrentStep] = useState(0);
-     const [selections, setSelections] = useState<Record<string, any>>({});
+     const [selections, setSelections] = useState<
+          Record<string, SelectionItem[] | SelectionItem>
+     >({});
      const [totalPrice, setTotalPrice] = useState(0);
      const [isStarted, setIsStarted] = useState(false);
      const [formData, setFormData] = useState({
@@ -241,15 +245,17 @@ export default function DigitalAdQuoteCalculator() {
                     if (!Array.isArray(newSelections[stepId])) {
                          newSelections[stepId] = [];
                     }
-                    const existingIndex = newSelections[stepId].findIndex(
-                         (s: any) => s.id === optionId
-                    );
+                    const existingIndex = (
+                         newSelections[stepId] as SelectionItem[]
+                    ).findIndex((s: SelectionItem) => s.id === optionId);
                     if (existingIndex >= 0) {
-                         newSelections[stepId] = newSelections[stepId].filter(
-                              (s: any) => s.id !== optionId
-                         );
+                         newSelections[stepId] = (
+                              newSelections[stepId] as SelectionItem[]
+                         ).filter((s: SelectionItem) => s.id !== optionId);
                     } else {
-                         newSelections[stepId].push({ id: optionId });
+                         (newSelections[stepId] as SelectionItem[]).push({
+                              id: optionId,
+                         });
                     }
                } else {
                     newSelections[stepId] = { id: optionId };
@@ -261,13 +267,17 @@ export default function DigitalAdQuoteCalculator() {
      const isSelected = (stepId: string, optionId: string) => {
           if (!selections[stepId]) return false;
           if (Array.isArray(selections[stepId])) {
-               return selections[stepId].some((s: any) => s.id === optionId);
+               return (selections[stepId] as SelectionItem[]).some(
+                    (s: SelectionItem) => s.id === optionId
+               );
           }
-          return selections[stepId]?.id === optionId;
+          return (selections[stepId] as SelectionItem)?.id === optionId;
      };
 
      const handleInputChange = (
-          e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+          e: React.ChangeEvent<
+               HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+          >
      ) => {
           const { name, value } = e.target;
           setFormData((prev) => ({ ...prev, [name]: value }));
@@ -287,7 +297,7 @@ export default function DigitalAdQuoteCalculator() {
           }
      };
 
-     const handleSubmit = (e: React.FormEvent) => {
+     const handleSubmit = async (e: React.FormEvent) => {
           e.preventDefault();
           console.log("Form submitted:", { selections, totalPrice, formData });
           alert(
@@ -298,6 +308,39 @@ export default function DigitalAdQuoteCalculator() {
      const progressPercentage = isStarted
           ? ((currentStep + 1) / (steps.length + 1)) * 100
           : 0;
+
+     const calculateTotal = (): number => {
+          let total = 0;
+          Object.values(selections).forEach((selection) => {
+               if (Array.isArray(selection)) {
+                    selection.forEach((item: SelectionItem) => {
+                         steps.forEach((step) => {
+                              const option = step.options.find(
+                                   (opt) => opt.id === item.id
+                              );
+                              if (option) {
+                                   total += option.price;
+                              }
+                         });
+                    });
+               } else if (
+                    selection &&
+                    typeof selection === "object" &&
+                    "id" in selection
+               ) {
+                    steps.forEach((step) => {
+                         const option = step.options.find(
+                              (opt) =>
+                                   opt.id === (selection as SelectionItem).id
+                         );
+                         if (option) {
+                              total += option.price;
+                         }
+                    });
+               }
+          });
+          return total;
+     };
 
      return (
           <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">

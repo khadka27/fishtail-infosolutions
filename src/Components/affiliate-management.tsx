@@ -1,29 +1,31 @@
 "use client";
-import { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
+     TrendingUp,
      Users,
-     BarChart,
      DollarSign,
+     BarChart3,
+     Target,
+     ArrowRight,
+     CheckCircle,
      Briefcase,
-     ShoppingCart,
      Award,
      Settings,
      FileText,
-     TrendingUp,
-     CheckCircle,
-     ArrowRight,
-     Target,
+     ShoppingCart,
+     BarChart,
      Sparkles,
-     Link,
-     Percent,
-     Zap,
 } from "lucide-react";
 import { QuotePopup } from "./quote-popup";
 import Form from "./form";
 import Image from "next/image";
 
 import grow from "@/Images/grow-business.jpg";
+import image1 from "@/Images/design.jpg";
+import image2 from "@/Images/finance.jpg";
+import image3 from "@/Images/analysis.jpg";
+import image4 from "@/Images/audience-targeting.jpg";
 
 // Simplified services data
 const services = [
@@ -394,7 +396,7 @@ export default function AffiliateManagement() {
                                                        {step.title}
                                                   </h3>
 
-                                                  <p className="text-gray-600 mb-6 leading-relaxed">
+                                                  <p className="text-gray-600 mb-6">
                                                        {step.description}
                                                   </p>
 
@@ -439,7 +441,7 @@ export default function AffiliateManagement() {
                                    </h2>
                                    <p className="text-lg text-gray-600 mb-8">
                                         Affiliate marketing delivers
-                                        performance-based growth that's
+                                        performance-based growth that&apos;s
                                         cost-effective, scalable, and
                                         measurable. Pay only for results and
                                         expand your reach exponentially.
@@ -534,7 +536,7 @@ export default function AffiliateManagement() {
                                    Ready to Launch Your Affiliate Program?
                               </h2>
                               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                                   Whether you're starting from scratch or
+                                   Whether you&apos;re starting from scratch or
                                    optimizing an existing program, our experts
                                    are ready to help you achieve your goals.
                               </p>

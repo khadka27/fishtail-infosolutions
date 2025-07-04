@@ -55,20 +55,30 @@ export function HeroSection() {
      ];
 
      const resetIntervals = () => {
-          if (slideInterval.current) clearInterval(slideInterval.current);
-          if (progressInterval.current) clearInterval(progressInterval.current);
-          setProgress(0);
-          startIntervals();
+          if (slideInterval.current) {
+               clearInterval(slideInterval.current);
+          }
+          if (progressInterval.current) {
+               clearInterval(progressInterval.current);
+          }
      };
-     const startIntervals = () => {
-          slideInterval.current = setInterval(() => {
-               nextSlide();
-          }, slideDuration) as unknown as null;
 
+     const startIntervals = () => {
+          // Start slide interval
+          slideInterval.current = setInterval(() => {
+               setCurrentSlide((prev) => (prev + 1) % slides.length);
+          }, 5000);
+
+          // Start progress interval
           progressInterval.current = setInterval(() => {
                setProgress((prev) => {
-                    if (prev >= 100) return 0;
-                    return prev + 100 / (slideDuration / 100);
+                    if (prev >= 100) {
+                         setCurrentSlide(
+                              (slide) => (slide + 1) % slides.length
+                         );
+                         return 0;
+                    }
+                    return prev + 2;
                });
           }, 100);
      };
@@ -119,6 +129,19 @@ export function HeroSection() {
           setTouchEnd(0);
      };
 
+     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          // Update gradient position
+          const gradientX = (x / rect.width) * 100;
+          const gradientY = (y / rect.height) * 100;
+
+          e.currentTarget.style.setProperty("--gradient-x", `${gradientX}%`);
+          e.currentTarget.style.setProperty("--gradient-y", `${gradientY}%`);
+     };
+
      useEffect(() => {
           startIntervals();
           return () => {
@@ -141,6 +164,7 @@ export function HeroSection() {
                onTouchStart={handleTouchStart}
                onTouchMove={handleTouchMove}
                onTouchEnd={handleTouchEnd}
+               onMouseMove={handleMouseMove}
           >
                {/* Enhanced Background with animated gradient */}
                <div
