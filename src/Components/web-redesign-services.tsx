@@ -384,11 +384,10 @@ const WebsiteRedesign = () => {
                                                                       }
                                                                  </h3>
                                                                  <p className="text-gray-600 text-sm leading-relaxed">
-                                                                      {step.description ||
-                                                                           `Step ${
-                                                                                index +
-                                                                                1
-                                                                           } in our comprehensive redesign process.`}
+                                                                      {`Step ${
+                                                                           index +
+                                                                           1
+                                                                      } in our comprehensive redesign process.`}
                                                                  </p>
                                                             </div>
 
@@ -478,11 +477,9 @@ const WebsiteRedesign = () => {
                                                                  </h3>
                                                             </div>
                                                             <p className="text-gray-600 text-sm">
-                                                                 {step.description ||
-                                                                      `Step ${
-                                                                           index +
-                                                                           1
-                                                                      } in our redesign process.`}
+                                                                 {`Step ${
+                                                                      index + 1
+                                                                 } in our redesign process.`}
                                                             </p>
                                                        </div>
                                                   </div>

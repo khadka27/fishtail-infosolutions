@@ -19,8 +19,8 @@ export function HeroSection() {
      const [progress, setProgress] = useState(0);
      const [touchStart, setTouchStart] = useState(0);
      const [touchEnd, setTouchEnd] = useState(0);
-     const slideInterval = useRef(null);
-     const progressInterval = useRef(null);
+     const slideInterval = useRef<NodeJS.Timeout | null>(null);
+     const progressInterval = useRef<NodeJS.Timeout | null>(null);
      const totalSlides = 3;
      const slideDuration = 6000;
 
@@ -60,11 +60,10 @@ export function HeroSection() {
           setProgress(0);
           startIntervals();
      };
-
      const startIntervals = () => {
           slideInterval.current = setInterval(() => {
                nextSlide();
-          }, slideDuration);
+          }, slideDuration) as unknown as null;
 
           progressInterval.current = setInterval(() => {
                setProgress((prev) => {
@@ -94,7 +93,7 @@ export function HeroSection() {
           }, 100);
      };
 
-     const goToSlide = (index) => {
+     const goToSlide = (index: any) => {
           setAnimationReset(true);
           setTimeout(() => {
                setCurrentSlide(index);
@@ -102,11 +101,11 @@ export function HeroSection() {
           }, 100);
      };
 
-     const handleTouchStart = (e) => {
+     const handleTouchStart = (e: any) => {
           setTouchStart(e.touches[0].clientX);
      };
 
-     const handleTouchMove = (e) => {
+     const handleTouchMove = (e: any) => {
           setTouchEnd(e.touches[0].clientX);
      };
 

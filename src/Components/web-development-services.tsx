@@ -33,6 +33,7 @@ import image2 from "@/Images/services-seo-alt-colors-optimized.png";
 import image4 from "@/Images/services-payperclick-alt-colors-optimized.png";
 import webdev from "@/Images/web-dev.png";
 import { QuotePopup } from "./quote-popup";
+import { projects } from "@/data/project-data";
 
 // Simplified development features
 const developmentFeatures = [

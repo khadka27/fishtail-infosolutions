@@ -1305,8 +1305,9 @@ const ServicesShowcase = () => {
                                                                            }
                                                                       </p>
                                                                       <p className="text-blue-200/80 text-xs sm:text-sm">
-                                                                           {testimonial.company ||
-                                                                                "Verified Client"}
+                                                                           {
+                                                                                "Verified Client"
+                                                                           }
                                                                       </p>
                                                                  </div>
                                                             </div>

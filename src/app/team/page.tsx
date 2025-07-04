@@ -15,6 +15,15 @@ import {
      Linkedin,
      Twitter,
      Users,
+     Building2,
+     Search as SearchIcon,
+     PenTool,
+     Code,
+     Users as UsersIcon,
+     Megaphone,
+     Globe,
+     Target,
+     Sparkles,
 } from "lucide-react";
 import { teamMembers } from "@/data/team-members";
 
@@ -109,38 +118,92 @@ export default function TeamPage() {
                          />
                     </div>
 
-                    {/* Department Filter */}
-                    <div className="flex flex-col sm:flex-row items-center gap-3 justify-center">
-                         <div className="flex items-center gap-2 text-gray-600 text-sm">
-                              <Filter className="h-4 w-4" />
-                              <span>Filter:</span>
-                         </div>
-                         <div className="flex flex-wrap justify-center gap-2">
-                              <button
-                                   onClick={() => setSelectedDepartment(null)}
-                                   className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
-                                        selectedDepartment === null
-                                             ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md"
-                                             : "bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 hover:border-gray-300"
-                                   }`}
-                              >
-                                   All
-                              </button>
-                              {departments.map((dept) => (
+                    {/* Department Filter - Light & Blue */}
+                    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                         <div className="flex flex-col items-center gap-3">
+                              {/* Simple Filter Header */}
+                              <div className="flex items-center gap-2 text-gray-600">
+                                   <Filter className="h-4 w-4 text-blue-500" />
+                                   <span className="text-sm font-medium">
+                                        Filter by Department
+                                   </span>
+                              </div>
+
+                              {/* Filter Buttons */}
+                              <div className="flex flex-wrap justify-center gap-2">
+                                   {/* All Button */}
                                    <button
-                                        key={dept}
                                         onClick={() =>
-                                             setSelectedDepartment(dept)
+                                             setSelectedDepartment(null)
                                         }
-                                        className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
-                                             selectedDepartment === dept
-                                                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md"
-                                                  : "bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 hover:border-gray-300"
+                                        className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                                             selectedDepartment === null
+                                                  ? "bg-blue-500 text-white shadow-sm"
+                                                  : "bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200"
                                         }`}
                                    >
-                                        {dept}
+                                        <Sparkles className="h-3 w-3" />
+                                        <span>All</span>
                                    </button>
-                              ))}
+
+                                   {/* Department Buttons */}
+                                   {departments.map((dept) => {
+                                        // Simple department icons
+                                        const deptIcons = {
+                                             Management: Building2,
+                                             SEO: SearchIcon,
+                                             Content: PenTool,
+                                             Development: Code,
+                                             HR: UsersIcon,
+                                             Marketing: Megaphone,
+                                        };
+
+                                        const IconComponent =
+                                             deptIcons[
+                                                  dept as keyof typeof deptIcons
+                                             ] || Sparkles;
+
+                                        return (
+                                             <button
+                                                  key={dept}
+                                                  onClick={() =>
+                                                       setSelectedDepartment(
+                                                            dept
+                                                       )
+                                                  }
+                                                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                                                       selectedDepartment ===
+                                                       dept
+                                                            ? "bg-blue-500 text-white shadow-sm"
+                                                            : "bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200"
+                                                  }`}
+                                             >
+                                                  <IconComponent className="h-3 w-3" />
+                                                  <span>{dept}</span>
+                                             </button>
+                                        );
+                                   })}
+                              </div>
+
+                              {/* Simple Active Filter Indicator */}
+                              {selectedDepartment && (
+                                   <div className="flex items-center gap-2 text-xs text-gray-500 bg-blue-50 px-2 py-1 rounded-md">
+                                        <span>
+                                             Showing:{" "}
+                                             <span className="font-medium text-blue-600">
+                                                  {selectedDepartment}
+                                             </span>
+                                        </span>
+                                        <button
+                                             onClick={() =>
+                                                  setSelectedDepartment(null)
+                                             }
+                                             className="text-blue-400 hover:text-blue-600 transition-colors"
+                                        >
+                                             ✕
+                                        </button>
+                                   </div>
+                              )}
                          </div>
                     </div>
                </motion.div>

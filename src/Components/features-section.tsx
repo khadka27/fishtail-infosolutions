@@ -12,8 +12,8 @@ import {
 } from "lucide-react";
 
 export function FeaturesSection() {
-     const [hoveredCard, setHoveredCard] = useState(null);
-     const [expandedCard, setExpandedCard] = useState(null);
+     const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+     const [expandedCard, setExpandedCard] = useState<number | null>(null);
      const [stats, setStats] = useState({
           clients: 0,
           projects: 0,
@@ -79,7 +79,7 @@ export function FeaturesSection() {
           },
      ];
 
-     const handleCardClick = (index) => {
+     const handleCardClick = (index: any) => {
           if (expandedCard === index) {
                setExpandedCard(null);
           } else {
@@ -87,7 +87,7 @@ export function FeaturesSection() {
           }
      };
 
-     const handleMouseMove = (e) => {
+     const handleMouseMove = (e: any) => {
           setMousePosition({ x: e.clientX, y: e.clientY });
      };
 

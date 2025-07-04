@@ -146,15 +146,10 @@ export default function CaseStudiesPage() {
                                    Success Stories & Case Studies
                               </div>
                               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-gray-800 mb-4">
-                                   Transforming
+                                   Our Success
                                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                                         {" "}
-                                        Education
-                                   </span>
-                                   <br className="sm:hidden" />
-                                   <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                                        {" "}
-                                        Marketing
+                                        Stories
                                    </span>
                               </h1>
                               <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
@@ -407,7 +402,12 @@ export default function CaseStudiesPage() {
                                         {testimonials[activeTestimonial]?.name}
                                    </div>
                                    <div className="text-blue-100 text-sm">
-                                        {testimonials[activeTestimonial]?.title}
+                                        {testimonials[activeTestimonial]?.role}{" "}
+                                        at{" "}
+                                        {
+                                             testimonials[activeTestimonial]
+                                                  ?.institution
+                                        }
                                    </div>
                               </motion.div>
                          </AnimatePresence>
