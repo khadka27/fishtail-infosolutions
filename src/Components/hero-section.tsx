@@ -305,7 +305,7 @@ export function HeroSection() {
 
                               {/* Enhanced Visual Elements - responsive and improved */}
                               <div
-                                   className={`relative order-first lg:order-last ${
+                                   className={`relative order-first lg:order-last hidden lg:block ${
                                         animationReset
                                              ? "opacity-0"
                                              : "animate-fadeIn"
