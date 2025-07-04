@@ -1,812 +1,683 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-// import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
-  ArrowRight,
-  ChevronRight,
-  Code,
-  Layout,
-  Smartphone,
-  Monitor,
-  Zap,
-  ArrowDown,
-  DollarSign,
-  RefreshCw,
-  TrendingUp,
-  Search,
-  Layers,
+     ArrowRight,
+     Code,
+     Layout,
+     Smartphone,
+     Monitor,
+     Zap,
+     RefreshCw,
+     TrendingUp,
+     Search,
+     Layers,
+     MessageSquare,
+     DollarSign,
+     CheckCircle,
 } from "lucide-react";
 import Form from "./form";
 import redesign from "@/Images/redesign.png";
-import image3 from "@/Images/services-analytics-alt-colors-optimized.png";
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
-import image2 from "@/Images/services-seo-alt-colors-optimized.png";
-import image4 from "@/Images/services-payperclick-alt-colors-optimized.png";
 import { QuotePopup } from "./quote-popup";
 
-// Define service features
-const redesignFeatures = [
-  {
-    title: "UX/UI modernization",
-    description:
-      "Transform outdated interfaces into modern, intuitive experiences that delight your users.",
-    icon: Layout,
-    color: "blue",
-  },
-  {
-    title: "Performance optimization",
-    description:
-      "Improve loading speeds and overall performance to reduce bounce rates and increase conversions.",
-    icon: Zap,
-    color: "red",
-  },
-  {
-    title: "Responsive redesign",
-    description:
-      "Ensure your website works flawlessly across all devices with a mobile-first approach.",
-    icon: Smartphone,
-    color: "green",
-  },
-  {
-    title: "Technical debt cleanup",
-    description:
-      "Refactor outdated code and modernize your tech stack for better maintainability.",
-    icon: Code,
-    color: "purple",
-  },
-  {
-    title: "Brand refresh",
-    description:
-      "Align your website with your current brand identity and marketing objectives.",
-    icon: RefreshCw,
-    color: "orange",
-  },
-  {
-    title: "SEO preservation & enhancement",
-    description:
-      "Maintain your search rankings while improving on-page optimization factors.",
-    icon: Search,
-    color: "teal",
-  },
+// Simplified feature data
+const features = [
+     {
+          title: "Modern UI/UX Design",
+          description:
+               "Contemporary interfaces that delight users and drive engagement.",
+          icon: Layout,
+          color: "blue",
+     },
+     {
+          title: "Performance Optimization",
+          description:
+               "Lightning-fast loading speeds for better user experience.",
+          icon: Zap,
+          color: "green",
+     },
+     {
+          title: "Mobile-First Responsive",
+          description: "Perfect display across all devices and screen sizes.",
+          icon: Smartphone,
+          color: "purple",
+     },
+     {
+          title: "SEO Preservation",
+          description: "Maintain and improve your search engine rankings.",
+          icon: Search,
+          color: "orange",
+     },
 ];
 
-// Define process steps
+// Simplified process steps
 const processSteps = [
-  {
-    title: "Audit & Analysis",
-    description:
-      "We analyze your current website's performance, UX issues, and technical limitations.",
-    icon: Search,
-  },
-  {
-    title: "Strategy",
-    description:
-      "We develop a comprehensive redesign strategy based on data and business objectives.",
-    icon: Layers,
-  },
-  {
-    title: "Wireframing",
-    description:
-      "We create wireframes and prototypes to visualize the new structure and user flows.",
-    icon: Layout,
-  },
-  {
-    title: "Design",
-    description:
-      "Our designers create modern, engaging visual designs aligned with your brand.",
-    icon: Monitor,
-  },
-  {
-    title: "Development",
-    description:
-      "Our developers rebuild your website with clean, efficient, and future-proof code.",
-    icon: Code,
-  },
-  {
-    title: "Launch & Optimization",
-    description:
-      "We carefully launch your redesigned site and continuously optimize its performance.",
-    icon: TrendingUp,
-  },
+     { title: "Audit & Analysis", icon: Search },
+     { title: "Strategy Planning", icon: Layers },
+     { title: "Design & Prototype", icon: Monitor },
+     { title: "Development", icon: Code },
+     { title: "Launch & Optimize", icon: TrendingUp },
 ];
 
-// Define projects
-const projects = [
-  {
-    title: "Quantum Finance",
-    description:
-      "Complete redesign increased conversion rates by 45% and reduced bounce rate by 32%.",
-    image: image2,
-    bgColor: "bg-[#1ab5b3]",
-    stats: { value: "45%", label: "Conversion Increase" },
-  },
-  {
-    title: "Nexus Healthcare",
-    description:
-      "Modernized UI/UX resulted in 78% improvement in user satisfaction scores.",
-    image: image3,
-    bgColor: "bg-[#2c3e50]",
-    stats: { value: "78%", label: "User Satisfaction" },
-  },
-  {
-    title: "Vertex Media",
-    description:
-      "Responsive redesign led to 52% increase in mobile engagement and conversions.",
-    image: image4,
-    bgColor: "bg-[#8bc34a]",
-    stats: { value: "52%", label: "Mobile Engagement" },
-  },
-  {
-    title: "Alpine Retail",
-    description:
-      "E-commerce redesign resulted in 3.2x increase in average order value.",
-    image: image1,
-    bgColor: "bg-[#e74c3c]",
-    stats: { value: "3.2x", label: "Order Value" },
-  },
-  {
-    title: "Pulse Technology",
-    description:
-      "SaaS platform redesign reduced customer support tickets by 64%.",
-    image: image2,
-    bgColor: "bg-[#9b59b6]",
-    stats: { value: "64%", label: "Support Reduction" },
-  },
+// Key statistics
+const stats = [
+     { value: "150%", label: "Avg. Conversion Increase" },
+     { value: "65%", label: "Bounce Rate Reduction" },
+     { value: "3x", label: "Mobile Engagement" },
+     { value: "90%", label: "Client Satisfaction" },
 ];
 
 const WebsiteRedesign = () => {
-  const formRef = useRef<HTMLDivElement>(null);
-  const [showQuotePopup, setShowQuotePopup] = useState(false);
-  const [activeFeature, setActiveFeature] = useState<number | null>(null);
-  const [activeStep, setActiveStep] = useState<number | null>(null);
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+     const formRef = useRef<HTMLDivElement>(null);
+     const [showQuotePopup, setShowQuotePopup] = useState(false);
 
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+     const scrollToForm = () => {
+          formRef.current?.scrollIntoView({ behavior: "smooth" });
+     };
 
-  const toggleQuotePopup = () => {
-    setShowQuotePopup((prev) => !prev);
-  };
+     return (
+          <div className="flex flex-col">
+               {/* Hero Section */}
+               <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 text-white py-16 md:py-24 px-4 overflow-hidden">
+                    {/* Background decoration */}
+                    <div className="absolute inset-0 bg-black/10"></div>
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-48 translate-x-48"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-48 -translate-x-48"></div>
 
-  // Auto-rotate projects
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+                    <div className="relative max-w-6xl mx-auto">
+                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                              {/* Content */}
+                              <motion.div
+                                   initial={{ opacity: 0, y: 20 }}
+                                   animate={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   className="text-center lg:text-left"
+                              >
+                                   <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm font-medium mb-6">
+                                        <RefreshCw className="w-4 h-4" />
+                                        Expert Redesign Services
+                                   </div>
 
-  // Check if element is in viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+                                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                                        Transform Your
+                                        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-300">
+                                             Digital Presence
+                                        </span>
+                                   </h1>
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+                                   <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-2xl">
+                                        Modernize your website with data-driven
+                                        redesign that increases conversions,
+                                        improves user experience, and drives
+                                        business growth.
+                                   </p>
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+                                   <div className="flex flex-col sm:flex-row gap-4 mb-8">
+                                        <button
+                                             onClick={scrollToForm}
+                                             className="bg-white text-blue-700 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                        >
+                                             Start Your Redesign
+                                             <ArrowRight className="ml-2 h-5 w-5" />
+                                        </button>
+                                        <button
+                                             onClick={() =>
+                                                  setShowQuotePopup(true)
+                                             }
+                                             className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-blue-700 px-8 py-3 rounded-full font-semibold flex items-center justify-center transition-all duration-300"
+                                        >
+                                             Get Free Quote
+                                             <DollarSign className="ml-2 h-5 w-5" />
+                                        </button>
+                                   </div>
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+                                   {/* Quick stats */}
+                                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        {stats.map((stat, index) => (
+                                             <div
+                                                  key={index}
+                                                  className="text-center"
+                                             >
+                                                  <div className="text-2xl md:text-3xl font-bold text-yellow-300">
+                                                       {stat.value}
+                                                  </div>
+                                                  <div className="text-sm text-white/80">
+                                                       {stat.label}
+                                                  </div>
+                                             </div>
+                                        ))}
+                                   </div>
+                              </motion.div>
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  };
-
-  return (
-    <div className="flex flex-col" ref={sectionRef}>
-      {/* Hero Section */}
-      <motion.div
-        className="bg-gradient-to-r from-[#3498db] to-[#2980b9] text-white py-16 px-4 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            className="flex justify-center mb-8"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="relative">
-              <Image
-                src={redesign || "/placeholder.svg"}
-                alt="Website Redesign Services"
-                width={400}
-                height={400}
-                unoptimized
-                className="object-contain"
-              />
-              <motion.div
-                className="absolute -top-4 -right-4 bg-white text-[#3498db] px-3 py-1 rounded-full text-sm font-bold shadow-lg"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.8 }}
-              >
-                Expert Service
-              </motion.div>
-            </div>
-          </motion.div>
-          <motion.h1
-            className="text-3xl md:text-5xl font-light mb-6"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            Website Redesign Services
-          </motion.h1>
-          <motion.p
-            className="text-xl max-w-2xl mx-auto"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            Transform your outdated website into a{" "}
-            <span className="font-bold">high-performing digital asset</span>{" "}
-            that drives engagement, conversions, and{" "}
-            <span className="font-bold">business growth</span> in today&apos;s
-            competitive landscape.
-          </motion.p>
-
-          <motion.div
-            className="mt-8 flex flex-col sm:flex-row justify-center gap-4"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            <button
-              className="bg-white text-[#3498db] hover:bg-gray-100 py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-              onClick={scrollToForm}
-            >
-              <span className="font-medium">Start Your Redesign</span>
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </button>
-            <button
-              className="bg-[#2c3e50] hover:bg-[#34495e] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-              onClick={toggleQuotePopup}
-            >
-              <span className="font-medium">Get a Free Quote</span>
-              <DollarSign className="ml-2 h-4 w-4" />
-            </button>
-          </motion.div>
-
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <ArrowDown className="h-8 w-8 mx-auto text-white/70 animate-bounce" />
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Signs You Need a Redesign Section */}
-      <motion.div
-        className="py-16 px-4 max-w-6xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.div
-          className="text-center mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">
-            Is your website holding your business back?
-          </h2>
-          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            In today&apos;s digital-first world, an outdated website can
-            significantly impact your business growth. Our redesign services
-            transform underperforming websites into powerful conversion tools.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          {redesignFeatures.map((feature, index) => (
-            <motion.div
-              key={index}
-              className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                activeFeature === index
-                  ? `ring-2 ring-${feature.color}-500`
-                  : ""
-              }`}
-              variants={itemVariants}
-              whileHover={{ y: -5 }}
-              onClick={() =>
-                setActiveFeature(activeFeature === index ? null : index)
-              }
-            >
-              <div
-                className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}
-              >
-                <feature.icon className={`w-6 h-6 text-${feature.color}-500`} />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">
-                {feature.title}
-              </h3>
-
-              <AnimatePresence>
-                {activeFeature === index && (
-                  <motion.p
-                    className="text-gray-600 text-sm"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {feature.description}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-
-              {activeFeature !== index && (
-                <div className="flex items-center text-sm text-gray-500 mt-2">
-                  <span>Learn more</span>
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Process Section */}
-      <motion.div
-        className="py-16 px-4 bg-gray-50"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">
-              Our Redesign Process
-            </h2>
-            <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              We follow a data-driven, strategic approach to website redesign
-              that preserves what works while transforming what doesn&apos;t.
-              Our process ensures a smooth transition with minimal disruption.
-            </p>
-          </motion.div>
-
-          <div className="relative">
-            {/* Process timeline line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform -translate-x-1/2 hidden md:block"></div>
-
-            <motion.div
-              className="space-y-12 md:space-y-0"
-              variants={containerVariants}
-              initial="hidden"
-              animate={isVisible ? "visible" : "hidden"}
-            >
-              {processSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  className={`flex flex-col md:flex-row ${
-                    index % 2 === 0 ? "md:flex-row-reverse" : ""
-                  } items-center gap-8`}
-                  variants={itemVariants}
-                >
-                  <div
-                    className={`w-full md:w-1/2 ${
-                      index % 2 === 0 ? "md:text-left" : "md:text-right"
-                    }`}
-                  >
-                    <motion.div
-                      className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                        activeStep === index ? "ring-2 ring-[#3498db]" : ""
-                      }`}
-                      whileHover={{ scale: 1.03 }}
-                      onClick={() =>
-                        setActiveStep(activeStep === index ? null : index)
-                      }
-                    >
-                      <h3 className="text-xl font-medium mb-2 text-gray-800 flex items-center">
-                        {index % 2 === 0 ? (
-                          <>
-                            <span>{step.title}</span>
-                            <step.icon className="w-5 h-5 ml-2 text-[#3498db]" />
-                          </>
-                        ) : (
-                          <>
-                            <step.icon className="w-5 h-5 mr-2 text-[#3498db]" />
-                            <span>{step.title}</span>
-                          </>
-                        )}
-                      </h3>
-
-                      <AnimatePresence>
-                        {activeStep === index && (
-                          <motion.p
-                            className="text-gray-600"
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            {step.description}
-                          </motion.p>
-                        )}
-                      </AnimatePresence>
-
-                      {activeStep !== index && (
-                        <div
-                          className={`flex items-center text-sm text-gray-500 mt-2 ${
-                            index % 2 === 0 ? "" : "justify-end"
-                          }`}
-                        >
-                          {index % 2 === 0 ? (
-                            <>
-                              <span>Learn more</span>
-                              <ChevronRight className="w-4 h-4 ml-1" />
-                            </>
-                          ) : (
-                            <>
-                              <ChevronRight className="w-4 h-4 mr-1 transform rotate-180" />
-                              <span>Learn more</span>
-                            </>
-                          )}
-                        </div>
-                      )}
-                    </motion.div>
-                  </div>
-
-                  <div className="relative md:w-8 md:h-8">
-                    <motion.div
-                      className="w-8 h-8 rounded-full bg-[#3498db] text-white flex items-center justify-center z-10 relative"
-                      whileHover={{ scale: 1.2 }}
-                      onClick={() =>
-                        setActiveStep(activeStep === index ? null : index)
-                      }
-                    >
-                      {index + 1}
-                    </motion.div>
-                  </div>
-
-                  <div className="w-full md:w-1/2"></div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Statistics Section */}
-      <motion.div
-        className="py-16 px-4 max-w-6xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <motion.div
-          className="text-center mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">
-            Redesign Impact by the Numbers
-          </h2>
-          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Our website redesigns deliver measurable results that directly
-            impact your bottom line. Here&apos;s what our clients have achieved
-            after working with us.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#3498db] mb-2">42%</div>
-            <div className="text-sm text-gray-600">
-              Average conversion rate increase
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#1abc9c] mb-2">67%</div>
-            <div className="text-sm text-gray-600">Bounce rate reduction</div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#2ecc71] mb-2">3.2x</div>
-            <div className="text-sm text-gray-600">
-              Mobile engagement increase
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#f1c40f] mb-2">85%</div>
-            <div className="text-sm text-gray-600">
-              User satisfaction improvement
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#e67e22] mb-2">58%</div>
-            <div className="text-sm text-gray-600">
-              Increase in page views per session
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#e84393] mb-2">2.4x</div>
-            <div className="text-sm text-gray-600">
-              Return on redesign investment
-            </div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* CTA Buttons
-      <motion.div
-        className="py-12 px-4 max-w-6xl mx-auto flex flex-col sm:flex-row justify-center gap-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <button
-          className="bg-[#3498db] hover:bg-[#2980b9] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-          onClick={scrollToForm}
-        >
-          <MessageSquare className="mr-2 h-5 w-5" />
-          <span>Request a website audit</span>
-        </button>
-        <button
-          className="bg-[#2c3e50] hover:bg-[#34495e] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-          onClick={toggleQuotePopup}
-        >
-          <DollarSign className="mr-2 h-5 w-5" />
-          <span>Get redesign pricing</span>
-        </button>
-      </motion.div>
-
-      Redesign Projects
-      <motion.div
-        className="bg-gray-50 py-16 px-4"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="flex justify-between items-center mb-8"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-light text-gray-700">Our redesign success stories</h2>
-            <Link href="/case-studies" className="text-[#3498db] text-sm hover:underline flex items-center">
-              <span>See all case studies</span>
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </motion.div>
-
-          <div className="relative">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              {[0, 1, 2].map((i) => {
-                const projectIndex = (currentProjectIndex + i) % projects.length
-                const project = projects[projectIndex]
-
-                return (
-                  <motion.div
-                    key={projectIndex}
-                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className={`h-48 ${project.bgColor} flex items-center justify-center relative`}>
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        width={200}
-                        height={150}
-                        className="object-contain"
-                      />
-                      <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full text-xs flex items-center">
-                        <TrendingUp className="w-3 h-3 mr-1 text-[#3498db]" />
-                        <span className="font-bold text-gray-800">{project.stats.value}</span>
-                        <span className="ml-1 text-gray-600 text-[10px]">{project.stats.label}</span>
-                      </div>
+                              {/* Image */}
+                              <motion.div
+                                   initial={{ opacity: 0, scale: 0.8 }}
+                                   animate={{ opacity: 1, scale: 1 }}
+                                   transition={{ duration: 0.6, delay: 0.2 }}
+                                   className="relative"
+                              >
+                                   <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8">
+                                        <Image
+                                             src={redesign}
+                                             alt="Website Redesign Services"
+                                             width={500}
+                                             height={400}
+                                             className="object-contain w-full h-auto"
+                                             priority
+                                        />
+                                   </div>
+                              </motion.div>
+                         </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-medium mb-2">{project.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-                      <Link
-                        href={`/case-study/${project.title.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="inline-flex items-center text-[#3498db] text-sm font-medium"
-                      >
-                        <span>View case study</span>
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
+               </section>
+
+               {/* Features Section */}
+               <section className="py-16 md:py-24 px-4 bg-gray-50">
+                    <div className="max-w-6xl mx-auto">
+                         <div className="text-center mb-16">
+                              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                   Why Choose Our Redesign Services?
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                   We don't just make websites look better—we
+                                   make them perform better. Our strategic
+                                   approach delivers measurable results.
+                              </p>
+                         </div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                              {features.map((feature, index) => (
+                                   <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                             duration: 0.5,
+                                             delay: index * 0.1,
+                                        }}
+                                        viewport={{ once: true }}
+                                        className="group bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
+                                   >
+                                        <div
+                                             className={`w-12 h-12 rounded-lg bg-${feature.color}-100 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                                        >
+                                             <feature.icon
+                                                  className={`w-6 h-6 text-${feature.color}-600`}
+                                             />
+                                        </div>
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                                             {feature.title}
+                                        </h3>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
+                                             {feature.description}
+                                        </p>
+                                   </motion.div>
+                              ))}
+                         </div>
                     </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div>
+               </section>
 
-     
-      //       <div className="flex justify-center gap-2 mb-8">
-      //         {projects.map((_, index) => (
-      //           <button
-      //             key={index}
-      //             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-      //               Math.floor(currentProjectIndex / 3) === Math.floor(index / 3) ? "w-6 bg-[#3498db]" : "bg-gray-300"
-      //             }`}
-      //             onClick={() => setCurrentProjectIndex(index)}
-      //             aria-label={`Go to project set ${Math.floor(index / 3) + 1}`}
-      //           />
-      //         ))}
-      //       </div>
-      //     </div>
-      //   </div>
-      // </motion.div> */}
+               {/* Process Section */}
+               <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+                    <div className="max-w-7xl mx-auto">
+                         <div className="text-center mb-20">
+                              <motion.div
+                                   initial={{ opacity: 0, y: 20 }}
+                                   whileInView={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   viewport={{ once: true }}
+                                   className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 px-6 py-3 rounded-full text-blue-800 text-sm font-semibold mb-6 shadow-sm"
+                              >
+                                   <Layers className="w-4 h-4" />
+                                   Proven Methodology
+                              </motion.div>
+                              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                                   Our Streamlined{" "}
+                                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+                                        Design Process
+                                   </span>
+                              </h2>
+                              <p className="text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
+                                   From initial discovery to successful launch,
+                                   we follow a strategic methodology that
+                                   ensures your redesign delivers exceptional
+                                   results and measurable ROI.
+                              </p>
+                         </div>
 
-      {/* Approach Section */}
-      <motion.div
-        className="py-16 px-4 max-w-6xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <motion.div
-          className="text-center mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">
-            Our Redesign Philosophy
-          </h2>
-        </motion.div>
+                         <div className="relative">
+                              {/* Animated background elements */}
+                              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                                   <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-200/30 to-purple-200/30 rounded-full blur-3xl"></div>
+                                   <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-pink-200/30 to-yellow-200/30 rounded-full blur-3xl"></div>
+                              </div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md"
-            variants={itemVariants}
-          >
-            <h3 className="text-xl font-medium mb-4 text-gray-800">
-              Data-Driven Redesign Approach
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              We don&apos;t just make your website look better—we make it
-              perform better. Our redesign process begins with comprehensive
-              analytics and user behavior analysis to identify exactly
-              what&apos;s working and what isn&apos;t. This data-driven approach
-              ensures that every design decision is strategic and focused on
-              improving key performance metrics that matter to your business.
-            </p>
-          </motion.div>
+                              {/* Desktop Process Flow */}
+                              <div className="hidden lg:block relative">
+                                   {/* Animated connection path */}
+                                   <svg
+                                        className="absolute top-24 left-0 w-full h-2 z-0"
+                                        viewBox="0 0 1000 20"
+                                   >
+                                        <defs>
+                                             <linearGradient
+                                                  id="pathGradient"
+                                                  x1="0%"
+                                                  y1="0%"
+                                                  x2="100%"
+                                                  y2="0%"
+                                             >
+                                                  <stop
+                                                       offset="0%"
+                                                       stopColor="#3B82F6"
+                                                  />
+                                                  <stop
+                                                       offset="25%"
+                                                       stopColor="#8B5CF6"
+                                                  />
+                                                  <stop
+                                                       offset="50%"
+                                                       stopColor="#EC4899"
+                                                  />
+                                                  <stop
+                                                       offset="75%"
+                                                       stopColor="#F59E0B"
+                                                  />
+                                                  <stop
+                                                       offset="100%"
+                                                       stopColor="#10B981"
+                                                  />
+                                             </linearGradient>
+                                        </defs>
+                                        <motion.path
+                                             d="M50 10 Q250 10 450 10 T950 10"
+                                             stroke="url(#pathGradient)"
+                                             strokeWidth="4"
+                                             fill="none"
+                                             strokeLinecap="round"
+                                             initial={{
+                                                  pathLength: 0,
+                                                  opacity: 0,
+                                             }}
+                                             whileInView={{
+                                                  pathLength: 1,
+                                                  opacity: 1,
+                                             }}
+                                             transition={{
+                                                  duration: 2,
+                                                  ease: "easeInOut",
+                                             }}
+                                             viewport={{ once: true }}
+                                        />
+                                   </svg>
 
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md"
-            variants={itemVariants}
-          >
-            <h3 className="text-xl font-medium mb-4 text-gray-800">
-              Seamless Transition Strategy
-            </h3>
-            <p className="text-gray-700 leading-relaxed">
-              One of the biggest concerns with website redesigns is maintaining
-              SEO rankings and ensuring a smooth transition for existing users.
-              Our carefully planned migration strategy preserves your digital
-              equity while implementing improvements. We use proper redirects,
-              content preservation techniques, and phased rollouts to minimize
-              disruption and maximize the positive impact of your redesign.
-            </p>
-          </motion.div>
-        </motion.div>
-      </motion.div>
+                                   <div className="grid grid-cols-5 gap-8 relative z-10">
+                                        {processSteps.map((step, index) => {
+                                             const colors = [
+                                                  {
+                                                       bg: "from-blue-500 to-blue-600",
+                                                       ring: "ring-blue-200",
+                                                       text: "text-blue-600",
+                                                  },
+                                                  {
+                                                       bg: "from-purple-500 to-purple-600",
+                                                       ring: "ring-purple-200",
+                                                       text: "text-purple-600",
+                                                  },
+                                                  {
+                                                       bg: "from-pink-500 to-pink-600",
+                                                       ring: "ring-pink-200",
+                                                       text: "text-pink-600",
+                                                  },
+                                                  {
+                                                       bg: "from-amber-500 to-amber-600",
+                                                       ring: "ring-amber-200",
+                                                       text: "text-amber-600",
+                                                  },
+                                                  {
+                                                       bg: "from-emerald-500 to-emerald-600",
+                                                       ring: "ring-emerald-200",
+                                                       text: "text-emerald-600",
+                                                  },
+                                             ];
 
-      {/* Form Section with Ref */}
-      <div ref={formRef} className="bg-gray-50 py-16 px-4">
-        <motion.div
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-light text-gray-700 mb-4">
-              Ready to Transform Your Website?
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Tell us about your current website challenges and goals, and
-              we&apos;ll provide a free consultation and redesign proposal.
-            </p>
+                                             return (
+                                                  <motion.div
+                                                       key={index}
+                                                       initial={{
+                                                            opacity: 0,
+                                                            y: 50,
+                                                       }}
+                                                       whileInView={{
+                                                            opacity: 1,
+                                                            y: 0,
+                                                       }}
+                                                       transition={{
+                                                            duration: 0.6,
+                                                            delay: index * 0.15,
+                                                       }}
+                                                       viewport={{ once: true }}
+                                                       className="relative group"
+                                                  >
+                                                       {/* Step Card */}
+                                                       <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-500 border border-white/50 group-hover:scale-105">
+                                                            {/* Icon Container */}
+                                                            <div className="relative mb-6">
+                                                                 <div
+                                                                      className={`w-20 h-20 bg-gradient-to-br ${colors[index].bg} rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300 ${colors[index].ring} ring-8 ring-opacity-30`}
+                                                                 >
+                                                                      <step.icon className="w-10 h-10 text-white" />
+                                                                 </div>
+                                                                 {/* Step number */}
+                                                                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm font-bold text-gray-700 shadow-md">
+                                                                      {index +
+                                                                           1}
+                                                                 </div>
+                                                            </div>
+
+                                                            {/* Content */}
+                                                            <div className="text-center">
+                                                                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
+                                                                      {
+                                                                           step.title
+                                                                      }
+                                                                 </h3>
+                                                                 <p className="text-gray-600 text-sm leading-relaxed">
+                                                                      {`Step ${
+                                                                           index +
+                                                                           1
+                                                                      } in our comprehensive redesign process.`}
+                                                                 </p>
+                                                            </div>
+
+                                                            {/* Hover indicator */}
+                                                            <div
+                                                                 className={`absolute bottom-0 left-1/2 w-0 h-1 bg-gradient-to-r ${colors[index].bg} rounded-full transition-all duration-300 transform -translate-x-1/2 group-hover:w-full`}
+                                                            ></div>
+                                                       </div>
+
+                                                       {/* Floating elements */}
+                                                       <div
+                                                            className={`absolute -top-3 -left-3 w-6 h-6 ${colors[index].bg} rounded-full opacity-0 group-hover:opacity-20 transition-all duration-300 animate-pulse`}
+                                                       ></div>
+                                                       <div
+                                                            className={`absolute -bottom-3 -right-3 w-4 h-4 ${colors[index].bg} rounded-full opacity-0 group-hover:opacity-30 transition-all duration-300 delay-100 animate-pulse`}
+                                                       ></div>
+                                                  </motion.div>
+                                             );
+                                        })}
+                                   </div>
+                              </div>
+
+                              {/* Mobile Process Flow */}
+                              <div className="lg:hidden space-y-8">
+                                   {processSteps.map((step, index) => {
+                                        const colors = [
+                                             {
+                                                  bg: "from-blue-500 to-blue-600",
+                                                  ring: "ring-blue-200",
+                                             },
+                                             {
+                                                  bg: "from-purple-500 to-purple-600",
+                                                  ring: "ring-purple-200",
+                                             },
+                                             {
+                                                  bg: "from-pink-500 to-pink-600",
+                                                  ring: "ring-pink-200",
+                                             },
+                                             {
+                                                  bg: "from-amber-500 to-amber-600",
+                                                  ring: "ring-amber-200",
+                                             },
+                                             {
+                                                  bg: "from-emerald-500 to-emerald-600",
+                                                  ring: "ring-emerald-200",
+                                             },
+                                        ];
+
+                                        return (
+                                             <motion.div
+                                                  key={index}
+                                                  initial={{
+                                                       opacity: 0,
+                                                       x: -30,
+                                                  }}
+                                                  whileInView={{
+                                                       opacity: 1,
+                                                       x: 0,
+                                                  }}
+                                                  transition={{
+                                                       duration: 0.6,
+                                                       delay: index * 0.1,
+                                                  }}
+                                                  viewport={{ once: true }}
+                                                  className="relative"
+                                             >
+                                                  <div className="flex items-center gap-6 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-white/50">
+                                                       {/* Icon */}
+                                                       <div
+                                                            className={`w-16 h-16 bg-gradient-to-br ${colors[index].bg} rounded-xl flex items-center justify-center shadow-lg ${colors[index].ring} ring-4 ring-opacity-30 flex-shrink-0`}
+                                                       >
+                                                            <step.icon className="w-8 h-8 text-white" />
+                                                       </div>
+
+                                                       {/* Content */}
+                                                       <div className="flex-1">
+                                                            <div className="flex items-center gap-3 mb-2">
+                                                                 <span className="text-2xl font-bold text-gray-400">
+                                                                      0
+                                                                      {index +
+                                                                           1}
+                                                                 </span>
+                                                                 <h3 className="text-lg font-bold text-gray-900">
+                                                                      {
+                                                                           step.title
+                                                                      }
+                                                                 </h3>
+                                                            </div>
+                                                            <p className="text-gray-600 text-sm">
+                                                                 {`Step ${
+                                                                      index + 1
+                                                                 } in our redesign process.`}
+                                                            </p>
+                                                       </div>
+                                                  </div>
+
+                                                  {/* Connection line for mobile */}
+                                                  {index <
+                                                       processSteps.length -
+                                                            1 && (
+                                                       <div className="flex justify-center py-4">
+                                                            <div className="w-0.5 h-8 bg-gradient-to-b from-gray-300 to-gray-200 rounded-full"></div>
+                                                       </div>
+                                                  )}
+                                             </motion.div>
+                                        );
+                                   })}
+                              </div>
+                         </div>
+
+                         {/* Bottom CTA */}
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, delay: 0.8 }}
+                              viewport={{ once: true }}
+                              className="text-center mt-16"
+                         >
+                              <div className="inline-flex items-center gap-4 bg-white/90 backdrop-blur-sm px-8 py-4 rounded-full shadow-lg border border-white/50">
+                                   <span className="text-gray-700 font-medium">
+                                        Ready to get started?
+                                   </span>
+                                   <button
+                                        onClick={scrollToForm}
+                                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-md"
+                                   >
+                                        Let's Begin
+                                        <ArrowRight className="ml-2 h-4 w-4 inline" />
+                                   </button>
+                              </div>
+                         </motion.div>
+                    </div>
+               </section>
+
+               {/* Benefits Section */}
+               <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-blue-50 to-purple-50">
+                    <div className="max-w-6xl mx-auto">
+                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                              <motion.div
+                                   initial={{ opacity: 0, x: -20 }}
+                                   whileInView={{ opacity: 1, x: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   viewport={{ once: true }}
+                              >
+                                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                        The Impact of Professional Redesign
+                                   </h2>
+                                   <p className="text-lg text-gray-600 mb-8">
+                                        A well-executed website redesign isn't
+                                        just about aesthetics—it's about
+                                        creating a digital experience that
+                                        converts visitors into customers and
+                                        drives sustainable business growth.
+                                   </p>
+
+                                   <div className="space-y-4">
+                                        {[
+                                             "Improved user experience and engagement",
+                                             "Higher conversion rates and sales",
+                                             "Better search engine rankings",
+                                             "Mobile optimization for all devices",
+                                             "Enhanced brand credibility and trust",
+                                             "Reduced maintenance and technical issues",
+                                        ].map((benefit, index) => (
+                                             <div
+                                                  key={index}
+                                                  className="flex items-center gap-3"
+                                             >
+                                                  <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                                  <span className="text-gray-700">
+                                                       {benefit}
+                                                  </span>
+                                             </div>
+                                        ))}
+                                   </div>
+                              </motion.div>
+
+                              <motion.div
+                                   initial={{ opacity: 0, x: 20 }}
+                                   whileInView={{ opacity: 1, x: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   viewport={{ once: true }}
+                                   className="grid grid-cols-2 gap-6"
+                              >
+                                   <div className="space-y-6">
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-blue-600 mb-2">
+                                                  150%
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  Average conversion increase
+                                             </div>
+                                        </div>
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-green-600 mb-2">
+                                                  65%
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  Bounce rate reduction
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div className="space-y-6 pt-8">
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-purple-600 mb-2">
+                                                  3x
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  Mobile engagement boost
+                                             </div>
+                                        </div>
+                                        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                                             <div className="text-3xl font-bold text-orange-600 mb-2">
+                                                  90%
+                                             </div>
+                                             <div className="text-sm text-gray-600">
+                                                  Client satisfaction rate
+                                             </div>
+                                        </div>
+                                   </div>
+                              </motion.div>
+                         </div>
+                    </div>
+               </section>
+
+               {/* CTA Section */}
+               <section className="py-16 md:py-24 px-4 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+                    <div className="max-w-4xl mx-auto text-center">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                         >
+                              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                                   Ready to Transform Your Website?
+                              </h2>
+                              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                                   Get a free consultation and discover how a
+                                   professional redesign can boost your business
+                                   growth and online success.
+                              </p>
+
+                              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                   <button
+                                        onClick={scrollToForm}
+                                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
+                                   >
+                                        <MessageSquare className="mr-2 h-5 w-5" />
+                                        Get Free Consultation
+                                   </button>
+                                   <button
+                                        onClick={() => setShowQuotePopup(true)}
+                                        className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-full font-semibold flex items-center justify-center transition-all duration-300"
+                                   >
+                                        <DollarSign className="mr-2 h-5 w-5" />
+                                        Get Custom Quote
+                                   </button>
+                              </div>
+                         </motion.div>
+                    </div>
+               </section>
+
+               {/* Contact Form Section */}
+               <section
+                    ref={formRef}
+                    className="py-16 md:py-24 px-4 bg-gray-50"
+               >
+                    <div className="max-w-4xl mx-auto">
+                         <div className="text-center mb-12">
+                              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                                   Let's Discuss Your Project
+                              </h2>
+                              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                                   Tell us about your current website and goals.
+                                   We'll provide a detailed redesign proposal
+                                   and timeline within 24 hours.
+                              </p>
+                         </div>
+                         <Form />
+                    </div>
+               </section>
+
+               {/* Quote Popup */}
+               <QuotePopup
+                    isOpen={showQuotePopup}
+                    onClose={() => setShowQuotePopup(false)}
+               />
           </div>
-          <Form />
-        </motion.div>
-      </div>
-
-      {/* Quote Popup */}
-      <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
-    </div>
-  );
+     );
 };
 
 export default WebsiteRedesign;

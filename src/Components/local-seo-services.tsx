@@ -1,928 +1,872 @@
-"use client"
-import { useRef, useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
+"use client";
+import { useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
-  ArrowRight,
-  ChevronRight,
-  MapPin,
-  Star,
-  Building,
-  Phone,
-  ArrowDown,
-  DollarSign,
-  Search,
-  FileText,
-  Users,
-  BarChart2,
-  Smartphone,
-  Globe,
-  CheckCircle,
-  Link2,
-} from "lucide-react"
-import Form from "./form"
-import { QuotePopup } from "./quote-popup"
-import image3 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image1 from "@/Images/services-analytics-alt-colors-optimized.png"
-import image2 from "@/Images/services-seo-alt-colors-optimized.png"
-import image4 from "@/Images/services-payperclick-alt-colors-optimized.png"
+     ArrowRight,
+     MapPin,
+     Star,
+     Building,
+     Phone,
+     DollarSign,
+     Search,
+     FileText,
+     Users,
+     BarChart2,
+     Smartphone,
+     Globe,
+     CheckCircle,
+     Link2,
+     Sparkles,
+     Target,
+     TrendingUp,
+} from "lucide-react";
+import Form from "./form";
+import { QuotePopup } from "./quote-popup";
+import image1 from "@/Images/services-analytics-alt-colors-optimized.png";
 
-
-// Define local SEO features
+// Simplified local SEO features
 const localSeoFeatures = [
-  {
-    title: "Google Business Profile Optimization",
-    description:
-      "Comprehensive optimization of your Google Business Profile to improve local visibility and attract nearby customers.",
-    icon: Building,
-    color: "blue",
-  },
-  {
-    title: "Local Citation Building",
-    description:
-      "Strategic creation and management of business listings across directories to strengthen local search presence.",
-    icon: Globe,
-    color: "green",
-  },
-  {
-    title: "Review Management",
-    description: "Proactive acquisition and management of customer reviews to build trust and improve local rankings.",
-    icon: Star,
-    color: "yellow",
-  },
-  {
-    title: "Local Content Strategy",
-    description:
-      "Creation of location-specific content that resonates with local audiences and improves relevance for local searches.",
-    icon: FileText,
-    color: "purple",
-  },
-  {
-    title: "Local Link Building",
-    description:
-      "Development of local backlinks from community organizations, business partners, and local media outlets.",
-    icon: Link2,
-    color: "red",
-  },
-  {
-    title: "Local SEO Analytics",
-    description:
-      "Comprehensive tracking and analysis of local search performance with actionable insights for continuous improvement.",
-    icon: BarChart2,
-    color: "teal",
-  },
-]
+     {
+          title: "Google Business Profile Optimization",
+          description:
+               "Comprehensive optimization of your Google Business Profile to improve local visibility and attract nearby customers.",
+          icon: Building,
+     },
+     {
+          title: "Local Citation Building",
+          description:
+               "Strategic creation and management of business listings across directories to strengthen local search presence.",
+          icon: Globe,
+     },
+     {
+          title: "Review Management",
+          description:
+               "Proactive acquisition and management of customer reviews to build trust and improve local rankings.",
+          icon: Star,
+     },
+     {
+          title: "Local Content Strategy",
+          description:
+               "Creation of location-specific content that resonates with local audiences and improves relevance for local searches.",
+          icon: FileText,
+     },
+     {
+          title: "Local Link Building",
+          description:
+               "Development of local backlinks from community organizations, business partners, and local media outlets.",
+          icon: Link2,
+     },
+     {
+          title: "Local SEO Analytics",
+          description:
+               "Comprehensive tracking and analysis of local search performance with actionable insights for continuous improvement.",
+          icon: BarChart2,
+     },
+];
 
-// Define local SEO process steps
+// Simplified process steps
 const localSeoSteps = [
-  {
-    title: "Local SEO Audit",
-    description:
-      "We analyze your current local search presence, Google Business Profile, citations, and local competitors.",
-    icon: Search,
-  },
-  {
-    title: "Google Business Profile Optimization",
-    description:
-      "We optimize your Google Business Profile with accurate information, compelling descriptions, and engaging photos.",
-    icon: Building,
-  },
-  {
-    title: "Citation Building & Cleanup",
-    description:
-      "We create and correct business listings across directories to ensure consistent NAP (Name, Address, Phone) information.",
-    icon: Globe,
-  },
-  {
-    title: "Review Strategy Implementation",
-    description:
-      "We implement systems to generate positive reviews and develop strategies to respond to all customer feedback.",
-    icon: Star,
-  },
-  {
-    title: "Local Content Development",
-    description:
-      "We create location-specific content that resonates with your local audience and improves local search relevance.",
-    icon: FileText,
-  },
-  {
-    title: "Ongoing Optimization & Reporting",
-    description:
-      "We continuously monitor performance, make data-driven adjustments, and provide regular reports on your local SEO progress.",
-    icon: BarChart2,
-  },
-]
+     {
+          title: "Local SEO Audit",
+          description:
+               "We analyze your current local search presence, Google Business Profile, citations, and local competitors.",
+          icon: Search,
+     },
+     {
+          title: "Google Business Profile Optimization",
+          description:
+               "We optimize your Google Business Profile with accurate information, compelling descriptions, and engaging photos.",
+          icon: Building,
+     },
+     {
+          title: "Citation Building & Cleanup",
+          description:
+               "We create and correct business listings across directories to ensure consistent NAP information.",
+          icon: Globe,
+     },
+     {
+          title: "Review Strategy Implementation",
+          description:
+               "We implement systems to generate positive reviews and develop strategies to respond to all customer feedback.",
+          icon: Star,
+     },
+     {
+          title: "Local Content Development",
+          description:
+               "We create location-specific content that resonates with your local audience and improves local search relevance.",
+          icon: FileText,
+     },
+     {
+          title: "Ongoing Optimization & Reporting",
+          description:
+               "We continuously monitor performance, make data-driven adjustments, and provide regular reports on your local SEO progress.",
+          icon: BarChart2,
+     },
+];
 
-// Define case studies
-const caseStudies = [
-  {
-    title: "Multi-Location Restaurant Chain",
-    description:
-      "Increased local visibility for 12 restaurant locations, resulting in 143% more direction requests and 87% more calls.",
-    image: image1,
-    bgColor: "bg-[#4285f4]",
-    stats: { value: "143%", label: "More Directions" },
-  },
-  {
-    title: "Local Law Firm Growth",
-    description:
-      "Boosted a law firm's local search visibility, leading to 94% more local leads and 67% increase in consultation bookings.",
-    image: image2,
-    bgColor: "bg-[#34a853]",
-    stats: { value: "94%", label: "More Local Leads" },
-  },
-  {
-    title: "Dental Practice Expansion",
-    description:
-      "Helped a dental practice dominate local search in a competitive market, resulting in 112% more new patient appointments.",
-    image: image3,
-    bgColor: "bg-[#fbbc05]",
-    stats: { value: "112%", label: "New Patients" },
-  },
-  {
-    title: "Home Services Company",
-    description:
-      "Transformed local visibility for a plumbing company, generating 215% more service calls directly from Google Business Profile.",
-    image: image4,
-    bgColor: "bg-[#ea4335]",
-    stats: { value: "215%", label: "More Service Calls" },
-  },
-  {
-    title: "Retail Store Chain",
-    description:
-      "Increased foot traffic by 78% across 5 retail locations through comprehensive local SEO and Google Business Profile optimization.",
-    image: image1,
-    bgColor: "bg-[#9b59b6]",
-    stats: { value: "78%", label: "Foot Traffic Increase" },
-  },
-]
+// Simplified statistics
+const statistics = [
+     { value: "450+", label: "Local Businesses", color: "text-blue-600" },
+     { value: "156%", label: "Avg. Map Views", color: "text-green-600" },
+     { value: "12K+", label: "Reviews Generated", color: "text-yellow-600" },
+     {
+          value: "89%",
+          label: "Local Ranking Improvement",
+          color: "text-purple-600",
+     },
+     { value: "18+", label: "Local Industries", color: "text-red-600" },
+     { value: "132%", label: "Avg. Call Increase", color: "text-indigo-600" },
+];
 
-const LocalSEOServices = () => {
-  const formRef = useRef<HTMLDivElement>(null)
-  const [showQuotePopup, setShowQuotePopup] = useState(false)
-  const [activeFeature, setActiveFeature] = useState<number | null>(null)
-  const [activeStep, setActiveStep] = useState<number | null>(null)
-  const [currentCaseIndex, setCurrentCaseIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
+export default function LocalSEOServices() {
+     const formRef = useRef<HTMLDivElement>(null);
+     const [showQuotePopup, setShowQuotePopup] = useState(false);
 
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+     const scrollToForm = () => {
+          formRef.current?.scrollIntoView({ behavior: "smooth" });
+     };
 
-  const toggleQuotePopup = () => {
-    setShowQuotePopup((prev) => !prev)
-  }
+     const toggleQuotePopup = () => {
+          setShowQuotePopup((prev) => !prev);
+     };
 
-  // Auto-rotate case studies
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentCaseIndex((prev) => (prev + 1) % caseStudies.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-
-  // Check if element is in viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-  }
-
-  return (
-    <div className="flex flex-col" ref={sectionRef}>
-      {/* Hero Section */}
-      <motion.div
-        className="bg-gradient-to-r from-[#ea4335] to-[#fbbc05] text-white py-16 px-4 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            className="flex justify-center mb-8"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="relative w-64 h-64">
-              <Image
-                src={image1 || "/local-seo-map-pins.png"}
-                alt="Local SEO Services"
-                width={256}
-                height={256}
-                className="object-contain"
-              />
-              <motion.div
-                className="absolute -top-4 -right-4 bg-white text-[#ea4335] px-3 py-1 rounded-full text-sm font-bold shadow-lg"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.8 }}
-              >
-                Dominate Local Search
-              </motion.div>
-            </div>
-          </motion.div>
-          <motion.h1
-            className="text-3xl md:text-5xl font-light mb-6"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            Local SEO Services
-          </motion.h1>
-          <motion.p
-            className="text-xl max-w-2xl mx-auto"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            We help your business <span className="font-bold">dominate local search results</span>, attract{" "}
-            <span className="font-bold">nearby customers</span>, and drive more foot traffic, calls, and local leads.
-          </motion.p>
-
-          <motion.div
-            className="mt-8 flex flex-col sm:flex-row justify-center gap-4"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            <button
-              className="bg-white text-[#ea4335] hover:bg-gray-100 py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-              onClick={scrollToForm}
-            >
-              <span className="font-medium">Get a Free Local SEO Audit</span>
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </button>
-            <button
-              className="bg-[#34a853] hover:bg-[#2d9249] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-              onClick={toggleQuotePopup}
-            >
-              <span className="font-medium">Request Local SEO Quote</span>
-              <DollarSign className="ml-2 h-4 w-4" />
-            </button>
-          </motion.div>
-
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <ArrowDown className="h-8 w-8 mx-auto text-white/70 animate-bounce" />
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Features Section */}
-      <motion.div
-        className="py-16 px-4 max-w-6xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.div
-          className="text-center mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Comprehensive Local SEO Solutions</h2>
-          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Our local SEO services are designed to help your business stand out in local search results, attract nearby
-            customers, and outrank local competitors.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          {localSeoFeatures.map((feature, index) => (
-            <motion.div
-              key={index}
-              className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                activeFeature === index ? `ring-2 ring-${feature.color}-500` : ""
-              }`}
-              variants={itemVariants}
-              whileHover={{ y: -5 }}
-              onClick={() => setActiveFeature(activeFeature === index ? null : index)}
-            >
-              <div className={`w-12 h-12 rounded-full bg-${feature.color}-100 flex items-center justify-center mb-4`}>
-                <feature.icon className={`w-6 h-6 text-${feature.color}-500`} />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">{feature.title}</h3>
-
-              <AnimatePresence>
-                {activeFeature === index && (
-                  <motion.p
-                    className="text-gray-600 text-sm"
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {feature.description}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-
-              {activeFeature !== index && (
-                <div className="flex items-center text-sm text-gray-500 mt-2">
-                  <span>Learn more</span>
-                  <ChevronRight className="w-4 h-4 ml-1" />
-                </div>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Why Local SEO Matters Section */}
-      <motion.div
-        className="py-16 px-4 bg-gray-50"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Why Local SEO Matters</h2>
-            <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              Local SEO is essential for businesses that serve specific geographic areas. Here&apos;s why investing in local
-              search optimization is crucial for your business growth.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isVisible ? "visible" : "hidden"}
-          >
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
-              <div className="w-12 h-12 rounded-full bg-[#ea4335]/10 flex items-center justify-center mb-4">
-                <MapPin className="w-6 h-6 text-[#ea4335]" />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">46% of All Google Searches are Local</h3>
-              <p className="text-gray-600 text-sm">
-                Nearly half of all Google searches have local intent, with users looking for nearby businesses,
-                products, and services.
-              </p>
-            </motion.div>
-
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
-              <div className="w-12 h-12 rounded-full bg-[#34a853]/10 flex items-center justify-center mb-4">
-                <Smartphone className="w-6 h-6 text-[#34a853]" />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">76% of Local Searches Result in Store Visits</h3>
-              <p className="text-gray-600 text-sm">
-                Over three-quarters of people who search for something nearby on their smartphone visit a related
-                business within a day.
-              </p>
-            </motion.div>
-
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
-              <div className="w-12 h-12 rounded-full bg-[#fbbc05]/10 flex items-center justify-center mb-4">
-                <Phone className="w-6 h-6 text-[#fbbc05]" />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">28% of Local Searches Lead to Purchases</h3>
-              <p className="text-gray-600 text-sm">
-                More than a quarter of local searches result in a purchase, making local SEO a direct driver of revenue
-                for businesses.
-              </p>
-            </motion.div>
-
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
-              <div className="w-12 h-12 rounded-full bg-[#4285f4]/10 flex items-center justify-center mb-4">
-                <Star className="w-6 h-6 text-[#4285f4]" />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">
-                88% Trust Online Reviews as Much as Personal Recommendations
-              </h3>
-              <p className="text-gray-600 text-sm">
-                The vast majority of consumers trust online reviews as much as personal recommendations, making review
-                management a critical component of local SEO.
-              </p>
-            </motion.div>
-
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
-              <div className="w-12 h-12 rounded-full bg-[#ea4335]/10 flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-[#ea4335]" />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">
-                97% of Consumers Search Online for Local Businesses
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Almost all consumers use the internet to find local businesses, making local search visibility essential
-                for attracting new customers.
-              </p>
-            </motion.div>
-
-            <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants} whileHover={{ y: -5 }}>
-              <div className="w-12 h-12 rounded-full bg-[#34a853]/10 flex items-center justify-center mb-4">
-                <Building className="w-6 h-6 text-[#34a853]" />
-              </div>
-              <h3 className="text-lg font-medium mb-2 text-gray-800">
-                Local Businesses with Complete GBP Get 7x More Clicks
-              </h3>
-              <p className="text-gray-600 text-sm">
-                Businesses with complete Google Business Profiles receive 7 times more clicks than those with incomplete
-                listings, highlighting the importance of profile optimization.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Process Section */}
-      <motion.div
-        className="py-16 px-4 bg-white"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="text-center mb-12"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Our Local SEO Process</h2>
-            <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              We follow a proven, data-driven approach to local SEO that consistently delivers results for businesses
-              across industries and markets.
-            </p>
-          </motion.div>
-
-          <div className="relative">
-            {/* Process timeline line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-200 transform -translate-x-1/2 hidden md:block"></div>
-
-            <motion.div
-              className="space-y-12 md:space-y-0"
-              variants={containerVariants}
-              initial="hidden"
-              animate={isVisible ? "visible" : "hidden"}
-            >
-              {localSeoSteps.map((step, index) => (
-                <motion.div
-                  key={index}
-                  className={`flex flex-col md:flex-row ${index % 2 === 0 ? "md:flex-row-reverse" : ""} items-center gap-8`}
-                  variants={itemVariants}
-                >
-                  <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:text-left" : "md:text-right"}`}>
-                    <motion.div
-                      className={`bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer ${
-                        activeStep === index ? "ring-2 ring-[#ea4335]" : ""
-                      }`}
-                      whileHover={{ scale: 1.03 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
-                    >
-                      <h3 className="text-xl font-medium mb-2 text-gray-800 flex items-center">
-                        {index % 2 === 0 ? (
-                          <>
-                            <span>{step.title}</span>
-                            <step.icon className="w-5 h-5 ml-2 text-[#ea4335]" />
-                          </>
-                        ) : (
-                          <>
-                            <step.icon className="w-5 h-5 mr-2 text-[#ea4335]" />
-                            <span>{step.title}</span>
-                          </>
-                        )}
-                      </h3>
-
-                      <AnimatePresence>
-                        {activeStep === index && (
-                          <motion.p
-                            className="text-gray-600"
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
-                            {step.description}
-                          </motion.p>
-                        )}
-                      </AnimatePresence>
-
-                      {activeStep !== index && (
-                        <div
-                          className={`flex items-center text-sm text-gray-500 mt-2 ${index % 2 === 0 ? "" : "justify-end"}`}
-                        >
-                          {index % 2 === 0 ? (
-                            <>
-                              <span>Learn more</span>
-                              <ChevronRight className="w-4 h-4 ml-1" />
-                            </>
-                          ) : (
-                            <>
-                              <ChevronRight className="w-4 h-4 mr-1 transform rotate-180" />
-                              <span>Learn more</span>
-                            </>
-                          )}
-                        </div>
-                      )}
-                    </motion.div>
-                  </div>
-
-                  <div className="relative md:w-8 md:h-8">
-                    <motion.div
-                      className="w-8 h-8 rounded-full bg-[#ea4335] text-white flex items-center justify-center z-10 relative"
-                      whileHover={{ scale: 1.2 }}
-                      onClick={() => setActiveStep(activeStep === index ? null : index)}
-                    >
-                      {index + 1}
-                    </motion.div>
-                  </div>
-
-                  <div className="w-full md:w-1/2"></div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Statistics Section */}
-      <motion.div
-        className="py-16 px-4 max-w-6xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <motion.div
-          className="text-center mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Our Local SEO Impact</h2>
-          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            We&apos;ve helped hundreds of local businesses achieve significant growth through strategic local search
-            optimization. Here&apos;s our track record of success.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#ea4335] mb-2">450+</div>
-            <div className="text-sm text-gray-600">Local Businesses</div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#34a853] mb-2">156%</div>
-            <div className="text-sm text-gray-600">Avg. Map Views</div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#fbbc05] mb-2">12K+</div>
-            <div className="text-sm text-gray-600">Reviews Generated</div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#4285f4] mb-2">89%</div>
-            <div className="text-sm text-gray-600">Local Ranking Improvement</div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#ea4335] mb-2">18+</div>
-            <div className="text-sm text-gray-600">Local Industries</div>
-          </motion.div>
-
-          <motion.div
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-center"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-          >
-            <div className="text-4xl font-light text-[#34a853] mb-2">132%</div>
-            <div className="text-sm text-gray-600">Avg. Call Increase</div>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* CTA Buttons */}
-      <motion.div
-        className="py-12 px-4 max-w-6xl mx-auto flex flex-col sm:flex-row justify-center gap-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        <button
-          className="bg-[#ea4335] hover:bg-[#d32f2f] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-          onClick={scrollToForm}
-        >
-          <MapPin className="mr-2 h-5 w-5" />
-          <span>Get your free local SEO audit</span>
-        </button>
-        <button
-          className="bg-[#34a853] hover:bg-[#2d9249] text-white py-3 px-6 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-          onClick={toggleQuotePopup}
-        >
-          <Building className="mr-2 h-5 w-5" />
-          <span>Boost your local visibility today</span>
-        </button>
-      </motion.div>
-
-      {/* Case Studies */}
-      <motion.div
-        className="bg-gray-50 py-16 px-4"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="flex justify-between items-center mb-8"
-            initial={{ y: 20, opacity: 0 }}
-            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-2xl font-light text-gray-700">Local SEO success stories</h2>
-            <Link href="/case-studies" className="text-[#ea4335] text-sm hover:underline flex items-center">
-              <span>See all case studies</span>
-              <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </motion.div>
-
-          <div className="relative">
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              {[0, 1, 2].map((i) => {
-                const caseIndex = (currentCaseIndex + i) % caseStudies.length
-                const caseStudy = caseStudies[caseIndex]
-
-                return (
-                  <motion.div
-                    key={caseIndex}
-                    className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    whileHover={{ y: -5 }}
-                  >
-                    <div className={`h-48 ${caseStudy.bgColor} flex items-center justify-center relative`}>
-                      <Image
-                        src={
-                          caseStudy.image || "/placeholder.svg?height=150&width=200&query=local business map listing"
-                        }
-                        alt={caseStudy.title}
-                        width={200}
-                        height={150}
-                        className="object-contain"
-                      />
-                      <div className="absolute top-2 right-2 bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full text-xs flex items-center">
-                        <MapPin className="w-3 h-3 mr-1 text-[#ea4335]" />
-                        <span className="font-bold text-gray-800">{caseStudy.stats.value}</span>
-                        <span className="ml-1 text-gray-600 text-[10px]">{caseStudy.stats.label}</span>
-                      </div>
+     return (
+          <div className="min-h-screen bg-white">
+               {/* Hero Section */}
+               <section className="relative px-4 py-16 md:py-24 overflow-hidden bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 text-white">
+                    {/* Background decoration */}
+                    <div className="absolute inset-0">
+                         <div className="absolute top-20 left-20 w-64 h-64 bg-blue-400/20 rounded-full blur-3xl"></div>
+                         <div className="absolute bottom-20 right-20 w-64 h-64 bg-purple-400/20 rounded-full blur-3xl"></div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-medium mb-2">{caseStudy.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{caseStudy.description}</p>
-                      <Link
-                        href={`/case-studies/${caseStudy.title.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="inline-flex items-center text-[#ea4335] text-sm font-medium"
-                      >
-                        <span>View case study</span>
-                        <ArrowRight className="ml-1 h-4 w-4" />
-                      </Link>
+
+                    <div className="container mx-auto max-w-6xl relative z-10">
+                         <div className="flex flex-col lg:flex-row items-center gap-12">
+                              <motion.div
+                                   initial={{ opacity: 0, y: 20 }}
+                                   animate={{ opacity: 1, y: 0 }}
+                                   transition={{ duration: 0.6 }}
+                                   className="w-full lg:w-1/2"
+                              >
+                                   <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
+                                        <Sparkles className="w-4 h-4" />
+                                        Local SEO Excellence
+                                   </div>
+                                   <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                                        Local SEO Services
+                                   </h1>
+                                   <p className="text-xl text-blue-100 mb-8 max-w-lg">
+                                        We help your business{" "}
+                                        <span className="font-bold">
+                                             dominate local search results
+                                        </span>
+                                        , attract{" "}
+                                        <span className="font-bold">
+                                             nearby customers
+                                        </span>
+                                        , and drive more foot traffic, calls,
+                                        and local leads.
+                                   </p>
+                                   <div className="flex flex-col sm:flex-row gap-4">
+                                        <button
+                                             onClick={scrollToForm}
+                                             className="px-8 py-4 bg-white text-blue-600 hover:bg-gray-100 rounded-xl font-semibold transition-all duration-300 shadow-lg"
+                                        >
+                                             Get a Free Local SEO Audit
+                                             <ArrowRight className="inline w-5 h-5 ml-2" />
+                                        </button>
+                                        <button
+                                             onClick={toggleQuotePopup}
+                                             className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg"
+                                        >
+                                             Request Local SEO Quote
+                                             <DollarSign className="inline w-5 h-5 ml-2" />
+                                        </button>
+                                   </div>
+                              </motion.div>
+
+                              <motion.div
+                                   initial={{ opacity: 0, x: 20 }}
+                                   animate={{ opacity: 1, x: 0 }}
+                                   transition={{ duration: 0.6, delay: 0.2 }}
+                                   className="w-full lg:w-1/2"
+                              >
+                                   <div className="relative">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl transform rotate-3"></div>
+                                        <div className="relative z-10 rounded-2xl shadow-2xl overflow-hidden">
+                                             <Image
+                                                  src={image1}
+                                                  alt="Local SEO Services"
+                                                  width={600}
+                                                  height={400}
+                                                  className="w-full h-auto"
+                                                  priority
+                                             />
+                                        </div>
+                                   </div>
+                              </motion.div>
+                         </div>
                     </div>
-                  </motion.div>
-                )
-              })}
-            </motion.div>
+               </section>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center gap-2 mb-8">
-              {caseStudies.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    Math.floor(currentCaseIndex / 3) === Math.floor(index / 3) ? "w-6 bg-[#ea4335]" : "bg-gray-300"
-                  }`}
-                  onClick={() => setCurrentCaseIndex(index)}
-                  aria-label={`Go to case study set ${Math.floor(index / 3) + 1}`}
-                />
-              ))}
-            </div>
+               {/* Features Section */}
+               <section className="py-16 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
+                    <div className="container mx-auto max-w-6xl">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                              className="text-center mb-16"
+                         >
+                              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                                   Comprehensive Local SEO Solutions
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                   Our local SEO services are designed to help
+                                   your business stand out in local search
+                                   results, attract nearby customers, and
+                                   outrank local competitors.
+                              </p>
+                         </motion.div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                              {localSeoFeatures.map((feature, index) => (
+                                   <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                             duration: 0.5,
+                                             delay: index * 0.1,
+                                        }}
+                                        viewport={{ once: true }}
+                                        className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300"
+                                   >
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 text-white">
+                                             <feature.icon className="w-6 h-6" />
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-4 text-gray-900">
+                                             {feature.title}
+                                        </h3>
+                                        <p className="text-gray-600">
+                                             {feature.description}
+                                        </p>
+                                   </motion.div>
+                              ))}
+                         </div>
+                    </div>
+               </section>
+
+               {/* Why Local SEO Matters Section */}
+               <section className="py-16 px-4 bg-white">
+                    <div className="container mx-auto max-w-6xl">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                              className="text-center mb-16"
+                         >
+                              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                                   Why Local SEO Matters
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                   Local SEO is essential for businesses that
+                                   serve specific geographic areas. Here's why
+                                   investing in local search optimization is
+                                   crucial for your business growth.
+                              </p>
+                         </motion.div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                              {[
+                                   {
+                                        icon: <MapPin className="w-6 h-6" />,
+                                        title: "46% of All Google Searches are Local",
+                                        description:
+                                             "Nearly half of all Google searches have local intent, with users looking for nearby businesses.",
+                                        color: "from-red-500 to-red-600",
+                                   },
+                                   {
+                                        icon: (
+                                             <Smartphone className="w-6 h-6" />
+                                        ),
+                                        title: "76% of Local Searches Result in Store Visits",
+                                        description:
+                                             "Over three-quarters of people who search for something nearby on their smartphone visit a related business within a day.",
+                                        color: "from-green-500 to-green-600",
+                                   },
+                                   {
+                                        icon: <Phone className="w-6 h-6" />,
+                                        title: "28% of Local Searches Lead to Purchases",
+                                        description:
+                                             "More than a quarter of local searches result in a purchase, making local SEO a direct driver of revenue.",
+                                        color: "from-yellow-500 to-yellow-600",
+                                   },
+                                   {
+                                        icon: <Star className="w-6 h-6" />,
+                                        title: "88% Trust Online Reviews as Much as Personal Recommendations",
+                                        description:
+                                             "The vast majority of consumers trust online reviews as much as personal recommendations.",
+                                        color: "from-blue-500 to-blue-600",
+                                   },
+                                   {
+                                        icon: <Users className="w-6 h-6" />,
+                                        title: "97% of Consumers Search Online for Local Businesses",
+                                        description:
+                                             "Almost all consumers use the internet to find local businesses, making local search visibility essential.",
+                                        color: "from-purple-500 to-purple-600",
+                                   },
+                                   {
+                                        icon: <Building className="w-6 h-6" />,
+                                        title: "Local Businesses with Complete GBP Get 7x More Clicks",
+                                        description:
+                                             "Businesses with complete Google Business Profiles receive 7 times more clicks than those with incomplete listings.",
+                                        color: "from-indigo-500 to-indigo-600",
+                                   },
+                              ].map((stat, index) => (
+                                   <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                             duration: 0.5,
+                                             delay: index * 0.1,
+                                        }}
+                                        viewport={{ once: true }}
+                                        className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300"
+                                   >
+                                        <div
+                                             className={`w-12 h-12 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center mb-6 text-white`}
+                                        >
+                                             {stat.icon}
+                                        </div>
+                                        <h3 className="text-lg font-bold mb-4 text-gray-900">
+                                             {stat.title}
+                                        </h3>
+                                        <p className="text-gray-600">
+                                             {stat.description}
+                                        </p>
+                                   </motion.div>
+                              ))}
+                         </div>
+                    </div>
+               </section>
+
+               {/* Process Section */}
+               <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
+                    <div className="container mx-auto max-w-6xl">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                              className="text-center mb-16"
+                         >
+                              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-indigo-100 px-6 py-3 rounded-full text-blue-800 text-sm font-semibold mb-6">
+                                   <Target className="w-4 h-4" />
+                                   Proven Methodology
+                              </div>
+                              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                                   Our Local SEO Process
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                   We follow a proven, data-driven approach to
+                                   local SEO that consistently delivers results
+                                   for businesses across industries and markets.
+                              </p>
+                         </motion.div>
+
+                         <div className="relative">
+                              <div className="space-y-12 lg:space-y-0">
+                                   {localSeoSteps.map((step, index) => (
+                                        <motion.div
+                                             key={index}
+                                             initial={{ opacity: 0, y: 20 }}
+                                             whileInView={{ opacity: 1, y: 0 }}
+                                             transition={{
+                                                  duration: 0.6,
+                                                  delay: index * 0.1,
+                                             }}
+                                             viewport={{ once: true }}
+                                             className={`flex flex-col lg:flex-row items-center gap-8 ${
+                                                  index % 2 === 0
+                                                       ? "lg:flex-row-reverse"
+                                                       : ""
+                                             }`}
+                                        >
+                                             <div className="w-full lg:w-1/2 relative z-10">
+                                                  <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/50 hover:shadow-xl transition-all duration-300">
+                                                       <div className="flex items-start gap-4 mb-6">
+                                                            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                                                                 {index + 1}
+                                                            </div>
+                                                            <div>
+                                                                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                                                                      {
+                                                                           step.title
+                                                                      }
+                                                                 </h3>
+                                                            </div>
+                                                       </div>
+                                                       <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                                                            {step.description}
+                                                       </p>
+
+                                                       {/* Step-specific features */}
+                                                       <div className="space-y-3">
+                                                            {step.title ===
+                                                                 "Local SEO Audit" && (
+                                                                 <>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Google
+                                                                                Business
+                                                                                Profile
+                                                                                analysis
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Citation
+                                                                                consistency
+                                                                                review
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Competitor
+                                                                                analysis
+                                                                           </span>
+                                                                      </div>
+                                                                 </>
+                                                            )}
+                                                            {step.title ===
+                                                                 "Google Business Profile Optimization" && (
+                                                                 <>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Complete
+                                                                                profile
+                                                                                setup
+                                                                                &
+                                                                                optimization
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Professional
+                                                                                photos
+                                                                                &
+                                                                                videos
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Service
+                                                                                area
+                                                                                &
+                                                                                hours
+                                                                                optimization
+                                                                           </span>
+                                                                      </div>
+                                                                 </>
+                                                            )}
+                                                            {step.title ===
+                                                                 "Citation Building & Cleanup" && (
+                                                                 <>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                NAP
+                                                                                consistency
+                                                                                across
+                                                                                50+
+                                                                                directories
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Duplicate
+                                                                                listing
+                                                                                removal
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Industry-specific
+                                                                                directory
+                                                                                listings
+                                                                           </span>
+                                                                      </div>
+                                                                 </>
+                                                            )}
+                                                            {step.title ===
+                                                                 "Review Strategy Implementation" && (
+                                                                 <>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Review
+                                                                                generation
+                                                                                system
+                                                                                setup
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Review
+                                                                                response
+                                                                                templates
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Review
+                                                                                monitoring
+                                                                                &
+                                                                                alerts
+                                                                           </span>
+                                                                      </div>
+                                                                 </>
+                                                            )}
+                                                            {step.title ===
+                                                                 "Local Content Development" && (
+                                                                 <>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Location-specific
+                                                                                landing
+                                                                                pages
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Local
+                                                                                keyword
+                                                                                optimization
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Community-focused
+                                                                                content
+                                                                           </span>
+                                                                      </div>
+                                                                 </>
+                                                            )}
+                                                            {step.title ===
+                                                                 "Ongoing Optimization & Reporting" && (
+                                                                 <>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Monthly
+                                                                                performance
+                                                                                reports
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Continuous
+                                                                                ranking
+                                                                                monitoring
+                                                                           </span>
+                                                                      </div>
+                                                                      <div className="flex items-center gap-3 text-sm text-gray-600">
+                                                                           <CheckCircle className="w-4 h-4 text-green-500" />
+                                                                           <span>
+                                                                                Strategy
+                                                                                adjustments
+                                                                                &
+                                                                                improvements
+                                                                           </span>
+                                                                      </div>
+                                                                 </>
+                                                            )}
+                                                       </div>
+                                                  </div>
+                                             </div>
+
+                                             <div className="w-full lg:w-1/2 flex justify-center relative z-10">
+                                                  <div className="relative">
+                                                       <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-2xl shadow-xl border-4 border-white">
+                                                            <step.icon className="w-8 h-8" />
+                                                       </div>
+                                                       {/* Background decoration */}
+                                                       <div className="absolute inset-0 w-20 h-20 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full blur-xl opacity-30 -z-10"></div>
+                                                  </div>
+                                             </div>
+                                        </motion.div>
+                                   ))}
+                              </div>
+                         </div>
+
+                         {/* Process summary */}
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, delay: 0.6 }}
+                              viewport={{ once: true }}
+                              className="mt-16 text-center"
+                         >
+                              <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/50">
+                                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                                        What to Expect
+                                   </h3>
+                                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <div className="text-center">
+                                             <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 text-white">
+                                                  <TrendingUp className="w-6 h-6" />
+                                             </div>
+                                             <h4 className="font-semibold text-gray-900 mb-2">
+                                                  First Results
+                                             </h4>
+                                             <p className="text-gray-600 text-sm">
+                                                  Visible improvements within
+                                                  30-60 days
+                                             </p>
+                                        </div>
+                                        <div className="text-center">
+                                             <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-3 text-white">
+                                                  <Target className="w-6 h-6" />
+                                             </div>
+                                             <h4 className="font-semibold text-gray-900 mb-2">
+                                                  Full Optimization
+                                             </h4>
+                                             <p className="text-gray-600 text-sm">
+                                                  Complete implementation in
+                                                  90-120 days
+                                             </p>
+                                        </div>
+                                        <div className="text-center">
+                                             <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 text-white">
+                                                  <BarChart2 className="w-6 h-6" />
+                                             </div>
+                                             <h4 className="font-semibold text-gray-900 mb-2">
+                                                  Ongoing Support
+                                             </h4>
+                                             <p className="text-gray-600 text-sm">
+                                                  Continuous monitoring and
+                                                  optimization
+                                             </p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </motion.div>
+                    </div>
+               </section>
+
+               {/* Statistics Section */}
+               <section className="py-16 px-4 bg-white">
+                    <div className="container mx-auto max-w-6xl">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                              className="text-center mb-16"
+                         >
+                              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                                   Our Local SEO Impact
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                   We've helped hundreds of local businesses
+                                   achieve significant growth through strategic
+                                   local search optimization. Here's our track
+                                   record of success.
+                              </p>
+                         </motion.div>
+
+                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                              {statistics.map((stat, index) => (
+                                   <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                             duration: 0.5,
+                                             delay: index * 0.1,
+                                        }}
+                                        viewport={{ once: true }}
+                                        className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 text-center hover:shadow-xl transition-all duration-300"
+                                   >
+                                        <div
+                                             className={`text-3xl font-bold mb-2 ${stat.color}`}
+                                        >
+                                             {stat.value}
+                                        </div>
+                                        <div className="text-sm text-gray-600">
+                                             {stat.label}
+                                        </div>
+                                   </motion.div>
+                              ))}
+                         </div>
+                    </div>
+               </section>
+
+               {/* CTA Section */}
+               <section className="py-16 px-4 bg-gradient-to-br from-blue-50 to-indigo-50">
+                    <div className="container mx-auto max-w-4xl text-center">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                         >
+                              <h2 className="text-4xl font-bold mb-6 text-gray-900">
+                                   Ready to Dominate Local Search?
+                              </h2>
+                              <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                                   Get started with our local SEO services and
+                                   watch your business climb to the top of local
+                                   search results.
+                              </p>
+                              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                                   <button
+                                        onClick={scrollToForm}
+                                        className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg"
+                                   >
+                                        <MapPin className="inline w-5 h-5 mr-2" />
+                                        Get Your Free Local SEO Audit
+                                   </button>
+                                   <button
+                                        onClick={toggleQuotePopup}
+                                        className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg"
+                                   >
+                                        <Building className="inline w-5 h-5 mr-2" />
+                                        Boost Your Local Visibility Today
+                                   </button>
+                              </div>
+                         </motion.div>
+                    </div>
+               </section>
+
+               {/* Benefits Section */}
+               <section className="py-16 px-4 bg-white">
+                    <div className="container mx-auto max-w-6xl">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                              className="text-center mb-16"
+                         >
+                              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+                                   Benefits of Local SEO
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                                   Investing in local SEO provides numerous
+                                   advantages for businesses that serve specific
+                                   geographic areas.
+                              </p>
+                         </motion.div>
+
+                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                              {[
+                                   "Increased Local Visibility",
+                                   "More Qualified Traffic",
+                                   "Increased Foot Traffic",
+                                   "More Phone Calls",
+                                   "Enhanced Trust & Credibility",
+                                   "Competitive Advantage",
+                                   "Higher Conversion Rates",
+                                   "Cost-Effective Marketing",
+                              ].map((benefit, index) => (
+                                   <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{
+                                             duration: 0.5,
+                                             delay: index * 0.1,
+                                        }}
+                                        viewport={{ once: true }}
+                                        className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100"
+                                   >
+                                        <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center">
+                                             <CheckCircle className="w-5 h-5 mr-3 text-green-600" />
+                                             <span>{benefit}</span>
+                                        </h3>
+                                        <p className="text-gray-600">
+                                             {benefit ===
+                                                  "Increased Local Visibility" &&
+                                                  "Appear prominently in local search results, Google Maps, and the local pack when nearby customers search for your products or services."}
+                                             {benefit ===
+                                                  "More Qualified Traffic" &&
+                                                  "Attract visitors who are specifically looking for your products or services in your area, resulting in higher conversion rates."}
+                                             {benefit ===
+                                                  "Increased Foot Traffic" &&
+                                                  "Drive more in-store visits as local searchers are often looking for businesses they can visit immediately or in the near future."}
+                                             {benefit === "More Phone Calls" &&
+                                                  "Generate more direct phone inquiries as local searchers often call businesses directly from search results."}
+                                             {benefit ===
+                                                  "Enhanced Trust & Credibility" &&
+                                                  "Build trust with potential customers through positive reviews, accurate business information, and prominent local search visibility."}
+                                             {benefit ===
+                                                  "Competitive Advantage" &&
+                                                  "Outrank local competitors in search results, making your business the first choice for potential customers in your area."}
+                                             {benefit ===
+                                                  "Higher Conversion Rates" &&
+                                                  "Convert more visitors into customers as local searchers typically have higher purchase intent and are further along in the buying process."}
+                                             {benefit ===
+                                                  "Cost-Effective Marketing" &&
+                                                  "Achieve a higher return on investment compared to traditional advertising methods by targeting customers who are actively searching for your services."}
+                                        </p>
+                                   </motion.div>
+                              ))}
+                         </div>
+                    </div>
+               </section>
+
+               {/* Form Section */}
+               <section
+                    ref={formRef}
+                    className="py-16 px-4 bg-gradient-to-br from-slate-50 to-blue-50"
+               >
+                    <div className="container mx-auto max-w-4xl">
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              viewport={{ once: true }}
+                              className="text-center mb-12"
+                         >
+                              <h2 className="text-4xl font-bold mb-6 text-gray-900">
+                                   Get Your Free Local SEO Audit
+                              </h2>
+                              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                                   Discover how your business is performing in
+                                   local search and receive actionable
+                                   recommendations to improve your local
+                                   visibility and attract more nearby customers.
+                              </p>
+                         </motion.div>
+                         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+                              <Form />
+                         </div>
+                    </div>
+               </section>
+
+               {/* Quote Popup */}
+               <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
           </div>
-        </div>
-      </motion.div>
-
-      {/* Local SEO Benefits */}
-      <motion.div
-        className="py-16 px-4 max-w-6xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <motion.div
-          className="text-center mb-12"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl font-light text-gray-700 mb-4">Benefits of Local SEO</h2>
-          <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Investing in local SEO provides numerous advantages for businesses that serve specific geographic areas.
-            Here&apos;s how local search optimization can benefit your business.
-          </p>
-        </motion.div>
-
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-        >
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>Increased Local Visibility</span>
-            </h3>
-            <p className="text-gray-600">
-              Appear prominently in local search results, Google Maps, and the local pack when nearby customers search
-              for your products or services.
-            </p>
-          </motion.div>
-
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>More Qualified Traffic</span>
-            </h3>
-            <p className="text-gray-600">
-              Attract visitors who are specifically looking for your products or services in your area, resulting in
-              higher conversion rates.
-            </p>
-          </motion.div>
-
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>Increased Foot Traffic</span>
-            </h3>
-            <p className="text-gray-600">
-              Drive more in-store visits as local searchers are often looking for businesses they can visit immediately
-              or in the near future.
-            </p>
-          </motion.div>
-
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>More Phone Calls</span>
-            </h3>
-            <p className="text-gray-600">
-              Generate more direct phone inquiries as local searchers often call businesses directly from search
-              results.
-            </p>
-          </motion.div>
-
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>Enhanced Trust & Credibility</span>
-            </h3>
-            <p className="text-gray-600">
-              Build trust with potential customers through positive reviews, accurate business information, and
-              prominent local search visibility.
-            </p>
-          </motion.div>
-
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>Competitive Advantage</span>
-            </h3>
-            <p className="text-gray-600">
-              Outrank local competitors in search results, making your business the first choice for potential customers
-              in your area.
-            </p>
-          </motion.div>
-
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>Higher Conversion Rates</span>
-            </h3>
-            <p className="text-gray-600">
-              Convert more visitors into customers as local searchers typically have higher purchase intent and are
-              further along in the buying process.
-            </p>
-          </motion.div>
-
-          <motion.div className="bg-white p-6 rounded-lg shadow-md" variants={itemVariants}>
-            <h3 className="text-xl font-medium mb-4 text-gray-800 flex items-center">
-              <CheckCircle className="w-5 h-5 mr-2 text-[#34a853]" />
-              <span>Cost-Effective Marketing</span>
-            </h3>
-            <p className="text-gray-600">
-              Achieve a higher return on investment compared to traditional advertising methods by targeting customers
-              who are actively searching for your services.
-            </p>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      {/* Form Section with Ref */}
-      <div ref={formRef} className="bg-gray-50 py-16 px-4">
-        <motion.div
-          className="max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-        >
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-light text-gray-700 mb-4">Get Your Free Local SEO Audit</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover how your business is performing in local search and receive actionable recommendations to improve
-              your local visibility and attract more nearby customers.
-            </p>
-          </div>
-          <Form />
-        </motion.div>
-      </div>
-
-      {/* Quote Popup */}
-      <QuotePopup isOpen={showQuotePopup} onClose={toggleQuotePopup} />
-    </div>
-  )
+     );
 }
-
-export default LocalSEOServices
