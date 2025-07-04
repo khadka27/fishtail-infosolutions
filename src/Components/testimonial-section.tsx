@@ -212,7 +212,7 @@ export default function TestimonialsSection() {
 
      return (
           <section
-               className="relative py-8 sm:py-10 md:py-12 lg:py-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
+               className="relative pt-2 sm:pt-4 md:pt-6 lg:pt-8 xl:pt-10 pb-8 sm:pb-12 md:pb-16 lg:pb-20 xl:pb-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
                onMouseEnter={() => setIsPaused(true)}
                onMouseLeave={() => setIsPaused(false)}
                ref={containerRef}

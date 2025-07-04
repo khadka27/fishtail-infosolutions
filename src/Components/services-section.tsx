@@ -284,7 +284,7 @@ export function ServicesSection() {
      return (
           <section
                ref={sectionRef}
-               className="relative py-8 sm:py-12 md:py-16 lg:py-20 px-3 sm:px-4 md:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
+               className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 pb-2 sm:pb-4 md:pb-6 lg:pb-8 xl:pb-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
                onMouseMove={handleMouseMove}
           >
                {/* Enhanced Background Elements */}

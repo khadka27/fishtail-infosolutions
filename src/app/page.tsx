@@ -115,8 +115,6 @@ export default function Home() {
                          </Suspense>
                     </section>
 
-                    <SectionDivider variant="wave" />
-
                     {/* Services Section */}
                     <section id="services" aria-label="Services Section">
                          <Suspense fallback={<LoadingSpinner />}>
@@ -124,16 +122,12 @@ export default function Home() {
                          </Suspense>
                     </section>
 
-                    <SectionDivider />
-
                     {/* Testimonials Section */}
                     <section id="testimonials" aria-label="Testimonials">
                          <Suspense fallback={<LoadingSpinner />}>
                               <TestimonialsSection />
                          </Suspense>
                     </section>
-
-                    <SectionDivider variant="angle" />
 
                     {/* Case Studies Section */}
                     <section id="case-studies" aria-label="Case Studies">

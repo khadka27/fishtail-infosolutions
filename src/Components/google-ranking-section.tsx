@@ -194,7 +194,7 @@ export function GoogleRankingSection() {
      return (
           <section
                ref={sectionRef}
-               className="relative py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
+               className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 pb-4 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
           >
                {/* Simplified background elements - reduced blur and animation */}
                <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -231,7 +231,7 @@ export function GoogleRankingSection() {
                          </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                          {/* Dashboard Mockup - Simplified */}
                          <div
                               className={`relative transition-all duration-700 ${

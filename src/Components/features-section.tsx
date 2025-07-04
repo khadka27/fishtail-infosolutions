@@ -142,7 +142,7 @@ export function FeaturesSection() {
 
      return (
           <section
-               className="relative py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
+               className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-2 sm:pb-4 md:pb-6 lg:pb-8 xl:pb-10 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
                onMouseMove={handleMouseMove}
           >
                {/* Animated background elements */}
