@@ -1,242 +1,359 @@
-import type { Metadata } from "next"
-import { MapPin, Phone, Mail } from "lucide-react"
-import Link from "next/link"
-import MapWrapper from "@/Components/map-wrapper"
-import ContactForm from "@/Components/contact-form"
-import { officeLocations } from "@/data/locations"
+import type { Metadata } from "next";
+import {
+     MapPin,
+     Phone,
+     Mail,
+     Globe,
+     Users,
+     Clock,
+     Sparkles,
+} from "lucide-react";
+import Link from "next/link";
+import MapWrapper from "@/Components/map-wrapper";
+import ContactForm from "@/Components/contact-form";
+import { officeLocations } from "@/data/locations";
 
 // Add metadata for the multi-address contact page
 export const metadata: Metadata = {
-  title: "Contact Our Global Offices | Fishtail Info Solutions",
-  description:
-    "Reach out to Fishtail Info Solutions at our offices in the UK, US, Nepal, and India. Find our contact details, office locations, and send us a message through our contact form.",
-}
+     title: "Contact Our Global Offices | Fishtail Info Solutions",
+     description:
+          "Reach out to Fishtail Info Solutions at our offices in the UK, US, Nepal, and India. Find our contact details, office locations, and send us a message through our contact form.",
+};
 
 export default function MultiAddressContactPage() {
-  // Log the officeLocations to verify they're imported correctly
-  console.log("MultiAddressPage officeLocations:", officeLocations)
+     // Use the original locations data for the map
+     const mapLocations = [
+          {
+               name: "East Ham Office",
+               country: "United Kingdom",
+               coordinates: [51.538, 0.042] as [number, number],
+               address: "182-184 High Street North, East Ham, London, E6 2JA",
+          },
+          {
+               name: "Bear Office",
+               country: "United States",
+               coordinates: [39.5761, -75.611] as [number, number],
+               address: "604 Carson Dr CAK-953 Bear, DE 19701-1450",
+          },
+          {
+               name: "Pokhara Office",
+               country: "Nepal",
+               coordinates: [28.2096, 83.9856] as [number, number],
+               address: "Prithivi Chowk, Street 31, Pokhara",
+          },
+          {
+               name: "Delhi Office",
+               country: "India",
+               coordinates: [28.601, 77.0787] as [number, number],
+               address: "Mahavir Enclave, South West Delhi, New Delhi, 110045",
+          },
+     ];
 
-  // Create a local copy of the locations to ensure they're properly defined
-  const locations = [
-    {
-      name: "East Ham Office",
-      country: "United Kingdom",
-      coordinates: [51.538, 0.042] as [number, number],
-      address: "182-184 High Street North, East Ham, London, E6 2JA",
-    },
-    {
-      name: "Bear Office",
-      country: "United States",
-      coordinates: [39.5761, -75.611] as [number, number],
-      address: "604 Carson Dr CAK-953 Bear, DE 19701-1450",
-    },
-    {
-      name: "Pokhara Office",
-      country: "Nepal",
-      coordinates: [28.2096, 83.9856] as [number, number],
-      address: "Prithivi Chowk, Street 31, Pokhara",
-    },
-    {
-      name: "Delhi Office",
-      country: "India",
-      coordinates: [28.601, 77.0787] as [number, number],
-      address: "Mahavir Enclave, South West Delhi, New Delhi, 110045",
-    },
-  ]
+     // Enhanced locations for display
+     const displayLocations = [
+          {
+               name: "East Ham Office",
+               country: "United Kingdom",
+               address: "182-184 High Street North, East Ham, London, E6 2JA",
+               phone: "+1 (234) 567.892.11",
+               email: "uk@fishtailinfosolutions.com",
+               hours: "Monday–Friday 9am-6pm",
+               color: "from-blue-500 to-blue-600",
+          },
+          {
+               name: "Bear Office",
+               country: "United States",
+               address: "604 Carson Dr CAK-953 Bear, DE 19701-1450",
+               phone: "+1 (801) 987-0424",
+               email: "us@fishtailinfosolutions.com",
+               hours: "Monday–Friday 9am-6pm",
+               color: "from-blue-500 to-blue-600",
+          },
+          {
+               name: "Pokhara Office",
+               country: "Nepal",
+               address: "Prithivi Chowk, Street 31, Pokhara",
+               phone: "+977 61 123456",
+               email: "nepal@fishtailinfosolutions.com",
+               hours: "Sunday–Friday 9am-6pm",
+               color: "from-blue-500 to-blue-600",
+          },
+          {
+               name: "Delhi Office",
+               country: "India",
+               address: "Mahavir Enclave, South West Delhi, New Delhi, 110045",
+               phone: "+91 11 123456",
+               email: "india@fishtailinfosolutions.com",
+               hours: "Monday–Friday 9am-6pm",
+               color: "from-blue-500 to-blue-600",
+          },
+     ];
 
-  return (
-    <div className="max-w-7xl mx-auto">
-      {/* Header Section */}
-      <div className="bg-gray-100 py-16 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
-          <h1 className="text-5xl font-light text-gray-700 mb-4 md:mb-0">Get in touch</h1>
-          <p className="text-gray-500">Any questions?</p>
-        </div>
-      </div>
+     return (
+          <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+               {/* Compact Hero Section */}
+               <section className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
+                    {/* Background Elements */}
+                    <div className="absolute inset-0 pointer-events-none">
+                         <div className="absolute top-10 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-3xl animate-pulse"></div>
+                         <div
+                              className="absolute bottom-20 right-20 w-40 h-40 bg-blue-200/20 rounded-full blur-3xl animate-pulse"
+                              style={{ animationDelay: "2s" }}
+                         ></div>
+                    </div>
 
-      {/* Contact Message */}
-      <div className="py-8 px-4 border-b">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center">
-          <p className="text-gray-700 mb-4 md:mb-0">
-            Please contact us using the form and we&apos;ll get back to you as soon as possible.
-          </p>
-          <Link href="/quote" className="flex items-center text-blue-500 hover:text-blue-600">
-            <svg
-              className="w-5 h-5 mr-2"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            Request a free quote
-          </Link>
-        </div>
-      </div>
+                    <div className="container mx-auto max-w-6xl px-4 relative z-10">
+                         <div className="text-center mb-12">
+                              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-blue-100 px-4 py-2 rounded-full text-blue-700 text-sm font-medium mb-6">
+                                   <Sparkles className="w-4 h-4" />
+                                   Global Presence
+                              </div>
+                              <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-800 mb-4">
+                                   Get in
+                                   <span className="bg-gradient-to-r from-blue-600 to-blue-600 bg-clip-text text-transparent">
+                                        {" "}
+                                        Touch
+                                   </span>
+                              </h1>
+                              <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                                   Connect with our global team across four
+                                   locations. We're here to help your business
+                                   succeed worldwide.
+                              </p>
 
-      {/* Main Content */}
-      <div className="py-12 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Column - Addresses */}
-          <div className="space-y-16">
-            {/* United Kingdom Office */}
-            <div>
-              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">United Kingdom</h2>
+                              {/* Quick Stats */}
+                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 text-center shadow-md border border-white/50">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                             <Globe className="w-6 h-6 text-white" />
+                                        </div>
+                                        <div className="text-2xl font-bold text-gray-800">
+                                             4
+                                        </div>
+                                        <div className="text-sm text-gray-600">
+                                             Global Offices
+                                        </div>
+                                   </div>
+                                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 text-center shadow-md border border-white/50">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                             <Users className="w-6 h-6 text-white" />
+                                        </div>
+                                        <div className="text-2xl font-bold text-gray-800">
+                                             50+
+                                        </div>
+                                        <div className="text-sm text-gray-600">
+                                             Team Members
+                                        </div>
+                                   </div>
+                                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 text-center shadow-md border border-white/50">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                             <Clock className="w-6 h-6 text-white" />
+                                        </div>
+                                        <div className="text-2xl font-bold text-gray-800">
+                                             24h
+                                        </div>
+                                        <div className="text-sm text-gray-600">
+                                             Response Time
+                                        </div>
+                                   </div>
+                                   <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 text-center shadow-md border border-white/50">
+                                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                             <Mail className="w-6 h-6 text-white" />
+                                        </div>
+                                        <div className="text-2xl font-bold text-gray-800">
+                                             500+
+                                        </div>
+                                        <div className="text-sm text-gray-600">
+                                             Happy Clients
+                                        </div>
+                                   </div>
+                              </div>
 
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800 font-medium">+1 (234) 567.892.11</p>
-                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
-                  </div>
-                </div>
+                              <div className="bg-blue-50 rounded-xl p-4 mb-8">
+                                   <p className="text-blue-700 text-sm">
+                                        📞 Need immediate assistance? We offer
+                                        free consultations across all locations.
+                                   </p>
+                              </div>
+                         </div>
+                    </div>
+               </section>
 
-                {/* <div className="flex items-start">
-                  <MessageSquare className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <p className="text-gray-800">exampleskypename</p>
-                </div> */}
+               {/* Main Content */}
+               <section className="py-12">
+                    <div className="container mx-auto max-w-6xl px-4">
+                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                              {/* Left Column - Office Locations */}
+                              <div className="space-y-6">
+                                   <div className="text-center lg:text-left mb-8">
+                                        <h2 className="text-2xl sm:text-3xl font-light text-gray-800 mb-2">
+                                             Our Global Offices
+                                        </h2>
+                                        <p className="text-gray-600">
+                                             Find the office nearest to you or
+                                             reach out to any location for
+                                             assistance.
+                                        </p>
+                                   </div>
 
-                <div className="flex items-start">
-                  <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a href="mailto:info@example.com" className="text-blue-500 hover:underline">
-                    info@fishtailinfosolutions.com
-                  </a>
-                </div>
+                                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 justify-items-center">
+                                        {displayLocations.map(
+                                             (location, index) => (
+                                                  <div
+                                                       key={location.country}
+                                                       className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] w-full max-w-sm"
+                                                  >
+                                                       {/* Header */}
+                                                       <div className="flex items-center gap-3 mb-4">
+                                                            <div
+                                                                 className={`w-12 h-12 bg-gradient-to-r ${location.color} rounded-full flex items-center justify-center`}
+                                                            >
+                                                                 <Globe className="w-6 h-6 text-white" />
+                                                            </div>
+                                                            <div>
+                                                                 <h3 className="text-lg font-semibold text-gray-800">
+                                                                      {
+                                                                           location.country
+                                                                      }
+                                                                 </h3>
+                                                                 <div className="text-sm text-gray-500">
+                                                                      {
+                                                                           location.name
+                                                                      }
+                                                                 </div>
+                                                            </div>
+                                                       </div>
 
-                <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800">192-184 High Street North East Ham,</p>
-                    <p className="text-gray-800">London,E6 2JA</p>
+                                                       {/* Contact Details */}
+                                                       <div className="space-y-3">
+                                                            <div className="flex items-start gap-3">
+                                                                 <Phone className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                                                                 <div>
+                                                                      <p className="text-gray-800 font-medium">
+                                                                           {
+                                                                                location.phone
+                                                                           }
+                                                                      </p>
+                                                                      <p className="text-xs text-gray-500">
+                                                                           {
+                                                                                location.hours
+                                                                           }
+                                                                      </p>
+                                                                 </div>
+                                                            </div>
 
-                    <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                                                            <div className="flex items-start gap-3">
+                                                                 <Mail className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                                                                 <a
+                                                                      href={`mailto:${location.email}`}
+                                                                      className="text-blue-600 hover:text-blue-700 transition-colors text-sm"
+                                                                 >
+                                                                      {
+                                                                           location.email
+                                                                      }
+                                                                 </a>
+                                                            </div>
 
-            {/* United Office */}
-            <div>
-              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">United States</h2>
+                                                            <div className="flex items-start gap-3">
+                                                                 <MapPin className="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+                                                                 <p className="text-gray-700 text-sm">
+                                                                      {
+                                                                           location.address
+                                                                      }
+                                                                 </p>
+                                                            </div>
+                                                       </div>
 
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800 font-medium">+1 (801) 987-0424</p>
-                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
-                  </div>
-                </div>
+                                                       {/* Quick Action */}
+                                                       <div className="mt-4 pt-4 border-t border-gray-100">
+                                                            <Link
+                                                                 href="/contact"
+                                                                 className={`inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r ${location.color} text-white rounded-lg text-sm font-medium hover:scale-105 transition-all duration-200 shadow-md`}
+                                                            >
+                                                                 <Mail className="w-4 h-4" />
+                                                                 Contact This
+                                                                 Office
+                                                            </Link>
+                                                       </div>
+                                                  </div>
+                                             )
+                                        )}
+                                   </div>
 
-                {/* <div className="flex items-start">
-                  <MessageSquare className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <p className="text-gray-800">exampleskypename</p>
-                </div> */}
+                                   {/* Quick Links */}
+                                   <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white mt-8">
+                                        <h3 className="text-xl font-semibold mb-4">
+                                             Need Specialized Help?
+                                        </h3>
+                                        <div className="space-y-3">
+                                             <Link
+                                                  href="/contact/seo"
+                                                  className="block bg-white/10 hover:bg-white/20 rounded-xl p-3 transition-all duration-200"
+                                             >
+                                                  <div className="font-medium">
+                                                       SEO Consultation
+                                                  </div>
+                                                  <div className="text-sm text-blue-100">
+                                                       Get a free SEO audit
+                                                  </div>
+                                             </Link>
+                                             <Link
+                                                  href="/contact/web-dev-quote"
+                                                  className="block bg-white/10 hover:bg-white/20 rounded-xl p-3 transition-all duration-200"
+                                             >
+                                                  <div className="font-medium">
+                                                       Web Development Quote
+                                                  </div>
+                                                  <div className="text-sm text-blue-100">
+                                                       Custom website solutions
+                                                  </div>
+                                             </Link>
+                                             <Link
+                                                  href="/contact/digital-ad-quote"
+                                                  className="block bg-white/10 hover:bg-white/20 rounded-xl p-3 transition-all duration-200"
+                                             >
+                                                  <div className="font-medium">
+                                                       Digital Marketing Quote
+                                                  </div>
+                                                  <div className="text-sm text-blue-100">
+                                                       Boost your online
+                                                       presence
+                                                  </div>
+                                             </Link>
+                                        </div>
+                                   </div>
+                              </div>
 
-                <div className="flex items-start">
-                  <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a href="mailto:info@example.com" className="text-blue-500 hover:underline">
-                    info@fishtailinfosolutions.com
-                  </a>
-                </div>
+                              {/* Right Column - Map and Contact Form */}
+                              <div className="space-y-6">
+                                   {/* Interactive Map */}
+                                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                                        <div className="p-4 bg-gray-50 border-b border-gray-100">
+                                             <h3 className="text-lg font-semibold text-gray-800">
+                                                  Our Global Locations
+                                             </h3>
+                                             <p className="text-sm text-gray-600">
+                                                  Click on markers to view
+                                                  office details
+                                             </p>
+                                        </div>
+                                        <div className="h-80">
+                                             <MapWrapper
+                                                  locations={mapLocations}
+                                                  initialZoom={2}
+                                                  showLocationTabs={true}
+                                             />
+                                        </div>
+                                   </div>
 
-                <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800">604 Carson Dr CAK-953 Bear,</p>
-                    <p className="text-gray-800">DE 19701-1450</p>
-                    <p className="text-gray-800 mb-2">Canada</p>
-                    <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Nepal Office */}
-            <div>
-              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">Nepal</h2>
-
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800 font-medium">+977 61 123456</p>
-                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a href="mailto:rahul@fistailinfosolutions" className="text-blue-500 hover:underline">
-                    rahul@fistailinfosolutions
-                  </a>
-                </div>
-
-                <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800">Prithivi Chowk, Street 31,</p>
-                    <p className="text-gray-800">Pokhara</p>
-                    <p className="text-gray-800 mb-2">Nepal</p>
-                    <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* India Office */}
-            <div>
-              <h2 className="text-2xl font-light text-[#b5bd00] mb-6">India Office</h2>
-
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Phone className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800 font-medium">+977 61 123456</p>
-                    <p className="text-sm text-gray-500">Monday–Friday 9am-6pm</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <Mail className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <a href="mailto:rahul@fistailinfosolutions" className="text-blue-500 hover:underline">
-                    rahul@fistailinfosolutions
-                  </a>
-                </div>
-
-                <div className="flex items-start">
-                  <MapPin className="w-5 h-5 text-gray-400 mt-1 mr-4" />
-                  <div>
-                    <p className="text-gray-800">Mahavir Enclave, South West Delhi,</p>
-                    <p className="text-gray-800">New Delhi, 110045</p>
-                    <p className="text-gray-800 mb-2">India</p>
-                    <p className="text-sm text-gray-500">Our office is open:</p>
-                    <p className="text-sm text-gray-500">Mon to Fri from 8am to 6pm</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                                   {/* Contact Form */}
+                                   <div>
+                                        <ContactForm />
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </section>
           </div>
-
-          {/* Right Column - Map and Form */}
-          <div className="space-y-8">
-            <MapWrapper
-              locations={locations}
-              initialZoom={5} // Use a lower zoom to see all locations
-              height="400px"
-              showLocationTabs={true}
-            />
-            <ContactForm />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+     );
 }
-

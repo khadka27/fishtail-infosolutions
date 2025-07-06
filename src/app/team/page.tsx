@@ -8,12 +8,22 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
-  Search,
-  Filter,
-  ChevronRight,
-  Mail,
-  Linkedin,
-  Twitter,
+     Search,
+     Filter,
+     ChevronRight,
+     Mail,
+     Linkedin,
+     Twitter,
+     Users,
+     Building2,
+     Search as SearchIcon,
+     PenTool,
+     Code,
+     Users as UsersIcon,
+     Megaphone,
+     Globe,
+     Target,
+     Sparkles,
 } from "lucide-react";
 import { teamMembers } from "@/data/team-members";
 
@@ -25,239 +35,400 @@ import { teamMembers } from "@/data/team-members";
 
 // Get all unique departments from team members
 const departments = Array.from(
-  new Set(teamMembers.map((member) => member.department))
+     new Set(teamMembers.map((member) => member.department))
 ).filter(Boolean) as string[];
 
 export default function TeamPage() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState<string | null>(
-    null
-  );
-  const [filteredMembers, setFilteredMembers] = useState(teamMembers);
-  const [isLoaded, setIsLoaded] = useState(false);
+     const [searchTerm, setSearchTerm] = useState("");
+     const [selectedDepartment, setSelectedDepartment] = useState<
+          string | null
+     >(null);
+     const [filteredMembers, setFilteredMembers] = useState(teamMembers);
+     const [isLoaded, setIsLoaded] = useState(false);
 
-  // Filter team members based on search term and selected department
-  useEffect(() => {
-    const filtered = teamMembers.filter((member) => {
-      const matchesSearch =
-        member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        member.position.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesDepartment =
-        !selectedDepartment || member.department === selectedDepartment;
-      return matchesSearch && matchesDepartment;
-    });
-    setFilteredMembers(filtered);
-  }, [searchTerm, selectedDepartment]);
+     // Filter team members based on search term and selected department
+     useEffect(() => {
+          const filtered = teamMembers.filter((member) => {
+               const matchesSearch =
+                    member.name
+                         .toLowerCase()
+                         .includes(searchTerm.toLowerCase()) ||
+                    member.position
+                         .toLowerCase()
+                         .includes(searchTerm.toLowerCase());
+               const matchesDepartment =
+                    !selectedDepartment ||
+                    member.department === selectedDepartment;
+               return matchesSearch && matchesDepartment;
+          });
+          setFilteredMembers(filtered);
+     }, [searchTerm, selectedDepartment]);
 
-  // Set loaded state after initial render for animations
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+     // Set loaded state after initial render for animations
+     useEffect(() => {
+          setIsLoaded(true);
+     }, []);
 
-  return (
-    <div className="max-w-7xl mx-auto py-12 px-4 bg-gray-50">
-      {/* Hero Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
-        <h1 className="text-4xl md:text-5xl font-light text-gray-800 mb-4">
-          Meet Our Expert Team
-        </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Our talented professionals are dedicated to helping your business
-          succeed online with innovative digital marketing strategies.
-        </p>
-      </motion.div>
-
-      {/* Filters Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="mb-12 flex flex-col md:flex-row gap-4 justify-between items-center bg-white p-6 rounded-xl shadow-sm"
-      >
-        {/* Search */}
-        <div className="relative w-full md:w-auto flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-          <input
-            type="text"
-            placeholder="Search by name or position..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10 pr-4 py-3 w-full rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-          />
-        </div>
-
-        {/* Department Filter */}
-        <div className="flex items-center space-x-2 w-full md:w-auto">
-          <Filter className="text-gray-500 h-5 w-5" />
-          <span className="text-gray-600 mr-2">Filter by:</span>
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedDepartment(null)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                selectedDepartment === null
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-              }`}
-            >
-              All
-            </button>
-            {departments.map((dept) => (
-              <button
-                key={dept}
-                onClick={() => setSelectedDepartment(dept)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedDepartment === dept
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {dept}
-              </button>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Team Members Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {filteredMembers.length > 0 ? (
-          filteredMembers.map((member, index) => (
-            <motion.div
-              key={member.slug}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-              transition={{ duration: 0.5, delay: 0.1 * (index % 4) + 0.3 }}
-              whileHover={{ y: -10 }}
-              className="group"
-            >
-              <Link href={`/team/${member.slug}`} className="block">
-                <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
-                  <div className="relative overflow-hidden">
-                    <div className="aspect-w-1 aspect-h-1">
-                      <Image
-                        src={member.avatar || "/placeholder.svg"}
-                        alt={member.name}
-                        width={400}
-                        height={400}
-                        unoptimized
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+     return (
+          <div className="max-w-7xl mx-auto py-12 px-4 bg-gray-50">
+               {/* Compact Hero Section */}
+               <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-12"
+               >
+                    <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full text-blue-700 text-sm font-medium mb-6">
+                         <Users className="w-4 h-4" />
+                         Our Team
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                      <div className="p-4 w-full">
-                        <div className="flex justify-center space-x-3">
-                          {member.email && (
-                            <motion.a
-                              href={`mailto:${member.email}`}
-                              whileHover={{ y: -3 }}
-                              className="bg-white/90 p-2 rounded-full text-gray-700 hover:bg-blue-500 hover:text-white transition-colors"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <Mail className="h-4 w-4" />
-                            </motion.a>
-                          )}
-                          {member.linkedin && (
-                            <motion.a
-                              href={member.linkedin}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ y: -3 }}
-                              className="bg-white/90 p-2 rounded-full text-gray-700 hover:bg-blue-500 hover:text-white transition-colors"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <Linkedin className="h-4 w-4" />
-                            </motion.a>
-                          )}
-                          {member.twitter && (
-                            <motion.a
-                              href={member.twitter}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              whileHover={{ y: -3 }}
-                              className="bg-white/90 p-2 rounded-full text-gray-700 hover:bg-blue-500 hover:text-white transition-colors"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <Twitter className="h-4 w-4" />
-                            </motion.a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-medium text-gray-800 mb-1">
-                      {member.name}
-                    </h3>
-                    <p className="text-blue-600 text-sm mb-3">
-                      {member.position}
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-800 mb-4">
+                         Meet Our
+                         <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                              {" "}
+                              Expert Team
+                         </span>
+                    </h1>
+                    <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                         Our talented professionals are dedicated to helping
+                         your business succeed online with innovative digital
+                         marketing strategies.
                     </p>
-                    {member.department && (
-                      <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">
-                        {member.department}
-                      </span>
-                    )}
-                    <div className="mt-4 flex items-center text-sm text-gray-600 group-hover:text-blue-600 transition-colors">
-                      <span>View Profile</span>
-                      <ChevronRight className="ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+               </motion.div>
+
+               {/* Compact Filters Section */}
+               <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{
+                         opacity: isLoaded ? 1 : 0,
+                         y: isLoaded ? 0 : 20,
+                    }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="mb-8 space-y-4"
+               >
+                    {/* Search Bar */}
+                    <div className="relative max-w-md mx-auto">
+                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                         <input
+                              type="text"
+                              placeholder="Search team members..."
+                              value={searchTerm}
+                              onChange={(e) => setSearchTerm(e.target.value)}
+                              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all bg-white shadow-sm"
+                         />
                     </div>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))
-        ) : (
-          <div className="col-span-full py-12 text-center">
-            <p className="text-gray-500 text-lg">
-              No team members found matching your criteria.
-            </p>
-            <button
-              onClick={() => {
-                setSearchTerm("");
-                setSelectedDepartment(null);
-              }}
-              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-            >
-              Reset Filters
-            </button>
+
+                    {/* Department Filter - Light & Blue */}
+                    <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                         <div className="flex flex-col items-center gap-3">
+                              {/* Simple Filter Header */}
+                              <div className="flex items-center gap-2 text-gray-600">
+                                   <Filter className="h-4 w-4 text-blue-500" />
+                                   <span className="text-sm font-medium">
+                                        Filter by Department
+                                   </span>
+                              </div>
+
+                              {/* Filter Buttons */}
+                              <div className="flex flex-wrap justify-center gap-2">
+                                   {/* All Button */}
+                                   <button
+                                        onClick={() =>
+                                             setSelectedDepartment(null)
+                                        }
+                                        className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                                             selectedDepartment === null
+                                                  ? "bg-blue-500 text-white shadow-sm"
+                                                  : "bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200"
+                                        }`}
+                                   >
+                                        <Sparkles className="h-3 w-3" />
+                                        <span>All</span>
+                                   </button>
+
+                                   {/* Department Buttons */}
+                                   {departments.map((dept) => {
+                                        // Simple department icons
+                                        const deptIcons = {
+                                             Management: Building2,
+                                             SEO: SearchIcon,
+                                             Content: PenTool,
+                                             Development: Code,
+                                             HR: UsersIcon,
+                                             Marketing: Megaphone,
+                                        };
+
+                                        const IconComponent =
+                                             deptIcons[
+                                                  dept as keyof typeof deptIcons
+                                             ] || Sparkles;
+
+                                        return (
+                                             <button
+                                                  key={dept}
+                                                  onClick={() =>
+                                                       setSelectedDepartment(
+                                                            dept
+                                                       )
+                                                  }
+                                                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                                                       selectedDepartment ===
+                                                       dept
+                                                            ? "bg-blue-500 text-white shadow-sm"
+                                                            : "bg-gray-50 hover:bg-gray-100 text-gray-600 border border-gray-200"
+                                                  }`}
+                                             >
+                                                  <IconComponent className="h-3 w-3" />
+                                                  <span>{dept}</span>
+                                             </button>
+                                        );
+                                   })}
+                              </div>
+
+                              {/* Simple Active Filter Indicator */}
+                              {selectedDepartment && (
+                                   <div className="flex items-center gap-2 text-xs text-gray-500 bg-blue-50 px-2 py-1 rounded-md">
+                                        <span>
+                                             Showing:{" "}
+                                             <span className="font-medium text-blue-600">
+                                                  {selectedDepartment}
+                                             </span>
+                                        </span>
+                                        <button
+                                             onClick={() =>
+                                                  setSelectedDepartment(null)
+                                             }
+                                             className="text-blue-400 hover:text-blue-600 transition-colors"
+                                        >
+                                             ✕
+                                        </button>
+                                   </div>
+                              )}
+                         </div>
+                    </div>
+               </motion.div>
+
+               {/* Team Members Grid */}
+               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    {filteredMembers.length > 0 ? (
+                         filteredMembers.map((member, index) => (
+                              <motion.div
+                                   key={member.slug}
+                                   initial={{ opacity: 0, y: 20 }}
+                                   animate={{
+                                        opacity: isLoaded ? 1 : 0,
+                                        y: isLoaded ? 0 : 20,
+                                   }}
+                                   transition={{
+                                        duration: 0.5,
+                                        delay: 0.1 * (index % 4) + 0.3,
+                                   }}
+                                   whileHover={{ y: -5, scale: 1.02 }}
+                                   className="group"
+                              >
+                                   <Link
+                                        href={`/team/${member.slug}`}
+                                        className="block"
+                                   >
+                                        <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200">
+                                             {/* Image Section */}
+                                             <div className="relative overflow-hidden h-64 sm:h-72">
+                                                  <Image
+                                                       src={
+                                                            member.avatar ||
+                                                            "/placeholder.svg"
+                                                       }
+                                                       alt={member.name}
+                                                       width={400}
+                                                       height={400}
+                                                       unoptimized
+                                                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                                                  />
+
+                                                  {/* Gradient Overlay */}
+                                                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+
+                                                  {/* Social Links Overlay - Now at Bottom */}
+                                                  <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                                       <div className="flex justify-center gap-3">
+                                                            {member.email && (
+                                                                 <motion.a
+                                                                      href={`mailto:${member.email}`}
+                                                                      initial={{
+                                                                           scale: 0,
+                                                                           y: 20,
+                                                                      }}
+                                                                      animate={{
+                                                                           scale: 1,
+                                                                           y: 0,
+                                                                      }}
+                                                                      whileHover={{
+                                                                           scale: 1.1,
+                                                                           y: -2,
+                                                                      }}
+                                                                      className="bg-white/90 backdrop-blur-sm p-2.5 rounded-full text-gray-700 hover:bg-blue-500 hover:text-white transition-all duration-200 shadow-lg"
+                                                                      onClick={(
+                                                                           e
+                                                                      ) =>
+                                                                           e.stopPropagation()
+                                                                      }
+                                                                 >
+                                                                      <Mail className="h-4 w-4" />
+                                                                 </motion.a>
+                                                            )}
+                                                            {member.linkedin && (
+                                                                 <motion.a
+                                                                      href={
+                                                                           member.linkedin
+                                                                      }
+                                                                      target="_blank"
+                                                                      rel="noopener noreferrer"
+                                                                      initial={{
+                                                                           scale: 0,
+                                                                           y: 20,
+                                                                      }}
+                                                                      animate={{
+                                                                           scale: 1,
+                                                                           y: 0,
+                                                                      }}
+                                                                      whileHover={{
+                                                                           scale: 1.1,
+                                                                           y: -2,
+                                                                      }}
+                                                                      className="bg-white/90 backdrop-blur-sm p-2.5 rounded-full text-gray-700 hover:bg-blue-600 hover:text-white transition-all duration-200 shadow-lg"
+                                                                      onClick={(
+                                                                           e
+                                                                      ) =>
+                                                                           e.stopPropagation()
+                                                                      }
+                                                                 >
+                                                                      <Linkedin className="h-4 w-4" />
+                                                                 </motion.a>
+                                                            )}
+                                                            {member.twitter && (
+                                                                 <motion.a
+                                                                      href={
+                                                                           member.twitter
+                                                                      }
+                                                                      target="_blank"
+                                                                      rel="noopener noreferrer"
+                                                                      initial={{
+                                                                           scale: 0,
+                                                                           y: 20,
+                                                                      }}
+                                                                      animate={{
+                                                                           scale: 1,
+                                                                           y: 0,
+                                                                      }}
+                                                                      whileHover={{
+                                                                           scale: 1.1,
+                                                                           y: -2,
+                                                                      }}
+                                                                      className="bg-white/90 backdrop-blur-sm p-2.5 rounded-full text-gray-700 hover:bg-blue-400 hover:text-white transition-all duration-200 shadow-lg"
+                                                                      onClick={(
+                                                                           e
+                                                                      ) =>
+                                                                           e.stopPropagation()
+                                                                      }
+                                                                 >
+                                                                      <Twitter className="h-4 w-4" />
+                                                                 </motion.a>
+                                                            )}
+                                                       </div>
+                                                  </div>
+                                             </div>
+
+                                             {/* Content Section */}
+                                             <div className="p-4 sm:p-6">
+                                                  <div className="text-center mb-4">
+                                                       <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                                                            {member.name}
+                                                       </h3>
+                                                       <p className="text-blue-600 text-sm sm:text-base font-medium mb-3">
+                                                            {member.position}
+                                                       </p>
+
+                                                       {member.department && (
+                                                            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full">
+                                                                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                                                 {
+                                                                      member.department
+                                                                 }
+                                                            </div>
+                                                       )}
+                                                  </div>
+
+                                                  {/* View Profile CTA */}
+                                                  <div className="flex items-center justify-center">
+                                                       <div className="group/cta inline-flex items-center gap-2 text-sm font-medium text-gray-600 group-hover:text-blue-600 transition-all duration-300 hover:gap-3">
+                                                            <span>
+                                                                 View Profile
+                                                            </span>
+                                                            <ChevronRight className="h-4 w-4 transform group-hover:translate-x-1 group-hover/cta:translate-x-2 group-hover/cta:scale-110 transition-all duration-300" />
+                                                       </div>
+                                                  </div>
+                                             </div>
+
+                                             {/* Decorative Bottom Border */}
+                                             <div className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                                        </div>
+                                   </Link>
+                              </motion.div>
+                         ))
+                    ) : (
+                         <div className="col-span-full py-12 text-center">
+                              <p className="text-gray-500 text-lg">
+                                   No team members found matching your criteria.
+                              </p>
+                              <button
+                                   onClick={() => {
+                                        setSearchTerm("");
+                                        setSelectedDepartment(null);
+                                   }}
+                                   className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                              >
+                                   Reset Filters
+                              </button>
+                         </div>
+                    )}
+               </div>
+
+               {/* Join Our Team Section */}
+               <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{
+                         opacity: isLoaded ? 1 : 0,
+                         y: isLoaded ? 0 : 20,
+                    }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="mt-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 md:p-12 text-white text-center shadow-xl"
+               >
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                         Join Our Team
+                    </h2>
+                    <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
+                         We're always looking for talented individuals to join
+                         our growing team. Check out our current openings and
+                         apply today!
+                    </p>
+                    <Link
+                         href="/careers"
+                         className="inline-flex items-center px-8 py-3 bg-white text-blue-600 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-200 hover:bg-gray-50"
+                    >
+                         View Open Positions
+                         <ChevronRight className="ml-2 h-5 w-5" />
+                    </Link>
+               </motion.div>
+
+               {/* Back Link */}
+               <div className="mt-12 text-center">
+                    <Link
+                         href="/about"
+                         className="text-blue-500 hover:text-blue-700 hover:underline inline-flex items-center"
+                    >
+                         <span>Back to About Page</span>
+                    </Link>
+               </div>
           </div>
-        )}
-      </div>
-
-      {/* Join Our Team Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="mt-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-8 md:p-12 text-white text-center shadow-xl"
-      >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Join Our Team</h2>
-        <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-          We're always looking for talented individuals to join our growing
-          team. Check out our current openings and apply today!
-        </p>
-        <Link
-          href="/careers"
-          className="inline-flex items-center px-8 py-3 bg-white text-blue-600 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-200 hover:bg-gray-50"
-        >
-          View Open Positions
-          <ChevronRight className="ml-2 h-5 w-5" />
-        </Link>
-      </motion.div>
-
-      {/* Back Link */}
-      <div className="mt-12 text-center">
-        <Link
-          href="/about"
-          className="text-blue-500 hover:text-blue-700 hover:underline inline-flex items-center"
-        >
-          <span>Back to About Page</span>
-        </Link>
-      </div>
-    </div>
-  );
+     );
 }

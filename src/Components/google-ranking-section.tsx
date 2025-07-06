@@ -1,290 +1,493 @@
-
-
 "use client";
-
-import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import {
-  User,
-  Clock,
-  Trophy,
-  ArrowRight,
-  Check,
-  Search,
-  BarChart,
-  Star,
-  ChevronRight,
+     User,
+     Clock,
+     Trophy,
+     ArrowRight,
+     Check,
+     Search,
+     BarChart,
+     Star,
+     ChevronRight,
+     TrendingUp,
+     Target,
+     Zap,
+     Crown,
+     Sparkles,
+     Globe,
+     Award,
 } from "lucide-react";
-import seo_specialist from "@/Images/seo_specialist_workplace-optimized.png";
 
 export function GoogleRankingSection() {
-  const [activeFeature, setActiveFeature] = useState<number | null>(null);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentTab, setCurrentTab] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
+     const [activeFeature, setActiveFeature] = useState<number | null>(null);
+     const [isVisible, setIsVisible] = useState(false);
+     const [currentTab, setCurrentTab] = useState(0);
+     const sectionRef = useRef<HTMLDivElement>(null);
 
-  const features = [
-    {
-      icon: User,
-      title: "Pre-Qualified Leads",
-      description:
-        "We target users actively searching for your services, ensuring higher conversions and lower customer acquisition costs.",
-    },
-    {
-      icon: Clock,
-      title: "Maximize ROI",
-      description:
-        "SEO delivers lasting results at a fraction of traditional ad costs by focusing on high-intent audiences.",
-    },
-    {
-      icon: Trophy,
-      title: "10+ Years of Expertise",
-      description:
-        "Our certified team has helped 200+ businesses achieve top rankings through scalable, ethical SEO strategies.",
-    },
-  ];
+     // Memoize static data to prevent re-creation on every render
+     const features = useMemo(
+          () => [
+               {
+                    icon: Target,
+                    title: "Pre-Qualified Leads",
+                    description:
+                         "We target users actively searching for your services, ensuring higher conversions and lower customer acquisition costs.",
+                    color: "from-blue-500 to-cyan-500",
+                    bgColor: "from-blue-50 to-cyan-50",
+               },
+               {
+                    icon: TrendingUp,
+                    title: "Maximize ROI",
+                    description:
+                         "SEO delivers lasting results at a fraction of traditional ad costs by focusing on high-intent audiences.",
+                    color: "from-emerald-500 to-teal-500",
+                    bgColor: "from-emerald-50 to-teal-50",
+               },
+               {
+                    icon: Crown,
+                    title: "10+ Years of Expertise",
+                    description:
+                         "Our certified team has helped 200+ businesses achieve top rankings through scalable, ethical SEO strategies.",
+                    color: "from-purple-500 to-pink-500",
+                    bgColor: "from-purple-50 to-pink-50",
+               },
+          ],
+          []
+     );
 
-  const tabs = [
-    {
-      title: "Local SEO",
-      content:
-        "Attract nearby customers with Google My Business optimization, local citations, and geo-targeted content that drives foot traffic.",
-      stats: { value: "78%", label: "More Local Leads" },
-    },
-    {
-      title: "E-commerce SEO",
-      content:
-        "Optimize product pages, fix crawl errors, and leverage schema markup to boost your online store’s visibility and sales",
-      stats: { value: "143%", label: "More Product Views" },
-    },
-    {
-      title: "Technical SEO",
-      content:
-        "Fix indexing issues, improve Core Web Vitals, and ensure mobile-first crawling to meet Google’s strictest standards.",
-      stats: { value: "2.1s", label:"Local Speed" },
-    },
-  ];
+     const tabs = useMemo(
+          () => [
+               {
+                    title: "Local SEO",
+                    icon: Globe,
+                    content: "Attract nearby customers with Google My Business optimization, local citations, and geo-targeted content that drives foot traffic.",
+                    stats: { value: "78%", label: "More Local Leads" },
+                    color: "from-blue-500 to-indigo-500",
+               },
+               {
+                    title: "E-commerce SEO",
+                    icon: BarChart,
+                    content: "Optimize product pages, fix crawl errors, and leverage schema markup to boost your online store's visibility and sales",
+                    stats: { value: "143%", label: "More Product Views" },
+                    color: "from-emerald-500 to-green-500",
+               },
+               {
+                    title: "Technical SEO",
+                    icon: Zap,
+                    content: "Fix indexing issues, improve Core Web Vitals, and ensure mobile-first crawling to meet Google's strictest standards.",
+                    stats: { value: "2.1s", label: "Load Speed" },
+                    color: "from-orange-500 to-red-500",
+               },
+          ],
+          []
+     );
 
-  // Check if element is in viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+     const floatingMetrics = useMemo(
+          () => [
+               {
+                    icon: Search,
+                    text: "+156% Visibility",
+                    position: "top-6 right-6",
+                    delay: "0s",
+               },
+               {
+                    icon: BarChart,
+                    text: "Top 3 Rankings",
+                    position: "bottom-6 left-6",
+                    delay: "0.5s",
+               },
+               {
+                    icon: TrendingUp,
+                    text: "210% Growth",
+                    position: "top-1/2 left-4",
+                    delay: "1s",
+               },
+          ],
+          []
+     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+     const statsData = useMemo(
+          () => [
+               {
+                    label: "Organic Traffic",
+                    value: "+156%",
+                    icon: TrendingUp,
+                    color: "from-green-500 to-emerald-500",
+               },
+               {
+                    label: "Keywords Ranked",
+                    value: "1,247",
+                    icon: Target,
+                    color: "from-blue-500 to-cyan-500",
+               },
+               {
+                    label: "Conversion Rate",
+                    value: "4.2%",
+                    icon: Award,
+                    color: "from-purple-500 to-pink-500",
+               },
+          ],
+          []
+     );
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+     // Pre-calculate chart bar heights to avoid Math.random() on every render
+     const chartBars = useMemo(
+          () =>
+               Array.from({ length: 12 }, (_, i) => ({
+                    height: `${Math.floor(Math.random() * 80 + 20)}%`,
+                    delay: `${i * 0.1}s`,
+               })),
+          []
+     );
 
-  // Auto-rotate tabs
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTab((prev) => (prev + 1) % tabs.length);
-    }, 5000);
+     // Optimized event handlers
+     const handleFeatureEnter = useCallback((index: number) => {
+          setActiveFeature(index);
+     }, []);
 
-    return () => clearInterval(interval);
-  }, [tabs.length]);
+     const handleFeatureLeave = useCallback(() => {
+          setActiveFeature(null);
+     }, []);
 
-  return (
-    <section
-      ref={sectionRef}
-      className="py-6 sm:py-8 md:py-10 lg:py-14 xl:py-16 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 bg-white border-b border-[#F5F5F5]"
-    >
-      <div className="container mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-[#003C8F]">
-          Rank #1 on Google!
-          </h2>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-          Our SEO experts optimize every pixel and keyword to propel your site to the top—even in cutthroat industries—with white-hat tactics.
-          </p>
-        </div>
+     const handleTabClick = useCallback((index: number) => {
+          setCurrentTab(index);
+     }, []);
 
-        <div className="flex flex-col md:flex-row items-center">
-          {/* Image container - full width on mobile, half width on desktop */}
-          <div
-            className={`w-full md:w-1/2 mb-8 md:mb-0 md:pr-4 lg:pr-8 xl:pr-12 flex justify-center md:justify-end transition-opacity duration-1000 ${
-              isVisible ? "opacity-100" : "opacity-0"
-            }`}
+     // Intersection Observer with cleanup
+     useEffect(() => {
+          const observer = new IntersectionObserver(
+               (entries) => {
+                    if (entries[0].isIntersecting) {
+                         setIsVisible(true);
+                         // Stop observing once visible to save resources
+                         observer.unobserve(entries[0].target);
+                    }
+               },
+               { threshold: 0.1 }
+          );
+
+          const currentRef = sectionRef.current;
+          if (currentRef) {
+               observer.observe(currentRef);
+          }
+
+          return () => {
+               if (currentRef) {
+                    observer.unobserve(currentRef);
+               }
+          };
+     }, []);
+
+     // Auto-rotate tabs with reduced frequency and cleanup
+     useEffect(() => {
+          const interval = setInterval(() => {
+               setCurrentTab((prev) => (prev + 1) % tabs.length);
+          }, 8000); // Increased from 5000ms to reduce frequency
+
+          return () => clearInterval(interval);
+     }, [tabs.length]);
+
+     // Memoize current tab data
+     const currentTabData = useMemo(() => tabs[currentTab], [tabs, currentTab]);
+
+     return (
+          <section
+               ref={sectionRef}
+               className="relative pt-4 sm:pt-6 md:pt-8 lg:pt-10 xl:pt-12 pb-4 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden"
           >
-            <div className="relative w-full max-w-[350px] md:max-w-[450px] lg:max-w-[550px] overflow-hidden rounded-lg shadow-lg">
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-16 h-16 bg-[#0084FF]/10 rounded-full z-0 animate-pulse"></div>
-              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-[#0084FF]/10 rounded-full z-0 animate-pulse delay-1000"></div>
+               {/* Simplified background elements - reduced blur and animation */}
+               <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-blue-200/10 to-purple-200/10 rounded-full blur-2xl"></div>
+                    <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-br from-emerald-200/10 to-teal-200/10 rounded-full blur-2xl"></div>
+               </div>
 
-              {/* Main image with loading animation */}
-              <div className="relative z-10 transform transition-transform duration-500 hover:scale-[1.02]">
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-[#0084FF]/20 to-[#003C8F]/20 mix-blend-overlay transition-opacity duration-500 ${
-                    isImageLoaded ? "opacity-100" : "opacity-0"
-                  }`}
-                ></div>
-                <Image
-                  src={seo_specialist || "/placeholder.svg"}
-                  alt="SEO Dashboard"
-                  width={450}
-                  height={340}
-                  className="rounded-lg object-contain"
-                  onLoad={() => setIsImageLoaded(true)}
-                />
-              </div>
+               <div className="container mx-auto relative z-10">
+                    {/* Header Section */}
+                    <div className="text-center mb-12 lg:mb-16">
+                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full text-blue-600 text-sm font-medium mb-6">
+                              <Crown className="w-4 h-4" />
+                              #1 Google Rankings
+                              <Sparkles className="w-4 h-4" />
+                         </div>
 
-              {/* Floating SEO metrics */}
-              <div className="absolute top-4 right-4 bg-white p-2 rounded-lg shadow-md flex items-center space-x-2 text-xs animate-bounce">
-                <Search className="h-3 w-3 text-[#0084FF]" />
-                <span className="text-[#003C8F] font-medium">
-                  +156% Visibility
-                </span>
-              </div>
+                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                              <span className="bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+                                   Rank
+                              </span>
+                              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mx-3">
+                                   #1
+                              </span>
+                              <span className="bg-gradient-to-r from-slate-800 to-blue-800 bg-clip-text text-transparent">
+                                   on Google!
+                              </span>
+                         </h2>
 
-              <div className="absolute bottom-4 left-4 bg-white p-2 rounded-lg shadow-md flex items-center space-x-2 text-xs animate-bounce delay-500">
-                <BarChart className="h-3 w-3 text-[#0084FF]" />
-                <span className="text-[#003C8F] font-medium">
-                  Top 3 Rankings
-                </span>
-              </div>
+                         <p className="text-lg sm:text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                              Our SEO experts optimize every pixel and keyword
+                              to propel your site to the top—even in cutthroat
+                              industries—with white-hat tactics that deliver
+                              lasting results.
+                         </p>
+                    </div>
 
-              {/* Client testimonial */}
-              <div className="absolute -bottom-10 right-10 bg-white p-3 rounded-lg shadow-lg max-w-[200px] text-xs animate-fadeIn delay-1000">
-                <div className="flex items-center mb-2">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3 w-3 text-yellow-400 fill-yellow-400"
-                      />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-[#003C8F] italic">
-                  &quot;Our traffic increased by 210% in just 3 months!&quot;
-                </p>
-                <p className="text-gray-500 mt-1">
-                  - John D., E-commerce Owner
-                </p>
-              </div>
-            </div>
-          </div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                         {/* Dashboard Mockup - Simplified */}
+                         <div
+                              className={`relative transition-all duration-700 ${
+                                   isVisible
+                                        ? "opacity-100 translate-y-0"
+                                        : "opacity-0 translate-y-8"
+                              }`}
+                         >
+                              <div className="relative group">
+                                   {/* Simplified glowing border */}
+                                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
 
-          {/* Content container - full width on mobile, half width on desktop */}
-          <div
-            className={`w-full md:w-1/2 md:pl-4 lg:pl-8 xl:pl-12 transition-transform duration-1000 ${
-              isVisible ? "translate-x-0" : "translate-x-8"
-            }`}
-          >
-            {/* Tabs */}
-            <div className="mb-8">
-              <div className="flex border-b border-[#F5F5F5]">
-                {tabs.map((tab, index) => (
-                  <button
-                    key={index}
-                    className={`px-4 py-2 text-sm font-medium transition-colors duration-300 ${
-                      currentTab === index
-                        ? "text-[#0084FF] border-b-2 border-[#0084FF]"
-                        : "text-gray-600 hover:text-[#003C8F]"
-                    }`}
-                    onClick={() => setCurrentTab(index)}
-                  >
-                    {tab.title}
-                  </button>
-                ))}
-              </div>
-              <div className="p-4 bg-[#F5F5F5] rounded-b-lg">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-medium text-[#003C8F]">
-                    {tabs[currentTab].title}
-                  </h3>
-                  <div className="flex items-center bg-white px-2 py-1 rounded text-xs">
-                    <span className="text-[#0084FF] font-bold">
-                      {tabs[currentTab].stats.value}
-                    </span>
-                    <span className="text-gray-500 ml-1">
-                      {tabs[currentTab].stats.label}
-                    </span>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm">
-                  {tabs[currentTab].content}
-                </p>
-              </div>
-            </div>
+                                   <div className="relative bg-white rounded-3xl p-6 lg:p-8 shadow-xl">
+                                        {/* Dashboard header */}
+                                        <div className="flex items-center justify-between mb-6">
+                                             <div className="flex items-center gap-3">
+                                                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                                       <BarChart className="w-5 h-5 text-white" />
+                                                  </div>
+                                                  <div>
+                                                       <h3 className="font-semibold text-slate-800">
+                                                            SEO Dashboard
+                                                       </h3>
+                                                       <p className="text-sm text-slate-500">
+                                                            Real-time analytics
+                                                       </p>
+                                                  </div>
+                                             </div>
+                                             <div className="flex gap-2">
+                                                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                                             </div>
+                                        </div>
 
-            {/* Features list */}
-            <div className="space-y-4 sm:space-y-6 lg:space-y-8">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className={`flex items-start p-3 rounded-lg transition-all duration-300 ${
-                    activeFeature === index
-                      ? "bg-[#F5F5F5]"
-                      : "hover:bg-[#F5F5F5]/50"
-                  } cursor-pointer`}
-                  onMouseEnter={() => setActiveFeature(index)}
-                  onMouseLeave={() => setActiveFeature(null)}
-                >
-                  <div
-                    className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 flex-shrink-0 mr-3 sm:mr-4 lg:mr-6 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                      activeFeature === index
-                        ? "bg-[#0084FF] text-white"
-                        : "bg-[#0084FF]/10 text-[#0084FF]"
-                    }`}
-                  >
-                    <feature.icon
-                      className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7"
-                      strokeWidth={activeFeature === index ? 2 : 1.5}
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-[#003C8F] font-medium text-sm sm:text-base lg:text-lg">
-                      {feature.title}
-                    </h4>
-                    {activeFeature === index && (
-                      <p className="text-gray-600 text-sm mt-2 animate-fadeIn">
-                        {feature.description}
-                      </p>
-                    )}
-                  </div>
-                  {activeFeature === index && (
-                    <Check className="h-5 w-5 text-[#0084FF] flex-shrink-0 animate-fadeIn" />
-                  )}
-                </div>
-              ))}
-            </div>
+                                        {/* Simplified chart area */}
+                                        <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 mb-6 h-48 flex items-end justify-between">
+                                             {chartBars.map((bar, i) => (
+                                                  <div
+                                                       key={i}
+                                                       className="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-lg transition-all duration-300 hover:scale-105"
+                                                       style={{
+                                                            height: bar.height,
+                                                            width: "6%",
+                                                            animationDelay:
+                                                                 bar.delay,
+                                                       }}
+                                                  ></div>
+                                             ))}
+                                        </div>
 
-            {/* CTA button */}
-            <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-4">
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#0084FF] hover:bg-[#003C8F] text-white rounded-full transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#0084FF] focus:ring-offset-2 text-sm sm:text-base mb-3 sm:mb-0"
-              >
-                Learn more about us
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Link>
+                                        {/* Stats grid */}
+                                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                             {statsData.map((stat, index) => (
+                                                  <div
+                                                       key={index}
+                                                       className="bg-white rounded-xl p-4 border border-slate-100 hover:shadow-md transition-all duration-200"
+                                                  >
+                                                       <div
+                                                            className={`w-8 h-8 bg-gradient-to-r ${stat.color} rounded-lg flex items-center justify-center mb-2`}
+                                                       >
+                                                            <stat.icon className="w-4 h-4 text-white" />
+                                                       </div>
+                                                       <p className="text-sm text-slate-500">
+                                                            {stat.label}
+                                                       </p>
+                                                       <p className="text-lg font-bold text-slate-800">
+                                                            {stat.value}
+                                                       </p>
+                                                  </div>
+                                             ))}
+                                        </div>
+                                   </div>
 
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 border border-[#0084FF] text-[#0084FF] hover:bg-[#0084FF]/5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0084FF] focus:ring-offset-2 text-sm sm:text-base"
-              >
-                Get a free SEO audit
-                <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+                                   {/* Simplified floating metrics */}
+                                   {floatingMetrics.map((metric, index) => (
+                                        <div
+                                             key={index}
+                                             className={`absolute ${metric.position} bg-white/90 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-2 shadow-lg flex items-center gap-2`}
+                                        >
+                                             <metric.icon className="w-4 h-4 text-blue-500" />
+                                             <span className="text-sm font-medium text-slate-700">
+                                                  {metric.text}
+                                             </span>
+                                        </div>
+                                   ))}
+
+                                   {/* Client testimonial */}
+                                   <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-lg max-w-xs border border-slate-100">
+                                        <div className="flex items-center mb-2">
+                                             <div className="flex">
+                                                  {Array.from({
+                                                       length: 5,
+                                                  }).map((_, i) => (
+                                                       <Star
+                                                            key={i}
+                                                            className="h-4 w-4 text-yellow-400 fill-yellow-400"
+                                                       />
+                                                  ))}
+                                             </div>
+                                        </div>
+                                        <p className="text-slate-700 text-sm italic mb-2">
+                                             "Our traffic increased by 210% in
+                                             just 3 months!"
+                                        </p>
+                                        <div className="flex items-center gap-2">
+                                             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                                  <span className="text-white text-xs font-bold">
+                                                       JD
+                                                  </span>
+                                             </div>
+                                             <p className="text-slate-500 text-xs">
+                                                  John D., E-commerce Owner
+                                             </p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+
+                         {/* Content Section */}
+                         <div
+                              className={`transition-all duration-700 delay-200 ${
+                                   isVisible
+                                        ? "opacity-100 translate-x-0"
+                                        : "opacity-0 translate-x-8"
+                              }`}
+                         >
+                              {/* Tabs */}
+                              <div className="mb-8">
+                                   <div className="flex bg-slate-100 rounded-2xl p-1">
+                                        {tabs.map((tab, index) => (
+                                             <button
+                                                  key={index}
+                                                  className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
+                                                       currentTab === index
+                                                            ? "bg-white text-blue-600 shadow-md"
+                                                            : "text-slate-600 hover:text-slate-800"
+                                                  }`}
+                                                  onClick={() =>
+                                                       handleTabClick(index)
+                                                  }
+                                             >
+                                                  <tab.icon className="w-4 h-4" />
+                                                  <span className="hidden sm:inline">
+                                                       {tab.title}
+                                                  </span>
+                                             </button>
+                                        ))}
+                                   </div>
+
+                                   <div className="mt-4 bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
+                                        <div className="flex items-center justify-between mb-4">
+                                             <h3 className="font-semibold text-slate-800 text-lg flex items-center gap-2">
+                                                  <currentTabData.icon className="w-5 h-5 text-blue-500" />
+                                                  {currentTabData.title}
+                                             </h3>
+                                             <div
+                                                  className={`bg-gradient-to-r ${currentTabData.color} text-white px-3 py-1 rounded-full text-sm font-medium`}
+                                             >
+                                                  {currentTabData.stats.value}{" "}
+                                                  {currentTabData.stats.label}
+                                             </div>
+                                        </div>
+                                        <p className="text-slate-600 leading-relaxed">
+                                             {currentTabData.content}
+                                        </p>
+                                   </div>
+                              </div>
+
+                              {/* Features list */}
+                              <div className="space-y-4 mb-8">
+                                   {features.map((feature, index) => (
+                                        <div
+                                             key={index}
+                                             className={`group relative overflow-hidden rounded-2xl transition-all duration-200 cursor-pointer ${
+                                                  activeFeature === index
+                                                       ? "bg-white shadow-lg scale-[1.01]"
+                                                       : "bg-white/50 hover:bg-white/80 hover:shadow-md"
+                                             }`}
+                                             onMouseEnter={() =>
+                                                  handleFeatureEnter(index)
+                                             }
+                                             onMouseLeave={handleFeatureLeave}
+                                        >
+                                             {/* Gradient border */}
+                                             <div
+                                                  className={`absolute inset-0 bg-gradient-to-r ${
+                                                       feature.color
+                                                  } rounded-2xl p-[2px] transition-opacity duration-200 ${
+                                                       activeFeature === index
+                                                            ? "opacity-100"
+                                                            : "opacity-0"
+                                                  }`}
+                                             >
+                                                  <div className="bg-white rounded-2xl h-full"></div>
+                                             </div>
+
+                                             <div className="relative p-6 flex items-start gap-4">
+                                                  <div
+                                                       className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 ${
+                                                            activeFeature ===
+                                                            index
+                                                                 ? `bg-gradient-to-r ${feature.color} text-white shadow-lg scale-105`
+                                                                 : `bg-gradient-to-r ${feature.bgColor} text-slate-600`
+                                                       }`}
+                                                  >
+                                                       <feature.icon className="w-6 h-6" />
+                                                  </div>
+
+                                                  <div className="flex-1">
+                                                       <h4 className="font-semibold text-slate-800 text-lg mb-2">
+                                                            {feature.title}
+                                                       </h4>
+                                                       <p
+                                                            className={`text-slate-600 transition-all duration-200 ${
+                                                                 activeFeature ===
+                                                                 index
+                                                                      ? "opacity-100"
+                                                                      : "opacity-70"
+                                                            }`}
+                                                       >
+                                                            {
+                                                                 feature.description
+                                                            }
+                                                       </p>
+                                                  </div>
+
+                                                  {activeFeature === index && (
+                                                       <Check className="w-6 h-6 text-green-500" />
+                                                  )}
+                                             </div>
+                                        </div>
+                                   ))}
+                              </div>
+
+                              {/* CTA buttons */}
+                              <div className="flex flex-col sm:flex-row gap-4">
+                                   <a
+                                        href="/about"
+                                        className="group flex-1 flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-2xl font-semibold transition-all duration-200 transform hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                                   >
+                                        <span>Learn more about us</span>
+                                        <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
+                                   </a>
+
+                                   <a
+                                        href="/contact"
+                                        className="group flex-1 flex items-center justify-center gap-2 px-6 py-4 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 rounded-2xl font-semibold transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+                                   >
+                                        <span>Get a free SEO audit</span>
+                                        <ChevronRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
+                                   </a>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </section>
+     );
 }

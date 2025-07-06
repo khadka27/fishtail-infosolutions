@@ -1,0 +1,28 @@
+"use client"
+
+import { type ReactNode, useState, useEffect } from "react"
+import LoadingPage from "@/Components/loading-page"
+import { PageTransition } from "@/Components/page-transition"
+
+interface PageWrapperProps {
+  children: ReactNode
+}
+
+export default function PageWrapper({ children }: PageWrapperProps) {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return <LoadingPage />
+  }
+
+  return <PageTransition>{children}</PageTransition>
+}

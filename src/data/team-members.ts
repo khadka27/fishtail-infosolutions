@@ -144,6 +144,7 @@ export const teamMembers: TeamMember[] = [
       { skill: "Analytics & Reporting", level: 50 },
     ],
   },
+
   {
     name: "Pratikshya Sheersh",
     position: "Marketing Specialist",
@@ -164,6 +165,28 @@ export const teamMembers: TeamMember[] = [
       { skill: "Content Marketing", level: 80 },
       { skill: "PPC Campaigns", level: 90 },
       { skill: "Analytics & Reporting", level: 85 },
+    ],
+  },
+  {
+    name: "Elvik Sharma",
+    position: "Software Developer",
+    department: "Development",
+    avatar: "/Image/default-male.jpg",
+    bgColor: "bg-red-300",
+    slug: "elvik-sharma",
+    bio: "Elvik Sharma is a software developer with a passion for building web and mobile applications. He is a quick learner and a team player.",
+    email: "pratikshya@fishtailinfo.com",
+    twitter: "https://x.com/sharmaelvik",
+    linkedin: "https://www.linkedin.com/in/elvik-sharma-13b52b202/",
+    facebook: "https://www.facebook.com/elvik111/",
+    expertise: ["React", "Next", "React Native", "Express", "MongoDB", "UI/UX"],
+    experience: ["1+ years in Software Development"],
+    projects: ["6+ Projects"],
+    skills: [
+      { skill: "React", level: 75 },
+      { skill: "Next", level: 60 },
+      { skill: "React Native", level: 70 },
+      { skill: "UI/UX", level: 70 },
     ],
   },
   {
