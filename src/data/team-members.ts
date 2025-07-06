@@ -12,6 +12,7 @@ export type TeamMember = {
   linkedin?: string;
   twitter?: string;
   facebook?: string;
+  instagram?: string;
   expertise?: string[];
   experience?: string[];
   projects?: string[];
@@ -100,16 +101,23 @@ export const teamMembers: TeamMember[] = [
     email: "abishekkhadka@fishtailinfosolutions.com",
     linkedin: "https://linkedin.com/in/khadka27",
     twitter: "https://twitter.com/abishek_khadka",
-    facebook: "https://facebook.com/abishek.khadka.7",
+    facebook: "https://facebook.com/khadka27",
+    instagram: "https://www.instagram.com/khadka_27",
 
     expertise: ["React", "Next.js", "Node.js", "Database Design"],
     experience: ["1+ years in Web Development"],
-    projects: ["3 + Projects"],
+    projects: ["8+ Projects"],
     skills: [
-      { skill: "SEO Strategy", level: 65 },
-      { skill: "Content Marketing", level: 70 },
-      { skill: "PPC Campaigns", level: 50 },
-      { skill: "Analytics & Reporting", level: 60 },
+      { skill: "React.js", level: 90 },
+      { skill: "Next.js", level: 90 },
+      { skill: "Node.js", level: 85 },
+      { skill: "Express.js", level: 80 },
+      { skill: "MongoDB / PostgreSQL / mysql", level: 75 },
+      { skill: "RESTful API / API Integration", level: 80 },
+      { skill: "Prisma ORM / Mongoose", level: 75 },
+      { skill: "Tailwind CSS / Bootstrap", level: 85 },
+      { skill: "Git & GitHub", level: 80 },
+      { skill: "Deployment (Vercel, DigitalOcean)", level: 70 },
     ],
   },
   {
