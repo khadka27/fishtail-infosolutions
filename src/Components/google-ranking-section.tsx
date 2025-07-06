@@ -234,25 +234,25 @@ export function GoogleRankingSection() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                          {/* Dashboard Mockup - Simplified */}
                          <div
-                              className={`relative transition-all duration-700 ${
+                              className={`relative transition-all duration-700 h-full ${
                                    isVisible
                                         ? "opacity-100 translate-y-0"
                                         : "opacity-0 translate-y-8"
                               }`}
                          >
-                              <div className="relative group">
-                                   {/* Simplified glowing border */}
-                                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+                              <div className="relative group h-full">
+                                   {/* Subtle glowing border */}
+                                   <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-sm opacity-60 group-hover:opacity-80 transition duration-500"></div>
 
-                                   <div className="relative bg-white rounded-3xl p-6 lg:p-8 shadow-xl">
+                                   <div className="relative bg-white/95 backdrop-blur-sm rounded-3xl p-6 lg:p-8 shadow-lg border border-white/50 h-full flex flex-col">
                                         {/* Dashboard header */}
                                         <div className="flex items-center justify-between mb-6">
                                              <div className="flex items-center gap-3">
-                                                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                                                  <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-sm">
                                                        <BarChart className="w-5 h-5 text-white" />
                                                   </div>
                                                   <div>
-                                                       <h3 className="font-semibold text-slate-800">
+                                                       <h3 className="font-semibold text-slate-800 text-lg">
                                                             SEO Dashboard
                                                        </h3>
                                                        <p className="text-sm text-slate-500">
@@ -260,45 +260,67 @@ export function GoogleRankingSection() {
                                                        </p>
                                                   </div>
                                              </div>
-                                             <div className="flex gap-2">
-                                                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                                                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                                             <div className="flex gap-1.5">
+                                                  <div className="w-2.5 h-2.5 bg-green-400 rounded-full"></div>
+                                                  <div className="w-2.5 h-2.5 bg-yellow-400 rounded-full"></div>
+                                                  <div className="w-2.5 h-2.5 bg-red-400 rounded-full"></div>
                                              </div>
                                         </div>
 
-                                        {/* Simplified chart area */}
-                                        <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-6 mb-6 h-48 flex items-end justify-between">
-                                             {chartBars.map((bar, i) => (
-                                                  <div
-                                                       key={i}
-                                                       className="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t-lg transition-all duration-300 hover:scale-105"
-                                                       style={{
-                                                            height: bar.height,
-                                                            width: "6%",
-                                                            animationDelay:
-                                                                 bar.delay,
-                                                       }}
-                                                  ></div>
-                                             ))}
+                                        {/* Enhanced chart area - takes more space */}
+                                        <div className="flex-1 bg-gradient-to-br from-slate-50/80 to-blue-50/80 rounded-2xl p-6 mb-6 flex flex-col">
+                                             <div className="flex items-center justify-between mb-4">
+                                                  <h4 className="text-sm font-medium text-slate-600">
+                                                       Organic Traffic Growth
+                                                  </h4>
+                                                  <div className="flex items-center gap-2">
+                                                       <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                                       <span className="text-xs text-slate-500">
+                                                            +156%
+                                                       </span>
+                                                  </div>
+                                             </div>
+
+                                             <div className="flex-1 flex items-end justify-between gap-1">
+                                                  {chartBars.map((bar, i) => (
+                                                       <div
+                                                            key={i}
+                                                            className="bg-gradient-to-t from-blue-400/80 to-purple-500/80 rounded-t-md transition-all duration-300 hover:from-blue-500 hover:to-purple-600 hover:scale-105 flex-1 max-w-[8%]"
+                                                            style={{
+                                                                 height: bar.height,
+                                                                 animationDelay:
+                                                                      bar.delay,
+                                                            }}
+                                                       ></div>
+                                                  ))}
+                                             </div>
+
+                                             <div className="flex justify-between text-xs text-slate-400 mt-2">
+                                                  <span>Jan</span>
+                                                  <span>Mar</span>
+                                                  <span>May</span>
+                                                  <span>Jul</span>
+                                                  <span>Sep</span>
+                                                  <span>Nov</span>
+                                             </div>
                                         </div>
 
-                                        {/* Stats grid */}
-                                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                        {/* Streamlined stats grid */}
+                                        <div className="grid grid-cols-3 gap-3">
                                              {statsData.map((stat, index) => (
                                                   <div
                                                        key={index}
-                                                       className="bg-white rounded-xl p-4 border border-slate-100 hover:shadow-md transition-all duration-200"
+                                                       className="bg-white/60 backdrop-blur-sm rounded-xl p-3 border border-white/50 hover:bg-white/80 transition-all duration-200"
                                                   >
                                                        <div
-                                                            className={`w-8 h-8 bg-gradient-to-r ${stat.color} rounded-lg flex items-center justify-center mb-2`}
+                                                            className={`w-6 h-6 bg-gradient-to-r ${stat.color} rounded-lg flex items-center justify-center mb-2`}
                                                        >
-                                                            <stat.icon className="w-4 h-4 text-white" />
+                                                            <stat.icon className="w-3 h-3 text-white" />
                                                        </div>
-                                                       <p className="text-sm text-slate-500">
+                                                       <p className="text-xs text-slate-500 mb-1">
                                                             {stat.label}
                                                        </p>
-                                                       <p className="text-lg font-bold text-slate-800">
+                                                       <p className="text-sm font-bold text-slate-800">
                                                             {stat.value}
                                                        </p>
                                                   </div>
@@ -306,48 +328,44 @@ export function GoogleRankingSection() {
                                         </div>
                                    </div>
 
-                                   {/* Simplified floating metrics */}
+                                   {/* Refined floating metrics */}
                                    {floatingMetrics.map((metric, index) => (
                                         <div
                                              key={index}
-                                             className={`absolute ${metric.position} bg-white/90 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-2 shadow-lg flex items-center gap-2`}
+                                             className={`absolute ${metric.position} bg-white/80 backdrop-blur-sm border border-white/30 rounded-xl px-3 py-2 shadow-sm flex items-center gap-2`}
                                         >
-                                             <metric.icon className="w-4 h-4 text-blue-500" />
-                                             <span className="text-sm font-medium text-slate-700">
+                                             <metric.icon className="w-3 h-3 text-blue-500" />
+                                             <span className="text-xs font-medium text-slate-700">
                                                   {metric.text}
                                              </span>
                                         </div>
                                    ))}
 
-                                   {/* Client testimonial */}
-                                   <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-lg max-w-xs border border-slate-100">
+                                   {/* Simplified client testimonial */}
+                                   <div className="absolute -bottom-4 -right-4 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-sm max-w-48 border border-white/30">
                                         <div className="flex items-center mb-2">
-                                             <div className="flex">
-                                                  {Array.from({
-                                                       length: 5,
-                                                  }).map((_, i) => (
+                                             {Array.from({ length: 5 }).map(
+                                                  (_, i) => (
                                                        <Star
                                                             key={i}
-                                                            className="h-4 w-4 text-yellow-400 fill-yellow-400"
+                                                            className="h-3 w-3 text-yellow-400 fill-yellow-400"
                                                        />
-                                                  ))}
-                                             </div>
+                                                  )
+                                             )}
                                         </div>
-                                        <p className="text-gray-600 mb-6">
+                                        <p className="text-gray-600 text-xs mb-3 leading-relaxed">
                                              &quot;Fishtail helped us achieve #1
                                              rankings for our most competitive
-                                             keywords. Their data-driven
-                                             approach delivered measurable
-                                             results.&quot;
+                                             keywords.&quot;
                                         </p>
                                         <div className="flex items-center gap-2">
-                                             <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                             <div className="w-6 h-6 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
                                                   <span className="text-white text-xs font-bold">
                                                        JD
                                                   </span>
                                              </div>
                                              <p className="text-slate-500 text-xs">
-                                                  John D., E-commerce Owner
+                                                  John D., E-commerce
                                              </p>
                                         </div>
                                    </div>
