@@ -281,7 +281,12 @@ export function CaseStudiesSection() {
                                                        {/* Enhanced Card with Glass Morphism */}
                                                        <div className="relative h-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl overflow-hidden transition-all duration-500 hover:bg-white/15 hover:border-white/30 hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-[1.02] hover:-translate-y-2">
                                                             {/* Gradient border effect */}
-                                                            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                                            <div
+                                                                 className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20
+                                                                                rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500
+                                                                                pointer-events-none
+                                                                                z-0"
+                                                            />
 
                                                             {/* Image Container */}
                                                             <div className="relative overflow-hidden h-48 sm:h-52 md:h-56">
@@ -353,7 +358,7 @@ export function CaseStudiesSection() {
                                                             </div>
 
                                                             {/* Enhanced Content */}
-                                                            <div className="p-6 lg:p-8 flex flex-col flex-grow">
+                                                            <div className="relative z-10 p-6 lg:p-8 flex flex-col flex-grow">
                                                                  <h3 className="font-bold text-xl lg:text-2xl mb-3 text-white group-hover:text-blue-300 transition-colors duration-300">
                                                                       {
                                                                            project.title
@@ -368,7 +373,7 @@ export function CaseStudiesSection() {
 
                                                                  {/* Enhanced CTA Button */}
                                                                  <Link
-                                                                      href={`/project/${project.id}`}
+                                                                      href="/project"
                                                                       className="group/link inline-flex items-center gap-2 text-blue-300 hover:text-white font-semibold text-sm lg:text-base transition-all duration-300 hover:gap-3"
                                                                  >
                                                                       <span>
