@@ -13,7 +13,6 @@ import {
      Building,
      Phone,
      MessageSquare,
-     Download,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -34,7 +33,6 @@ export default function ContactForm() {
           message: "",
      });
      const [isSubmitting, setIsSubmitting] = useState(false);
-     const [submissions, setSubmissions] = useState<ContactFormData[]>([]);
      const [submitSuccess, setSubmitSuccess] = useState<boolean | null>(null);
      const [errorMessage, setErrorMessage] = useState<string | null>(null);
      const formRef = useRef<HTMLFormElement>(null);
@@ -62,18 +60,14 @@ export default function ContactForm() {
                     process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
                const publicKey =
                     process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
-
                const result = await emailjs.sendForm(
-                    serviceId,
-                    templateId,
+                    serviceId!,
+                    templateId!,
                     formRef.current,
-                    publicKey
+                    publicKey!
                );
 
                console.log("Email sent successfully:", result.text);
-
-               const updatedSubmissions = [...submissions, formData];
-               setSubmissions(updatedSubmissions);
 
                setFormData({
                     name: "",
@@ -95,40 +89,6 @@ export default function ContactForm() {
           }
      };
 
-     const exportToCSV = () => {
-          const headers = ["Name", "Email", "Company", "Phone", "Message"];
-          const csvRows = [
-               headers.join(","),
-               ...submissions.map((item) =>
-                    [
-                         `"${item.name}"`,
-                         `"${item.email}"`,
-                         `"${item.company || ""}"`,
-                         `"${item.phone || ""}"`,
-                         `"${item.message.replace(/"/g, '""')}"`,
-                    ].join(",")
-               ),
-          ];
-          const csvContent = csvRows.join("\n");
-
-          const blob = new Blob([csvContent], {
-               type: "text/csv;charset=utf-8;",
-          });
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement("a");
-          link.setAttribute("href", url);
-          link.setAttribute(
-               "download",
-               `contact_submissions_${new Date()
-                    .toISOString()
-                    .slice(0, 10)}.csv`
-          );
-          link.style.visibility = "hidden";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-     };
-
      return (
           <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100">
                <div className="text-center mb-8">
@@ -136,8 +96,9 @@ export default function ContactForm() {
                          Start a Conversation
                     </h2>
                     <p className="text-gray-600">
-                         Tell us about your project and we'll get back to you
-                         within 24 hours
+                         We&apos;re here to help you grow your business.
+                         Let&apos;s discuss your project and find the perfect
+                         solution together.
                     </p>
                </div>
 
@@ -153,7 +114,9 @@ export default function ContactForm() {
                               <div>
                                    <div className="font-medium">Success!</div>
                                    <div className="text-sm">
-                                        We'll get back to you within 24 hours.
+                                        We&apos;ll get back to you within 24
+                                        hours with a detailed proposal tailored
+                                        to your needs.
                                    </div>
                               </div>
                          </motion.div>
@@ -305,8 +268,8 @@ export default function ContactForm() {
                     <div className="bg-blue-50 rounded-xl p-4">
                          <p className="text-sm text-blue-700 flex items-start gap-2">
                               <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                              We'll review your message and get back to you
-                              within 24 hours with a personalized response.
+                              We&apos;ll get back to you within 24 hours with a
+                              detailed proposal tailored to your needs.
                          </p>
                     </div>
 
@@ -333,75 +296,6 @@ export default function ContactForm() {
                          </Button>
                     </motion.div>
                </form>
-
-               {/* Admin section - only show if there are submissions */}
-               {submissions.length > 0 && (
-                    <div className="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                              <div>
-                                   <h3 className="text-lg font-semibold text-gray-800">
-                                        Form Submissions
-                                   </h3>
-                                   <p className="text-sm text-gray-600">
-                                        {submissions.length} total submissions
-                                   </p>
-                              </div>
-                              <Button
-                                   onClick={exportToCSV}
-                                   className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-xl font-medium transition-colors flex items-center gap-2"
-                              >
-                                   <Download className="w-4 h-4" />
-                                   Export CSV
-                              </Button>
-                         </div>
-
-                         <div className="overflow-x-auto">
-                              <table className="min-w-full">
-                                   <thead>
-                                        <tr className="border-b border-gray-200">
-                                             <th className="text-left py-3 px-4 font-medium text-gray-700">
-                                                  Name
-                                             </th>
-                                             <th className="text-left py-3 px-4 font-medium text-gray-700">
-                                                  Email
-                                             </th>
-                                             <th className="text-left py-3 px-4 font-medium text-gray-700">
-                                                  Company
-                                             </th>
-                                             <th className="text-left py-3 px-4 font-medium text-gray-700">
-                                                  Phone
-                                             </th>
-                                        </tr>
-                                   </thead>
-                                   <tbody>
-                                        {submissions.map(
-                                             (submission, index) => (
-                                                  <tr
-                                                       key={index}
-                                                       className="border-b border-gray-100 hover:bg-white transition-colors"
-                                                  >
-                                                       <td className="py-3 px-4 text-gray-800">
-                                                            {submission.name}
-                                                       </td>
-                                                       <td className="py-3 px-4 text-gray-600">
-                                                            {submission.email}
-                                                       </td>
-                                                       <td className="py-3 px-4 text-gray-600">
-                                                            {submission.company ||
-                                                                 "-"}
-                                                       </td>
-                                                       <td className="py-3 px-4 text-gray-600">
-                                                            {submission.phone ||
-                                                                 "-"}
-                                                       </td>
-                                                  </tr>
-                                             )
-                                        )}
-                                   </tbody>
-                              </table>
-                         </div>
-                    </div>
-               )}
           </div>
      );
 }
