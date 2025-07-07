@@ -658,8 +658,11 @@ export default function AgencyPage({
                                                        <div className="flex justify-center mb-6">
                                                             <div className="relative">
                                                                  {/* Circular gradient border - increased size */}
-                                                                 <div className="w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 rounded-full bg-gradient-to-r from-blue-500  to-purple-500 p-1">
-                                                                      <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                                                                 <div
+                                                                      className="w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 rounded-full bg-gradient-to-r 
+                                                                      from-blue-500  to-purple-500 p-1"
+                                                                 >
+                                                                      <div className="w-full h-full rounded-full overflow-hidden bg-radial-[at_50%_75%] from-white via-blue-200 to-blue-400 to-90%">
                                                                            <Image
                                                                                 src={
                                                                                      member.avatar

@@ -940,4 +940,38 @@ export const teamMembers: TeamMember[] =
                     },
                ],
           },
+          {
+               name: "Karuna Thapa",
+               position: "SEO Analyst/ Video Content Creator",
+               department: "Content",
+               avatar: "/Image/karuna.png",
+               bgColor: "",
+               slug: "karuna-thapa",
+               bio: "Karuna Thapa is an intern focused on content creation, video editing, website management, and SEO. With a strong passion for digital media, Karuna enjoys crafting engaging and meaningful online content that connects with audiences and makes an impact.",
+               email: "karuna@fishtailinfosolutions.com",
+               linkedin: "https://www.linkedin.com/in/karunathapa/",
+               twitter: "",
+               facebook: "",
+               experience: ["Fresher"],
+               projects: [""],
+               expertise: [
+                    "Content Writing",
+                    "Video Creation",
+                    "Content Generation",
+               ],
+               skills: [
+                    {
+                         skill: "Video Creation",
+                         level: 75,
+                    },
+                    {
+                         skill: "Content Generation",
+                         level: 60,
+                    },
+                    {
+                         skill: "Content Writing",
+                         level: 75,
+                    },
+               ],
+          },
      ];
