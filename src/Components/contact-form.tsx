@@ -56,9 +56,9 @@ export default function ContactForm() {
                setSubmitSuccess(null);
                setErrorMessage(null);
 
-               const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-               const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-               const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+               const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+               const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+               const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
                const result = await emailjs.sendForm(
                     serviceId!,
                     templateId!,

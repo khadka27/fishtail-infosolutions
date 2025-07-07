@@ -451,19 +451,19 @@ export const teamMembers: TeamMember[] =
                skills: [
                     {
                          skill: "SEO Strategy",
-                         level: 85,
+                         level: 75,
                     },
                     {
                          skill: "Content Marketing",
-                         level: 90,
+                         level: 60,
                     },
                     {
                          skill: "Social Media Management",
-                         level: 80,
+                         level: 70,
                     },
                     {
                          skill: "PPC Campaigns",
-                         level: 75,
+                         level: 65,
                     },
                ],
           },
@@ -564,6 +564,14 @@ export const teamMembers: TeamMember[] =
                          level: 70,
                     },
                     {
+                         skill: "MongoDB",
+                         level: 70,
+                    },
+                    {
+                         skill: "ExpressJs",
+                         level: 60,
+                    },
+                    {
                          skill: "UI/UX",
                          level: 70,
                     },
@@ -587,20 +595,16 @@ export const teamMembers: TeamMember[] =
                expertise: ["React", "CSS", "UI/UX"],
                skills: [
                     {
-                         skill: "SEO Strategy",
-                         level: 70,
+                         skill: "ReactJS",
+                         level: 80,
                     },
                     {
-                         skill: "Content Marketing",
+                         skill: "NextJs",
                          level: 65,
                     },
                     {
-                         skill: "PPC Campaigns",
-                         level: 60,
-                    },
-                    {
-                         skill: "Analytics & Reporting",
-                         level: 75,
+                         skill: "TailwindCSS",
+                         level: 70,
                     },
                ],
           },
@@ -691,26 +695,22 @@ export const teamMembers: TeamMember[] =
                experience: ["1+ years in Content Writing"],
                projects: ["1+ Projects"],
                expertise: [
-                    "Content Research",
-                    "SEO Writing",
-                    "Grammar Editing",
+                    "Content Writing",
+                    "Video Creation",
+                    "Content Generation",
                ],
                skills: [
                     {
-                         skill: "SEO Strategy",
+                         skill: "Video Creation",
+                         level: 85,
+                    },
+                    {
+                         skill: "Content Generation",
                          level: 65,
                     },
                     {
-                         skill: "Content Marketing",
-                         level: 70,
-                    },
-                    {
-                         skill: "PPC Campaigns",
-                         level: 50,
-                    },
-                    {
-                         skill: "Analytics & Reporting",
-                         level: 60,
+                         skill: "Content Writing",
+                         level: 75,
                     },
                ],
           },
@@ -886,19 +886,19 @@ export const teamMembers: TeamMember[] =
                skills: [
                     {
                          skill: "SEO Strategy",
-                         level: 40,
+                         level: 50,
                     },
                     {
                          skill: "Content Marketing",
-                         level: 55,
+                         level: 65,
                     },
                     {
                          skill: "PPC Campaigns",
-                         level: 40,
+                         level: 50,
                     },
                     {
                          skill: "Analytics & Reporting",
-                         level: 45,
+                         level: 65,
                     },
                ],
           },
