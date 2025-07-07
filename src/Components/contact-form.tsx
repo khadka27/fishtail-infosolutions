@@ -56,14 +56,18 @@ export default function ContactForm() {
                setSubmitSuccess(null);
                setErrorMessage(null);
 
-               const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-               const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-               const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+               const serviceId =
+                    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "";
+               const templateId =
+                    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "";
+               const publicKey =
+                    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "";
+
                const result = await emailjs.sendForm(
-                    serviceId!,
-                    templateId!,
+                    serviceId,
+                    templateId,
                     formRef.current,
-                    publicKey!
+                    publicKey
                );
 
                console.log("Email sent successfully:", result.text);
@@ -132,9 +136,8 @@ export default function ContactForm() {
                          Start a Conversation
                     </h2>
                     <p className="text-gray-600">
-                         We&apos;re here to help you grow your business.
-                         Let&apos;s discuss your project and find the perfect
-                         solution together.
+                         Tell us about your project and we'll get back to you
+                         within 24 hours
                     </p>
                </div>
 
@@ -150,9 +153,7 @@ export default function ContactForm() {
                               <div>
                                    <div className="font-medium">Success!</div>
                                    <div className="text-sm">
-                                        We&apos;ll get back to you within 24
-                                        hours with a detailed proposal tailored
-                                        to your needs.
+                                        We'll get back to you within 24 hours.
                                    </div>
                               </div>
                          </motion.div>
@@ -304,8 +305,8 @@ export default function ContactForm() {
                     <div className="bg-blue-50 rounded-xl p-4">
                          <p className="text-sm text-blue-700 flex items-start gap-2">
                               <CheckCircle className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                              We&apos;ll get back to you within 24 hours with a
-                              detailed proposal tailored to your needs.
+                              We'll review your message and get back to you
+                              within 24 hours with a personalized response.
                          </p>
                     </div>
 
