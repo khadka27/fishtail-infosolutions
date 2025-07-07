@@ -65,7 +65,7 @@ const testimonials: Testimonial[] = [
      {
           id: 5,
           quote: "Fishtail's web development services have been outstanding. Our website is now much faster, mobile-friendly, and intuitive. We've noticed a sharp increase in user retention and overall satisfaction!",
-          name: "Sita Thapa",
+          name: "Jennifer D. Roudy",
           role: "Founder",
           company: "Digital Solutions",
           image: client5,

@@ -198,7 +198,7 @@ export default function TeamMemberClient({
                                              {teamMember.position}
                                         </div>
 
-                                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text text-transparent break-words leading-tight">
+                                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text break-words leading-tight">
                                              {teamMember.name}
                                         </h1>
 
@@ -248,16 +248,6 @@ export default function TeamMemberClient({
                                                   </div>
                                              </div>
                                         </div>
-
-                                        <motion.button
-                                             whileHover={{ scale: 1.05 }}
-                                             whileTap={{ scale: 0.95 }}
-                                             className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl flex items-center gap-2"
-                                        >
-                                             Contact{" "}
-                                             {teamMember.name.split(" ")[0]}
-                                             <ArrowRight className="w-4 h-4 md:w-5 md:h-5" />
-                                        </motion.button>
                                    </motion.div>
                               </div>
                          </motion.div>
@@ -274,7 +264,7 @@ export default function TeamMemberClient({
                               transition={{ duration: 0.5 }}
                          >
                               <div className="text-center mb-16">
-                                   <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text text-transparent">
+                                   <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-800 bg-clip-text ">
                                         Skills & Expertise
                                    </h2>
                                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">

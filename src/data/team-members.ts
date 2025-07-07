@@ -514,24 +514,16 @@ export const teamMembers: TeamMember[] =
                expertise: ["FrontEnd", "BackEnd", "DevOps", "HR Strategy"],
                skills: [
                     {
-                         skill: "SEO Strategy",
+                         skill: "DevOps",
                          level: 60,
                     },
                     {
-                         skill: "Content Marketing",
+                         skill: "FullStack Development",
                          level: 65,
                     },
                     {
-                         skill: "Social Media Management",
+                         skill: "Project Management",
                          level: 70,
-                    },
-                    {
-                         skill: "PPC Campaigns",
-                         level: 55,
-                    },
-                    {
-                         skill: "Analytics & Reporting",
-                         level: 50,
                     },
                ],
           },

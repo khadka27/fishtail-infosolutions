@@ -444,7 +444,7 @@ export default function AgencyPage({
                </section>
 
                {/* Enhanced Services Section */}
-               <section className="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-white">
+               <section className="pt-8 sm:pt-12 md:pt-16 lg:pt-20 xl:pt-24 pb-4 sm:pb-6 md:pb-8 lg:pb-10 xl:pb-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 bg-white">
                     <div className="container mx-auto">
                          <motion.div
                               initial={{ opacity: 0, y: 30 }}
@@ -584,7 +584,7 @@ export default function AgencyPage({
                                         className="group relative"
                                    >
                                         <div
-                                             className={`relative bg-gradient-to-br ${stat.gradient} p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2`}
+                                             className={`relative bg-gradient-to-br ${stat.gradient} p-4 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 h-32 sm:h-36 lg:h-40 xl:h-44 flex flex-col justify-center`}
                                         >
                                              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
