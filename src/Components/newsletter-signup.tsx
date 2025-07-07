@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail } from "lucide-react";
 import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
@@ -12,6 +12,104 @@ export default function NewsletterSignup() {
      const [email, setEmail] = useState("");
      const [name, setName] = useState("");
      const [isSubmitting, setIsSubmitting] = useState(false);
+     const [isRateLimited, setIsRateLimited] = useState(false);
+     const [cooldownTime, setCooldownTime] = useState(0);
+
+     // Rate limiting configuration
+     const RATE_LIMIT_DURATION = 30000; // 30 seconds between submissions
+     const COOLDOWN_DURATION = 60000; // 1 minute cooldown after successful submission
+     const MAX_ATTEMPTS = 3; // Maximum attempts per session
+     const ATTEMPT_RESET_TIME = 300000; // 5 minutes to reset attempts
+
+     // Get stored data from localStorage
+     const getStoredData = () => {
+          if (typeof window === "undefined")
+               return { lastSubmission: 0, attempts: 0, lastAttempt: 0 };
+
+          const stored = localStorage.getItem("newsletter_rate_limit");
+          if (stored) {
+               return JSON.parse(stored);
+          }
+          return { lastSubmission: 0, attempts: 0, lastAttempt: 0 };
+     };
+
+     // Store data in localStorage
+     const storeData = (data: any) => {
+          if (typeof window === "undefined") return;
+          localStorage.setItem("newsletter_rate_limit", JSON.stringify(data));
+     };
+
+     // Check if user is rate limited
+     const checkRateLimit = () => {
+          const now = Date.now();
+          const data = getStoredData();
+
+          // Reset attempts if enough time has passed
+          if (now - data.lastAttempt > ATTEMPT_RESET_TIME) {
+               data.attempts = 0;
+               data.lastAttempt = now;
+               storeData(data);
+          }
+
+          // Check if too many attempts
+          if (data.attempts >= MAX_ATTEMPTS) {
+               const timeRemaining =
+                    ATTEMPT_RESET_TIME - (now - data.lastAttempt);
+               toast.error(
+                    `Too many attempts. Please try again in ${Math.ceil(
+                         timeRemaining / 60000
+                    )} minutes.`
+               );
+               return true;
+          }
+
+          // Check if submitting too quickly
+          if (now - data.lastSubmission < RATE_LIMIT_DURATION) {
+               const timeRemaining =
+                    RATE_LIMIT_DURATION - (now - data.lastSubmission);
+               toast.error(
+                    `Please wait ${Math.ceil(
+                         timeRemaining / 1000
+                    )} seconds before trying again.`
+               );
+               return true;
+          }
+
+          return false;
+     };
+
+     // Update attempt count
+     const updateAttempts = () => {
+          const now = Date.now();
+          const data = getStoredData();
+          data.attempts += 1;
+          data.lastAttempt = now;
+          storeData(data);
+     };
+
+     // Handle successful submission
+     const handleSuccessfulSubmission = () => {
+          const now = Date.now();
+          const data = getStoredData();
+          data.lastSubmission = now;
+          data.attempts = 0; // Reset attempts on successful submission
+          storeData(data);
+
+          setCooldownTime(COOLDOWN_DURATION);
+          setIsRateLimited(true);
+     };
+
+     // Countdown timer effect
+     useEffect(() => {
+          if (cooldownTime > 0) {
+               const timer = setTimeout(() => {
+                    setCooldownTime(cooldownTime - 1000);
+               }, 1000);
+               return () => clearTimeout(timer);
+          } else if (isRateLimited) {
+               setIsRateLimited(false);
+          }
+     }, [cooldownTime, isRateLimited]);
 
      const handleSubmit = async (e: React.FormEvent) => {
           e.preventDefault();
@@ -21,16 +119,28 @@ export default function NewsletterSignup() {
                return;
           }
 
+          // Check rate limiting
+          if (checkRateLimit()) {
+               return;
+          }
+
           setIsSubmitting(true);
+          updateAttempts();
 
-          // Simulate API call
-          await new Promise((resolve) => setTimeout(resolve, 1000));
+          try {
+               // Simulate API call
+               await new Promise((resolve) => setTimeout(resolve, 1000));
 
-          toast.success("You've been subscribed to our newsletter.");
+               toast.success("You've been subscribed to our newsletter.");
+               handleSuccessfulSubmission();
 
-          setEmail("");
-          setName("");
-          setIsSubmitting(false);
+               setEmail("");
+               setName("");
+          } catch (error) {
+               toast.error("Failed to subscribe. Please try again later.");
+          } finally {
+               setIsSubmitting(false);
+          }
      };
 
      return (
@@ -54,6 +164,7 @@ export default function NewsletterSignup() {
                                    value={name}
                                    onChange={(e) => setName(e.target.value)}
                                    className="bg-white"
+                                   disabled={isRateLimited}
                               />
                               <Input
                                    type="email"
@@ -62,13 +173,20 @@ export default function NewsletterSignup() {
                                    onChange={(e) => setEmail(e.target.value)}
                                    required
                                    className="bg-white"
+                                   disabled={isRateLimited}
                               />
                               <Button
                                    type="submit"
-                                   disabled={isSubmitting}
-                                   className="bg-white text-blue-600 hover:bg-gray-100"
+                                   disabled={isSubmitting || isRateLimited}
+                                   className="bg-white text-blue-600 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
                               >
-                                   Subscribe
+                                   {isRateLimited
+                                        ? `Wait ${Math.ceil(
+                                               cooldownTime / 1000
+                                          )}s`
+                                        : isSubmitting
+                                        ? "Subscribing..."
+                                        : "Subscribe"}
                               </Button>
                          </form>
                     </div>
