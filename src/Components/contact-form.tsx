@@ -56,21 +56,14 @@ export default function ContactForm() {
                setSubmitSuccess(null);
                setErrorMessage(null);
 
-               const serviceId =
-                    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
-                    "service_nxr837d";
-               const templateId =
-                    process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
-                    "template_3resqzt";
-               const publicKey =
-                    process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ||
-                    "Bc-i5YdvnKq246_sc";
-
+               const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+               const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+               const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
                const result = await emailjs.sendForm(
-                    serviceId,
-                    templateId,
+                    serviceId!,
+                    templateId!,
                     formRef.current,
-                    publicKey
+                    publicKey!
                );
 
                console.log("Email sent successfully:", result.text);
