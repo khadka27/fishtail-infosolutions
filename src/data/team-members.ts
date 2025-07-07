@@ -802,7 +802,7 @@ export const teamMembers: TeamMember[] =
                name: "Prity Thapa",
                position: "Jr. Content Writer",
                department: "Content",
-               avatar: "/Image/Prity.png",
+               avatar: "/Image/prity.png",
                bgColor: "",
                slug: "prity-thapa",
                bio: "Prity brings a fresh voice to the content team with her knack for clear and compelling storytelling. She specializes in creating engaging content that aligns with brand goals and connects with target audiences. Her dedication to learning and adapting makes her a valuable asset in dynamic content projects.",
