@@ -504,7 +504,7 @@ export const teamMembers: TeamMember[] =
                avatar: "/Image/asis.png",
                bgColor: "",
                slug: "ashish-rauniyar",
-               bio: "Ashish oversees our human resources department, ensuring we attract and retain top talent while maintaining a positive company culture.",
+               bio: "Aashish is a passionate Software Developer and Project Manager with a strong foundation in building scalable web applications. With hands-on experience in full-stack development and DevOps practices, he excels at leading cross-functional teams to deliver high-quality software solutions on time and within scope. Known for his collaborative mindset and technical leadership, Aashish bridges the gap between development and project execution seamlessly.",
                email: "ashish@fishtailinfosolutions.com",
                linkedin: "https://linkedin.com/in/aashishprasadgupta",
                twitter: "https://twitter.com/aashishrauniyar",
