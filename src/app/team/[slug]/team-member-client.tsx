@@ -222,18 +222,7 @@ export default function TeamMemberClient({
                                                        </div>
                                                   </div>
                                              </div>
-                                             <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                                                  <Award className="h-5 w-5 mr-3 text-purple-500 flex-shrink-0" />
-                                                  <div className="min-w-0">
-                                                       <div className="font-semibold text-gray-800 text-sm">
-                                                            Google Analytics
-                                                            Certified
-                                                       </div>
-                                                       <div className="text-xs text-gray-500">
-                                                            Certification
-                                                       </div>
-                                                  </div>
-                                             </div>
+
                                              <div className="flex items-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
                                                   <BookOpen className="h-5 w-5 mr-3 text-green-500 flex-shrink-0" />
                                                   <div className="min-w-0">

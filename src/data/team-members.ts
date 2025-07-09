@@ -509,9 +509,14 @@ export const teamMembers: TeamMember[] =
                linkedin: "https://linkedin.com/in/aashishprasadgupta",
                twitter: "https://twitter.com/aashishrauniyar",
                facebook: "https://facebook.com/aashishrauniyar",
-               experience: ["1+ years in HR Management"],
+               experience: ["1.5+ years in Software Development"],
                projects: ["5+ Employee Projects"],
-               expertise: ["FrontEnd", "BackEnd", "DevOps", "HR Strategy"],
+               expertise: [
+                    "FrontEnd",
+                    "BackEnd",
+                    "DevOps",
+                    "Project Management",
+               ],
                skills: [
                     {
                          skill: "DevOps",
