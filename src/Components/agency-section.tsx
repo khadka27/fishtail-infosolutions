@@ -38,6 +38,7 @@ import {
      Facebook,
      Instagram,
      Linkedin,
+     Github,
      BarChart2,
      Sparkles,
      Calendar,
@@ -745,6 +746,18 @@ export default function AgencyPage({
                                                                       className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-110"
                                                                  >
                                                                       <Facebook className="w-4 h-4" />
+                                                                 </a>
+                                                            )}
+                                                            {member.github && (
+                                                                 <a
+                                                                      href={
+                                                                           member.github
+                                                                      }
+                                                                      target="_blank"
+                                                                      rel="noopener noreferrer"
+                                                                      className="p-2 rounded-full bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 transition-all duration-300 hover:scale-110"
+                                                                 >
+                                                                      <Github className="w-4 h-4" />
                                                                  </a>
                                                             )}
                                                        </div>

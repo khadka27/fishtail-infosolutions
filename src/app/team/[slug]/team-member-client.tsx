@@ -11,6 +11,7 @@ import {
      Linkedin,
      Twitter,
      Facebook,
+     Github,
      Award,
      BookOpen,
      Briefcase,
@@ -163,6 +164,20 @@ export default function TeamMemberClient({
                                                   className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl text-gray-600 hover:text-blue-800 transition-all duration-300"
                                              >
                                                   <Facebook className="h-6 w-6" />
+                                             </motion.a>
+                                        )}
+                                        {teamMember.github && (
+                                             <motion.a
+                                                  whileHover={{
+                                                       y: -3,
+                                                       scale: 1.1,
+                                                  }}
+                                                  href={teamMember.github}
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  className="p-3 rounded-full bg-white shadow-lg hover:shadow-xl text-gray-600 hover:text-gray-900 transition-all duration-300"
+                                             >
+                                                  <Github className="h-6 w-6" />
                                              </motion.a>
                                         )}
                                         {teamMember.email && (

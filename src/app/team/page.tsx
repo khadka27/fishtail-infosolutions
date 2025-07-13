@@ -14,6 +14,7 @@ import {
      Mail,
      Linkedin,
      Twitter,
+     Github,
      Users,
      Building2,
      Search as SearchIcon,
@@ -332,6 +333,35 @@ export default function TeamPage() {
                                                                       }
                                                                  >
                                                                       <Twitter className="h-4 w-4" />
+                                                                 </motion.a>
+                                                            )}
+                                                            {member.github && (
+                                                                 <motion.a
+                                                                      href={
+                                                                           member.github
+                                                                      }
+                                                                      target="_blank"
+                                                                      rel="noopener noreferrer"
+                                                                      initial={{
+                                                                           scale: 0,
+                                                                           y: 20,
+                                                                      }}
+                                                                      animate={{
+                                                                           scale: 1,
+                                                                           y: 0,
+                                                                      }}
+                                                                      whileHover={{
+                                                                           scale: 1.1,
+                                                                           y: -2,
+                                                                      }}
+                                                                      className="bg-white/90 backdrop-blur-sm p-2.5 rounded-full text-gray-700 hover:bg-gray-900 hover:text-white transition-all duration-200 shadow-lg"
+                                                                      onClick={(
+                                                                           e
+                                                                      ) =>
+                                                                           e.stopPropagation()
+                                                                      }
+                                                                 >
+                                                                      <Github className="h-4 w-4" />
                                                                  </motion.a>
                                                             )}
                                                        </div>

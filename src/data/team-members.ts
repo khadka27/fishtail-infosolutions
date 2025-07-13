@@ -12,7 +12,7 @@ export type TeamMember = {
      linkedin?: string;
      twitter?: string;
      facebook?: string;
-     instagram?: string;
+     github?: string;
      expertise?: string[];
      experience?: string[];
      projects?: string[];
@@ -176,8 +176,7 @@ export const teamMembers: TeamMember[] = [
           linkedin: "https://linkedin.com/in/khadka27",
           twitter: "",
           facebook: "https://facebook.com/khadka27",
-          instagram: "https://www.instagram.com/khadka_27",
-
+          github: "https://github.com/khadka27",
           expertise: ["React", "Next.js", "Node.js", "Database Design"],
           experience: ["1+ years in Web Development"],
           projects: ["8+ Projects"],
@@ -206,6 +205,7 @@ export const teamMembers: TeamMember[] = [
           linkedin: "https://linkedin.com/in/aashishprasadgupta",
           twitter: "",
           facebook: "",
+          github: "https://github.com/AashishRauniyar",
           experience: ["1.5+ years in Software Development"],
           projects: ["5+ Employee Projects"],
           expertise: ["FrontEnd", "BackEnd", "DevOps", "Project Management"],
@@ -237,6 +237,7 @@ export const teamMembers: TeamMember[] = [
           linkedin: "https://www.linkedin.com/in/elvik-sharma-13b52b202/",
           twitter: "",
           facebook: "https://www.facebook.com/elvik111/",
+          github: "https://github.com/elviks",
           experience: ["1+ years in Software Development"],
           projects: ["10+ Projects"],
           expertise: [
@@ -270,37 +271,6 @@ export const teamMembers: TeamMember[] = [
                },
                {
                     skill: "UI/UX",
-                    level: 70,
-               },
-          ],
-     },
-     {
-          name: "Diwas Gurung",
-          position: "Frontend Developer",
-          department: "Development",
-          avatar: "/Image/diwas.png",
-          bgColor: "",
-          slug: "diwas-gurung",
-          bio: "Diwas creates beautiful, responsive user interfaces using modern frontend technologies like React and Next.js.",
-          email: "diwasgrg@fishtailinfosolutions.com",
-          linkedin: "https://www.linkedin.com/in/diwas-grg-419578256/",
-          twitter: "",
-          facebook:
-               "https://www.facebook.com/share/1ASXe8FGfB/?mibextid=wwXIfr",
-          experience: ["1+ years in Web Development"],
-          projects: ["3+ Projects"],
-          expertise: ["React", "CSS", "UI/UX"],
-          skills: [
-               {
-                    skill: "ReactJS",
-                    level: 80,
-               },
-               {
-                    skill: "NextJs",
-                    level: 65,
-               },
-               {
-                    skill: "TailwindCSS",
                     level: 70,
                },
           ],
