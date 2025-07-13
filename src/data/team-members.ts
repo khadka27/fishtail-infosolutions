@@ -1,6 +1,7 @@
 import type { StaticImageData } from "next/image";
 
 export type TeamMember = {
+
      name: string;
      position: string;
      avatar: string | StaticImageData;
@@ -633,4 +634,5 @@ export const teamMembers: TeamMember[] = [
                },
           ],
      },
+
 ];
