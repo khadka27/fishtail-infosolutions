@@ -435,9 +435,9 @@ const ContentMarketingStrategy = () => {
                                    Ready to Transform Your Content Strategy?
                               </h2>
                               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                                   Let's create content that not only tells your
-                                   story but drives real business results. Get
-                                   started with a free content audit today.
+                                   Let&apos;s create content that not only tells
+                                   your story but drives real business results.
+                                   Get started with a free content audit today.
                               </p>
 
                               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -468,9 +468,9 @@ const ContentMarketingStrategy = () => {
                                    Let's Create Something Amazing
                               </h2>
                               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                                   Tell us about your content goals and we'll
-                                   create a custom strategy that drives real
-                                   results for your business.
+                                   Tell us about your content goals and
+                                   we&apos;ll create a custom strategy that
+                                   drives real results for your business.
                               </p>
                          </div>
                          <Form />

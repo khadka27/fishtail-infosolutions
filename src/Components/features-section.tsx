@@ -79,7 +79,7 @@ export function FeaturesSection() {
           },
      ];
 
-     const handleCardClick = (index: any) => {
+     const handleCardClick = (index: number) => {
           if (expandedCard === index) {
                setExpandedCard(null);
           } else {
@@ -87,8 +87,17 @@ export function FeaturesSection() {
           }
      };
 
-     const handleMouseMove = (e: any) => {
-          setMousePosition({ x: e.clientX, y: e.clientY });
+     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          // Update gradient position
+          const gradientX = (x / rect.width) * 100;
+          const gradientY = (y / rect.height) * 100;
+
+          e.currentTarget.style.setProperty("--gradient-x", `${gradientX}%`);
+          e.currentTarget.style.setProperty("--gradient-y", `${gradientY}%`);
      };
 
      // Animate stats when visible

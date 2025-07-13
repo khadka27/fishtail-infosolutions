@@ -3,9 +3,19 @@
 "use client";
 
 import type React from "react";
-
 import { useState, useEffect, useRef } from "react";
-import { ArrowLeft, Search, Calendar, User, ChevronRight } from "lucide-react";
+import {
+     ArrowLeft,
+     Search,
+     Calendar,
+     User,
+     ChevronRight,
+     Clock,
+     Tag,
+     BookOpen,
+     Eye,
+     MessageCircle,
+} from "lucide-react";
 import Image from "next/image";
 import BlogPostCard from "@/Components/blog-post-card-class";
 import BlogPostComponent from "@/Components/blog-post";
@@ -14,7 +24,6 @@ import image1 from "@/Images/Is-Search-Engine-Submission-Necessary.png";
 import image2 from "@/Images/SEO-link-builder.png";
 import image3 from "@/Images/Anchor-Text.jpg";
 import image4 from "@/Images/absolutevsrelative.jpg";
-
 import { useParams, useRouter } from "next/navigation";
 
 // Sample blog posts data
@@ -206,9 +215,7 @@ export default function BlogPage() {
 
      const handlePostClick = (id: string) => {
           setSelectedPostId(id);
-          // Update URL without full page reload
           router.push(`/blog/${id}`, { scroll: false });
-          // Scroll to top when a post is selected
           window.scrollTo({ top: 0, behavior: "smooth" });
      };
 
@@ -219,9 +226,7 @@ export default function BlogPage() {
 
      const handleSubscribe = (e: React.FormEvent) => {
           e.preventDefault();
-          // Simulate subscription success
           setIsSubscribed(true);
-          // Reset form after 3 seconds
           setTimeout(() => {
                setIsSubscribed(false);
                setEmail("");
@@ -249,9 +254,10 @@ export default function BlogPage() {
      });
 
      return (
-          <>
-               <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white min-h-screen">
-                    {selectedPost ? (
+          <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+               {selectedPost ? (
+                    // Individual Blog Post View
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                          <motion.div
                               initial={{ opacity: 0, y: 20 }}
                               animate={{ opacity: 1, y: 0 }}
@@ -259,7 +265,7 @@ export default function BlogPage() {
                          >
                               <button
                                    onClick={handleBackClick}
-                                   className="mb-6 flex items-center text-[#0084FF] hover:text-[#003C8F] transition-colors group"
+                                   className="mb-8 flex items-center text-blue-600 hover:text-blue-800 transition-colors group font-medium"
                               >
                                    <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                                    Back to all posts
@@ -280,351 +286,379 @@ export default function BlogPage() {
                                    postId={selectedPost.id}
                               />
                          </motion.div>
-                    ) : (
-                         <>
-                              <motion.div
-                                   initial={{ opacity: 0, y: 20 }}
-                                   animate={{ opacity: 1, y: 0 }}
-                                   transition={{ duration: 0.5 }}
-                                   className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4"
-                              >
-                                   <h1 className="text-2xl md:text-3xl text-[#003C8F] font-semibold">
-                                        Latest Company Updates & Industry News
-                                   </h1>
-                                   <button
-                                        onClick={scrollToSubscribe}
-                                        className="text-[#0084FF] hover:text-[#003C8F] text-sm flex items-center group transition-colors"
-                                   >
-                                        Subscribe to email updates
-                                        <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                   </button>
-                              </motion.div>
+                    </div>
+               ) : (
+                    // Blog Listing Page
+                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                         {/* Hero Section */}
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6 }}
+                              className="text-center mb-12"
+                         >
+                              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                                   <BookOpen className="w-4 h-4" />
+                                   Digital Marketing Insights
+                              </div>
+                              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                                   Our{" "}
+                                   <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                        Blog
+                                   </span>
+                              </h1>
+                              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                                   Discover the latest insights, strategies, and
+                                   tips from our digital marketing experts
+                              </p>
+                         </motion.div>
 
-                              {/* Search and filter bar */}
-                              <motion.div
-                                   initial={{ opacity: 0, y: 20 }}
-                                   animate={{ opacity: 1, y: 0 }}
-                                   transition={{ duration: 0.5, delay: 0.1 }}
-                                   className="mb-8 flex flex-col sm:flex-row gap-4"
-                              >
-                                   <div
-                                        className={`relative flex-1 transition-all duration-300 ${
-                                             isSearchFocused
-                                                  ? "ring-2 ring-[#0084FF]/50"
-                                                  : ""
-                                        }`}
-                                   >
-                                        <input
-                                             type="text"
-                                             placeholder="Search articles..."
-                                             value={searchTerm}
-                                             onChange={(e) =>
-                                                  setSearchTerm(e.target.value)
-                                             }
-                                             onFocus={() =>
-                                                  setIsSearchFocused(true)
-                                             }
-                                             onBlur={() =>
-                                                  setIsSearchFocused(false)
-                                             }
-                                             className="w-full px-4 py-2 pl-10 border border-gray-200 rounded-lg focus:outline-none"
-                                        />
-                                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                                   </div>
+                         {/* Search and Filter Section */}
+                         <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, delay: 0.1 }}
+                              className="mb-12"
+                         >
+                              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                                   <div className="flex flex-col lg:flex-row gap-6">
+                                        {/* Search */}
+                                        <div className="flex-1">
+                                             <div className="relative">
+                                                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                                                  <input
+                                                       type="text"
+                                                       placeholder="Search articles..."
+                                                       value={searchTerm}
+                                                       onChange={(e) =>
+                                                            setSearchTerm(
+                                                                 e.target.value
+                                                            )
+                                                       }
+                                                       onFocus={() =>
+                                                            setIsSearchFocused(
+                                                                 true
+                                                            )
+                                                       }
+                                                       onBlur={() =>
+                                                            setIsSearchFocused(
+                                                                 false
+                                                            )
+                                                       }
+                                                       className={`w-full pl-12 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                                                            isSearchFocused
+                                                                 ? "ring-2 ring-blue-500/50"
+                                                                 : ""
+                                                       }`}
+                                                  />
+                                             </div>
+                                        </div>
 
-                                   <div className="flex flex-wrap gap-2">
-                                        {categories.map((category, index) => (
-                                             <motion.button
-                                                  key={category}
-                                                  initial={{
-                                                       opacity: 0,
-                                                       y: 10,
-                                                  }}
-                                                  animate={{ opacity: 1, y: 0 }}
-                                                  transition={{
-                                                       duration: 0.3,
-                                                       delay:
-                                                            0.1 + index * 0.05,
-                                                  }}
-                                                  onClick={() =>
-                                                       setSelectedCategory(
-                                                            category
-                                                       )
-                                                  }
-                                                  className={`px-3 py-1 text-sm rounded-full transition-colors ${
-                                                       selectedCategory ===
-                                                       category
-                                                            ? "bg-[#0084FF] text-white"
-                                                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                                                  }`}
-                                             >
-                                                  {category}
-                                             </motion.button>
-                                        ))}
-                                   </div>
-                              </motion.div>
-
-                              <AnimatePresence>
-                                   {filteredPosts.length > 0 ? (
-                                        <motion.div
-                                             initial={{ opacity: 0 }}
-                                             animate={{ opacity: 1 }}
-                                             exit={{ opacity: 0 }}
-                                             className="space-y-6"
-                                        >
-                                             {filteredPosts.map(
-                                                  (post, index) => (
-                                                       <motion.div
-                                                            key={post.id}
+                                        {/* Categories */}
+                                        <div className="flex flex-wrap gap-2">
+                                             {categories.map(
+                                                  (category, index) => (
+                                                       <motion.button
+                                                            key={category}
                                                             initial={{
                                                                  opacity: 0,
-                                                                 y: 20,
+                                                                 y: 10,
                                                             }}
                                                             animate={{
                                                                  opacity: 1,
                                                                  y: 0,
                                                             }}
                                                             transition={{
-                                                                 duration: 0.5,
+                                                                 duration: 0.3,
                                                                  delay:
                                                                       0.1 +
                                                                       index *
-                                                                           0.1,
+                                                                           0.05,
                                                             }}
+                                                            onClick={() =>
+                                                                 setSelectedCategory(
+                                                                      category
+                                                                 )
+                                                            }
+                                                            className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 ${
+                                                                 selectedCategory ===
+                                                                 category
+                                                                      ? "bg-blue-600 text-white shadow-md"
+                                                                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-sm"
+                                                            }`}
                                                        >
-                                                            <BlogPostCard
-                                                                 id={post.id}
-                                                                 title={
-                                                                      post.title
-                                                                 }
-                                                                 date={
-                                                                      post.date
-                                                                 }
-                                                                 excerpt={
-                                                                      post.excerpt
-                                                                 }
-                                                                 imageUrl={
-                                                                      post.imageUrl
-                                                                 }
-                                                                 onClick={
-                                                                      handlePostClick
-                                                                 }
-                                                                 category={
-                                                                      post.category
-                                                                 }
-                                                                 readTime={
-                                                                      post.readTime
-                                                                 }
-                                                                 author={
-                                                                      post.author
-                                                                 }
-                                                                 comments={
-                                                                      post.comments
-                                                                 }
-                                                            />
-                                                       </motion.div>
+                                                            {category}
+                                                       </motion.button>
                                                   )
                                              )}
-                                        </motion.div>
-                                   ) : (
-                                        <motion.div
-                                             initial={{ opacity: 0, y: 20 }}
-                                             animate={{ opacity: 1, y: 0 }}
-                                             exit={{ opacity: 0, y: -20 }}
-                                             className="text-center py-12"
-                                        >
-                                             <div className="text-[#0084FF] mb-4">
-                                                  <Search className="h-12 w-12 mx-auto" />
-                                             </div>
-                                             <h3 className="text-xl font-medium text-gray-700 mb-2">
-                                                  No results found
-                                             </h3>
-                                             <p className="text-gray-500 mb-6">
-                                                  We couldn't find any posts
-                                                  matching your search criteria.
-                                             </p>
-                                             <button
-                                                  onClick={() => {
-                                                       setSearchTerm("");
-                                                       setSelectedCategory(
-                                                            "All"
-                                                       );
-                                                  }}
-                                                  className="px-4 py-2 bg-[#0084FF] text-white rounded-md hover:bg-[#003C8F] transition-colors"
-                                             >
-                                                  Clear filters
-                                             </button>
-                                        </motion.div>
-                                   )}
-                              </AnimatePresence>
-                         </>
-                    )}
-               </div>
-
-               {/* Featured posts section */}
-               {!selectedPost && (
-                    <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-                         <div className="max-w-6xl mx-auto">
-                              <motion.h2
-                                   initial={{ opacity: 0, y: 20 }}
-                                   animate={{ opacity: 1, y: 0 }}
-                                   transition={{ duration: 0.5 }}
-                                   className="text-2xl font-semibold text-[#003C8F] mb-8 text-center"
-                              >
-                                   Featured Posts
-                              </motion.h2>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                   {blogPosts.slice(0, 3).map((post, index) => (
-                                        <motion.div
-                                             key={post.id}
-                                             initial={{ opacity: 0, y: 20 }}
-                                             animate={{ opacity: 1, y: 0 }}
-                                             transition={{
-                                                  duration: 0.5,
-                                                  delay: 0.1 + index * 0.1,
-                                             }}
-                                             className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer group"
-                                             onClick={() =>
-                                                  handlePostClick(post.id)
-                                             }
-                                        >
-                                             <div className="relative ml-20 h-48 w-50 overflow-hidden">
-                                                  <Image
-                                                       src={
-                                                            post.imageUrl ||
-                                                            "/placeholder.svg"
-                                                       }
-                                                       alt={post.title}
-                                                       fill
-                                                       className="object-cover md:h-30  group-hover:scale-105 transition-transform duration-300"
-                                                  />
-                                                  <div className="absolute top-2 left-2 bg-[#0084FF] text-white text-xs px-2 py-1 rounded-full">
-                                                       {post.category}
-                                                  </div>
-                                             </div>
-                                             <div className="p-4">
-                                                  <h3 className="text-lg font-medium text-gray-800 mb-2 group-hover:text-[#0084FF] transition-colors">
-                                                       {post.title}
-                                                  </h3>
-                                                  <div className="flex items-center text-gray-500 text-xs mb-2">
-                                                       <Calendar className="h-3 w-3 mr-1" />
-                                                       <span>{post.date}</span>
-                                                       <span className="mx-2">
-                                                            •
-                                                       </span>
-                                                       <User className="h-3 w-3 mr-1" />
-                                                       <span>
-                                                            {post.author}
-                                                       </span>
-                                                  </div>
-                                                  <p className="text-gray-600 text-sm line-clamp-2">
-                                                       {post.excerpt}
-                                                  </p>
-                                             </div>
-                                        </motion.div>
-                                   ))}
+                                        </div>
+                                   </div>
                               </div>
-                         </div>
-                    </div>
-               )}
-
-               {/* Subscribe section */}
-               <div
-                    id="subscribe"
-                    ref={subscribeFormRef}
-                    className="bg-[#0084FF] text-white py-12 px-4 sm:px-6 lg:px-8"
-               >
-                    <div className="max-w-5xl mx-auto">
-                         <motion.div
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ duration: 0.5 }}
-                              className="text-center mb-8"
-                         >
-                              <h2 className="text-2xl font-semibold mb-2">
-                                   Stay Updated
-                              </h2>
-                              <p className="text-white/80 max-w-2xl mx-auto">
-                                   Subscribe to our newsletter to receive the
-                                   latest blog posts, industry news, and
-                                   exclusive tips directly to your inbox.
-                              </p>
                          </motion.div>
 
-                         {isSubscribed ? (
-                              <motion.div
-                                   initial={{ opacity: 0, scale: 0.9 }}
-                                   animate={{ opacity: 1, scale: 1 }}
-                                   className="bg-white/10 rounded-lg p-6 text-center max-w-md mx-auto"
-                              >
-                                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-[#0084FF] mb-4">
-                                        <svg
-                                             xmlns="http://www.w3.org/2000/svg"
-                                             className="h-6 w-6"
-                                             fill="none"
-                                             viewBox="0 0 24 24"
-                                             stroke="currentColor"
-                                        >
-                                             <path
-                                                  strokeLinecap="round"
-                                                  strokeLinejoin="round"
-                                                  strokeWidth={2}
-                                                  d="M5 13l4 4L19 7"
-                                             />
-                                        </svg>
-                                   </div>
-                                   <h3 className="text-xl font-medium mb-2">
-                                        Thank You!
-                                   </h3>
-                                   <p>
-                                        You've been successfully subscribed to
-                                        our newsletter.
-                                   </p>
-                              </motion.div>
-                         ) : (
-                              <motion.form
-                                   initial={{ opacity: 0, y: 20 }}
-                                   animate={{ opacity: 1, y: 0 }}
-                                   transition={{ duration: 0.5, delay: 0.1 }}
-                                   onSubmit={handleSubscribe}
-                                   className="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto"
-                              >
-                                   <div className="flex-1">
-                                        <input
-                                             type="text"
-                                             placeholder="Your Name"
-                                             value={name}
-                                             onChange={(e) =>
-                                                  setName(e.target.value)
-                                             }
-                                             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
-                                             required
-                                        />
-                                   </div>
-                                   <div className="flex-1">
-                                        <input
-                                             type="email"
-                                             placeholder="Your Email"
-                                             value={email}
-                                             onChange={(e) =>
-                                                  setEmail(e.target.value)
-                                             }
-                                             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
-                                             required
-                                        />
-                                   </div>
-                                   <motion.button
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        type="submit"
-                                        className="bg-white text-[#0084FF] px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors shadow-md"
+                         {/* Blog Posts List */}
+                         <AnimatePresence>
+                              {filteredPosts.length > 0 ? (
+                                   <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        className="space-y-8"
                                    >
-                                        Subscribe
-                                   </motion.button>
-                              </motion.form>
-                         )}
+                                        {filteredPosts.map((post, index) => (
+                                             <motion.div
+                                                  key={post.id}
+                                                  initial={{
+                                                       opacity: 0,
+                                                       y: 20,
+                                                  }}
+                                                  animate={{ opacity: 1, y: 0 }}
+                                                  transition={{
+                                                       duration: 0.5,
+                                                       delay: 0.1 + index * 0.1,
+                                                  }}
+                                                  className="group cursor-pointer"
+                                                  onClick={() =>
+                                                       handlePostClick(post.id)
+                                                  }
+                                             >
+                                                  <article className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                                                       <div className="flex flex-col lg:flex-row">
+                                                            {/* Image Section */}
+                                                            <div className="lg:w-1/3 h-64 lg:h-auto relative overflow-hidden">
+                                                                 <Image
+                                                                      src={
+                                                                           post.imageUrl
+                                                                      }
+                                                                      alt={
+                                                                           post.title
+                                                                      }
+                                                                      fill
+                                                                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                                 />
+                                                                 <div className="absolute top-4 left-4">
+                                                                      <span className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">
+                                                                           {
+                                                                                post.category
+                                                                           }
+                                                                      </span>
+                                                                 </div>
+                                                            </div>
+
+                                                            {/* Content Section */}
+                                                            <div className="lg:w-2/3 p-6 lg:p-8 flex flex-col justify-between">
+                                                                 <div>
+                                                                      {/* Meta Info */}
+                                                                      <div className="flex items-center gap-4 text-sm text-gray-500 mb-4 flex-wrap">
+                                                                           <div className="flex items-center gap-1">
+                                                                                <Calendar className="w-4 h-4" />
+                                                                                <span>
+                                                                                     {
+                                                                                          post.date
+                                                                                     }
+                                                                                </span>
+                                                                           </div>
+                                                                           <div className="flex items-center gap-1">
+                                                                                <User className="w-4 h-4" />
+                                                                                <span>
+                                                                                     {
+                                                                                          post.author
+                                                                                     }
+                                                                                </span>
+                                                                           </div>
+                                                                           <div className="flex items-center gap-1">
+                                                                                <Clock className="w-4 h-4" />
+                                                                                <span>
+                                                                                     {
+                                                                                          post.readTime
+                                                                                     }
+                                                                                </span>
+                                                                           </div>
+                                                                           <div className="flex items-center gap-1">
+                                                                                <MessageCircle className="w-4 h-4" />
+                                                                                <span>
+                                                                                     {
+                                                                                          post.comments
+                                                                                     }{" "}
+                                                                                     comments
+                                                                                </span>
+                                                                           </div>
+                                                                      </div>
+
+                                                                      {/* Title */}
+                                                                      <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors leading-tight">
+                                                                           {
+                                                                                post.title
+                                                                           }
+                                                                      </h2>
+
+                                                                      {/* Excerpt */}
+                                                                      <p className="text-gray-600 text-lg leading-relaxed mb-6 line-clamp-3">
+                                                                           {
+                                                                                post.excerpt
+                                                                           }
+                                                                      </p>
+                                                                 </div>
+
+                                                                 {/* Read More Button */}
+                                                                 <div className="flex items-center justify-between">
+                                                                      <button className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold group/btn transition-colors">
+                                                                           <span>
+                                                                                Read
+                                                                                full
+                                                                                article
+                                                                           </span>
+                                                                           <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                                                                      </button>
+                                                                      <div className="flex items-center gap-2 text-sm text-gray-400">
+                                                                           <Eye className="w-4 h-4" />
+                                                                           <span>
+                                                                                Click
+                                                                                to
+                                                                                read
+                                                                           </span>
+                                                                      </div>
+                                                                 </div>
+                                                            </div>
+                                                       </div>
+                                                  </article>
+                                             </motion.div>
+                                        ))}
+                                   </motion.div>
+                              ) : (
+                                   <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: -20 }}
+                                        className="text-center py-16"
+                                   >
+                                        <div className="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                                             <Search className="h-8 w-8 text-gray-400" />
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                                             No articles found
+                                        </h3>
+                                        <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                                             Try adjusting your search terms or
+                                             browse all categories
+                                        </p>
+                                        <button
+                                             onClick={() => {
+                                                  setSearchTerm("");
+                                                  setSelectedCategory("All");
+                                             }}
+                                             className="px-6 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors shadow-sm"
+                                        >
+                                             Clear filters
+                                        </button>
+                                   </motion.div>
+                              )}
+                         </AnimatePresence>
+
+                         {/* Newsletter Section */}
+                         <motion.div
+                              initial={{ opacity: 0, y: 30 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.6, delay: 0.3 }}
+                              className="mt-16"
+                         >
+                              <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 lg:p-12 text-white relative overflow-hidden">
+                                   <div className="absolute inset-0 bg-black/10"></div>
+                                   <div className="relative z-10 text-center">
+                                        <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+                                             Stay Updated
+                                        </h2>
+                                        <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+                                             Get the latest digital marketing
+                                             insights and tips delivered to your
+                                             inbox
+                                        </p>
+
+                                        {isSubscribed ? (
+                                             <motion.div
+                                                  initial={{
+                                                       opacity: 0,
+                                                       scale: 0.9,
+                                                  }}
+                                                  animate={{
+                                                       opacity: 1,
+                                                       scale: 1,
+                                                  }}
+                                                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto"
+                                             >
+                                                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white text-blue-600 mb-4">
+                                                       <svg
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            className="h-6 w-6"
+                                                            fill="none"
+                                                            viewBox="0 0 24 24"
+                                                            stroke="currentColor"
+                                                       >
+                                                            <path
+                                                                 strokeLinecap="round"
+                                                                 strokeLinejoin="round"
+                                                                 strokeWidth={2}
+                                                                 d="M5 13l4 4L19 7"
+                                                            />
+                                                       </svg>
+                                                  </div>
+                                                  <h3 className="text-xl font-semibold mb-2">
+                                                       Thank you!
+                                                  </h3>
+                                                  <p className="text-blue-100">
+                                                       You've been successfully
+                                                       subscribed to our
+                                                       newsletter.
+                                                  </p>
+                                             </motion.div>
+                                        ) : (
+                                             <motion.form
+                                                  initial={{
+                                                       opacity: 0,
+                                                       y: 20,
+                                                  }}
+                                                  animate={{ opacity: 1, y: 0 }}
+                                                  transition={{
+                                                       duration: 0.5,
+                                                       delay: 0.1,
+                                                  }}
+                                                  onSubmit={handleSubscribe}
+                                                  className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
+                                             >
+                                                  <div className="flex-1">
+                                                       <input
+                                                            type="email"
+                                                            placeholder="Enter your email"
+                                                            value={email}
+                                                            onChange={(e) =>
+                                                                 setEmail(
+                                                                      e.target
+                                                                           .value
+                                                                 )
+                                                            }
+                                                            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/30 transition-all"
+                                                            required
+                                                       />
+                                                  </div>
+                                                  <motion.button
+                                                       whileHover={{
+                                                            scale: 1.02,
+                                                       }}
+                                                       whileTap={{
+                                                            scale: 0.98,
+                                                       }}
+                                                       type="submit"
+                                                       className="bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 transition-colors shadow-sm"
+                                                  >
+                                                       Subscribe
+                                                  </motion.button>
+                                             </motion.form>
+                                        )}
+                                   </div>
+                              </div>
+                         </motion.div>
                     </div>
-               </div>
-          </>
+               )}
+          </div>
      );
 }

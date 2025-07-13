@@ -15,6 +15,14 @@ import {
      CheckCircle,
      Users,
      Sparkles,
+     TrendingUp,
+     Globe,
+     Search,
+     Rocket,
+     Award,
+     Zap,
+     Monitor,
+     Smartphone,
 } from "lucide-react";
 
 // Simplified types
@@ -38,6 +46,8 @@ type Step = {
      multiSelect?: boolean;
      icon: React.ReactNode;
 };
+
+type SelectionValue = { id: string; value?: number };
 
 // Simplified steps data
 const steps: Step[] = [
@@ -192,7 +202,9 @@ const steps: Step[] = [
 
 export default function SEOQuoteCalculator() {
      const [currentStep, setCurrentStep] = useState(0);
-     const [selections, setSelections] = useState<Record<string, any>>({});
+     const [selections, setSelections] = useState<
+          Record<string, SelectionValue[] | SelectionValue>
+     >({});
      const [totalPrice, setTotalPrice] = useState(0);
      const [isStarted, setIsStarted] = useState(false);
      const [formData, setFormData] = useState({
@@ -243,32 +255,22 @@ export default function SEOQuoteCalculator() {
                     if (!Array.isArray(newSelections[stepId])) {
                          newSelections[stepId] = [];
                     }
-
-                    const existingIndex = newSelections[stepId].findIndex(
-                         (s: any) => s.id === optionId
-                    );
-
+                    const existingIndex = (
+                         newSelections[stepId] as SelectionValue[]
+                    ).findIndex((s: SelectionValue) => s.id === optionId);
                     if (existingIndex >= 0) {
-                         if (value !== undefined) {
-                              newSelections[stepId][existingIndex] = {
-                                   id: optionId,
-                                   value,
-                              };
-                         } else {
-                              newSelections[stepId] = newSelections[
-                                   stepId
-                              ].filter((s: any) => s.id !== optionId);
-                         }
+                         newSelections[stepId] = (
+                              newSelections[stepId] as SelectionValue[]
+                         ).filter((s: SelectionValue) => s.id !== optionId);
                     } else {
-                         newSelections[stepId].push({
+                         (newSelections[stepId] as SelectionValue[]).push({
                               id: optionId,
-                              value: value || 1,
+                              value,
                          });
                     }
                } else {
-                    newSelections[stepId] = { id: optionId };
+                    newSelections[stepId] = { id: optionId, value };
                }
-
                return newSelections;
           });
      };
@@ -276,23 +278,39 @@ export default function SEOQuoteCalculator() {
      const isSelected = (stepId: string, optionId: string) => {
           if (!selections[stepId]) return false;
           if (Array.isArray(selections[stepId])) {
-               return selections[stepId].some((s: any) => s.id === optionId);
+               return (selections[stepId] as SelectionValue[]).some(
+                    (s: SelectionValue) => s.id === optionId
+               );
           }
-          return selections[stepId]?.id === optionId;
+          return (selections[stepId] as SelectionValue)?.id === optionId;
      };
 
      const getSliderValue = (stepId: string, optionId: string) => {
-          if (!selections[stepId] || !Array.isArray(selections[stepId]))
-               return 0;
-          const selection = selections[stepId].find(
-               (s: any) => s.id === optionId
-          );
-          return selection?.value || 0;
+          if (!selections[stepId]) return 0;
+          if (Array.isArray(selections[stepId])) {
+               const selection = (selections[stepId] as SelectionValue[]).find(
+                    (s: SelectionValue) => s.id === optionId
+               );
+               return selection?.value || 0;
+          }
+          return (selections[stepId] as SelectionValue)?.value || 0;
      };
 
-     const handleSubmit = (e: React.FormEvent) => {
+     const handleInputChange = (
+          e: React.ChangeEvent<
+               HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+          >
+     ) => {
+          const { name, value } = e.target;
+          setFormData((prev) => ({ ...prev, [name]: value }));
+     };
+
+     const handleSubmit = async (e: React.FormEvent) => {
           e.preventDefault();
-          alert("Thank you! We'll contact you with a detailed proposal.");
+          console.log("Form submitted:", { selections, totalPrice, formData });
+          alert(
+               "Thank you! We'll send you a detailed proposal within 24 hours."
+          );
      };
 
      const nextStep = () => {
@@ -310,6 +328,52 @@ export default function SEOQuoteCalculator() {
      const progressPercentage = isStarted
           ? ((currentStep + 1) / (steps.length + 1)) * 100
           : 0;
+
+     const calculateTotal = (): number => {
+          let total = 0;
+          Object.values(selections).forEach((selection) => {
+               if (Array.isArray(selection)) {
+                    selection.forEach((item: SelectionValue) => {
+                         steps.forEach((step) => {
+                              const option = step.options.find(
+                                   (opt) => opt.id === item.id
+                              );
+                              if (option) {
+                                   if (option.type === "slider" && item.value) {
+                                        total += option.price * item.value;
+                                   } else {
+                                        total += option.price;
+                                   }
+                              }
+                         });
+                    });
+               } else if (
+                    selection &&
+                    typeof selection === "object" &&
+                    "id" in selection
+               ) {
+                    steps.forEach((step) => {
+                         const option = step.options.find(
+                              (opt) =>
+                                   opt.id === (selection as SelectionValue).id
+                         );
+                         if (option) {
+                              if (
+                                   option.type === "slider" &&
+                                   (selection as SelectionValue).value
+                              ) {
+                                   total +=
+                                        option.price *
+                                        (selection as SelectionValue).value!;
+                              } else {
+                                   total += option.price;
+                              }
+                         }
+                    });
+               }
+          });
+          return total;
+     };
 
      return (
           <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">

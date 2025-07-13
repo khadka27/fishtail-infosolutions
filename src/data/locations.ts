@@ -21,7 +21,7 @@ export const officeLocations: LocationData[] = [
      {
           name: "Pokhara Office",
           country: "Nepal",
-          coordinates: [28.2096, 83.9856],
+          coordinates: [28.21290856363113, 83.9874925129312],
           address: "Prithivi Chowk, Street 31, Pokhara",
      },
      {
