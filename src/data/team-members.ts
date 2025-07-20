@@ -484,6 +484,40 @@ export const teamMembers: TeamMember[] = [
           ],
      },
      {
+          name: "Sabina Pahari",
+          position: "Jr. Content Writer",
+          department: "Content",
+          avatar: "/Image/sabina.png",
+          bgColor: "",
+          slug: "sabina-thapa",
+          bio: "Sabina specializes in creating engaging content that aligns with brand goals and connects with target audiences. Her dedication to learning and adapting makes her a valuable asset in dynamic content projects.",
+          email: "sabina@fishtailinfosolutions.com",
+          linkedin: "",
+          twitter: "",
+          facebook: "",
+          experience: ["1+ years in Content Writing"],
+          projects: ["1+ Projects"],
+          expertise: ["Copywriting", "Content Strategy", "Keyword Research"],
+          skills: [
+               {
+                    skill: "Content writing",
+                    level: 55,
+               },
+               {
+                    skill: "SEO Optimization",
+                    level: 65,
+               },
+               {
+                    skill: "Research",
+                    level: 60,
+               },
+               {
+                    skill: "Analytics & Reporting",
+                    level: 65,
+               },
+          ],
+     },
+     {
           name: "Monika Gharti",
           position: "Jr. Content Writer",
           department: "Content",
