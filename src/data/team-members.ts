@@ -344,6 +344,42 @@ export const teamMembers: TeamMember[] = [
           ],
      },
      {
+          name: "Pelav Poudyal",
+          position: "UI/UX Intern",
+          department: "Development",
+          avatar: "/Image/pelav.png",
+          bgColor: "",
+          slug: "pelav-poudyal",
+          bio: "Pelav Poudyal is a UI/UX intern with a passion for creating intuitive and user-friendly designs. He is a quick learner and a team player.",
+          email: "pelav@fishtailinfosolutions.com",
+          linkedin: "",
+          twitter: "",
+          facebook: "",
+          experience: ["1+ years in UI/UX Design"],
+          projects: ["1+ Projects"],
+          expertise: [
+               "UX Writing",
+               "Content Design Systems",
+               "User Journey Mapping",
+          ],
+          skills: [
+
+               {
+                    skill: "UX Research",
+                    level: 55,
+               },
+               {
+                    skill: "Design",
+                    level: 50,
+               },
+               {
+                    skill: "Prototyping",
+                    level: 60,
+               },
+          ],
+
+     },
+     {
           name: "Tilasmi Subedi",
           position: "Content Writer / Video Content Creator",
           department: "Content",
@@ -700,5 +736,79 @@ export const teamMembers: TeamMember[] = [
                     level: 75,
                },
           ],
+     },
+     {
+          name: "Bibash Waiba",
+          position: "Jr. SEO Analyst / Content Writer",
+          department: "Content",
+          avatar: "/Image/bibash.jpg",
+          bgColor: "",
+          slug: "bibash-waiba",
+          bio: "Bibash Waiba is a junior SEO content writer with a solid grasp of SEO basics, keyword research, and content optimization. Eager to learn and grow, he's focused on creating engaging content that ranks well on search engines.",
+          email: "bibash@fishtailinfosolutions.com",
+          linkedin: "",
+          twitter: "",
+          facebook: "",
+          experience: ["Fresher"],
+          projects: [""],
+          expertise: [
+               "strategic keyword research",
+               "SEO content writing",
+               "on-page content optimization",
+          ],
+          skills: [
+               {
+                    skill: "SEO Strategy",
+                    level: 40,
+               },
+               {
+                    skill: "Content Marketing",
+                    level: 45,
+               },
+               {
+                    skill: "PPC Campaigns",
+                    level: 50,
+               },
+               {
+                    skill: "Analytics & Reporting",
+                    level: 55,
+               },
+          ],
+     },
+     {
+          name: "Grishma Khawas",
+          position: "Jr. UI/UX Designer",
+          department: "Development",
+          avatar: "/Image/grishma.jpg",
+          bgColor: "",
+          slug: "grishma-khawas",
+          bio: "Grishma Khawas is a Jr. UI/UX Designer with a passion for creating intuitive and user-friendly designs. She is a quick learner and a team player.",
+          email: "grishma@fishtailinfosolutions.com",
+          linkedin: "",
+          twitter: "",
+          facebook: "",
+          experience: ["1+ years in UI/UX Design"],
+          projects: ["1+ Projects"],
+          expertise: [
+               "UI/UX Design",
+               "User Experience",
+               "User Interface",
+          ],
+          skills: [
+
+               {
+                    skill: "UX Research",
+                    level: 65,
+               },
+               {
+                    skill: "Design",
+                    level: 60,
+               },
+               {
+                    skill: "Prototyping",
+                    level: 60,
+               },
+          ],
+
      },
 ];
