@@ -738,6 +738,37 @@ export const teamMembers: TeamMember[] = [
           ],
      },
      {
+          name: "Parash Parajuli",
+          position: "Junior Data Analayst",
+          department: "SEO",
+          avatar: "/Image/parash.png",
+          bgColor: "",
+          slug: "parash-parajuli",
+          bio: "Parash is a data analyst with a keen interest in transforming data into actionable insights. He is skilled in SQL, Python, and data visualization tools like Power BI and Tableau.",
+          email: "parashparajuli@fishtailinfosolutions.com",
+          linkedin: "",
+          twitter: "",
+          facebook: "",
+          experience: ["6+ months in Data Analyst"],
+          projects: ["1+ Projects"],
+          expertise: ["SEO", "PowerBI Automation"],
+          skills: [
+               {
+                    skill: "Python",
+                    level: 50,
+               },
+               {
+                    skill: "SQL",
+                    level: 65,
+               },
+               {
+                    skill: "PowerBI",
+                    level: 60,
+               },
+
+          ],
+     },
+     {
           name: "Bibash Waiba",
           position: "Jr. SEO Analyst / Content Writer",
           department: "Content",
