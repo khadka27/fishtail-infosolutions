@@ -452,36 +452,33 @@ export const teamMembers: TeamMember[] = [
      },
      {
           name: "Prity Thapa",
-          position: "Jr. Content Writer",
-          department: "Content",
+          position: "Jr. Software Developer",
+          department: "Development",
           avatar: "/Image/prity.png",
           bgColor: "",
           slug: "prity-thapa",
-          bio: "Prity brings a fresh voice to the content team with her knack for clear and compelling storytelling. She specializes in creating engaging content that aligns with brand goals and connects with target audiences. Her dedication to learning and adapting makes her a valuable asset in dynamic content projects.",
+          bio: "Prity is a junior software developer with a passion for building web applications. She is skilled in ReactJs, NodeJs, and Postgresql.",
           email: "prity@fishtailinfosolutions.com",
           linkedin: "",
           twitter: "",
           facebook: "",
-          experience: ["1+ years in Content Writing"],
+          experience: ["1+ years in Software Development"],
           projects: ["1+ Projects"],
-          expertise: ["Copywriting", "Content Strategy", "Editing"],
+          expertise: ["Software Development", "Database Design"],
           skills: [
                {
-                    skill: "Content writing",
+                    skill: "ReactJs",
+                    level: 50,
+               },
+               {
+                    skill: "NodeJs",
+                    level: 65,
+               },
+               {
+                    skill: "Postgresql",
                     level: 60,
                },
-               {
-                    skill: "SEO Optimization",
-                    level: 75,
-               },
-               {
-                    skill: "Research",
-                    level: 70,
-               },
-               {
-                    skill: "Analytics & Reporting",
-                    level: 55,
-               },
+
           ],
      },
      {
@@ -632,6 +629,37 @@ export const teamMembers: TeamMember[] = [
                     skill: "Content Writing",
                     level: 75,
                },
+          ],
+     },
+     {
+          name: "Parash Parajuli",
+          position: "Junior Data Analayst",
+          department: "SEO",
+          avatar: "/Image/parash.png",
+          bgColor: "",
+          slug: "parash-parajuli",
+          bio: "Parash is a data analyst with a keen interest in transforming data into actionable insights. He is skilled in SQL, Python, and data visualization tools like Power BI and Tableau.",
+          email: "parashparajuli@fishtailinfosolutions.com",
+          linkedin: "",
+          twitter: "",
+          facebook: "",
+          experience: ["6+ months in Data Analyst"],
+          projects: ["1+ Projects"],
+          expertise: ["SEO", "PowerBI Automation"],
+          skills: [
+               {
+                    skill: "Python",
+                    level: 50,
+               },
+               {
+                    skill: "SQL",
+                    level: 65,
+               },
+               {
+                    skill: "PowerBI",
+                    level: 60,
+               },
+
           ],
      },
 
