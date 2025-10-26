@@ -739,7 +739,7 @@ export const teamMembers: TeamMember[] = [
      },
      {
           name: "Parash Parajuli",
-          position: "Junior Data Analayst",
+          position: "Junior Data Analyst",
           department: "SEO",
           avatar: "/Image/parash.png",
           bgColor: "",
